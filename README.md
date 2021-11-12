@@ -1,4 +1,4 @@
 # FotoBook
 Facebook (now known as Meta) clone
 
-##### [MVP List]()
+##### [Wiki Link](https://github.com/kenthiroi/FotoBook/wiki)
