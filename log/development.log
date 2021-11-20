@@ -1,0 +1,325 @@
+Started GET "/" for ::1 at 2021-11-19 17:15:31 -0800
+
+ActiveRecord::NoDatabaseError - FATAL:  database "FotoBook_development" does not exist:
+
+Started POST "/__better_errors/b906cf13964f609e/variables" for ::1 at 2021-11-19 17:15:31 -0800
+  [1m[35m (86.8ms)[0m  [1m[35mCREATE DATABASE "FotoBook_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (30.5ms)[0m  [1m[35mCREATE DATABASE "FotoBook_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-11-19 17:15:46 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.4ms)
+Completed 200 OK in 19ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:47 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.2ms)
+Completed 200 OK in 17ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:48 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.9ms)
+Completed 200 OK in 16ms (Views: 10.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:48 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 16ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:49 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.9ms)
+Completed 200 OK in 17ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:49 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 19ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:49 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.9ms)
+Completed 200 OK in 16ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:49 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.9ms)
+Completed 200 OK in 16ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:50 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.6ms)
+Completed 200 OK in 15ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:50 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (5.6ms)
+Completed 200 OK in 18ms (Views: 12.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:50 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.5ms)
+Completed 200 OK in 16ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:50 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:50 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 16ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:51 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.8ms)
+Completed 200 OK in 15ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:51 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.7ms)
+Completed 200 OK in 16ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:51 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 16ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:52 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 16ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:15:52 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 16ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:16:42 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 16ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:16:43 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.6ms)
+Completed 200 OK in 18ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:16:44 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.1ms)
+Completed 200 OK in 15ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:16:44 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.6ms)
+Completed 200 OK in 15ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:16:44 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.8ms)
+Completed 200 OK in 17ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:16:44 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.8ms)
+Completed 200 OK in 16ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:16:45 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.5ms)
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:22:11 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.6ms)
+Completed 200 OK in 19ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:22:13 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.4ms)
+Completed 200 OK in 15ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:22:13 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.3ms)
+Completed 200 OK in 14ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:22:14 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (5.0ms)
+Completed 200 OK in 17ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:22:14 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (3.9ms)
+Completed 200 OK in 17ms (Views: 10.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:22:15 -0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.6/lib/rails/templates/rails/welcome/index.html.erb (4.8ms)
+Completed 200 OK in 18ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-19 17:22:58 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/fd3a75cfd5497f61/variables" for ::1 at 2021-11-19 17:22:58 -0800
+Started GET "/" for ::1 at 2021-11-19 17:22:59 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/c655798f900f92fd/variables" for ::1 at 2021-11-19 17:22:59 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:00 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/18f69832d1d1f904/variables" for ::1 at 2021-11-19 17:23:00 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:01 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/3b964f92f970a77f/variables" for ::1 at 2021-11-19 17:23:01 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:02 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/31d6badc1ac7acf1/variables" for ::1 at 2021-11-19 17:23:02 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:03 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/e103ee5242b76bb1/variables" for ::1 at 2021-11-19 17:23:03 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:03 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/72562e7da6ef3c5c/variables" for ::1 at 2021-11-19 17:23:03 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:04 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/28bd3550c066e3d4/variables" for ::1 at 2021-11-19 17:23:04 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:28 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/293cd479247fef49/variables" for ::1 at 2021-11-19 17:23:28 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:29 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/2f88bee629d85d2a/variables" for ::1 at 2021-11-19 17:23:29 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:29 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/f265fc85bf6b370e/variables" for ::1 at 2021-11-19 17:23:29 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:29 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/8798fb7541e260c0/variables" for ::1 at 2021-11-19 17:23:29 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:29 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/e5a01ee2a106f40b/variables" for ::1 at 2021-11-19 17:23:30 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:30 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/bb1dce5ebeb4a9a6/variables" for ::1 at 2021-11-19 17:23:30 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:30 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/3a6aedcd45099548/variables" for ::1 at 2021-11-19 17:23:30 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:30 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/7ca42d908574cec1/variables" for ::1 at 2021-11-19 17:23:30 -0800
+Started GET "/" for ::1 at 2021-11-19 17:23:32 -0800
+
+ActionController::RoutingError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/18ba39903abe99f1/variables" for ::1 at 2021-11-19 17:23:32 -0800
+Started GET "/" for ::1 at 2021-11-19 17:25:38 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Started GET "/" for ::1 at 2021-11-19 17:25:40 -0800
+Completed 200 OK in 1570ms (Views: 1569.3ms | ActiveRecord: 0.0ms)
+
+
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+
+
