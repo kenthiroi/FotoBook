@@ -323,3 +323,683 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4689671945472985275)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20211122160939)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying NOT NULL, "last_name" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "birthdate" date NOT NULL, "gender" character varying NOT NULL, "hometown" character varying, "school" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20211122160939_create_users.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20211122160939_create_users.rb:15
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/migrate/20211122160939_create_users.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211122160939"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-11-22 16:13:07.084628"], ["updated_at", "2021-11-22 16:13:07.084628"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(4689671945472985275)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-11-22 08:46:22 -0800
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 564ms (Views: 563.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-22 08:46:24 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-22 08:51:27 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 19ms (Views: 17.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:51:28 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:52:02 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:53:07 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:53:10 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:53:24 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 08:53:53 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-11-22 08:53:54 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:53:55 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 08:56:02 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:56:03 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 08:56:10 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:56:11 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 08:56:13 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:56:14 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 08:56:33 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 18.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:56:34 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 08:56:36 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:04:29 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:06:58 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:08:08 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:10:02 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:14:04 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:15:43 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:15:52 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:18:17 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:18:21 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started DELETE "/api/session" for ::1 at 2021-11-22 09:19:03 -0800
+Processing by Api::SessionsController#destroy as JSON
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started DELETE "/api/session" for ::1 at 2021-11-22 09:19:42 -0800
+Processing by Api::SessionsController#destroy as JSON
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:19:51 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user" for ::1 at 2021-11-22 09:21:49 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/session" for ::1 at 2021-11-22 09:23:22 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 09:34:18 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-22 09:34:19 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/session" for ::1 at 2021-11-22 09:34:21 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 09:34:38 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-22 09:34:41 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/users?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 09:39:12 -0800
+  
+ActionController::RoutingError (No route matches [POST] "/api/users"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/api/user?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 09:39:24 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kentokento@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 09:42:30 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kentokento@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 09:42:31 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kentokento@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 09:43:00 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-22 09:43:06 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 09:48:39 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-22 09:48:43 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started GET "/" for ::1 at 2021-11-22 09:49:04 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/session" for ::1 at 2021-11-22 09:49:06 -0800
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"kento1@kento1.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 09:49:44 -0800
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/khiroi/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kentokento@kento.com", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/user?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 09:50:07 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kentokento@kento.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `log' for nil:NilClass:
+  app/controllers/api/users_controller.rb:3:in `create'
+
+Started POST "/api/user?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 10:03:55 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kentokento@kento.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `log' for nil:NilClass:
+  app/controllers/api/users_controller.rb:3:in `create'
+
+Started POST "/api/user?user[email]=kentokento@kento.com&user[password]=[FILTERED]" for ::1 at 2021-11-22 10:04:17 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"email"=>"kentokento@kento.com", "password"=>"[FILTERED]"}}
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:5
+  [1m[36mUser Exists (4.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kentokento@kento.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:5
+  [1m[36mUser Create (6.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kentokento@kento.com"], ["password_digest", "$2a$12$b2jEoz9D774fydMG8cbLpOLBzdeLD7Jajhoynz1GxuY2h.w1/DYsi"], ["session_token", "ckY5cUAUEoN_gqEnBoKilQ"], ["created_at", "2021-11-22 18:04:17.937498"], ["updated_at", "2021-11-22 18:04:17.937498"]]
+  ↳ app/controllers/api/users_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:5
+Completed 500 Internal Server Error in 329ms (ActiveRecord: 42.9ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "first_name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (1, null, null, kentokento@kento.com, $2a$12$b2jEoz9D774fydMG8cbLpOLBzdeLD7Jajhoynz1GxuY2h.w1/DYsi, ckY5cUAUEoN_gqEnBoKilQ, null, null, null, null, 2021-11-22 18:04:17.937498, 2021-11-22 18:04:17.937498).
+: INSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/users_controller.rb:5:in `create'
+
+Started POST "/api/user" for ::1 at 2021-11-22 10:06:02 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "birthdate"=>"Mon Nov 22 2021 10:06:02 GMT-0800 (Pacific Standard Time)", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :first_name, :last_name, :gender, :birthdate
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kento1@kento.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kento1@kento.com"], ["password_digest", "$2a$12$oUA9T0RRRKtGkorkpCTDOO46WJDEfgoK0FIRcC1aGnMDqUsZobQ.y"], ["session_token", "2lcVb4K6Vq6xtHuG4P9MLw"], ["created_at", "2021-11-22 18:06:02.559965"], ["updated_at", "2021-11-22 18:06:02.559965"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:4
+Completed 500 Internal Server Error in 291ms (ActiveRecord: 14.1ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "first_name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (2, null, null, kento1@kento.com, $2a$12$oUA9T0RRRKtGkorkpCTDOO46WJDEfgoK0FIRcC1aGnMDqUsZobQ.y, 2lcVb4K6Vq6xtHuG4P9MLw, null, null, null, null, 2021-11-22 18:06:02.559965, 2021-11-22 18:06:02.559965).
+: INSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/users_controller.rb:4:in `create'
+
+Started POST "/api/user" for ::1 at 2021-11-22 10:06:24 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "birthdate"=>"Mon Nov 22 2021 10:06:24 GMT-0800 (Pacific Standard Time)", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :first_name, :last_name, :gender, :birthdate
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kento1@kento.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kento1@kento.com"], ["password_digest", "$2a$12$7575o.TsKjVNOlJ.2XwfXu76ENdS.1nP.JmEK.JqwFvEjMz2lUqMm"], ["session_token", "ud3NblYyeuTT3HqWIJRbRA"], ["created_at", "2021-11-22 18:06:24.786299"], ["updated_at", "2021-11-22 18:06:24.786299"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:4
+Completed 500 Internal Server Error in 274ms (ActiveRecord: 2.9ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "first_name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (3, null, null, kento1@kento.com, $2a$12$7575o.TsKjVNOlJ.2XwfXu76ENdS.1nP.JmEK.JqwFvEjMz2lUqMm, ud3NblYyeuTT3HqWIJRbRA, null, null, null, null, 2021-11-22 18:06:24.786299, 2021-11-22 18:06:24.786299).
+: INSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/users_controller.rb:4:in `create'
+
+Started POST "/api/user" for ::1 at 2021-11-22 10:07:42 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "birthdate"=>"Sun Dec 17 1995 03:24:00 GMT-0800 (Pacific Standard Time)", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :first_name, :last_name, :gender, :birthdate
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kento1@kento.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kento1@kento.com"], ["password_digest", "$2a$12$KOqkuuRkxFMY8b9.iIdXcOazPssTVgixGSJ3aJV9dcDvGlkXFLlx6"], ["session_token", "aI159UuJi42ZKl_J8FBC5Q"], ["created_at", "2021-11-22 18:07:43.056382"], ["updated_at", "2021-11-22 18:07:43.056382"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:4
+Completed 500 Internal Server Error in 276ms (ActiveRecord: 3.2ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "first_name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (4, null, null, kento1@kento.com, $2a$12$KOqkuuRkxFMY8b9.iIdXcOazPssTVgixGSJ3aJV9dcDvGlkXFLlx6, aI159UuJi42ZKl_J8FBC5Q, null, null, null, null, 2021-11-22 18:07:43.056382, 2021-11-22 18:07:43.056382).
+: INSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/users_controller.rb:4:in `create'
+
+Started POST "/api/user" for ::1 at 2021-11-22 10:11:28 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "birthdate"=>"Sun Dec 17 1995 03:24:00 GMT-0800 (Pacific Standard Time)", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :first_name, :last_name, :gender, :birthdate
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kento1@kento.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (2.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kento1@kento.com"], ["password_digest", "$2a$12$Ah3tAgzb4C8/H5Mm0qFkBuHLUsjLJ6jOKcDK3qiJDJ7kUqCja6a/i"], ["session_token", "cSqS_QrwrnBcj5koq1Z2hg"], ["created_at", "2021-11-22 18:11:29.103331"], ["updated_at", "2021-11-22 18:11:29.103331"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:4
+Completed 500 Internal Server Error in 276ms (ActiveRecord: 3.4ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "first_name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (5, null, null, kento1@kento.com, $2a$12$Ah3tAgzb4C8/H5Mm0qFkBuHLUsjLJ6jOKcDK3qiJDJ7kUqCja6a/i, cSqS_QrwrnBcj5koq1Z2hg, null, null, null, null, 2021-11-22 18:11:29.103331, 2021-11-22 18:11:29.103331).
+: INSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/users_controller.rb:4:in `create'
+
+Started POST "/api/user" for ::1 at 2021-11-22 10:12:04 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "birthdate"=>"Sun Dec 17 1995 03:24:00 GMT-0800 (Pacific Standard Time)", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :first_name, :last_name, :gender, :birthdate
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kento1@kento.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kento1@kento.com"], ["password_digest", "$2a$12$iomRDZpx.Yf0qU4tdLYff.n7ZoQpR657EhYV83mxSZH6qDcugFAla"], ["session_token", "xHoYAqBbi3tAdecc0QRE2Q"], ["created_at", "2021-11-22 18:12:05.018981"], ["updated_at", "2021-11-22 18:12:05.018981"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:4
+Completed 500 Internal Server Error in 282ms (ActiveRecord: 5.0ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "first_name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (6, null, null, kento1@kento.com, $2a$12$iomRDZpx.Yf0qU4tdLYff.n7ZoQpR657EhYV83mxSZH6qDcugFAla, xHoYAqBbi3tAdecc0QRE2Q, null, null, null, null, 2021-11-22 18:12:05.018981, 2021-11-22 18:12:05.018981).
+: INSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/users_controller.rb:4:in `create'
+
+Started POST "/api/user" for ::1 at 2021-11-22 10:12:40 -0800
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"first_name"=>"kento", "last_name"=>"bento", "gender"=>"male", "birthdate"=>"Sun Dec 17 1995 03:24:00 GMT-0800 (Pacific Standard Time)", "email"=>"kento1@kento.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :first_name, :last_name, :gender, :birthdate
+  [1m[35m (3.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kento1@kento.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[36mUser Create (2.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "kento1@kento.com"], ["password_digest", "$2a$12$gPkQzXxct8gBB.NtxM860.tbWzXBqs1fKKkLQX5JBpi/mQzNgWHiW"], ["session_token", "W-76QMP9dOJ9JW5PMyuUBQ"], ["created_at", "2021-11-22 18:12:40.631741"], ["updated_at", "2021-11-22 18:12:40.631741"]]
+  ↳ app/controllers/api/users_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/users_controller.rb:4
+Completed 500 Internal Server Error in 280ms (ActiveRecord: 6.5ms)
+
+
+
+ActiveRecord::NotNullViolation - PG::NotNullViolation: ERROR:  null value in column "first_name" of relation "users" violates not-null constraint
+DETAIL:  Failing row contains (7, null, null, kento1@kento.com, $2a$12$gPkQzXxct8gBB.NtxM860.tbWzXBqs1fKKkLQX5JBpi/mQzNgWHiW, W-76QMP9dOJ9JW5PMyuUBQ, null, null, null, null, 2021-11-22 18:12:40.631741, 2021-11-22 18:12:40.631741).
+: INSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id":
+  app/controllers/api/users_controller.rb:4:in `create'
+
