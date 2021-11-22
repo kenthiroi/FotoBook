@@ -5,7 +5,6 @@ class Api::UsersController < ApplicationController
       login(@user)
       #render "index" with json? #render index page after user creation
     else
-      console.log("called")
       render json: @user.errors.full_messages, status: 422
     end
   end
@@ -13,6 +12,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:first_name, :last_name, :gender, :birthdate, :email, :password)
   end
 end

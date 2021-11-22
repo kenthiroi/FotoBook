@@ -5,7 +5,6 @@ class Api::SessionsController < ApplicationController
       login(@user)
       #render "index" page with json? after login
     else
-      console.log("not logged in")
       render json: ["Invalid login credentials"], status: 401
     end
   end
