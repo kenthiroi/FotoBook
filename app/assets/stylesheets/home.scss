@@ -1,0 +1,99 @@
+* {
+  font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif
+}
+
+body {
+  background-color: #f0f2f5;
+  font-size: 12px;
+}
+
+.divider {
+  height: 0;
+  border: 0.2px solid #dddfe2;
+  padding: 0 !important;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.login-container {
+  top: 124px;
+  width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.login-left {
+  margin-top: 65px;
+  float: left;
+}
+
+.login-right {
+  padding-top: 10px;
+  width: 396px;
+  float: right;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #888888;
+  font-size: 20px;
+  text-align: center;
+}
+
+.login-right input {
+  width: 330px;
+  font-size: 17px;
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: 1px solid #dddfe2;
+}
+
+.login-right div {
+  padding: 6px 0 6px;
+}
+
+.login-logo {
+  color: #1877f2;
+  font-size: 60px;
+  font-weight: bold;
+  height: 60px;
+  padding-bottom: 20px;
+}
+
+.logo-desc {
+  font-size: 28px;
+  width: 500px;
+}
+
+#demo-login {
+  font-size: 14px;
+  color: #1877f2;
+  margin: 10px;
+}
+
+#login-button {
+  width: 364px;
+  font-weight: bold;
+  color: white;
+  background-color: #1877f2;
+  transition: 0.2s;
+}
+
+#login-button:hover {
+  background-color: #1665cc;
+  transition: 0.2s;
+}
+
+#sign-up-button {
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 15px 10px 15px 10px;
+  background-color: #42b72a;
+  color: white;
+  transition: 0.2s;
+  margin: 20px;
+}
+
+#sign-up-button:hover {
+  background-color: #3f992d;
+  transition: 0.2s;
+}
