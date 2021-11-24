@@ -67,6 +67,7 @@ body {
   font-size: 14px;
   color: #1877f2;
   margin: 10px;
+  cursor: pointer;
 }
 
 #login-button {
@@ -75,6 +76,7 @@ body {
   color: white;
   background-color: #1877f2;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 #login-button:hover {
@@ -91,6 +93,7 @@ body {
   color: white;
   transition: 0.2s;
   margin: 20px;
+  cursor: pointer;
 }
 
 #sign-up-button:hover {

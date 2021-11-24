@@ -9,11 +9,14 @@ import {
   HashRouter
 } from 'react-router-dom';
 import LoginPageContainer from './login/login_page_container';
+import Modal from './modal/modal';
+import NewsfeedContainer from './newsfeed/newsfeed_container';
 
 
 
-const App = () => (
+const App = (props) => (
   <div>
+    <Modal/>
     {/* <header>
       <Link to="/" className="header-link">
         <h1>FotoBook</h1>
@@ -23,7 +26,7 @@ const App = () => (
       {/* Login landing page */}
       <AuthRoute exact path="/" component={LoginPageContainer}/>
       {/* News Feed Component */}
-      {/* <ProtectedRoute exact path="/" component={}/>  */}
+      <ProtectedRoute exact path="/newsfeed" component={NewsfeedContainer}/> 
     </Switch>
   </div>
 );
