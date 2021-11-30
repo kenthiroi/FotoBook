@@ -11,6 +11,7 @@ import {
 import LoginPageContainer from './login/login_page_container';
 import Modal from './modal/modal';
 import NewsfeedContainer from './newsfeed/newsfeed_container';
+import HeaderNav from './header/header'
 
 
 
@@ -23,9 +24,7 @@ const App = (props) => (
       {/* News Feed Component */}
       <Fragment>
         <header>
-          <Link to="/" className="header-link">
-            <h1>FotoBook</h1>
-          </Link>
+          <HeaderNav/>
         </header>
         <ProtectedRoute exact path="/newsfeed" component={NewsfeedContainer}/> 
 

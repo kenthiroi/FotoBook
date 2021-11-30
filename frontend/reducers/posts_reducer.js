@@ -9,8 +9,8 @@ const postsReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_POSTS:
-      if(!!action.data.posts){
-        Object.values(action.data.posts).forEach(post => {
+      if(!!action.posts){
+        Object.values(action.posts).forEach(post => {
             newState[post.id] = post;
         });
       }
