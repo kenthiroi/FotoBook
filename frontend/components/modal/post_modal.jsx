@@ -32,28 +32,48 @@ class PostModal extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const post = Object.assign({}, this.state);
-    this.props.createPost(post);
+    switch (this.props.type){
+      case 'create':
+        this.props.uploadPost(post);
+        break;
+      case 'edit':
+        this.props.updatePost(post);
+        break;
+      default:
+        break;
+    }
     this.props.closeModal();
+  }
+
+  updateState(type){
+    return (e) => {
+      this.setState({ [type]: e.target.value })
+    }
   }
 
   render(){
 
     let modal_title = "";
+    let submit_text = "";
     switch (this.props.type){
       case 'create':
         modal_title = "Create Post";
+        submit_text = "Post";
         break;
       case 'edit':
         modal_title = "Edit Post";
+        submit_text = "Save";
         break;
       default:
         modal_title = "Error";
+        submit_text = "oops";
     }
 
     return <div className="post-modal">
       <div className="modal-title">{modal_title}</div>
-      <form>
-
+      <form >
+        <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
+        <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
       </form>
     </div>
   }

@@ -15,13 +15,11 @@ class PostIndex extends React.Component{
     // if (this.props.loading) { return <LoadingIcon />; }
 
     return (
-      <section className="post-index">
-        <ul>
-          {this.props.posts.map(post => (
-          <PostItem key={post.id} post={post}/>))
-          }
-        </ul>
-      </section>
+      <div className="post-index">
+        {this.props.posts.reverse().map(post => (
+        <PostItem key={post.id} post={post}/>))
+        }
+      </div>
     )
   }
 }

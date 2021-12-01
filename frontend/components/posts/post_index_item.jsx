@@ -7,10 +7,10 @@ class PostItem extends React.Component {
 
   render(){
     return(
-      <li className="post-item-box">
-        <span>{`User: ${this.props.post.user_id}`}</span>
-        <span>{this.props.post.body}</span>
-      </li>
+      <div className="post-item-box">
+        <div className="posts-username">{`User: ${this.props.post.user_id}`}</div>
+        <div className="posts-body">{this.props.post.body}</div>
+      </div>
     )
   }
 }
