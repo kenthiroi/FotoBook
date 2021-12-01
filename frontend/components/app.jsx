@@ -19,16 +19,16 @@ const App = (props) => (
   <div>
     <Modal/>
     <Switch>
-      {/* Login landing page */}
       <AuthRoute exact path="/" component={LoginPageContainer}/>
-      {/* News Feed Component */}
       <Fragment>
         <header>
           <HeaderNav/>
         </header>
+        {/* News Feed Component */}
         <ProtectedRoute exact path="/newsfeed" component={NewsfeedContainer}/> 
 
       </Fragment>
+      {/* Login landing page */}
     </Switch>
   </div>
 );

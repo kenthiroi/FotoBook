@@ -41,9 +41,9 @@ class SignUpModal extends React.Component{
 
   handleClick(e){
     e.preventDefault();
-    const user = Object.assign({}, this.state)
-    this.props.signup(user)
-    this.props.closeModal()
+    const user = Object.assign({}, this.state);
+    this.props.signup(user);
+    this.props.closeModal();
   }
 
   render(){
