@@ -33,7 +33,7 @@ class PostModal extends React.Component {
   }
 
   handleFile(e){
-    this.setState({photoFile: e.currentTarget.files[0]})
+    this.setState({photoFile: e.currentTarget.files[0]});
   }
 
   handleSubmit(e){
@@ -53,17 +53,17 @@ class PostModal extends React.Component {
       (response) => console.log(response.responseJSON)
     );
 
-    const post = Object.assign({}, this.state);
-    switch (this.props.type){
-      case 'create':
-        this.props.uploadPost(post);
-        break;
-      case 'edit':
-        this.props.updatePost(post);
-        break;
-      default:
-        break;
-    }
+    // const post = Object.assign({}, this.state);
+    // switch (this.props.type){
+    //   case 'create':
+    //     this.props.uploadPost(post);
+    //     break;
+    //   case 'edit':
+    //     this.props.updatePost(post);
+    //     break;
+    //   default:
+    //     break;
+    // }
     this.props.closeModal();
   }
 
@@ -74,7 +74,7 @@ class PostModal extends React.Component {
   }
 
   render(){
-
+    console.log(this.state)
     let modal_title = "";
     let submit_text = "";
     switch (this.props.type){
