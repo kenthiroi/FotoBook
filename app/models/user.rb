@@ -5,6 +5,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :password, length: {minimum: 6}, allow_nil: true
 
+  has_many :posts
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     if user && user.is_valid_password?(password)
