@@ -10,6 +10,7 @@ class PostItem extends React.Component {
       <div className="post-item-box">
         <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
         <div className="posts-body">{this.props.post.body}</div>
+        <div className="posts-photo"></div>
       </div>
     )
   }

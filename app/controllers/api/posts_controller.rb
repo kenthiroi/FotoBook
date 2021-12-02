@@ -4,6 +4,11 @@ class Api::PostsController < ApplicationController
     render :index
   end
 
+  def show
+    @post = Post.find(params[:id])
+    render :show
+  end
+
   def create
     @post = Post.new(post_params)
     if @post.save
@@ -35,6 +40,6 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :body);
+    params.require(:post).permit(:user_id, :body, :photo);
   end
 end

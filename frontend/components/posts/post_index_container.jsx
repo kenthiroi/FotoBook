@@ -6,13 +6,11 @@ import PostIndex from './post_index';
 
 
 const mapStateToProps = state => ({
-  posts: selectAllPosts(state),
-  users: state.entities.user
+  posts: selectAllPosts(state)
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllPosts: () => dispatch(getAllPosts()),
-  fetchUser: (userId) => dispatch(fetchUser(userId))
+  fetchAllPosts: () => dispatch(getAllPosts())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostIndex)

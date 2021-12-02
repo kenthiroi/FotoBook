@@ -25,12 +25,34 @@ class PostModal extends React.Component {
     this.state = {
       body: "",
       user_id: this.props.user_id,
+      photoFile: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+
+  }
+
+  handleFile(e){
+    this.setState({photoFile: e.currentTarget.files[0]})
   }
 
   handleSubmit(e){
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('post[body]', this.state.body);
+    formData.append('post[user_id]', this.state.user_id);
+    formData.append('post[photo]', this.state.photoFile);
+    $.ajax({
+      url: '/api/posts',
+      method: 'POST',
+      data: formData,
+      contentType: false,
+      processData: false
+    }).then(
+      (response) => console.log(response.message),
+      (response) => console.log(response.responseJSON)
+    );
+
     const post = Object.assign({}, this.state);
     switch (this.props.type){
       case 'create':
@@ -74,6 +96,7 @@ class PostModal extends React.Component {
       <form >
         <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
         <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
+        <input type="file" onChange={this.handleFile}/>
       </form>
     </div>
   }
