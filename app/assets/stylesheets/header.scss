@@ -7,11 +7,58 @@ header {
   background-color: white;
 }
 
-#navbar {
+.dropdown {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  font-size: 25px;
+}
+
+.logout-btn{
+  flex-grow: 1;
+  border-radius: 8px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 8px 18px 0 18px;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  border: none;
+  padding: 5px 5px;
+}
+
+.logout-btn:hover{
+  cursor: pointer;
+  background-color: #f3f3ed;
+}
+
+.util-container{
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  margin-right: 20px;
+  width: 330px;
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.util-btn{
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  border: none;
+}
+
+.util-btn:hover{
+  cursor: pointer;
+  background-color: #d2d5dd; 
+}
+
+#active-nav-button{
+  background-color: lightskyblue;
+  color: blue;
 }
 
 #header-link {
@@ -28,4 +75,11 @@ header {
   margin-top: -4px;
   color: white;
   font-size: 65px;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px 18px 0 18px;
 }

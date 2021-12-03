@@ -16,14 +16,26 @@ export const getPost = postId => {
   )
 }
 
-export const createPost = post => {
+// export const createPost = post => {
+//   return (
+//     $.ajax({
+//       method: "POST",
+//       url: "/api/posts",
+//       data: {
+//         post
+//       }
+//     })
+//   )
+// }
+
+export const createPost = formData => {
   return (
     $.ajax({
-      method: "POST",
-      url: "/api/posts",
-      data: {
-        post
-      }
+      url: '/api/posts',
+      method: 'POST',
+      data: formData,
+      contentType: false,
+      processData: false
     })
   )
 }

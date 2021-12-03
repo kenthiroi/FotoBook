@@ -9,10 +9,32 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+
+
 class headerNav extends React.Component {
   constructor(props){
-    super(props)
+    super(props);
+    this.state = {
+      logoutDropdown: false,
+
+    }
+    this.handleOpenDropdown = this.handleOpenDropdown.bind(this);
+    this.handleCloseDropdown = this.handleCloseDropdown.bind(this)
   }
+
+  handleOpenDropdown(type){
+    // debugger
+    return (e) => {
+      this.setState({[type]: true})
+    }
+  }
+  
+  handleCloseDropdown(type){
+    return (e) => {
+      this.setState({[type]: false})
+    }
+  }
+
   render() {
     return <div id="navbar">
       <div id="header-left">
@@ -24,7 +46,15 @@ class headerNav extends React.Component {
       </div>
       <div id="header-center"></div>
       <div id="header-right">
-        <div onClick={this.props.logout}>Logout</div>
+        <button id={this.state.logoutDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("logoutDropdown")} onBlur={this.handleCloseDropdown("logoutDropdown")} className="util-btn">
+          <div className="dropdown">&darr;</div>
+        </button>
+        {this.state.logoutDropdown ? 
+        <div className="util-container">
+          <button onMouseDown={this.props.logout} className="logout-btn">
+            <div>Log out</div>
+          </button>
+        </div> : <></>}
       </div>
     </div>
   }
