@@ -1,0 +1,31 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 56px;
+  width: 100vw;
+  background-color: white;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px 18px 0 18px;
+}
+
+#header-link {
+  height: 40px;
+  width: 40px;
+  background-color: rgb(32, 122, 178);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+#icon-font{
+  font-weight: 500;
+  margin-left: 11px;
+  margin-top: -4px;
+  color: white;
+  font-size: 65px;
+}

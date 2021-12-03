@@ -14,11 +14,18 @@ class headerNav extends React.Component {
     super(props)
   }
   render() {
-    return <div>
-      <Link to="/" className="header-link">
-        <h1>FotoBook</h1>
-      </Link>
-      <div onClick={this.props.logout}>Logout</div>
+    return <div id="navbar">
+      <div id="header-left">
+        <div id="header-link">
+          <Link to="/" id="header-icon">
+            <div id="icon-font">f</div>
+          </Link>
+        </div>
+      </div>
+      <div id="header-center"></div>
+      <div id="header-right">
+        <div onClick={this.props.logout}>Logout</div>
+      </div>
     </div>
   }
 }
