@@ -47,7 +47,7 @@ class headerNav extends React.Component {
       <div id="header-center"></div>
       <div id="header-right">
         <button id={this.state.logoutDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("logoutDropdown")} onBlur={this.handleCloseDropdown("logoutDropdown")} className="util-btn">
-          <div className="dropdown">&darr;</div>
+          <div className="dropdown">&#8964;</div>
         </button>
         {this.state.logoutDropdown ? 
         <div className="util-container">
