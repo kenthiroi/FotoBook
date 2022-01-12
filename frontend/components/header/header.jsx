@@ -3,18 +3,21 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { logout } from "../../actions/session_actions"
 import { withRouter } from 'react-router-dom';
+import { openModal } from "../../actions/modal_actions"
 
 const mapStateToProps = state => {
-  // console.log(state.entities.user[state.session.id]);
+  console.log(state);
   return {
     user: state.entities.user[state.session.id],
-
+    name: state.entities.user[state.session.id].first_name,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    postModal: () => dispatch(openModal('createPost'))
+
   }
 }
 
@@ -37,7 +40,7 @@ class headerNav extends React.Component {
     // debugger
     return (e) => {
       this.setState({
-        onProfilePage: false,
+        // onProfilePage: false,
         createDropdown: false,
         notificationDropdown: false,
         logoutDropdown: false,
@@ -65,21 +68,20 @@ class headerNav extends React.Component {
       </div>
       <div id="header-center"></div>
       <div id="header-right">
-        <button id={this.state.onProfilePage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/profile')} className="util-btn">
-        {/* <button id={this.state.onProfilePage ? 'active-nav-button' : ''} onClick={console.log('profile')} className="util-btn"> */}
-          <div className="dropdown">{this.props.logout}</div>
+        <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push('/profile')} className="util-btn">
+          {this.props.name}
         </button>
         <button id={this.state.createDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("createDropdown")} onBlur={this.handleCloseDropdown("createDropdown")} className="util-btn">
-          <div className="dropdown">&#xe145;</div>
+          <div className="dropdown">&#43;</div>
         </button>
         {this.state.createDropdown ? 
         <div className="util-container">
-          <button onMouseDown={this.props.logout} className="logout-btn">
+          <button onMouseDown={this.props.postModal} className="logout-btn">
             <div>Create Post</div>
           </button>
         </div> : <></>}
         <button id={this.state.notificationDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("notificationDropdown")} onBlur={this.handleCloseDropdown("notificationDropdown")} className="util-btn">
-          <div className="dropdown">&#8964;</div>
+          <div className="dropdown">&#xf0f3;</div>
         </button>
         {this.state.notificationDropdown ? 
         <div className="util-container">
