@@ -2,6 +2,15 @@ import React from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { logout } from "../../actions/session_actions"
+import { withRouter } from 'react-router-dom';
+
+const mapStateToProps = state => {
+  // console.log(state.entities.user[state.session.id]);
+  return {
+    user: state.entities.user[state.session.id],
+
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -15,8 +24,10 @@ class headerNav extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      onProfilePage: false,
+      createDropdown: false,
+      notificationDropdown: false,
       logoutDropdown: false,
-
     }
     this.handleOpenDropdown = this.handleOpenDropdown.bind(this);
     this.handleCloseDropdown = this.handleCloseDropdown.bind(this)
@@ -25,6 +36,12 @@ class headerNav extends React.Component {
   handleOpenDropdown(type){
     // debugger
     return (e) => {
+      this.setState({
+        onProfilePage: false,
+        createDropdown: false,
+        notificationDropdown: false,
+        logoutDropdown: false,
+      })
       this.setState({[type]: true})
     }
   }
@@ -48,8 +65,9 @@ class headerNav extends React.Component {
       </div>
       <div id="header-center"></div>
       <div id="header-right">
-        <button id={this.state.onProfilePage ? 'active-nav-button' : ''} onClick={this.history.push('/profile')} className="util-btn">
-          <div className="dropdown">{this.props.user.name}</div>
+        <button id={this.state.onProfilePage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/profile')} className="util-btn">
+        {/* <button id={this.state.onProfilePage ? 'active-nav-button' : ''} onClick={console.log('profile')} className="util-btn"> */}
+          <div className="dropdown">{this.props.logout}</div>
         </button>
         <button id={this.state.createDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("createDropdown")} onBlur={this.handleCloseDropdown("createDropdown")} className="util-btn">
           <div className="dropdown">&#xe145;</div>
@@ -83,4 +101,4 @@ class headerNav extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(headerNav)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(headerNav))
