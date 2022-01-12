@@ -41,7 +41,11 @@ class PostModal extends React.Component {
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
     formData.append('post[user_id]', this.state.user_id);
-    formData.append('post[photo]', this.state.photoFile);
+    console.log(this.state.photoFile)
+    if (this.state.photoFile !== null) {
+      console.log("photo attached");
+      formData.append('post[photo]', this.state.photoFile);
+    }
     // $.ajax({
     //   url: '/api/posts',
     //   method: 'POST',
