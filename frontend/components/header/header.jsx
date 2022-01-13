@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
-    postModal: () => dispatch(openModal('createPost'))
+    postModal: () => dispatch(openModal('createPost')),
   }
 }
 
@@ -65,7 +65,20 @@ class headerNav extends React.Component {
           </Link>
         </div>
       </div>
-      <div id="header-center"></div>
+      <div id="header-center">
+        <button id={this.state.onHomePage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/newsfeed')} className="center-btn">
+          Home
+        </button>
+        <Link to="github">
+          Github
+        </Link>
+        <Link to="linkedin">
+          LinkedIn
+        </Link>
+        <Link to="newsfeed">
+          My Site
+        </Link>
+      </div>
       <div id="header-right">
         <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push('/profile')} className="util-btn">
           {this.props.name}

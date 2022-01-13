@@ -26,7 +26,14 @@ const App = (props) => (
         </header>
         {/* News Feed Component */}
         <ProtectedRoute exact path="/newsfeed" component={NewsfeedContainer}/> 
-
+        <ProtectedRoute exact path='/github' component={() => { 
+          window.location.href = 'https://github.com/kenthiroi'; 
+          return null;
+        }}/>
+        <ProtectedRoute exact path='/linkedin' component={() => { 
+          window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
+          return null;
+        }}/>
       </Fragment>
       {/* Login landing page */}
     </Switch>

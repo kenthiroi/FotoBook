@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { createPost } from '../../actions/post_actions';
 import { editPost } from '../../util/posts_api_util';
-import SignUpModal from './signup_modal';
 
 const mapStateToProps = (state) => {
   return {
