@@ -97,9 +97,7 @@ class headerNav extends React.Component {
         </button>
         {this.state.notificationDropdown ? 
         <div className="util-container">
-          <button onMouseDown={this.props.logout} className="logout-btn">
             {/* renders all notifications */}
-          </button>
         </div> : <></>}
         <button id={this.state.logoutDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("logoutDropdown")} onBlur={this.handleCloseDropdown("logoutDropdown")} className="util-btn">
           <div className="dropdown">&#8964;</div>

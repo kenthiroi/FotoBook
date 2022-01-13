@@ -1,3 +1,15 @@
+.edit-container {
+  position: absolute;
+  z-index: 1;
+  width: 330px;
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 .post-index {
   display: flex;
   flex-direction: column;
@@ -21,4 +33,22 @@
 .posts-body {
   padding: 10px;
   font-weight: 400;
+}
+
+.posts-option {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  font-family: ui-rounded;
+  font-weight: 945;
+  color: grey;
+  float: right;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 100%;
+  transition: 0.3s;
+}
+
+.posts-option:hover {
+  background-color: rgb(228, 228, 228);
 }
