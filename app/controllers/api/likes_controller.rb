@@ -4,7 +4,7 @@ class Api::LikesController < ApplicationController
     if @like.save
       render :show
     else
-      render json: @post.errors.full_messages, status: 400
+      render json: @like.errors.full_messages, status: 400
     end
   end
 
@@ -23,13 +23,13 @@ class Api::LikesController < ApplicationController
       @like.destroy
       render :show
     else
-      render json: @post.errors.full_messages, status: 404
+      render json: @like.errors.full_messages, status: 404
     end
   end
 
   private
 
   def like_params
-    params.require(:like).permit(:id, :user_id, :post_id)
+    params.require(:like).permit(:id, :post_id, :user_id)
   end
 end
