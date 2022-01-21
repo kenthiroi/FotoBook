@@ -28,14 +28,6 @@ export const createComment = comment => dispatch => (
   ))
 )
 
-export const getComment = commentId => dispatch => (
-  CommentAPIUtil.getComment(commentId).then(comment => (
-    dispatch(receiveComment(comment))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
-  ))
-)
-
 export const editComment = comment => dispatch => (
   CommentAPIUtil.editComment(comment).then(comment => (
     dispatch(receiveComment(comment))
