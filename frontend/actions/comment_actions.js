@@ -10,51 +10,43 @@ export const receiveAllComments = comments => ({
   comments
 })
 
-export const receivePost = post => ({
-  type: RECEIVE_POST,
-  post
+export const receiveComment = comment => ({
+  type: RECEIVE_COMMENT,
+  comment
 })
 
-export const removePost = postId =>  ({
-  type: REMOVE_POST,
-  postId
+export const removeComment = commentId =>  ({
+  type: REMOVE_COMMENT,
+  commentId
 })
 
-export const createPost = post => dispatch => (
-  CommentAPIUtil.createPost(post).then(post => (
-    dispatch(receivePost(post))
+export const createComment = comment => dispatch => (
+  CommentAPIUtil.createComment(comment).then(comment => (
+    dispatch(receiveComment(comment))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 )
 
-export const getPost = postId => dispatch => (
-  CommentAPIUtil.getPost(postId).then(post => (
-    dispatch(receivePost(post))
+export const getComment = commentId => dispatch => (
+  CommentAPIUtil.getComment(commentId).then(comment => (
+    dispatch(receiveComment(comment))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 )
 
-export const getAllPosts = () => dispatch => (
-  CommentAPIUtil.getPostIndex().then(posts => (
-    dispatch(receiveAllPosts(posts))
+export const editComment = comment => dispatch => (
+  CommentAPIUtil.editComment(comment).then(comment => (
+    dispatch(receiveComment(comment))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 )
 
-export const editPost = post => dispatch => (
-  CommentAPIUtil.editPost(post).then(post => (
-    dispatch(receivePost(post))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
-  ))
-)
-
-export const deletePost = postId => dispatch => (
-  CommentAPIUtil.deletePost(postId).then(() => (
-    dispatch(removePost(postId))
+export const deleteComment = commentId => dispatch => (
+  CommentAPIUtil.deleteComment(commentId).then(() => (
+    dispatch(removeComment(commentId))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
