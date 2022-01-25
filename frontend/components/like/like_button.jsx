@@ -3,7 +3,7 @@ import { createLike, deleteLike } from "../../actions/like_actions";
 
 const mountStateToProps = (state) => {
   return {
-
+    likes: getAllLikesFromPosts(state)
   }
 }
 
