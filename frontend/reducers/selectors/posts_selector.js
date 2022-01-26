@@ -3,5 +3,5 @@ export const selectAllPosts = (state) => {
 }
 
 export const getAllLikesFromPosts = (state) => {
-  
+  return Object.values(state.entities.likes)
 }
