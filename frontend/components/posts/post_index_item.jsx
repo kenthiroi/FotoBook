@@ -1,4 +1,5 @@
 import React from "react";
+import LikeButton from "../like/like_button";
 
 class PostItem extends React.Component {
   constructor(props){
@@ -40,7 +41,9 @@ class PostItem extends React.Component {
         <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
         <div className="posts-body">{this.props.post.body}</div>
         {photoContainer}
+        <LikeButton likes={this.props.post.likes}></LikeButton>
       </div>
+
     )
   }
 }

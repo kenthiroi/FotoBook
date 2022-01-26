@@ -1,14 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 import { createLike, deleteLike } from "../../actions/like_actions";
 
-const mountStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
-    likes: getAllLikesFromPosts(state),
-    user: state.session.id
+    // likes: getAllLikesFromPosts(state),
+    user_id: state.session.id
   }
 }
 
-const mountDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     createLike: (like) => createLike(like),
     deleteLike: (likeId) => deleteLike(likeId)
@@ -34,6 +35,10 @@ class LikeButton extends React.Component{
   toggleLike(){
     if (!this.state.likedByUser) {
       this.setState({likedByUser: true});
+      let like = {
+        user_id: this.props.user_id,
+
+      }
       this.props.createLike();
     } else {
       this.setState({likedByUser: false});
@@ -57,4 +62,4 @@ class LikeButton extends React.Component{
   }
 }
 
-export default LikeButton
+export default connect(mapStateToProps, mapDispatchToProps)(LikeButton)
