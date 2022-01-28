@@ -32,7 +32,7 @@ class headerNav extends React.Component {
       logoutDropdown: false,
     }
     this.handleOpenDropdown = this.handleOpenDropdown.bind(this);
-    this.handleCloseDropdown = this.handleCloseDropdown.bind(this)
+    this.handleCloseDropdown = this.handleCloseDropdown.bind(this);
   }
 
   handleOpenDropdown(type){

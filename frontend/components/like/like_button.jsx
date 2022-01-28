@@ -33,10 +33,6 @@ class LikeButton extends React.Component{
     this.toggleLike = this.toggleLike.bind(this);
   }
 
-  componentDidMount(){
-    //fetch all users that liked the post
-  }
-
   toggleLike(){
     if (!this.state.likedByUser) {
       this.setState({likedByUser: true});
@@ -54,11 +50,15 @@ class LikeButton extends React.Component{
   render(){
     return (
       <div className="like-box">
-        <div className="liked-by">
-          {/* populate if liked by anyone. */}
-        </div>
+        {this.props.likes.length !== 0 ? 
+          <div className="liked-by">
+            {this.props.likes.length} people like this.
+          </div>
+          :
+          <></>
+        }
         <div className="button-section">
-          <div className="like-button" onClick={this.toggleLike}>Like</div>
+          <button className="like-button" onClick={() => this.toggleLike()}>Like</button>
           <div className="comment-button">Comment</div>
         </div>
       </div>
