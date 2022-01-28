@@ -41,7 +41,7 @@ class PostItem extends React.Component {
         <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
         <div className="posts-body">{this.props.post.body}</div>
         {photoContainer}
-        <LikeButton likes={this.props.post.likes}></LikeButton>
+        <LikeButton likes={this.props.post.likes} post_id={this.props.post.post_id}></LikeButton>
       </div>
 
     )

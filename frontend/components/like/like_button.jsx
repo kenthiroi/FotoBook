@@ -20,9 +20,14 @@ const mapDispatchToProps = (dispatch) => {
 class LikeButton extends React.Component{
   constructor(props){
     super(props);
-    if (this.props.likes[this])
-    this.state = {
-      likedByUser: false,
+    if (this.props.likes.some(like => like.user_id === this.props.user_id)) {
+      this.state = {
+        likedByUser: true,
+      }
+    } else {
+      this.state = {
+        likedByUser: false,
+      }
     }
 
     this.toggleLike = this.toggleLike.bind(this);
@@ -37,9 +42,9 @@ class LikeButton extends React.Component{
       this.setState({likedByUser: true});
       let like = {
         user_id: this.props.user_id,
-
+        post_id: this.props.post_id,
       }
-      this.props.createLike();
+      this.props.createLike(like);
     } else {
       this.setState({likedByUser: false});
       this.props.deleteLike();
