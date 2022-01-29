@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createLike: (like) => createLike(like),
-    deleteLike: (likeId) => deleteLike(likeId)
+    createLike: (like) => dispatch(createLike(like)),
+    deleteLike: (likeId) => dispatch(deleteLike(likeId))
   }
 }
 
@@ -21,12 +21,15 @@ class LikeButton extends React.Component{
   constructor(props){
     super(props);
     if (this.props.likes.some(like => like.user_id === this.props.user_id)) {
+      let thisLikeId = this.props.likes.find(like => like.user_id === this.props.user_id);
       this.state = {
         likedByUser: true,
+        likeId: thisLikeId
       }
     } else {
       this.state = {
         likedByUser: false,
+        likeId: null,
       }
     }
 
@@ -43,7 +46,7 @@ class LikeButton extends React.Component{
       this.props.createLike(like);
     } else {
       this.setState({likedByUser: false});
-      this.props.deleteLike();
+      this.props.deleteLike(this.state.thisLikeId);
     }
   }
 
