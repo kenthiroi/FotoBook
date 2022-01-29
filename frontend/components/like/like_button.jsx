@@ -43,10 +43,11 @@ class LikeButton extends React.Component{
         user_id: this.props.user_id,
         post_id: this.props.post_id,
       }
+      console.log(like);
       this.props.createLike(like);
     } else {
       this.setState({likedByUser: false});
-      this.props.deleteLike(this.state.thisLikeId);
+      this.props.deleteLike(this.state.likeId);
     }
   }
 

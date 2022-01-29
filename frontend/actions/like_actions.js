@@ -1,4 +1,6 @@
 import * as LikeAPIUtil from '../util/likes_api_util'
+import { receiveErrors } from './session_actions'
+
 
 export const RECEIVE_LIKE = "RECEIVE_LIKE"
 export const REMOVE_LIKE = "REMOVE_LIKE"
