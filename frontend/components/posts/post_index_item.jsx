@@ -1,5 +1,15 @@
 import React from "react";
 import LikeButton from "../like/like_button";
+import { deletePost } from "../../actions/post_actions";
+
+const mapStateToProps = state => ({
+  posts: selectAllPosts(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchAllPosts: () => dispatch(getAllPosts()),
+  deletePost: (postId) => dispatch(deletePost(postId)),
+})
 
 class PostItem extends React.Component {
   constructor(props){
@@ -7,21 +17,34 @@ class PostItem extends React.Component {
     this.state = {
       editDropdown: false,
     }
-
+    
     this.openDropdown = this.openDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
   }
-
-  openDropdown(){
-    this.setState({editDropdown: true})
-  };
-
-  closeDropdown(){
-    this.setState({editDropdown: false})
-  }
-
   
-
+  openDropdown(){
+    if (!this.state.editDropdown) {
+      this.setState({
+        editDropdown: true,
+      });
+      console.log("open");
+    } else {
+      this.setState({
+        editDropdown: false,
+      });
+      console.log("close");
+    }
+  };
+  
+  closeDropdown(){
+    console.log("close");
+    this.setState({editDropdown: false});
+  }
+  
+  handleEditPost(){
+    // Pops up the same modal to creating a post, submits post through there.
+  }
+  
   render(){
     // debugger
     let photoContainer;
@@ -30,22 +53,21 @@ class PostItem extends React.Component {
           <img src={this.props.post.photoUrl}/>
         </div>;
     }
-
+    
     return(
       <div className="post-item-box">
         <div className="posts-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
         {this.state.editDropdown ? 
         <div className="edit-container">
-          <div>Edit Post</div>
+          <div onClick={this.handleEditPost}>Edit Post</div>
+          <div onClick={this.props.deletePost(this.props.post.id)}>Delete Post</div>
         </div> : <></>}
         <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
         <div className="posts-body">{this.props.post.body}</div>
         {photoContainer}
         <LikeButton likes={this.props.post.likes} post_id={this.props.post.id}></LikeButton>
-      </div>
-
-    )
-  }
+      </div>)
+  } 
 }
 
-export default PostItem;
+export default connect(mapStateToProps, mapDispatchToProps)(PostItem)
