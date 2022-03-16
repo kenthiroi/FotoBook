@@ -7,7 +7,11 @@ import { deletePost } from "../../actions/post_actions";
 const mapDispatchToProps = dispatch => ({
   fetchAllPosts: () => dispatch(getAllPosts()),
   deletePost: (postId) => dispatch(deletePost(postId)),
-  openModal: () => dispatch(openModal('editPost')),
+  openModal: (post) => dispatch(openModal({
+    type: 'editPost', 
+    post
+  }
+  )),
 })
 
 class PostItem extends React.Component {
@@ -54,7 +58,7 @@ class PostItem extends React.Component {
         <div className="posts-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
         {this.state.editDropdown ? 
         <div className="edit-container">
-          <div onClick={this.props.openModal}>Edit Post</div>
+          <div onClick={() => this.props.openModal(this.props.post)}>Edit Post</div>
           <div onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
         </div> : <></>}
         <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
