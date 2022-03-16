@@ -1,14 +1,13 @@
 import React from "react";
+import { connect } from 'react-redux';
 import LikeButton from "../like/like_button";
+import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
-
-const mapStateToProps = state => ({
-  posts: selectAllPosts(state),
-})
 
 const mapDispatchToProps = dispatch => ({
   fetchAllPosts: () => dispatch(getAllPosts()),
   deletePost: (postId) => dispatch(deletePost(postId)),
+  openModal: () => dispatch(openModal('editPost')),
 })
 
 class PostItem extends React.Component {
@@ -41,10 +40,6 @@ class PostItem extends React.Component {
     this.setState({editDropdown: false});
   }
   
-  handleEditPost(){
-    // Pops up the same modal to creating a post, submits post through there.
-  }
-  
   render(){
     // debugger
     let photoContainer;
@@ -59,8 +54,8 @@ class PostItem extends React.Component {
         <div className="posts-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
         {this.state.editDropdown ? 
         <div className="edit-container">
-          <div onClick={this.handleEditPost}>Edit Post</div>
-          <div onClick={this.props.deletePost(this.props.post.id)}>Delete Post</div>
+          <div onClick={this.props.openModal}>Edit Post</div>
+          <div onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
         </div> : <></>}
         <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
         <div className="posts-body">{this.props.post.body}</div>
@@ -70,4 +65,4 @@ class PostItem extends React.Component {
   } 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostItem)
+export default connect(null, mapDispatchToProps)(PostItem)
