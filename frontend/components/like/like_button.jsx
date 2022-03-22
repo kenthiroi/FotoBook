@@ -21,10 +21,10 @@ class LikeButton extends React.Component{
   constructor(props){
     super(props);
     if (this.props.likes.some(like => like.user_id === this.props.user_id)) {
-      let thisLikeId = this.props.likes.find(like => like.user_id === this.props.user_id);
+      let thisLike = this.props.likes.find(like => like.user_id === this.props.user_id);
       this.state = {
         likedByUser: true,
-        likeId: thisLikeId
+        likeId: thisLike.id
       }
     } else {
       this.state = {
@@ -38,16 +38,22 @@ class LikeButton extends React.Component{
 
   toggleLike(){
     if (!this.state.likedByUser) {
-      this.setState({likedByUser: true});
       let like = {
         user_id: this.props.user_id,
         post_id: this.props.post_id,
       }
       console.log(like);
       this.props.createLike(like);
+      let newLikeId = this.props.likes.find(like => like.user_id === this.props.user_id);
+      this.setState({likedByUser: true, likeId: newLikeId});
     } else {
-      this.setState({likedByUser: false});
+      if (!this.state.likeId) {
+        let newLike = this.props.likes.find(like => like.user_id === this.props.user_id);
+        this.setState({likeId: newLike.id});
+      }
+      console.log(this.state.likeId);
       this.props.deleteLike(this.state.likeId);
+      this.setState({likedByUser: false, likeId: null});
     }
   }
 
@@ -62,7 +68,7 @@ class LikeButton extends React.Component{
           <></>
         }
         <div className="button-section">
-          <button className="like-button" onClick={() => this.toggleLike()}>Like</button>
+          <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
           <div className="comment-button">Comment</div>
         </div>
       </div>
