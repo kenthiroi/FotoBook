@@ -36,10 +36,8 @@ class headerNav extends React.Component {
   }
 
   handleOpenDropdown(type){
-    // debugger
     return (e) => {
       this.setState({
-        // onProfilePage: false,
         createDropdown: false,
         notificationDropdown: false,
         logoutDropdown: false,
