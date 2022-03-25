@@ -82,7 +82,7 @@ class PostModal extends React.Component {
   }
 
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     let modal_title = "";
     let submit_text = "";
     switch (this.props.type){
