@@ -29,6 +29,7 @@ class PostModal extends React.Component {
         photoFile: null
       }
     } else {
+      console.log("EDIT");
       this.state = {
         post_id: this.props.post.id,
         body: this.props.post.body,

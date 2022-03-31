@@ -24,12 +24,14 @@ class LikeButton extends React.Component{
       let thisLike = this.props.likes.find(like => like.user_id === this.props.user_id);
       this.state = {
         likedByUser: true,
-        like: thisLike
+        like: thisLike,
+        count: this.props.likes.length,
       }
     } else {
       this.state = {
         likedByUser: false,
         like: null,
+        count: this.props.likes.length,
       }
     }
 
@@ -44,7 +46,8 @@ class LikeButton extends React.Component{
       }
       this.props.createLike(like);
       let newLike = this.props.likes.find(like => like.user_id === this.props.user_id);
-      this.setState({likedByUser: true, like: newLike});
+      console.log(newLike);
+      this.setState({likedByUser: true, like: newLike, count: this.state.count + 1});
     } else {
       // if (!this.state.likeId) {
       //   let newLike = this.props.likes.find(like => like.user_id === this.props.user_id);
@@ -54,16 +57,16 @@ class LikeButton extends React.Component{
       let likeIndex = this.props.likes.indexOf(this.state.like);
       this.props.likes.splice(likeIndex, 1);
       console.log(this.props.likes.length)
-      this.setState({likedByUser: false, like: null});
+      this.setState({likedByUser: false, like: null, count: this.state.count - 1});
     }
   }
 
   render(){
     return (
       <div className="like-box">
-        {this.props.likes.length !== 0 ? 
+        {this.state.count !== 0 ? 
           <div className="liked-by">
-            {this.props.likes.length} people like this.
+            {this.state.count} people like this.
           </div>
           :
           <></>

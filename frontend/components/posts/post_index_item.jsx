@@ -43,7 +43,7 @@ class PostItem extends React.Component {
     console.log("close");
     this.setState({editDropdown: false});
   }
-  
+
   render(){
     // debugger
     let photoContainer;

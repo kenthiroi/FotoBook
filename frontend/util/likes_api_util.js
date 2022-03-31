@@ -1,3 +1,5 @@
+
+
 export const getLike = likeId => {
   return (
     $.ajax({
@@ -7,8 +9,8 @@ export const getLike = likeId => {
   )
 }
 
-export const createLike = like => {
-  return (
+export const createLike = async(like) => {
+  const res = await(
     $.ajax({
       method: "POST",
       url: "/api/likes",
@@ -17,13 +19,17 @@ export const createLike = like => {
       }
     })
   )
+
+  return res
 }
 
-export const deleteLike = likeId => {
-  return (
+export const deleteLike = async(likeId) => {
+  const res = await(
     $.ajax({
       method: "DELETE",
       url: `/api/likes/${likeId}`
     })
   )
+
+  return res
 }
