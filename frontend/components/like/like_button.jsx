@@ -20,18 +20,22 @@ const mapDispatchToProps = (dispatch) => {
 class LikeButton extends React.Component{
   constructor(props){
     super(props);
-    if (this.props.likes.some(like => like.user_id === this.props.user_id)) {
-      let thisLike = this.props.likes.find(like => like.user_id === this.props.user_id);
+    // console.log(this.props.likes);
+    let likesArr = (this.props.likes) ? Object.values(this.props.likes) : [];
+    if (likesArr.some(like => like.user_id === this.props.user_id)) {
+      let thisLike = likesArr.find(like => like.user_id === this.props.user_id);
       this.state = {
         likedByUser: true,
         like: thisLike,
-        count: this.props.likes.length,
+        count: likesArr.length,
+        likes: likesArr,
       }
     } else {
       this.state = {
         likedByUser: false,
         like: null,
-        count: this.props.likes.length,
+        count: likesArr.length,
+        likes: likesArr,
       }
     }
 
@@ -44,19 +48,17 @@ class LikeButton extends React.Component{
         user_id: this.props.user_id,
         post_id: this.props.post_id,
       }
-      this.props.createLike(like);
-      let newLike = this.props.likes.find(like => like.user_id === this.props.user_id);
-      console.log(newLike);
-      this.setState({likedByUser: true, like: newLike, count: this.state.count + 1});
+      this.props.createLike(like).then((res) => this.setState({likedByUser: true, like: res.like, count: this.state.count + 1}));
+      // let newLike = this.state.likes.find(like => like.user_id === this.props.user_id);
+      console.log(this.state.like);
     } else {
       // if (!this.state.likeId) {
       //   let newLike = this.props.likes.find(like => like.user_id === this.props.user_id);
       //   this.setState({likeId: newLike.id});
       // }
       this.props.deleteLike(this.state.like.id);
-      let likeIndex = this.props.likes.indexOf(this.state.like);
-      this.props.likes.splice(likeIndex, 1);
-      console.log(this.props.likes.length)
+      // let likeIndex = this.props.likes.indexOf(this.state.like);
+      // this.props.likes.splice(likeIndex, 1);
       this.setState({likedByUser: false, like: null, count: this.state.count - 1});
     }
   }

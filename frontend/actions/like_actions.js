@@ -10,9 +10,9 @@ export const receiveLike = like => ({
   like
 })
 
-export const removeLike = likeId =>  ({
+export const removeLike = like =>  ({
   type: REMOVE_LIKE,
-  likeId
+  like
 })
 
 export const createLike = like => dispatch => (
@@ -32,8 +32,8 @@ export const getLike = likeId => dispatch => (
 )
 
 export const deleteLike = likeId => dispatch => (
-  LikeAPIUtil.deleteLike(likeId).then(() => (
-    dispatch(removeLike(likeId))
+  LikeAPIUtil.deleteLike(likeId).then((like) => (
+    dispatch(removeLike(like))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))

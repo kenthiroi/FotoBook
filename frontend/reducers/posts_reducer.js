@@ -3,6 +3,10 @@ import {
   RECEIVE_POSTS, 
   REMOVE_POST,
 } from "../actions/post_actions";
+import {
+  RECEIVE_LIKE,
+  REMOVE_LIKE,
+} from "../actions/like_actions";
 
 const postsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -21,6 +25,15 @@ const postsReducer = (state = {}, action) => {
     case REMOVE_POST:
       delete newState[action.postId];
       console.log(newState);
+      return newState;
+    case RECEIVE_LIKE:
+      if (!newState[action.like.post_id].likes){
+        newState[action.like.post_id]['likes'] = {}
+      }
+      newState[action.like.post_id].likes[action.like.id] = action.like;
+      return newState;
+    case REMOVE_LIKE:
+      delete newState[action.like.post_id].likes[action.like.id];
       return newState;
     default:
       return state;
