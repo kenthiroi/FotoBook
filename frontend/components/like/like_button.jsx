@@ -47,7 +47,10 @@ class LikeButton extends React.Component{
         user_id: this.props.user_id,
         post_id: this.props.post_id,
       }
-      this.props.createLike(like).then((res) => this.setState({likedByUser: true, like: res.like, count: this.state.count + 1}));
+      this.props.createLike(like).then((res) => {
+        this.setState({likedByUser: true, like: res.like, count: this.state.count + 1});
+        this.setState({likesArr})
+      });
       this.state.like
       // let newLike = this.state.likes.find(like => like.user_id === this.props.user_id);
       console.log(this.state.like);
@@ -57,8 +60,8 @@ class LikeButton extends React.Component{
       //   this.setState({likeId: newLike.id});
       // }
       this.props.deleteLike(this.state.like.id);
-      let likeIndex = this.props.likes.indexOf(this.state.like);
-      this.props.likes.splice(likeIndex, 1);
+      // let likeIndex = this.props.likes.indexOf(this.state.like);
+      // this.props.likes.splice(likeIndex, 1);
       this.setState({likedByUser: false, like: null, count: this.state.count - 1});
     }
   }
