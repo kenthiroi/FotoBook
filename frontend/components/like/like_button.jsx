@@ -21,6 +21,8 @@ class LikeButton extends React.Component{
   constructor(props){
     super(props);
     let likesArr = (this.props.likes) ? Object.values(this.props.likes) : [];
+    console.log('likesArr');
+    console.log(likesArr);
     if (likesArr.some(like => like.user_id === this.props.user_id)) {
       let thisLike = likesArr.find(like => like.user_id === this.props.user_id);
       this.state = {
@@ -49,19 +51,22 @@ class LikeButton extends React.Component{
       }
       this.props.createLike(like).then((res) => {
         this.setState({likedByUser: true, like: res.like, count: this.state.count + 1});
-        this.setState({likesArr})
+        this.setState({likes: [...this.state.likes, res.like]});
       });
-      this.state.like
+      // this.state.like
       // let newLike = this.state.likes.find(like => like.user_id === this.props.user_id);
-      console.log(this.state.like);
+      // console.log("like:" + this.state.like);
+      // console.log(this.state.likes);
     } else {
       // if (!this.state.likeId) {
       //   let newLike = this.props.likes.find(like => like.user_id === this.props.user_id);
       //   this.setState({likeId: newLike.id});
       // }
-      this.props.deleteLike(this.state.like.id);
-      // let likeIndex = this.props.likes.indexOf(this.state.like);
-      // this.props.likes.splice(likeIndex, 1);
+      this.props.deleteLike(this.state.like.id).then((res) => {
+        let likeIndex = this.state.likes.indexOf(this.state.like);
+        // this.setState({likes: this.state.likes.splice(likeIndex, 1)});
+        this.state.likes.splice(likeIndex, 1);
+      });
       this.setState({likedByUser: false, like: null, count: this.state.count - 1});
     }
   }
