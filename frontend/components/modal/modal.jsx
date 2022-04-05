@@ -19,6 +19,9 @@ function Modal({modal, closeModal}) {
     case 'editPost':
       component = <PostModal type="edit" post={modal.post}/>;
       break;
+    case 'createComment':
+      component = <CommentModal type="create" comment={}/>;
+      break;
     default:
       return null;
   }

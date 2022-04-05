@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import LikeButton from "../like/like_button";
+import LikeAndCommentButton from "../like/like_button";
 import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
 
@@ -64,7 +64,7 @@ class PostItem extends React.Component {
         <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
         <div className="posts-body">{this.props.post.body}</div>
         {photoContainer}
-        <LikeButton likes={this.props.post.likes} post_id={this.props.post.id}></LikeButton>
+        <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}></LikeAndCommentButton>
       </div>)
   } 
 }

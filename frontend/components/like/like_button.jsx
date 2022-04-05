@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createLike, deleteLike } from "../../actions/like_actions";
+import { openModal } from "../../actions/modal_actions";
+
 
 const mapStateToProps = (state) => {
   return {
@@ -12,17 +14,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createLike: (like) => dispatch(createLike(like)),
-    deleteLike: (likeId) => dispatch(deleteLike(likeId))
+    deleteLike: (likeId) => dispatch(deleteLike(likeId)),
   }
 }
 
 
-class LikeButton extends React.Component{
+class LikeAndCommentButton extends React.Component{
   constructor(props){
     super(props);
     let likesArr = (this.props.likes) ? Object.values(this.props.likes) : [];
-    console.log('likesArr');
-    console.log(likesArr);
+    // console.log('likesArr');
+    // console.log(likesArr);
     if (likesArr.some(like => like.user_id === this.props.user_id)) {
       let thisLike = likesArr.find(like => like.user_id === this.props.user_id);
       this.state = {
@@ -83,7 +85,7 @@ class LikeButton extends React.Component{
         }
         <div className="button-section">
           <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
-          <div className="comment-button">Comment</div>
+          <button className="comment-button" onClick={() => this.props.commentModal()}>Comment</button>
         </div>
       </div>
     )
@@ -91,4 +93,4 @@ class LikeButton extends React.Component{
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LikeButton)
+export default connect(mapStateToProps, mapDispatchToProps)(LikeAndCommentButton)
