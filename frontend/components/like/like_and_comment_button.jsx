@@ -42,6 +42,7 @@ class LikeAndCommentButton extends React.Component{
       }
     }
 
+    this.commentBoxRef = this.commentBoxRef.bind(this);
     this.toggleLike = this.toggleLike.bind(this);
   }
 
@@ -73,6 +74,10 @@ class LikeAndCommentButton extends React.Component{
     }
   }
 
+  commentBoxRef(){
+    
+  }
+
   render(){
     return (
       <div className="like-box">
@@ -85,7 +90,8 @@ class LikeAndCommentButton extends React.Component{
         }
         <div className="button-section">
           <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
-          <button className="comment-button" onClick={() => this.props.commentModal()}>Comment</button>
+          <button className="comment-button" onClick={() => this.commentBoxRef()}>Comment</button>
+          {/* Create ref to comment box here */}
         </div>
       </div>
     )

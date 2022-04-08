@@ -16,6 +16,8 @@ class CommentField extends React.Component {
     super(props);
     this.state = {
       body: "",
+      user_id: this.props.user_id,
+
     }
 
     this.updateState = this.updateState.bind(this);
@@ -23,13 +25,16 @@ class CommentField extends React.Component {
   }
 
   updateState(){
-
+    
   }
 
   handleSubmit(e){
     e.preventDefault();
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
+    formData.append('comment[user_id]', this.state.user_id);
+    
+
   }
 
   render(){
