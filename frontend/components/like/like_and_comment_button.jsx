@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createLike, deleteLike } from "../../actions/like_actions";
 import { openModal } from "../../actions/modal_actions";
+import CommentField from "../comment/comment_field";
 
 
 const mapStateToProps = (state) => {
@@ -22,6 +23,13 @@ const mapDispatchToProps = (dispatch) => {
 class LikeAndCommentButton extends React.Component{
   constructor(props){
     super(props);
+    this.inputElement = null;
+
+    this.focusTextInput = () => {
+      // Focus the text input using the raw DOM API
+      if (this.textInput) this.textInput.focus();
+    };
+
     let likesArr = (this.props.likes) ? Object.values(this.props.likes) : [];
     // console.log('likesArr');
     // console.log(likesArr);
@@ -75,7 +83,7 @@ class LikeAndCommentButton extends React.Component{
   }
 
   commentBoxRef(){
-    
+    this.textInput.current.focusTextInput();
   }
 
   render(){
@@ -92,6 +100,7 @@ class LikeAndCommentButton extends React.Component{
           <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
           <button className="comment-button" onClick={() => this.commentBoxRef()}>Comment</button>
           {/* Create ref to comment box here */}
+          <CommentField inputRef={el => this.inputElement = el}></CommentField>
         </div>
       </div>
     )

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import LikeAndCommentButton from "../like/like_button";
+import LikeAndCommentButton from "../like/like_and_comment_button";
 import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
 

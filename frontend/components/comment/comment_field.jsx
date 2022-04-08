@@ -25,7 +25,9 @@ class CommentField extends React.Component {
   }
 
   updateState(){
-    
+    return (e) =>{
+      this.setState({ ['body']: e.target.value })
+    }
   }
 
   handleSubmit(e){
@@ -38,7 +40,11 @@ class CommentField extends React.Component {
   }
 
   render(){
-
+    return <div>
+        <form action="">
+          <input ref={this.props.inputRef} onChange={this.updateState('body')} defaultValue={this.state.body}/>
+        </form>
+      </div>
   }
 }
 
