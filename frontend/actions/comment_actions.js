@@ -15,9 +15,9 @@ export const receiveComment = comment => ({
   comment
 })
 
-export const removeComment = commentId =>  ({
+export const removeComment = comment =>  ({
   type: REMOVE_COMMENT,
-  commentId
+  comment
 })
 
 export const createComment = comment => dispatch => (
@@ -37,8 +37,8 @@ export const editComment = comment => dispatch => (
 )
 
 export const deleteComment = commentId => dispatch => (
-  CommentAPIUtil.deleteComment(commentId).then(() => (
-    dispatch(removeComment(commentId))
+  CommentAPIUtil.deleteComment(commentId).then(comment => (
+    dispatch(removeComment(comment))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))

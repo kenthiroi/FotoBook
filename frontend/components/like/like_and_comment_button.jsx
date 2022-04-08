@@ -82,6 +82,15 @@ class LikeAndCommentButton extends React.Component{
     }
   }
 
+  setTextInputRef = element => {
+    this.textInput = element;
+  };
+
+  focusTextInput = () => {
+    // Focus the text input using the raw DOM API
+    if (this.textInput) this.textInput.focus();
+  };
+
   commentBoxRef(){
     this.textInput.current.focusTextInput();
   }
@@ -98,7 +107,7 @@ class LikeAndCommentButton extends React.Component{
         }
         <div className="button-section">
           <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
-          <button className="comment-button" onClick={() => this.commentBoxRef()}>Comment</button>
+          <button className="comment-button" onClick={() => this.focusTextInput()}>Comment</button>
           {/* Create ref to comment box here */}
           <CommentField inputRef={el => this.inputElement = el}></CommentField>
         </div>

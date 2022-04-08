@@ -16,11 +16,11 @@ class CommentField extends React.Component {
     super(props);
     this.state = {
       body: "",
-      user_id: this.props.user_id,
-
+      user_id: this.props.user_id
     }
 
     this.updateState = this.updateState.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -30,19 +30,23 @@ class CommentField extends React.Component {
     }
   }
 
+  handleKeyDown(e){
+    if (e.key === 'Enter') {
+      this.handleSubmit();
+    }
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const formData = new FormData();
     formData.append('comment[body]', this.state.body);
     formData.append('comment[user_id]', this.state.user_id);
-    
-
   }
 
   render(){
     return <div>
         <form action="">
-          <input ref={this.props.inputRef} onChange={this.updateState('body')} defaultValue={this.state.body}/>
+          <input ref={this.props.inputRef} onChange={this.updateState('body')} onKeyDown={this.handleKeyDown} defaultValue={this.state.body}/>
         </form>
       </div>
   }

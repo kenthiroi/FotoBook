@@ -7,6 +7,7 @@ import {
   RECEIVE_LIKE,
   REMOVE_LIKE,
 } from "../actions/like_actions";
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
 
 const postsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -18,7 +19,7 @@ const postsReducer = (state = {}, action) => {
             newState[post.id] = post;
         });
       }
-      return newState
+      return newState;
     case RECEIVE_POST:
       newState[action.post.id] = action.post;
       return newState;
@@ -34,6 +35,22 @@ const postsReducer = (state = {}, action) => {
       return newState;
     case REMOVE_LIKE:
       delete newState[action.like.post_id].likes[action.like.id];
+      return newState;
+    case RECEIVE_COMMENTS:
+      if (!!action.comments){
+        Object.values(action.comments).forEach(comment => {
+          newState[comment.id] = comment;
+        })
+      }
+      return newState;
+    case RECEIVE_COMMENT:
+      if (!newState[action.like.post_id].comments){
+        newState[action.comment.post_id]['comments'] = {}
+      }
+      newState[action.comment.post_id].comments[action.comment.id] = action.comment;
+      return newState;
+    case REMOVE_COMMENT:
+      delete newState[action.comment.post_id].comments[action.comment.id];
       return newState;
     default:
       return state;
