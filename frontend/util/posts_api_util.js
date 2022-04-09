@@ -40,14 +40,14 @@ export const createPost = formData => {
   )
 }
 
-export const editPost = post => {
+export const editPost = formData => {
   return (
     $.ajax({
-      method: "POST",
-      url: `/api/posts/${post.id}`,
-      data: {
-        post
-      }
+      method: 'PATCH',
+      url: `/api/posts/${formData.get('post[id]')}`,
+      data: formData,
+      contentType: false,
+      processData: false
     })
   )
 }

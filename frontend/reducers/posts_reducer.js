@@ -7,7 +7,11 @@ import {
   RECEIVE_LIKE,
   REMOVE_LIKE,
 } from "../actions/like_actions";
-import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
+import { 
+  RECEIVE_COMMENTS,
+  RECEIVE_COMMENT, 
+  REMOVE_COMMENT 
+} from "../actions/comment_actions";
 
 const postsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -44,7 +48,7 @@ const postsReducer = (state = {}, action) => {
       }
       return newState;
     case RECEIVE_COMMENT:
-      if (!newState[action.like.post_id].comments){
+      if (!newState[action.comment.post_id].comments){
         newState[action.comment.post_id]['comments'] = {}
       }
       newState[action.comment.post_id].comments[action.comment.id] = action.comment;

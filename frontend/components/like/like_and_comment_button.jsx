@@ -109,7 +109,7 @@ class LikeAndCommentButton extends React.Component{
           <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
           <button className="comment-button" onClick={() => this.focusTextInput()}>Comment</button>
           {/* Create ref to comment box here */}
-          <CommentField inputRef={el => this.inputElement = el}></CommentField>
+          <CommentField post_id={this.props.post_id} inputRef={el => this.inputElement = el}></CommentField>
         </div>
       </div>
     )

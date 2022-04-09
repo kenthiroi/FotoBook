@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../actions/modal_actions';
-import { createPost } from '../../actions/post_actions';
-import { editPost } from '../../util/posts_api_util';
+import { createPost, editPost } from '../../actions/post_actions';
 
 const mapStateToProps = (state) => {
   return {
