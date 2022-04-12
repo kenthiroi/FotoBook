@@ -65,6 +65,8 @@ class PostItem extends React.Component {
         <div className="posts-body">{this.props.post.body}</div>
         {photoContainer}
         <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}></LikeAndCommentButton>
+        <CommentIndex comments={this.props.post.comments}></CommentIndex>
+        <CommentField post_id={this.props.post.id}></CommentField>
       </div>)
   } 
 }

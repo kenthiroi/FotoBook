@@ -46,7 +46,6 @@ class CommentField extends React.Component {
     console.log(formData);
     this.props.uploadComment(formData).then(() => {
       this.setState({ ['body']: "" })
-
     })
   }
 

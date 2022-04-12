@@ -50,7 +50,6 @@ class LikeAndCommentButton extends React.Component{
       }
     }
 
-    this.commentBoxRef = this.commentBoxRef.bind(this);
     this.toggleLike = this.toggleLike.bind(this);
   }
 
@@ -82,19 +81,6 @@ class LikeAndCommentButton extends React.Component{
     }
   }
 
-  setTextInputRef = element => {
-    this.textInput = element;
-  };
-
-  focusTextInput = () => {
-    // Focus the text input using the raw DOM API
-    if (this.textInput) this.textInput.focus();
-  };
-
-  commentBoxRef(){
-    this.textInput.current.focusTextInput();
-  }
-
   render(){
     return (
       <div className="like-box">
@@ -107,9 +93,7 @@ class LikeAndCommentButton extends React.Component{
         }
         <div className="button-section">
           <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
-          <button className="comment-button" onClick={() => this.focusTextInput()}>Comment</button>
-          {/* Create ref to comment box here */}
-          <CommentField post_id={this.props.post_id} inputRef={el => this.inputElement = el}></CommentField>
+          <button className="comment-button">Comment</button>
         </div>
       </div>
     )
