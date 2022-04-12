@@ -1,12 +1,14 @@
 import React from "react";
 import { createComment, editComment } from "../../actions/comment_actions";
 import { connect } from "react-redux";
+import { getPost } from "../../actions/post_actions";
 
 const mSTP = state => ({
   user_id: state.session.id,
 })
 
 const mDTP = dispatch => ({
+  fetchPost: (postId) => dispatch(getPost(postId)),
   uploadComment: (comment) => dispatch(createComment(comment)),
   editComment: (comment) => dispatch(editComment(comment))
 })
@@ -45,6 +47,7 @@ class CommentField extends React.Component {
     // debugger
     console.log(formData);
     this.props.uploadComment(formData).then(() => {
+      this.props.fetchPost(this.props.post_id);
       this.setState({ ['body']: "" })
     })
   }

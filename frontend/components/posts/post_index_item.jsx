@@ -26,6 +26,10 @@ class PostItem extends React.Component {
     this.openDropdown = this.openDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
   }
+
+  componentDidUpdate(){
+    console.log("did update", this.props.post);
+  }
   
   openDropdown(){
     if (!this.state.editDropdown) {
@@ -54,6 +58,8 @@ class PostItem extends React.Component {
           <img src={this.props.post.photoUrl}/>
         </div>;
     }
+
+    console.log("test", this.props.post.comments);
     
     return(
       <div className="post-item-box">
