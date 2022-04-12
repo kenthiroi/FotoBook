@@ -10,14 +10,14 @@ export const createComment = formData => {
   )
 }
 
-export const editComment = comment => {
+export const editComment = formData => {
   return (
     $.ajax({
-      method: "POST",
-      url: `/api/comments/${comment.id}`,
-      data: {
-        comment
-      }
+      method: "PATCH",
+      url: `/api/comments/${formData.get('comment[id]')}`,
+      data: formData,
+      contentType: false,
+      processData: false
     })
   )
 }

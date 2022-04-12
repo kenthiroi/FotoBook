@@ -15,47 +15,47 @@ import {
 
 const postsReducer = (state = {}, action) => {
   Object.freeze(state);
-  let newState = Object.assign({}, state);
+  const nextState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_POSTS:
       if(!!action.posts){
         Object.values(action.posts).forEach(post => {
-            newState[post.id] = post;
+            nextState[post.id] = post;
         });
       }
-      return newState;
+      return nextState;
     case RECEIVE_POST:
-      newState[action.post.id] = action.post;
-      return newState;
+      nextState[action.post.id] = action.post;
+      return nextState;
     case REMOVE_POST:
-      delete newState[action.postId];
-      console.log(newState);
-      return newState;
+      delete nextState[action.postId];
+      console.log(nextState);
+      return nextState;
     case RECEIVE_LIKE:
-      if (!newState[action.like.post_id].likes){
-        newState[action.like.post_id]['likes'] = {}
+      if (!nextState[action.like.post_id].likes){
+        nextState[action.like.post_id]['likes'] = {}
       }
-      newState[action.like.post_id].likes[action.like.id] = action.like;
-      return newState;
+      nextState[action.like.post_id].likes[action.like.id] = action.like;
+      return nextState;
     case REMOVE_LIKE:
-      delete newState[action.like.post_id].likes[action.like.id];
-      return newState;
-    case RECEIVE_COMMENTS:
-      if (!!action.comments){
-        Object.values(action.comments).forEach(comment => {
-          newState[comment.id] = comment;
-        })
-      }
-      return newState;
+      delete nextState[action.like.post_id].likes[action.like.id];
+      return nextState;
+    // case RECEIVE_COMMENTS:
+    //   if (!!action.comments){
+    //     Object.values(action.comments).forEach(comment => {
+    //       nextState[comment.id] = comment;
+    //     })
+    //   }
+    //   return nextState;
     case RECEIVE_COMMENT:
-      if (!newState[action.comment.post_id].comments){
-        newState[action.comment.post_id]['comments'] = {}
+      if (!nextState[action.comment.post_id].comments){
+        nextState[action.comment.post_id]['comments'] = {}
       }
-      newState[action.comment.post_id].comments[action.comment.id] = action.comment;
-      return newState;
+      nextState[action.comment.post_id].comments[action.comment.id] = action.comment;
+      return nextState;
     case REMOVE_COMMENT:
-      delete newState[action.comment.post_id].comments[action.comment.id];
-      return newState;
+      delete nextState[action.comment.post_id].comments[action.comment.id];
+      return nextState;
     default:
       return state;
   }
