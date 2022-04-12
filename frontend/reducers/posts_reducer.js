@@ -29,7 +29,6 @@ const postsReducer = (state = {}, action) => {
       return nextState;
     case REMOVE_POST:
       delete nextState[action.postId];
-      console.log(nextState);
       return nextState;
     case RECEIVE_LIKE:
       if (!nextState[action.like.post_id].likes){
@@ -51,6 +50,7 @@ const postsReducer = (state = {}, action) => {
       if (!nextState[action.comment.post_id].comments){
         nextState[action.comment.post_id]['comments'] = {}
       }
+      console.log(state);
       nextState[action.comment.post_id].comments[action.comment.id] = action.comment;
       return nextState;
     case REMOVE_COMMENT:
