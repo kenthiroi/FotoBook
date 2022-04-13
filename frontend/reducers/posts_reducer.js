@@ -50,7 +50,6 @@ const postsReducer = (state = {}, action) => {
       if (!nextState[action.comment.post_id].comments){
         nextState[action.comment.post_id]['comments'] = {}
       }
-      console.log(state);
       nextState[action.comment.post_id].comments[action.comment.id] = action.comment;
       return nextState;
     case REMOVE_COMMENT:

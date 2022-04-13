@@ -16,10 +16,19 @@ const mDTP = dispatch => ({
 class CommentField extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      body: "",
-      user_id: this.props.user_id,
-      post_id: this.props.post_id,
+    if (this.props.comment){
+      this.state = {
+        body: this.props.comment.body,
+        user_id: this.props.comment.author_id,
+        post_id: this.props.comment.post_id,
+      }
+    }
+    else {
+      this.state = {
+        body: "",
+        user_id: this.props.user_id,
+        post_id: this.props.post_id,
+      }
     }
 
     this.updateState = this.updateState.bind(this);
@@ -45,10 +54,18 @@ class CommentField extends React.Component {
     formData.append('comment[author_id]', this.state.user_id);
     formData.append('comment[post_id]', this.state.post_id);
 
-    this.props.uploadComment(formData).then(() => {
-      this.props.fetchPost(this.props.post_id);
-      this.setState({ ['body']: "" })
-    })
+    if (this.props.comment){
+      formData.append('comment[id]', this.props.comment.id);
+      this.props.editComment(formData).then(() => {
+        this.props.fetchPost(this.state.post_id);
+        this.setState({ ['body']: "" })
+      })
+    } else {
+      this.props.uploadComment(formData).then(() => {
+        this.props.fetchPost(this.state.post_id);
+        this.setState({ ['body']: "" })
+      })
+    }
   }
 
   render(){

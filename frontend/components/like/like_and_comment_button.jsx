@@ -31,8 +31,7 @@ class LikeAndCommentButton extends React.Component{
     };
 
     let likesArr = (this.props.likes) ? Object.values(this.props.likes) : [];
-    // console.log('likesArr');
-    // console.log(likesArr);
+
     if (likesArr.some(like => like.user_id === this.props.user_id)) {
       let thisLike = likesArr.find(like => like.user_id === this.props.user_id);
       this.state = {

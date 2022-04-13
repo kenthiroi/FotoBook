@@ -8,8 +8,6 @@ class CommentIndex extends React.Component{
   }
 
   render(){
-    console.log(this.props.comments);
-    
     return (
       <div className="post-comments">
         {!this.props.comments ? 

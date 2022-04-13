@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import { openModal } from "../../actions/modal_actions"
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     user: state.entities.user[state.session.id],
     name: state.entities.user[state.session.id].first_name,

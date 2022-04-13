@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { deleteComment, editComment } from '../../actions/comment_actions';
 import { getPost } from "../../actions/post_actions";
+import CommentField from './comment_field';
 
 const mSTP = state => {
   return {
@@ -21,12 +22,15 @@ class CommentItem extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      editComment: false,
+      editDropdown: false,
+      editing: false,
     }
 
     this.openDropdown = this.openDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
     
@@ -46,6 +50,24 @@ class CommentItem extends React.Component{
     this.setState({editDropdown: false});
   }
 
+  toggleEdit(){
+    if (!this.state.editing) {
+      this.setState({
+        editing: true,
+      });
+    } else {
+      this.setState({
+        editing: false,
+      });
+    }
+  }
+
+  handleKeyDown(e){
+    if (e.key === 'Enter' || e.key === 'Escape') {
+      this.setState({editing: false});
+    }
+  }
+
   handleDelete(){
     this.props.deleteComment(this.props.comment.id).then(() => {
       this.props.fetchPost(this.props.comment.post_id);
@@ -53,23 +75,29 @@ class CommentItem extends React.Component{
   }
 
   render(){
-    console.log(this.props.comment.author_id === this.props.user_id);
-    return(
-      <div className="comment-item">
-        <div className="commenter-name">{this.props.comment.first_name} {this.props.comment.last_name}</div>
-        <div className='comment-body'>{this.props.comment.body}</div>
-        {this.props.comment.author_id === this.props.user_id ?
-          <div className="comment-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
-          :
-          <></>
-        }
-        {this.state.editDropdown ? 
-        <div className="comment-edit-container">
-          <div >Edit Comment</div>
-          <div onClick={this.handleDelete}>Delete Comment</div>
-        </div> : <></>}
-      </div>
-    )
+    if (this.state.editing) {
+      return(
+        <CommentField onKeyDown={this.handleKeyDown} comment={this.props.comment}></CommentField>
+      )
+    }
+    else {
+      return(
+        <div className="comment-item">
+          <div className="commenter-name">{this.props.comment.first_name} {this.props.comment.last_name}</div>
+          <div className='comment-body'>{this.props.comment.body}</div>
+          {this.props.comment.author_id === this.props.user_id ?
+            <div className="comment-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
+            :
+            <></>
+          }
+          {this.state.editDropdown ? 
+          <div className="comment-edit-container">
+            <div onClick={this.toggleEdit}>Edit Comment</div>
+            <div onClick={this.handleDelete}>Delete Comment</div>
+          </div> : <></>}
+        </div>
+      )
+    }
   }
 }
 

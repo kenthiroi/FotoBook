@@ -61,8 +61,6 @@ class PostItem extends React.Component {
           <img src={this.props.post.photoUrl}/>
         </div>;
     }
-
-    console.log("test", this.props.post.comments);
     
     return(
       <div className="post-item-box">

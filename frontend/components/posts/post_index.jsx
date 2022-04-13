@@ -11,10 +11,10 @@ class PostIndex extends React.Component{
     this.props.fetchAllPosts()
   }
 
-  componentDidUpdate(prevProps){
-    console.log("did update", this.props.posts);
-    console.log("prevProps", prevProps.posts);
-  }
+  // componentDidUpdate(prevProps){
+  //   console.log("did update", this.props.posts);
+  //   console.log("prevProps", prevProps.posts);
+  // }
   
   
   render(){
