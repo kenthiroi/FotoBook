@@ -36,6 +36,10 @@ class CommentField extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount(){
+    this.props.fetchPost(this.state.post_id);
+  }
+
   updateState(){
     return (e) =>{
       this.setState({ ['body']: e.target.value })
@@ -56,10 +60,7 @@ class CommentField extends React.Component {
 
     if (this.props.comment){
       formData.append('comment[id]', this.props.comment.id);
-      this.props.editComment(formData).then(() => {
-        this.props.fetchPost(this.state.post_id);
-        this.setState({ ['body']: "" })
-      })
+      this.props.editComment(formData)
     } else {
       this.props.uploadComment(formData).then(() => {
         this.props.fetchPost(this.state.post_id);

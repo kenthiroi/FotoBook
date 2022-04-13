@@ -64,7 +64,7 @@ class CommentItem extends React.Component{
 
   handleKeyDown(e){
     if (e.key === 'Enter' || e.key === 'Escape') {
-      this.setState({editing: false});
+      this.setState({editing: false, editDropdown: false});
     }
   }
 
@@ -77,7 +77,9 @@ class CommentItem extends React.Component{
   render(){
     if (this.state.editing) {
       return(
-        <CommentField onKeyDown={this.handleKeyDown} comment={this.props.comment}></CommentField>
+        <div className="comment-item" onKeyDown={this.handleKeyDown}>
+          <CommentField comment={this.props.comment}></CommentField>
+        </div>
       )
     }
     else {
