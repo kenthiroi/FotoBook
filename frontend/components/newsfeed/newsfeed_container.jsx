@@ -6,7 +6,7 @@ import Newsfeed from "./newsfeed"
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
-    openModal: () => dispatch(openModal('createPost'))
+    openModal: () => dispatch(openModal({type:'createPost'}))
   }
 }
 

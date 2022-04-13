@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import { openModal } from "../../actions/modal_actions"
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     user: state.entities.user[state.session.id],
     name: state.entities.user[state.session.id].first_name,
@@ -16,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
-    postModal: () => dispatch(openModal('createPost')),
+    postModal: () => dispatch(openModal({type:'createPost'})),
   }
 }
 
@@ -32,14 +31,12 @@ class headerNav extends React.Component {
       logoutDropdown: false,
     }
     this.handleOpenDropdown = this.handleOpenDropdown.bind(this);
-    this.handleCloseDropdown = this.handleCloseDropdown.bind(this)
+    this.handleCloseDropdown = this.handleCloseDropdown.bind(this);
   }
 
   handleOpenDropdown(type){
-    // debugger
     return (e) => {
       this.setState({
-        // onProfilePage: false,
         createDropdown: false,
         notificationDropdown: false,
         logoutDropdown: false,

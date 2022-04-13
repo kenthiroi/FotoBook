@@ -9,7 +9,7 @@ function Modal({modal, closeModal}) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (modal.type) {
     case 'signup':
       component = <SignupFormContainer />;
       break;
@@ -17,7 +17,7 @@ function Modal({modal, closeModal}) {
       component = <PostModal type="create"/>;
       break;
     case 'editPost':
-      component = <PostModal type="edit"/>;
+      component = <PostModal type="edit" post={modal.post}/>;
       break;
     default:
       return null;

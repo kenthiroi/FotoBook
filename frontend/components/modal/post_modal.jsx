@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../actions/modal_actions';
-import { createPost } from '../../actions/post_actions';
-import { editPost } from '../../util/posts_api_util';
+import { createPost, editPost } from '../../actions/post_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,14 +20,22 @@ const mapDispatchToProps = (dispatch) => {
 class PostModal extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-      body: "",
-      user_id: this.props.user_id,
-      photoFile: null
+    if (!this.props.post) {
+      this.state = {
+        body: "",
+        user_id: this.props.user_id,
+        photoFile: undefined,
+      }
+    } else {
+      this.state = {
+        post_id: this.props.post.id,
+        body: this.props.post.body,
+        user_id: this.props.user_id,
+        photoFile: this.props.post.photoFile,
+      }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
-
   }
 
   handleFile(e){
@@ -40,7 +47,7 @@ class PostModal extends React.Component {
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
     formData.append('post[user_id]', this.state.user_id);
-    if (this.state.photoFile !== null) {
+    if (this.state.photoFile !== undefined) {
       formData.append('post[photo]', this.state.photoFile);
     }
     // $.ajax({
@@ -56,6 +63,7 @@ class PostModal extends React.Component {
         this.props.uploadPost(formData);
         break;
       case 'edit':
+        formData.append('post[id]', this.state.post_id);
         this.props.updatePost(formData);
         break;
       default:
@@ -71,7 +79,6 @@ class PostModal extends React.Component {
   }
 
   render(){
-    console.log(this.state)
     let modal_title = "";
     let submit_text = "";
     switch (this.props.type){
