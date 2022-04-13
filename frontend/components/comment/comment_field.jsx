@@ -44,8 +44,7 @@ class CommentField extends React.Component {
     formData.append('comment[body]', this.state.body);
     formData.append('comment[author_id]', this.state.user_id);
     formData.append('comment[post_id]', this.state.post_id);
-    // debugger
-    console.log(formData);
+
     this.props.uploadComment(formData).then(() => {
       this.props.fetchPost(this.props.post_id);
       this.setState({ ['body']: "" })

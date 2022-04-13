@@ -6,7 +6,13 @@ import CommentField from "../comment/comment_field";
 import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
 
-const mapDispatchToProps = dispatch => ({
+const mSTP = state => {
+  return {
+    user_id: state.session.id,
+  }
+}
+
+const mDTP = dispatch => ({
   fetchAllPosts: () => dispatch(getAllPosts()),
   deletePost: (postId) => dispatch(deletePost(postId)),
   openModal: (post) => dispatch(openModal({
@@ -27,26 +33,23 @@ class PostItem extends React.Component {
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
-  componentDidUpdate(){
-    console.log("did update", this.props.post);
-  }
+  // componentDidUpdate(){
+  //   console.log("did update", this.props.post);
+  // }
   
   openDropdown(){
     if (!this.state.editDropdown) {
       this.setState({
         editDropdown: true,
       });
-      console.log("open");
     } else {
       this.setState({
         editDropdown: false,
       });
-      console.log("close");
     }
   };
   
   closeDropdown(){
-    console.log("close");
     this.setState({editDropdown: false});
   }
 
@@ -63,7 +66,11 @@ class PostItem extends React.Component {
     
     return(
       <div className="post-item-box">
-        <div className="posts-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
+        {this.props.post.user_id === this.props.user_id ?
+          <div className="posts-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
+          :
+          <></>
+        }   
         {this.state.editDropdown ? 
         <div className="edit-container">
           <div onClick={() => this.props.openModal(this.props.post)}>Edit Post</div>
@@ -79,4 +86,4 @@ class PostItem extends React.Component {
   } 
 }
 
-export default connect(null, mapDispatchToProps)(PostItem)
+export default connect(mSTP, mDTP)(PostItem)

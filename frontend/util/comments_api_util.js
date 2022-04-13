@@ -22,7 +22,7 @@ export const editComment = formData => {
   )
 }
 
-export const deletecomment = commentId => {
+export const deleteComment = commentId => {
   return (
     $.ajax({
       method: "DELETE",

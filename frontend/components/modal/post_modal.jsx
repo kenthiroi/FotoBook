@@ -21,14 +21,12 @@ class PostModal extends React.Component {
   constructor(props){
     super(props)
     if (!this.props.post) {
-      console.log('test');
       this.state = {
         body: "",
         user_id: this.props.user_id,
-        photoFile: null
+        photoFile: undefined,
       }
     } else {
-      console.log("EDIT");
       this.state = {
         post_id: this.props.post.id,
         body: this.props.post.body,
@@ -65,7 +63,6 @@ class PostModal extends React.Component {
         this.props.uploadPost(formData);
         break;
       case 'edit':
-        console.log("WORKING");
         formData.append('post[id]', this.state.post_id);
         this.props.updatePost(formData);
         break;
@@ -82,7 +79,6 @@ class PostModal extends React.Component {
   }
 
   render(){
-    // console.log(this.state)
     let modal_title = "";
     let submit_text = "";
     switch (this.props.type){
