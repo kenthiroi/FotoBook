@@ -4,7 +4,7 @@ export const createFriend = friend => {
       method: "POST",
       url: "/api/friends",
       data: {
-        friendRequest
+        friend
       }
     })
   )

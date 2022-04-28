@@ -28,14 +28,6 @@ export const createFriend = friend => dispatch => (
   ))
 )
 
-export const editFriend = friend => dispatch => (
-  FriendAPIUtil.editFriend(friend).then(friend => (
-    dispatch(receiveFriend(friend))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
-  ))
-)
-
 export const deleteFriend = friendId => dispatch => (
   FriendAPIUtil.deleteFriend(friendId).then(friend => (
     dispatch(removeFriend(friend))
