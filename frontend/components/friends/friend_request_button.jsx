@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux"
+import { createFriendRequest } from "../../actions/friend_request_actions";
 
 const mSTP = (state) => {
   return {
@@ -9,7 +10,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
   return {
-
+    createFriendRequest: (friendReq) => dispatch(createFriendRequest(friendReq))
   }
 }
 
@@ -21,7 +22,7 @@ class FriendRequestButton extends React.Component{
   render(){
     return (
       <div>
-
+        
       </div>
     )
     
