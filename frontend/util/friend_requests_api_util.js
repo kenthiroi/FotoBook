@@ -10,6 +10,18 @@ export const createFriendRequest = friendRequest => {
   )
 }
 
+export const getFriendRequests = userId => {
+  return (
+    $.ajax({
+      method: "GET",
+      url: `/api/friend_requests`,
+      data: {
+        userId
+      }
+    })
+  )
+}
+
 export const deleteFriendRequest = friendRequestId => {
   return (
     $.ajax({

@@ -20,13 +20,22 @@ export const removeFriendRequest = friendRequest =>  ({
   friendRequest
 })
 
+export const getFriendRequests = userId => dispatch => (
+  FriendRequestAPIUtil.getFriendRequests(userId).then(friendRequests =>
+    dispatch(receiveAllFriendRequests(friendRequests))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  )
+)
+
 export const createFriendRequest = friendRequest => dispatch => (
   FriendRequestAPIUtil.createFriend(friendRequest).then(friendRequest => (
-    dispatch(receiveFriend(friendRequest))
+    dispatch(receiveFriendRequest(friendRequest))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 )
+
 
 export const deleteFriendRequest = friendRequestId => dispatch => (
   FriendRequestAPIUtil.deleteFriend(friendRequestId).then(friendRequest => (

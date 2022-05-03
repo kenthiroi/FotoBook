@@ -6,7 +6,6 @@ import { deleteFriendRequest } from "../../actions/friend_request_actions";
 const mSTP = (state) => {
   return {
     user_id: state.session.id,
-    friendReq: state.entities.friend_requests
   }
 }
 
