@@ -16,7 +16,7 @@ const mDTP = (dispatch) => {
   }
 }
 
-class FriendRequestDropdown extends React.Component{
+class FriendRequestDropdownItem extends React.Component{
   constructor(props){
     super(props);
   }
@@ -31,4 +31,4 @@ class FriendRequestDropdown extends React.Component{
   }
 }
 
-export default connect(mSTP, mDTP)(FriendRequestDropdown);
+export default connect(mSTP, mDTP)(FriendRequestDropdownItem);
