@@ -19,12 +19,30 @@ const mDTP = (dispatch) => {
 class FriendRequestDropdownItem extends React.Component{
   constructor(props){
     super(props);
+
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleConfirm(e){
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('friend[user_id]', this.props.friendRequest.receiver_id);
+    formData.append('friend[friend_id]', this.props.friendRequest.sender_id);
+
+    this.props.createFriend(formData);
+  }
+
+  handleDelete(e){
+    e.preventDefault();
+    this.props.deleteFriendRequest(this.props.friendRequest.id);
   }
 
   render(){
     return (
       <div>
-        
+        <input type="submit" value={"Confirm"} onClick={this.handleConfirm}/>
+        <input type="submit" value={"Delete"} onClick={this.handleDelete}/>
       </div>
     )
     
