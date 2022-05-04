@@ -17,12 +17,23 @@ const mDTP = (dispatch) => {
 class FriendRequestButton extends React.Component{
   constructor(props){
     super(props);
+
+    this.handleFriendRequest = this.handleFriendRequest.bind(this);
+  }
+
+  handleFriendRequest(e){
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('friend_request[sender_id]', this.props.user_id);
+    formData.append('friend_request[receiver_id]', this.props.profile_id);
+
+    this.props.createFriendRequest(formData);
   }
 
   render(){
     return (
-      <div>
-        
+      <div className="friend-request-box">
+        <input type="submit" onClick={this.handleFriendRequest}/>
       </div>
     )
     

@@ -40,12 +40,12 @@ class FriendRequestDropdownItem extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className="friend-request-box">
+        <div className="friend-request-sender">{this.props.friendRequest.first_name} {this.props.friendRequest.last_name}</div>
         <input type="submit" value={"Confirm"} onClick={this.handleConfirm}/>
         <input type="submit" value={"Delete"} onClick={this.handleDelete}/>
       </div>
     )
-    
   }
 }
 
