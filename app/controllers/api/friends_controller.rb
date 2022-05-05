@@ -8,6 +8,15 @@ class Api::FriendsController < ApplicationController
     end
   end
 
+  def show
+    @friends = Friend.where(user_id: params[:id], friend_id: params[:id]);
+    if !!@friends
+      render :get_all
+    else
+      render json: @friends.errors.full_messages, status: 400
+    end
+  end
+  
   def destroy
     @friend = Friend.find_by(id: params[:id])
     if @friend 
@@ -20,6 +29,6 @@ class Api::FriendsController < ApplicationController
 
 
   def friend_params 
-  params.require(:friend).permit(:id, :user_id, :friend_id)
+    params.require(:friend).permit(:id, :user_id, :friend_id)
   end
 end
