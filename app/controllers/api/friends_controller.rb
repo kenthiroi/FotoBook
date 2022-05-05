@@ -9,9 +9,9 @@ class Api::FriendsController < ApplicationController
   end
 
   def show
-    @friends = Friend.where(user_id: params[:id], friend_id: params[:id]);
+    @friends = Friend.where(user_id: params[:id]).or(Friend.where(friend_id: params[:id]));
     if !!@friends
-      render :get_all
+      render :index
     else
       render json: @friends.errors.full_messages, status: 400
     end
@@ -20,7 +20,7 @@ class Api::FriendsController < ApplicationController
   def destroy
     @friend = Friend.find_by(id: params[:id])
     if @friend 
-      @friend.destroy 
+      @friend.destroy
       render :show 
     else
       render json: @friend.errors.full_messages, status: 404
