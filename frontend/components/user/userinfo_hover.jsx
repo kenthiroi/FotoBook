@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom"
 import { withRouter } from 'react-router-dom';
+import { fetchUser } from '../../actions/user_actions';
 
 const mSTP = state => ({
-  
+  user_id: state.session.id,
+  friends: state.entities.friends,
 })
 
 const mDTP = dispatch => ({
-
+  fetchUserInfo: (user_id) => dispatch(fetchUser(user_id))
 })
 
 
@@ -23,6 +25,10 @@ class UserInfoHover extends React.Component{
 
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.fetchUserInfo();
   }
 
   handleMouseEnter(){
