@@ -5,7 +5,7 @@ import {
 } from '../actions/friend_actions';
 
 
-const usersReducer = (state = {}, action) => {
+const friendsReducer = (state = {}, action) => {
   Object.freeze(state);
   const nextState = Object.assign({}, state);
   switch(action.type) {
@@ -27,4 +27,4 @@ const usersReducer = (state = {}, action) => {
   }
 };
 
-export default usersReducer;
+export default friendsReducer;
