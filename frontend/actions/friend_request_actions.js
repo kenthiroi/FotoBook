@@ -36,7 +36,6 @@ export const createFriendRequest = friendRequest => dispatch => (
   ))
 )
 
-
 export const deleteFriendRequest = friendRequestId => dispatch => (
   FriendRequestAPIUtil.deleteFriend(friendRequestId).then(friendRequest => (
     dispatch(removeFriendRequest(friendRequest))

@@ -4,7 +4,8 @@ import { createFriendRequest } from "../../actions/friend_request_actions";
 
 const mSTP = (state) => {
   return {
-    user_id: state.session.id
+    user_id: state.session.id,
+    friend_reqs: state.entities.friendRequests
   }
 }
 
@@ -17,6 +18,18 @@ const mDTP = (dispatch) => {
 class FriendRequestButton extends React.Component{
   constructor(props){
     super(props);
+    let friendrequest = this.props.friend_reqs.find(fr => fr.user_id === this.props.profile_id) || this.props.friend_reqs.find(fr => fr.receiver_id === this.props.profile_id);
+    if (!!friendrequest) {
+      this.state = {
+        requestMade: true,
+      }
+    } else {
+      this.state = {
+        requestMade: false,
+      }
+    }
+
+    console.log(friendrequest);
 
     this.handleFriendRequest = this.handleFriendRequest.bind(this);
   }
