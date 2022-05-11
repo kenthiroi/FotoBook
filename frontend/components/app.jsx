@@ -12,6 +12,7 @@ import LoginPageContainer from './login/login_page_container';
 import Modal from './modal/modal';
 import NewsfeedContainer from './newsfeed/newsfeed_container';
 import HeaderNav from './header/header'
+import UserProfile from './user/profile';
 
 
 
@@ -26,6 +27,7 @@ const App = (props) => (
         </header>
         {/* News Feed Component */}
         <ProtectedRoute exact path="/newsfeed" component={NewsfeedContainer}/> 
+        <ProtectedRoute exact path="/profile" component={UserProfile} />
         <ProtectedRoute exact path='/github' component={() => { 
           window.location.href = 'https://github.com/kenthiroi'; 
           return null;
