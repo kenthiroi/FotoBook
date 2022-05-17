@@ -18,8 +18,8 @@ const mDTP = (dispatch) => {
 class FriendRequestButton extends React.Component{
   constructor(props){
     super(props);
-    let friendrequest = this.props.friend_reqs.find(fr => fr.user_id === this.props.profile_id) || this.props.friend_reqs.find(fr => fr.receiver_id === this.props.profile_id);
-    if (!!friendrequest) {
+    let friendRequest = this.props.friend_reqs.find(fr => fr.user_id === this.props.profile_id) || this.props.friend_reqs.find(fr => fr.receiver_id === this.props.profile_id);
+    if (!!friendRequest) {
       this.state = {
         requestMade: true,
       }
@@ -29,7 +29,7 @@ class FriendRequestButton extends React.Component{
       }
     }
 
-    console.log(friendrequest);
+    console.log(friendRequest);
 
     this.handleFriendRequest = this.handleFriendRequest.bind(this);
   }
@@ -46,7 +46,11 @@ class FriendRequestButton extends React.Component{
   render(){
     return (
       <div className="friend-request-box">
-        <input type="submit" onClick={this.handleFriendRequest}/>
+      {this.state.requestMade ? 
+        <input type="submit" value="Add Friend" onClick={this.handleFriendRequest}/>
+       : <></>
+      //  Add button here to handle removing friend
+      }
       </div>
     )
     
