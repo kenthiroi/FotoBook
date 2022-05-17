@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useParams } from "react-router-dom";
 
 const mSTP = state => ({
   user_id: state.session.id,
 })
 
 const mDTP = dispatch => ({
-  fetchUserInfo: (user_id) => dispatch(fetchUser(user_id))
+  fetchUserInfo: (userId) => dispatch(fetchUser(userId))
 })
 
 
@@ -17,18 +17,30 @@ class UserProfile extends React.Component{
     super(props)
 
     this.state = {
-      displayedInfo: 'main',
+      displayedInfo: 'posts',
     }
+    
+    this.handleSwitch = this.handleSwitch.bind(this);
   }
 
   componentDidMount(){
-    this.props.fetchUserInfo()
+    let profileId = useParams();
+    this.props.fetchUserInfo(profileId);
+  }
+
+  handleSwitch(type){
+    this.setState({displayedInfo: type})
   }
   
   render(){
     
     return (
       <div className="profile-container">
+        <div className='profile-tabs'>
+          <div id='posts-tab' onClick={this.handleSwitch('posts')}>Posts</div>
+          <div id='about-tab' onClick={this.handleSwitch('about')}>About</div>
+          
+        </div>
         <div className='profile-main'>
           <div className='profile-picture'>
             {/* <img src=`${}` alt="" /> */}
