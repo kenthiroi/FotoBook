@@ -26,8 +26,8 @@ const App = (props) => (
           <HeaderNav/>
         </header>
         {/* News Feed Component */}
-        <ProtectedRoute exact path="/newsfeed" component={NewsfeedContainer}/> 
-        <ProtectedRoute exact path="/profile" component={UserProfile} />
+        <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 
+        <ProtectedRoute exact path='/profile/:userId' component={UserProfile} />
         <ProtectedRoute exact path='/github' component={() => { 
           window.location.href = 'https://github.com/kenthiroi'; 
           return null;

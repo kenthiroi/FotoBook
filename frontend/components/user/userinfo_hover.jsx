@@ -36,14 +36,14 @@ class UserInfoHover extends React.Component{
       showInfo: true
     })
 
-    console.log(showInfo);
+    console.log(this.state.showInfo);
   }
 
   handleMouseLeave(){
     this.setState({
       showInfo: false
     })
-    console.log(showInfo);
+    console.log(this.state.showInfo);
   }
 
   render(){
