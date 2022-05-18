@@ -8,6 +8,15 @@ class Api::FriendRequestsController < ApplicationController
     end
   end
 
+  def show
+    @friend_requests = FriendRequest.where(sender_id: params[:id]).or(FriendRequest.where(receiver_id: params[:id]));
+    if !!@friend_requests
+      render :index
+    else
+      render json: @friend_requests.errors.full_messages, status: 400
+    end
+  end
+
   def destroy
     @friend_request = FriendRequest.find_by(id: params[:id])
     if @friend_request 

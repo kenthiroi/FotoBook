@@ -1,44 +1,52 @@
 import React from "react";
 import { connect } from "react-redux"
-import { createFriendRequest } from "../../actions/friend_request_actions";
+import { createFriendRequest, getFriendRequests } from "../../actions/friend_request_actions";
 
 const mSTP = (state) => {
   return {
-    user_id: state.session.id,
-    friend_reqs: state.entities.friendRequests
+    userId: state.session.id,
+    friendReqs: state.entities.friendRequests
   }
 }
 
 const mDTP = (dispatch) => {
   return {
-    createFriendRequest: (friendReq) => dispatch(createFriendRequest(friendReq))
+    createFriendRequest: (friendReq) => dispatch(createFriendRequest(friendReq)),
+    fetchFriendRequests: (userId) => dispatch(getFriendRequests(userId)),
   }
 }
 
 class FriendRequestButton extends React.Component{
   constructor(props){
     super(props);
-    let friendRequest = this.props.friend_reqs.find(fr => fr.user_id === this.props.profile_id) || this.props.friend_reqs.find(fr => fr.receiver_id === this.props.profile_id);
-    if (!!friendRequest) {
-      this.state = {
-        requestMade: true,
-      }
-    } else {
+    // console.log(this.props.friendReqs);
+    // let friendRequest = this.props.friendReqs.find(fr => fr.user_id === this.props.profileId) || this.props.friendReqs.find(fr => fr.receiver_id === this.props.profileId);
+    // if (!!friendRequest) {
+    //   this.state = {
+    //     requestMade: true,
+    //     request: friendRequest,
+    //   }
+    // } else {
       this.state = {
         requestMade: false,
+        request: null,
       }
-    }
+    // }
 
-    console.log(friendRequest);
+    // console.log(friendRequest);
 
     this.handleFriendRequest = this.handleFriendRequest.bind(this);
+  }
+
+  componentDidMount(){
+    this.props.fetchFriendRequests(this.props.userId);
   }
 
   handleFriendRequest(e){
     e.preventDefault();
     const formData = new FormData();
-    formData.append('friend_request[sender_id]', this.props.user_id);
-    formData.append('friend_request[receiver_id]', this.props.profile_id);
+    formData.append('friend_request[sender_id]', this.props.userId);
+    formData.append('friend_request[receiver_id]', this.props.profileId);
 
     this.props.createFriendRequest(formData);
   }

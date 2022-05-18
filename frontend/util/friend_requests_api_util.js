@@ -14,10 +14,7 @@ export const getFriendRequests = userId => {
   return (
     $.ajax({
       method: "GET",
-      url: `/api/friend_requests`,
-      data: {
-        userId
-      }
+      url: `/api/friend_requests/${userId}`,
     })
   )
 }

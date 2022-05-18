@@ -5,8 +5,9 @@ import FriendRequestButton from '../friends/friend_request_button';
 import { fetchUser } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => ({
-  userId: state.session.id,
-  profileId: ownProps.match.params.userId
+  sessionId: state.session.id,
+  profileId: ownProps.match.params.userId,
+  userInfo: state.entities.user[ownProps.match.params.userId]
 })
 
 const mDTP = dispatch => ({
@@ -22,11 +23,11 @@ class UserProfile extends React.Component{
     this.state = {
       displayedInfo: 'posts',
     }
-    console.log(this.props.profileId);
+    
     this.handleSwitch = this.handleSwitch.bind(this);
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchUserInfo(this.props.profileId);
   }
 
@@ -47,9 +48,9 @@ class UserProfile extends React.Component{
           <div className='profile-picture'>
             {/* <img src=`${}` alt="" /> */}
           </div>
-          <div className="profile-name"></div>
-          {/* {(this.props.user_id !== this.state.profileId) ? 
-          <FriendRequestButton profile_id={this.state.profileId}/> : <></>} */}
+          <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
+          {(this.props.user_id === this.state.profileId) ? 
+          <FriendRequestButton profileId={this.state.profileId}/> : <></>}
         </div>
         <div className='profile-info'>
           
