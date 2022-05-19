@@ -22,16 +22,21 @@ class UserProfile extends React.Component{
     
     this.state = {
       displayedInfo: 'posts',
-      userInfo: null,
     }
     
     this.handleSwitch = this.handleSwitch.bind(this);
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.props.fetchUserInfo(this.props.profileId);
   }
 
+  componentDidUpdate(prevProps){
+    if(this.props.match.params.userId !== prevProps.match.params.userId){
+      this.props.fetchUserInfo(this.props.profileId)
+    }
+  }
+  
   handleSwitch(type){
     this.setState({displayedInfo: type})
   }
@@ -62,7 +67,7 @@ class UserProfile extends React.Component{
           
         </div>
       )
+    }
   }
-}
 
 export default connect(mSTP, mDTP)(withRouter(UserProfile));
