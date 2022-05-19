@@ -22,6 +22,7 @@ class UserProfile extends React.Component{
     
     this.state = {
       displayedInfo: 'posts',
+      userInfo: null,
     }
     
     this.handleSwitch = this.handleSwitch.bind(this);
@@ -39,25 +40,28 @@ class UserProfile extends React.Component{
     
     return (
       <div className="profile-container">
-        <div className='profile-tabs'>
-          <div id='posts-tab' onClick={() => this.handleSwitch('posts')}>Posts</div>
-          <div id='about-tab' onClick={() => this.handleSwitch('about')}>About</div>
-          <div id='friends-tab' onClick={() => this.handleSwitch('friends')}>Friends</div>
-        </div>
-        <div className='profile-main'>
-          <div className='profile-picture'>
-            {/* <img src=`${}` alt="" /> */}
+      {(!!this.props.userInfo) ?
+        <div>
+          <div className='profile-tabs'>
+            <div id='posts-tab' onClick={() => this.handleSwitch('posts')}>Posts</div>
+            <div id='about-tab' onClick={() => this.handleSwitch('about')}>About</div>
+            <div id='friends-tab' onClick={() => this.handleSwitch('friends')}>Friends</div>
           </div>
-          <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
-          {(this.props.user_id === this.state.profileId) ? 
-          <FriendRequestButton profileId={this.state.profileId}/> : <></>}
-        </div>
-        <div className='profile-info'>
+          <div className='profile-main'>
+            <div className='profile-picture'>
+              {/* <img src=`${}` alt="" /> */}
+            </div>
+            <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
+            {/* {(this.props.user_id === this.state.profileId) ? 
+            <FriendRequestButton profileId={this.state.profileId}/> : <></>} */}
+          </div>
+          <div className='profile-info'>
+            
+          </div>
+        </div> : <></> }
           
         </div>
-        
-      </div>
-    )
+      )
   }
 }
 
