@@ -1,9 +1,11 @@
 export const createFriendRequest = formData => {
   return (
     $.ajax({
-      method: "POST",
-      url: "/api/friend_requests",
-      data: formData
+      url: '/api/friend_requests',
+      method: 'POST',
+      data: formData,
+      contentType: false,
+      processData: false
     })
   )
 }

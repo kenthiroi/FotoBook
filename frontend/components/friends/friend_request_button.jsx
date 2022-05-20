@@ -29,7 +29,7 @@ class FriendRequestButton extends React.Component{
     // } else {
       this.state = {
         requestMade: false,
-        request: null,
+        request: undefined,
       }
     // }
 
@@ -45,9 +45,6 @@ class FriendRequestButton extends React.Component{
   handleFriendRequest(e){
     e.preventDefault();
     const formData = new FormData();
-    console.log(typeof this.props.userId);
-    console.log(typeof parseInt(this.props.profileId));
-    
     formData.append('friend_request[sender_id]', this.props.userId);
     formData.append('friend_request[receiver_id]', parseInt(this.props.profileId));
 

@@ -5,7 +5,7 @@ import { createPost, editPost } from '../../actions/post_actions';
 
 const mapStateToProps = (state) => {
   return {
-    user_id: state.session.id,
+    userId: state.session.id,
   }
 }
 
@@ -23,14 +23,14 @@ class PostModal extends React.Component {
     if (!this.props.post) {
       this.state = {
         body: "",
-        user_id: this.props.user_id,
+        userId: this.props.userId,
         photoFile: undefined,
       }
     } else {
       this.state = {
-        post_id: this.props.post.id,
+        postId: this.props.post.id,
         body: this.props.post.body,
-        user_id: this.props.user_id,
+        userId: this.props.userId,
         photoFile: this.props.post.photoFile,
       }
     }
@@ -46,7 +46,7 @@ class PostModal extends React.Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('post[body]', this.state.body);
-    formData.append('post[user_id]', this.state.user_id);
+    formData.append('post[user_id]', this.state.userId);
     if (this.state.photoFile !== undefined) {
       formData.append('post[photo]', this.state.photoFile);
     }
@@ -63,7 +63,7 @@ class PostModal extends React.Component {
         this.props.uploadPost(formData);
         break;
       case 'edit':
-        formData.append('post[id]', this.state.post_id);
+        formData.append('post[id]', this.state.postId);
         this.props.updatePost(formData);
         break;
       default:
