@@ -45,8 +45,11 @@ class FriendRequestButton extends React.Component{
   handleFriendRequest(e){
     e.preventDefault();
     const formData = new FormData();
+    console.log(typeof this.props.userId);
+    console.log(typeof parseInt(this.props.profileId));
+    
     formData.append('friend_request[sender_id]', this.props.userId);
-    formData.append('friend_request[receiver_id]', this.props.profileId);
+    formData.append('friend_request[receiver_id]', parseInt(this.props.profileId));
 
     this.props.createFriendRequest(formData);
   }
@@ -54,7 +57,7 @@ class FriendRequestButton extends React.Component{
   render(){
     return (
       <div className="friend-request-box">
-      {this.state.requestMade ? 
+      {!this.state.requestMade ? 
         <input type="submit" value="Add Friend" onClick={this.handleFriendRequest}/>
        : <></>
       //  Add button here to handle removing friend

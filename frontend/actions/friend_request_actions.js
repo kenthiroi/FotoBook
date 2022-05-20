@@ -29,7 +29,7 @@ export const getFriendRequests = userId => dispatch => (
 )
 
 export const createFriendRequest = friendRequest => dispatch => (
-  FriendRequestAPIUtil.createFriend(friendRequest).then(friendRequest => (
+  FriendRequestAPIUtil.createFriendRequest(friendRequest).then(friendRequest => (
     dispatch(receiveFriendRequest(friendRequest))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
@@ -37,7 +37,7 @@ export const createFriendRequest = friendRequest => dispatch => (
 )
 
 export const deleteFriendRequest = friendRequestId => dispatch => (
-  FriendRequestAPIUtil.deleteFriend(friendRequestId).then(friendRequest => (
+  FriendRequestAPIUtil.deleteFriendRequest(friendRequestId).then(friendRequest => (
     dispatch(removeFriendRequest(friendRequest))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))

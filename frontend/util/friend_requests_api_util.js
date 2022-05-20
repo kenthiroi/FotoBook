@@ -1,11 +1,9 @@
-export const createFriendRequest = friendRequest => {
+export const createFriendRequest = formData => {
   return (
     $.ajax({
       method: "POST",
       url: "/api/friend_requests",
-      data: {
-        friendRequest
-      }
+      data: formData
     })
   )
 }
