@@ -17,7 +17,6 @@ const friendRequestsReducer = (state = {}, action) => {
       }
       return nextState;
     case RECEIVE_FRIEND_REQUEST:
-      debugger
       nextState[action.friendRequest.id] = action.friendRequest;
       return nextState;
     case REMOVE_FRIEND_REQUEST:

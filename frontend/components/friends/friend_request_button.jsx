@@ -42,6 +42,12 @@ class FriendRequestButton extends React.Component{
     this.props.fetchFriendRequests(this.props.userId);
   }
 
+  componentDidUpdate(){
+    let friendRequest = Object.values(this.props.friendReqs);
+    let searchFR = friendRequest.find(fr => fr.receiver_id === this.props.profileId);
+    console.log(searchFR);
+  }
+
   handleFriendRequest(e){
     e.preventDefault();
     const formData = new FormData();
