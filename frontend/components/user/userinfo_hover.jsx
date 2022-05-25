@@ -4,13 +4,14 @@ import { Link } from "react-router-dom"
 import { withRouter } from 'react-router-dom';
 import { fetchUser } from '../../actions/user_actions';
 
-const mSTP = state => ({
-  user_id: state.session.id,
+const mSTP = (state, ownProps) => ({
+  user: state.entities.user[ownProps.userId],
+  sessionId: state.session.id,
   friends: state.entities.friends,
 })
 
 const mDTP = dispatch => ({
-  fetchUserInfo: (user_id) => dispatch(fetchUser(user_id))
+  fetchUserInfo: (userId) => dispatch(fetchUser(userId))
 })
 
 
@@ -28,7 +29,7 @@ class UserInfoHover extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchUserInfo();
+    this.props.fetchUserInfo(this.props.userId);
   }
 
   handleMouseEnter(){
@@ -50,16 +51,18 @@ class UserInfoHover extends React.Component{
     
     return (
       <div className="user-info">
-        <Link to={"/profile/" + this.props.user.id} 
+        {!!this.props.user ? 
+        <Link to={`/profile/${this.props.userId}`} 
           className="user-name" 
           onMouseEnter={this.handleMouseEnter} 
           onMouseLeave={this.handleMouseLeave}>
             {this.props.user.first_name} {this.props.user.last_name}
-        </Link>
+        </Link> : <></>
+        }
         {this.state.showInfo ? <div className="user-hover-container">
           <div className="user-hover-name">{this.props.user.first_name} {this.props.user.last_name}</div>
           <div className="user-hover-info">
-            <div className="user-hometown">{this.props.user.hometown}</div>
+            {/* <div className="user-hometown">{this.props.user.hometown}</div> */}
             <div className="user-mutual-friends">39</div>
           </div>
         </div> : <></>}

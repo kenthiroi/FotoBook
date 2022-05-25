@@ -5,6 +5,7 @@ import CommentIndex from "../comment/comment_index";
 import CommentField from "../comment/comment_field";
 import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
+import UserInfoHover from "../user/userinfo_hover";
 
 const mSTP = state => {
   return {
@@ -74,7 +75,8 @@ class PostItem extends React.Component {
           <div onClick={() => this.props.openModal(this.props.post)}>Edit Post</div>
           <div onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
         </div> : <></>}
-        <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div>
+        {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
+        <UserInfoHover userId={this.props.post.user_id}></UserInfoHover>
         <div className="posts-body">{this.props.post.body}</div>
         {photoContainer}
         <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}></LikeAndCommentButton>

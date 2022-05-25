@@ -50,7 +50,6 @@ class FriendRequestButton extends React.Component{
         this.props.createFriendRequest(formData);
         break;
       case 'delete':
-        console.log('delete');
         this.props.deleteFriendRequest(this.state.request.id).then(() => {
           this.setState({requestMade: false, request: undefined});
         })
