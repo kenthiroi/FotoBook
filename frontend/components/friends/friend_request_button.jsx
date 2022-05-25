@@ -34,7 +34,6 @@ class FriendRequestButton extends React.Component{
 
   componentDidUpdate(){
     let friendRequest = Object.values(this.props.friendReqs);
-    console.log(friendRequest);
     let friendRequestResult = friendRequest.find(fr => fr.user_id === this.props.profileId) || friendRequest.find(fr => fr.receiver_id === parseInt(this.props.profileId));
     if (!!friendRequestResult && !this.state.requestMade) {
       this.setState({requestMade: true, request: friendRequestResult})
@@ -51,11 +50,12 @@ class FriendRequestButton extends React.Component{
         this.props.createFriendRequest(formData);
         break;
       case 'delete':
-        this.props.deleteFriendRequest(this.state.request.id);
-        this.setState({requestMade: false, request: undefined});
+        console.log('delete');
+        this.props.deleteFriendRequest(this.state.request.id).then(() => {
+          this.setState({requestMade: false, request: undefined});
+        })
         break;
-      }
-      console.log(this.state.request);
+    }
   }
 
   render(){

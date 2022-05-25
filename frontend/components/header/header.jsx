@@ -7,6 +7,7 @@ import { openModal } from "../../actions/modal_actions"
 
 const mapStateToProps = state => {
   return {
+    sessionId: state.session.id,
     user: state.entities.user[state.session.id],
     name: state.entities.user[state.session.id].first_name,
   }
@@ -77,7 +78,7 @@ class headerNav extends React.Component {
         </Link>
       </div>
       <div id="header-right">
-        <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push('/profile')} className="util-btn">
+        <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push(`/profile/${this.props.sessionId}`)} className="util-btn">
           {this.props.name}
         </button>
         <button id={this.state.createDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("createDropdown")} onBlur={this.handleCloseDropdown("createDropdown")} className="util-btn">
