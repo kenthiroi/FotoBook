@@ -7,7 +7,7 @@ import FriendRequestDropdownItem from "./friend_request_dropdown_item";
 
 const mSTP = (state) => {
   return {
-    user_id: state.session.id,
+    sessionId: state.session.id,
     friendReq: selectAllFriendRequests(state)
   }
 }
@@ -24,14 +24,16 @@ class FriendRequestDropdown extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchAllFriendRequests(this.props.user_id);
+    this.props.fetchAllFriendRequests(this.props.sessionId);
   }
 
   render(){
     return (
       <div>
         {this.props.friendReq.reverse().map(friendRequest => {
-          return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest}/>
+          if (this.props.sessionId === friendRequest.receiver_id) {
+            return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest}/>
+          }
         })}
       </div>
     )

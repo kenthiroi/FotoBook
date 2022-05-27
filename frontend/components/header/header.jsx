@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { logout } from "../../actions/session_actions"
 import { withRouter } from 'react-router-dom';
 import { openModal } from "../../actions/modal_actions"
+import FriendRequestDropdown from "../friends/friend_request_dropdown";
 
 const mapStateToProps = state => {
   return {
@@ -93,6 +94,7 @@ class headerNav extends React.Component {
         <button id={this.state.notificationDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("notificationDropdown")} onBlur={this.handleCloseDropdown("notificationDropdown")} className="util-btn">
           <div className="dropdown">&#xf0f3;</div>
         </button>
+        <FriendRequestDropdown/>
         {this.state.notificationDropdown ? 
         <div className="util-container">
             {/* renders all notifications */}
