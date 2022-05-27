@@ -41,7 +41,7 @@ class FriendRequestDropdownItem extends React.Component{
   render(){
     return (
       <div className="friend-request-box">
-        <div className="friend-request-sender">{this.props.friendRequest.receiver_first_name} {this.props.friendRequest.receiver_last_name}</div>
+        <div className="friend-request-sender">{this.props.friendRequest.sender_first_name} {this.props.friendRequest.sender_last_name}</div>
         <input type="submit" value={"Confirm"} onClick={this.handleConfirm}/>
         <input type="submit" value={"Delete"} onClick={this.handleDelete}/>
       </div>
