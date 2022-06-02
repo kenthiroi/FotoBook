@@ -82,7 +82,7 @@ class headerNav extends React.Component {
         <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push(`/profile/${this.props.sessionId}`)} className="util-btn">
           {this.props.name}
         </button>
-        <button id={this.state.createDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("createDropdown")} onBlur={this.handleCloseDropdown("createDropdown")} className="util-btn">
+        <button id={this.state.createDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("createDropdown")} onBlur={() => this.handleCloseDropdown("createDropdown")} className="util-btn">
           <div className="dropdown">&#43;</div>
         </button>
         {this.state.createDropdown ? 
@@ -91,7 +91,7 @@ class headerNav extends React.Component {
             <div>Create Post</div>
           </button>
         </div> : <></>}
-        <button id={this.state.notificationDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("notificationDropdown")} onBlur={this.handleCloseDropdown("notificationDropdown")} className="util-btn">
+        <button id={this.state.notificationDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("notificationDropdown")} onBlur={() => this.handleCloseDropdown("notificationDropdown")} className="util-btn">
           <div className="dropdown">&#xf0f3;</div>
         </button>
         <FriendRequestDropdown/>
@@ -99,7 +99,7 @@ class headerNav extends React.Component {
         <div className="util-container">
             {/* renders all notifications */}
         </div> : <></>}
-        <button id={this.state.logoutDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("logoutDropdown")} onBlur={this.handleCloseDropdown("logoutDropdown")} className="util-btn">
+        <button id={this.state.logoutDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("logoutDropdown")} onBlur={() => this.handleCloseDropdown("logoutDropdown")} className="util-btn">
           <div className="dropdown">&#8964;</div>
         </button>
         {this.state.logoutDropdown ? 
