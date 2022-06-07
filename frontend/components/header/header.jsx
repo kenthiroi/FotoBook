@@ -3,8 +3,8 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { logout } from "../../actions/session_actions"
 import { withRouter } from 'react-router-dom';
-import { openModal } from "../../actions/modal_actions"
 import FriendRequestDropdown from "../friends/friend_request_dropdown";
+import CreatePostDropdown from "./create_post_dropdown";
 
 const mapStateToProps = state => {
   return {
@@ -17,7 +17,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
-    postModal: () => dispatch(openModal({type:'createPost'})),
   }
 }
 
@@ -32,6 +31,7 @@ class headerNav extends React.Component {
       notificationDropdown: false,
       logoutDropdown: false,
     }
+
     this.handleOpenDropdown = this.handleOpenDropdown.bind(this);
     this.handleCloseDropdown = this.handleCloseDropdown.bind(this);
   }
@@ -82,15 +82,7 @@ class headerNav extends React.Component {
         <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push(`/profile/${this.props.sessionId}`)} className="util-btn">
           {this.props.name}
         </button>
-        <button id={this.state.createDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("createDropdown")} onBlur={() => this.handleCloseDropdown("createDropdown")} className="util-btn">
-          <div className="dropdown">&#43;</div>
-        </button>
-        {this.state.createDropdown ? 
-        <div className="util-container">
-          <button onMouseDown={this.props.postModal} className="logout-btn">
-            <div>Create Post</div>
-          </button>
-        </div> : <></>}
+        <CreatePostDropdown/>
         <button id={this.state.notificationDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("notificationDropdown")} onBlur={() => this.handleCloseDropdown("notificationDropdown")} className="util-btn">
           <div className="dropdown">&#xf0f3;</div>
         </button>

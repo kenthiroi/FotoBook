@@ -1,15 +1,16 @@
 import React from "react";
 import { connect } from "react-redux"
+import { openModal } from "../../actions/modal_actions"
 
 const mSTP = (state) => {
   return {
-    userId: state.session.id,
+    sessionId: state.session.id,
   }
 }
 
 const mDTP = (dispatch) => {
   return {
-
+    postModal: () => dispatch(openModal({type:'createPost'})),
   }
 }
 
@@ -18,16 +19,29 @@ class CreatePostDropdown extends React.Component{
     super(props);
 
     this.state = {
-      openDropdown: true,
+      openDropdown: false,
     }
+
+    this.openDropdown = this.openDropdown.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
+  openDropdown(e){
+    e.preventDefault();
+    console.log('open');
+    this.setState({openDropdown: true});
+  }
   
+  closeDropdown(){
+    // e.preventDefault();
+    console.log('close');
+    this.setState({openDropdown: false});
+  }
 
   render(){
     return (
       <div>
-        <button id={this.state.createDropdown ? 'active-nav-button' : ''} onClick={this.openDropdown()} onBlur={() => this.closeDropdown()} className="util-btn">
+        <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={() => this.closeDropdown()} className="util-btn">
           <div className="dropdown">&#43;</div>
         </button>
         { this.state.openDropdown ? 
