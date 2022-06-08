@@ -6,12 +6,13 @@ import { withRouter } from 'react-router-dom';
 import FriendRequestDropdown from "../friends/friend_request_dropdown";
 import CreatePostDropdown from "./create_post_dropdown";
 import SettingsDropdown from "./settingsDropdown";
+import ProfileButton from "./profileButton";
+import NotificationDropdown from "./notificationDropdown";
 
 const mapStateToProps = state => {
   return {
     sessionId: state.session.id,
     user: state.entities.user[state.session.id],
-    name: state.entities.user[state.session.id].first_name,
   }
 }
 
@@ -80,18 +81,10 @@ class HeaderNav extends React.Component {
         </Link>
       </div>
       <div id="header-right">
-        <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push(`/profile/${this.props.sessionId}`)} className="util-btn">
-          {this.props.name}
-        </button>
+        <ProfileButton/>
         <CreatePostDropdown/>
-        <button id={this.state.notificationDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("notificationDropdown")} onBlur={() => this.handleCloseDropdown("notificationDropdown")} className="util-btn">
-          <div className="dropdown">&#xf0f3;</div>
-        </button>
         <FriendRequestDropdown/>
-        {this.state.notificationDropdown ? 
-        <div className="util-container">
-            {/* renders all notifications */}
-        </div> : <></>}
+        <NotificationDropdown/>
         <SettingsDropdown/>
       </div>
     </div>
