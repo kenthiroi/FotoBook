@@ -5,6 +5,7 @@ import { logout } from "../../actions/session_actions"
 import { withRouter } from 'react-router-dom';
 import FriendRequestDropdown from "../friends/friend_request_dropdown";
 import CreatePostDropdown from "./create_post_dropdown";
+import SettingsDropdown from "./settingsDropdown";
 
 const mapStateToProps = state => {
   return {
@@ -22,7 +23,7 @@ const mapDispatchToProps = dispatch => {
 
 
 
-class headerNav extends React.Component {
+class HeaderNav extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -91,18 +92,10 @@ class headerNav extends React.Component {
         <div className="util-container">
             {/* renders all notifications */}
         </div> : <></>}
-        <button id={this.state.logoutDropdown ? 'active-nav-button' : ''} onClick={this.handleOpenDropdown("logoutDropdown")} onBlur={() => this.handleCloseDropdown("logoutDropdown")} className="util-btn">
-          <div className="dropdown">&#8964;</div>
-        </button>
-        {this.state.logoutDropdown ? 
-        <div className="util-container">
-          <button onMouseDown={this.props.logout} className="logout-btn">
-            <div>Log out</div>
-          </button>
-        </div> : <></>}
+        <SettingsDropdown/>
       </div>
     </div>
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(headerNav))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HeaderNav))

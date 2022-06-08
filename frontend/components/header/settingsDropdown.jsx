@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux"
-import { openModal } from "../../actions/modal_actions"
 
 const mSTP = (state) => {
   return {
@@ -14,7 +13,7 @@ const mDTP = (dispatch) => {
   }
 }
 
-class CreatePostDropdown extends React.Component{
+class SettingsDropdown extends React.Component{
   constructor(props){
     super(props);
 
@@ -39,19 +38,18 @@ class CreatePostDropdown extends React.Component{
   render(){
     return (
       <div>
-        <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={() => this.closeDropdown()} className="util-btn">
-          <div className="dropdown">&#43;</div>
+        <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown} className="util-btn">
+          <div className="dropdown">&#8964;</div>
         </button>
-        { this.state.openDropdown ? 
-          <div className="util-container">
-            <button onMouseDown={this.props.postModal} className="logout-btn">
-              <div>Create Post</div>
-            </button>
-          </div> : <></>
-        }
+        {this.state.openDropdown ? 
+        <div className="util-container">
+          <button onMouseDown={this.props.logout} className="logout-btn">
+            <div>Log out</div>
+          </button>
+        </div> : <></>}
       </div>
     )
   }
 }
 
-export default connect(mSTP, mDTP)(CreatePostDropdown);
+export default connect(mSTP, mDTP)(SettingsDropdown);
