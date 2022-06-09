@@ -9,7 +9,7 @@ import SettingsDropdown from "./settingsDropdown";
 import ProfileButton from "./profileButton";
 import NotificationDropdown from "./notificationDropdown";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     sessionId: state.session.id,
     user: state.entities.user[state.session.id],

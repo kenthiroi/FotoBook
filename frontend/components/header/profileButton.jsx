@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux"
+import { withRouter } from 'react-router-dom';
+
 
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    profileId: ownProps.match.params.userId,
+    profileId: ownProps,
     name: state.entities.user[state.session.id].first_name,
   }
 }
@@ -27,14 +29,6 @@ class ProfileButton extends React.Component{
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
-  componentDidMount(){
-    if (this.props.sessionId === this.props.profileId) {
-      this.setState({onProfile: true});
-    } else {
-      this.setState({onProfile: false});
-    }
-  }
-
   openDropdown(e){
     e.preventDefault();
     this.setState({openDropdown: true});
@@ -47,7 +41,7 @@ class ProfileButton extends React.Component{
   render(){
     return (
       <div>
-         <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push(`/profile/${this.props.sessionId}`)} className="util-btn">
+        <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push(`/profile/${this.props.sessionId}`)} className="util-btn">
           {this.props.name}
         </button>
       </div>
@@ -55,4 +49,4 @@ class ProfileButton extends React.Component{
   }
 }
 
-export default connect(mSTP, null)(ProfileButton);
+export default connect(mSTP, null)(withRouter(ProfileButton));
