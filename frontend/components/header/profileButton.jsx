@@ -25,34 +25,43 @@ class ProfileButton extends React.Component{
       onProfile: false,
     }
 
-    this.openDropdown = this.openDropdown.bind(this);
-    this.closeDropdown = this.closeDropdown.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleState = this.handleState.bind(this);
   }
 
+  componentDidMount(){
+    this.handleState();
+  }
+  
   componentDidUpdate(){
+    this.handleState();
+  }
+
+  handleState(){
     const currentProfile = parseInt(this.props.history.location.pathname.split('/')[2]);
-    console.log(currentProfile);
+    // console.log(currentProfile);
     if ((currentProfile === this.props.sessionId) && !this.state.onProfile){
       this.setState({onProfile: true})
     } else if (this.state.onProfile && (currentProfile !== this.props.sessionId)) {
       this.setState({onProfile: false})
     }
-    console.log(this.state.onProfile);
   }
 
-  openDropdown(e){
+  handleClick(e){
     e.preventDefault();
-    this.setState({openDropdown: true});
-  }
-  
-  closeDropdown(){
-    this.setState({openDropdown: false});
+    if (this.props.history.location.pathname === `/profile/${this.props.sessionId}`){
+      this.setState({onProfile: true});
+    } else {
+      this.props.history.push(`/profile/${this.props.sessionId}`);
+      this.setState({onProfile: true});
+    }
   }
 
   render(){
+    console.log(this.state.onProfile);
     return (
       <div>
-        <button id={this.state.onProfilePage ? 'active-nav-button profile-button' : 'profile-button'} onClick={() => this.props.history.push(`/profile/${this.props.sessionId}`)} className="util-btn">
+        <button id={this.state.onProfile ? 'active-nav-button' : ''} onClick={this.handleClick} className="util-btn">
           {this.props.name}
         </button>
       </div>
