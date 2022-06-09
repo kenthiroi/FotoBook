@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    profileId: ownProps,
+    // profileId: ownProps,
     name: state.entities.user[state.session.id].first_name,
   }
 }
@@ -27,6 +27,17 @@ class ProfileButton extends React.Component{
 
     this.openDropdown = this.openDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
+  }
+
+  componentDidUpdate(){
+    const currentProfile = parseInt(this.props.history.location.pathname.split('/')[2]);
+    console.log(currentProfile);
+    if ((currentProfile === this.props.sessionId) && !this.state.onProfile){
+      this.setState({onProfile: true})
+    } else if (this.state.onProfile && (currentProfile !== this.props.sessionId)) {
+      this.setState({onProfile: false})
+    }
+    console.log(this.state.onProfile);
   }
 
   openDropdown(e){
