@@ -3,8 +3,8 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { logout } from "../../actions/session_actions"
 import { withRouter } from 'react-router-dom';
-import FriendRequestDropdown from "../friends/friend_request_dropdown";
-import CreatePostDropdown from "./create_post_dropdown";
+import FriendRequestDropdown from "../friends/friendRequestDropdown";
+import CreatePostDropdown from "./createPostDropdown";
 import SettingsDropdown from "./settingsDropdown";
 import ProfileButton from "./profileButton";
 import NotificationDropdown from "./notificationDropdown";
@@ -85,7 +85,7 @@ class HeaderNav extends React.Component {
         <CreatePostDropdown/>
         <FriendRequestDropdown/>
         <NotificationDropdown/>
-        <SettingsDropdown/>
+        <SettingsDropdown logout={this.props.logout}/>
       </div>
     </div>
   }

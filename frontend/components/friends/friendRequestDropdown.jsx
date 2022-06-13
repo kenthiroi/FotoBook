@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { createFriend } from "../../actions/friend_actions";
 import { deleteFriendRequest, getFriendRequests } from "../../actions/friend_request_actions";
 import { selectAllFriendRequests, selectReceivingFriendRequests } from "../../reducers/selectors/friend_request_selector";
-import FriendRequestDropdownItem from "./friend_request_dropdown_item";
+import FriendRequestDropdownItem from "./friendRequestDropdownItem";
 
 const mSTP = (state) => {
   return {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, useParams } from "react-router-dom";
-import FriendRequestButton from '../friends/friend_request_button';
+import FriendRequestButton from '../friends/friendRequestButton';
 import { fetchUser } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => ({
@@ -52,7 +52,7 @@ class UserProfile extends React.Component{
             <div id='about-tab' onClick={() => this.handleSwitch('about')}>About</div>
             <div id='friends-tab' onClick={() => this.handleSwitch('friends')}>Friends</div>
           </div>
-          <div className='profile-main'>
+          <div className='profile-main'> 
             <div className='profile-picture'>
               {/* <img src=`${}` alt="" /> */}
             </div>

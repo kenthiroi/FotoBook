@@ -2,11 +2,9 @@ import React from "react";
 import { connect } from "react-redux"
 import { withRouter } from 'react-router-dom';
 
-
-const mSTP = (state, ownProps) => {
+const mSTP = state => {
   return {
     sessionId: state.session.id,
-    // profileId: ownProps,
     name: state.entities.user[state.session.id].first_name,
   }
 }
@@ -32,7 +30,7 @@ class ProfileButton extends React.Component{
   componentDidMount(){
     this.handleState();
   }
-  
+
   componentDidUpdate(){
     this.handleState();
   }
@@ -49,11 +47,11 @@ class ProfileButton extends React.Component{
 
   handleClick(e){
     e.preventDefault();
-    if (this.props.history.location.pathname === `/profile/${this.props.sessionId}`){
-      this.setState({onProfile: true});
-    } else {
+    if (this.props.history.location.pathname !== `/profile/${this.props.sessionId}`){
       this.props.history.push(`/profile/${this.props.sessionId}`);
       this.setState({onProfile: true});
+    } else {
+      this.setState({onProfile: false});
     }
   }
 

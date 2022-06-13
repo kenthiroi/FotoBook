@@ -25,6 +25,14 @@ class NotificationsDropdown extends React.Component{
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
+  componentDidMount(){
+
+  }
+
+  componentDidUpdate(){
+    
+  }
+
   openDropdown(e){
     e.preventDefault();
     this.setState({openDropdown: true});
