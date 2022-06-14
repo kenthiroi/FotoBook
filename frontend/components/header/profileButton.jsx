@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux"
 import { withRouter } from 'react-router-dom';
 
-const mSTP = state => {
+const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
     name: state.entities.user[state.session.id].first_name,

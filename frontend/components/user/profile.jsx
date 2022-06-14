@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, useParams } from "react-router-dom";
 import FriendRequestButton from '../friends/friendRequestButton';
 import { fetchUser } from '../../actions/user_actions';
+import UserProfileWall from './profileWall';
 
 const mSTP = (state, ownProps) => ({
   sessionId: state.session.id,
@@ -62,8 +63,11 @@ class UserProfile extends React.Component{
           </div>
           <div className='profile-intro'>
             <div className='profile-description'>
-              
+
             </div>
+          </div>
+          <div>
+            <UserProfileWall userId={this.props.profileId}/>
           </div>
         </div> : <></> }
           
