@@ -60,8 +60,10 @@ class UserProfile extends React.Component{
             {(this.props.sessionId !== this.props.profileId) ? 
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}
           </div>
-          <div className='profile-info'>
-            
+          <div className='profile-intro'>
+            <div className='profile-description'>
+              
+            </div>
           </div>
         </div> : <></> }
           

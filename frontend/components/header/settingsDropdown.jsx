@@ -44,7 +44,7 @@ class SettingsDropdown extends React.Component{
         {this.state.openDropdown ? 
         <div className="util-container">
           <button onMouseDown={this.props.logout} className="logout-btn">
-            <div>Log out</div>
+            <div>Log Out</div>
           </button>
         </div> : <></>}
       </div>
