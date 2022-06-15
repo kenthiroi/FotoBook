@@ -2,7 +2,26 @@ export const getPostIndex = () => {
   return (
     $.ajax({
       method: "GET",
-      url: "/api/posts"
+      url: "/api/posts",
+      data: {
+        post:{
+          id: ''
+        }
+      }
+    })
+  )
+}
+
+export const getUsersPosts = user_id => {
+  return (
+    $.ajax({
+      method: "GET",
+      url: "/api/posts",
+      data: {
+        post:{
+          user_id
+        }
+      }
     })
   )
 }

@@ -1,6 +1,11 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    if (post_params.has_key?(:user_id))
+      @posts = Post.where(:user_id => post_params[:user_id])
+    else
+      @posts = Post.all
+    end
+    puts @posts
     render :index
   end
 
@@ -11,7 +16,6 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    puts @post
     if @post.save
       render :show
     else
