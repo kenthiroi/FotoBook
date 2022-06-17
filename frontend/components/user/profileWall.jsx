@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { selectUsersPosts } from '../../reducers/selectors/posts_selector';
-import PostIndexItem from '../posts/post_index_item';
+import PostItem from '../posts/post_index_item';
 
 const mSTP = (state, ownProps) => {
   return {
@@ -28,8 +28,8 @@ class UserProfileWall extends React.Component{
         {!this.props.userPosts ? 
         <></>
         :
-        Object.values(this.props.userPosts).map(post => {
-          return <PostIndexItem key={post.id} post={post}/>
+        Object.values(this.props.userPosts).reverse().map(post => {
+          return <PostItem key={post.id} post={post}/>
         })
       }
     </div>
