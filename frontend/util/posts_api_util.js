@@ -3,25 +3,18 @@ export const getPostIndex = () => {
     $.ajax({
       method: "GET",
       url: "/api/posts",
-      data: {
-        post:{
-          id: ''
-        }
-      }
     })
   )
 }
 
-export const getUsersPosts = user_id => {
+export const getUsersPosts = formData => {
   return (
     $.ajax({
-      method: "GET",
-      url: "/api/posts",
-      data: {
-        post:{
-          user_id
-        }
-      }
+      method: "POST",
+      url: "/api/posts/by_user_id",
+      data: formData,
+      contentType: false,
+      processData: false
     })
   )
 }

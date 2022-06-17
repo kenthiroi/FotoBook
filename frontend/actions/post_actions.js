@@ -44,6 +44,14 @@ export const getAllPosts = () => dispatch => (
   ))
 )
 
+export const getAllPostsByUserId = userId => dispatch => (
+  PostAPIUtil.getUsersPosts(userId).then(posts => (
+    dispatch(receiveAllPosts(posts))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+)
+
 export const editPost = post => dispatch => (
   PostAPIUtil.editPost(post).then(post => (
     dispatch(receivePost(post))

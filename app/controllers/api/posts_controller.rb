@@ -1,11 +1,11 @@
 class Api::PostsController < ApplicationController
   def index
-    if (post_params.has_key?(:user_id))
-      @posts = Post.where(:user_id => post_params[:user_id])
-    else
-      @posts = Post.all
-    end
-    puts @posts
+    @posts = Post.all
+    render :index
+  end
+
+  def index_by_user_id
+    @posts = Post.where(:user_id => post_params[:user_id])
     render :index
   end
 
