@@ -38,8 +38,8 @@ class UserProfile extends React.Component{
     }
   }
   
-  handleSwitch(type){
-    this.setState({displayedInfo: type})
+  handleSwitch(tabName){
+    this.setState({displayedInfo: tabName})
   }
   
   render(){
@@ -62,12 +62,18 @@ class UserProfile extends React.Component{
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}
           </div>
           <div className='profile-intro'>
-            <div className='profile-description'>
-
-            </div>
+            <div className='profile-description'></div>
+            { (this.state.displayedInfo === 'posts') ?
+              <UserProfileWall userId={this.props.profileId}/> : <></>
+            }
+            { (this.state.displayedInfo === 'about') ?
+              <UserProfileWall userId={this.props.profileId}/> : <></>
+            }
+            { (this.state.displayedInfo === 'friends') ?
+              <UserProfileWall userId={this.props.profileId}/> : <></>
+            }
           </div>
           <div>
-            <UserProfileWall userId={this.props.profileId}/>
           </div>
         </div> : <></> }
           

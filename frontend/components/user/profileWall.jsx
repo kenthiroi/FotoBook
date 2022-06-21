@@ -29,6 +29,7 @@ class UserProfileWall extends React.Component{
 
   componentDidMount(){
     const formData = new FormData();
+    console.log(this.props.userId);
     formData.append('post[user_id]', this.props.userId);
     this.props.fetchUsersPosts(formData);
   }
