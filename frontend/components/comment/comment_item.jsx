@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { deleteComment, editComment } from '../../actions/comment_actions';
 import { getPost } from "../../actions/post_actions";
 import CommentField from './comment_field';
+import UserInfoHover from '../user/userInfoHover';
 
 const mSTP = state => {
   return {
-    user_id: state.session.id,
+    sessionId: state.session.id,
   }
 }
 
@@ -85,9 +86,9 @@ class CommentItem extends React.Component{
     else {
       return(
         <div className="comment-item">
-          <div className="commenter-name">{this.props.comment.first_name} {this.props.comment.last_name}</div>
+          <UserInfoHover userId={this.props.comment.author_id}/>
           <div className='comment-body'>{this.props.comment.body}</div>
-          {this.props.comment.author_id === this.props.user_id ?
+          {this.props.comment.author_id === this.props.sessionId ?
             <div className="comment-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
             :
             <></>

@@ -24,12 +24,13 @@ class UserInfoHover extends React.Component{
       showInfo: false
     }
 
+    if (!this.props.user){
+      console.log('fetching user');
+      this.props.fetchUserInfo(this.props.userId);
+    }
+
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
-  }
-
-  componentDidMount(){
-    this.props.fetchUserInfo(this.props.userId);
   }
 
   handleMouseEnter(){
