@@ -8,7 +8,6 @@ import PostItem from '../posts/post_index_item';
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    userId: ownProps.userId,
     userPosts: selectUsersPosts(state, ownProps.userId),
   }
 }
@@ -25,9 +24,22 @@ class UserProfileWall extends React.Component{
 
   constructor(props){
     super(props)
+
+    this.state = {
+      posts: this.props.userPosts,
+    }
+
+    this.fetchPosts = this.fetchPosts.bind(this);
+    this.fetchPosts();
   }
 
-  componentDidMount(){
+  componentDidUpdate(prevProps){
+    if (this.props.userId !== prevProps.userId){
+      this.fetchPosts();
+    }
+  }
+
+  fetchPosts(){
     const formData = new FormData();
     console.log(this.props.userId);
     formData.append('post[user_id]', this.props.userId);
@@ -37,7 +49,7 @@ class UserProfileWall extends React.Component{
   render(){
     return (
       <div className="user-posts">
-        {!this.props.userPosts ? 
+        {!this.state.posts ? 
         <></>
         :
         Object.values(this.props.userPosts).reverse().map(post => {

@@ -34,6 +34,7 @@ class UserProfile extends React.Component{
 
   componentDidUpdate(prevProps){
     if(this.props.match.params.userId !== prevProps.match.params.userId){
+      console.log('updated')
       this.props.fetchUserInfo(this.props.profileId)
     }
   }

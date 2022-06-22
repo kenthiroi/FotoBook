@@ -79,7 +79,7 @@ class CommentItem extends React.Component{
     if (this.state.editing) {
       return(
         <div className="comment-item" onKeyDown={this.handleKeyDown}>
-          <CommentField comment={this.props.comment}></CommentField>
+          <CommentField comment={this.props.comment}/>
         </div>
       )
     }
