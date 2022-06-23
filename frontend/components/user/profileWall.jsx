@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
 import { selectUsersPosts } from '../../reducers/selectors/posts_selector';
 import { getAllPostsByUserId } from '../../actions/post_actions';
-import PostItem from '../posts/post_index_item';
+import PostItem from '../posts/postIndexItem';
 
 const mSTP = (state, ownProps) => {
   return {
@@ -30,6 +30,7 @@ class UserProfileWall extends React.Component{
     }
 
     this.fetchPosts = this.fetchPosts.bind(this);
+
     this.fetchPosts();
   }
 
@@ -47,7 +48,6 @@ class UserProfileWall extends React.Component{
   }
   
   render(){
-    console.log('wall rendering');
     return (
       <div className="user-posts">
         {!this.state.posts ? 

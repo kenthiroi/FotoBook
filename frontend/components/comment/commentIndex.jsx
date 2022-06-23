@@ -1,5 +1,5 @@
 import React from "react";
-import CommentItem from "./comment_item";
+import CommentItem from "./commentItem";
 
 
 class CommentIndex extends React.Component{

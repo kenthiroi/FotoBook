@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
-import LikeAndCommentButton from "../like/like_and_comment_button";
-import CommentIndex from "../comment/comment_index";
-import CommentField from "../comment/comment_field";
+import LikeAndCommentButton from "../like/likeAndCommentButton";
+import CommentIndex from "../comment/commentIndex";
+import CommentField from "../comment/commentField";
 import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
 import UserInfoHover from "../user/userInfoHover";

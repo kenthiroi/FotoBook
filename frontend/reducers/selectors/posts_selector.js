@@ -4,7 +4,6 @@ export const selectAllPosts = (state) => {
 
 export const selectUsersPosts = (state, userId) => {
   const posts = Object.values(state.entities.posts);
-  console.log(posts);
   const results = posts.filter(post => post.user_id === parseInt(userId));
   return results;
 }

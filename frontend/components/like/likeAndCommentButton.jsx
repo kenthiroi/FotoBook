@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createLike, deleteLike } from "../../actions/like_actions";
 import { openModal } from "../../actions/modal_actions";
-import CommentField from "../comment/comment_field";
+import CommentField from "../comment/commentField";
 
 
 const mapStateToProps = (state) => {
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (likeId) => dispatch(deleteLike(likeId)),
+    openModal: () => dispatch(openModal('likes'))
   }
 }
 
@@ -84,14 +85,14 @@ class LikeAndCommentButton extends React.Component{
     return (
       <div className="like-box">
         {this.state.count !== 0 ? 
-          <div className="liked-by">
+          <div className="liked-by" onClick={this.props.openModal}>
             {this.state.count} people like this.
           </div>
           :
           <></>
         }
         <div className="button-section">
-          <button className="like-button" onClick={() => this.toggleLike()}>{this.state.likedByUser ? "Unlike" : "Like"}</button>
+          <button className="like-button">{this.state.likedByUser ? "Unlike" : "Like"}</button>
           <button className="comment-button">Comment</button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getAllPosts } from '../../actions/post_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { selectAllPosts } from '../../reducers/selectors/posts_selector';
-import PostIndex from './post_index';
+import PostIndex from './postIndex';
 
 
 const mapStateToProps = state => ({

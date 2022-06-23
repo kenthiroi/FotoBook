@@ -1,5 +1,5 @@
 import React from 'react';
-import PostItem from './post_index_item';
+import PostItem from './postIndexItem';
 
 class PostIndex extends React.Component{
 

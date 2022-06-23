@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { deleteComment, editComment } from '../../actions/comment_actions';
 import { getPost } from "../../actions/post_actions";
-import CommentField from './comment_field';
+import CommentField from './commentField';
 import UserInfoHover from '../user/userInfoHover';
 
 const mSTP = state => {

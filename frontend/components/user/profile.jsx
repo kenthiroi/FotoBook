@@ -4,6 +4,7 @@ import { withRouter, useParams } from "react-router-dom";
 import FriendRequestButton from '../friends/friendRequestButton';
 import { fetchUser } from '../../actions/user_actions';
 import UserProfileWall from './profileWall';
+import UserProfileAbout from './profileAbout';
 
 const mSTP = (state, ownProps) => ({
   sessionId: state.session.id,
@@ -68,7 +69,7 @@ class UserProfile extends React.Component{
               <UserProfileWall userId={this.props.profileId}/> : <></>
             }
             { (this.state.displayedInfo === 'about') ?
-              <UserProfileWall userId={this.props.profileId}/> : <></>
+              <UserProfileAbout userId={this.props.profileId}/> : <></>
             }
             { (this.state.displayedInfo === 'friends') ?
               <UserProfileWall userId={this.props.profileId}/> : <></>

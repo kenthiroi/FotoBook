@@ -8,9 +8,9 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
-import LoginPageContainer from './login/login_page_container';
+import LoginPageContainer from './login/loginPageContainer';
 import Modal from './modal/modal';
-import NewsfeedContainer from './newsfeed/newsfeed_container';
+import NewsfeedContainer from './newsfeed/newsfeedContainer';
 import HeaderNav from './header/header'
 import UserProfile from './user/profile';
 

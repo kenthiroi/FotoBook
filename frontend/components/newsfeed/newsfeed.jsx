@@ -1,5 +1,5 @@
 import React from "react";
-import PostIndexContainer from "../posts/post_index_container";
+import PostIndexContainer from "../posts/postIndexContainer";
 
 class Newsfeed extends React.Component {
   render(){
