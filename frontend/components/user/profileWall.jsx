@@ -47,6 +47,7 @@ class UserProfileWall extends React.Component{
   }
   
   render(){
+    console.log('wall rendering');
     return (
       <div className="user-posts">
         {!this.state.posts ? 
