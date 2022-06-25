@@ -46,35 +46,43 @@ class UserProfile extends React.Component{
   }
   
   render(){
-    
+    let profileContent; 
+
+    switch (this.state.displayedInfo){
+      case 'posts':
+        profileContent = <UserProfileWall userId={this.props.profileId}/>;
+        break;
+      case 'about':
+        profileContent = <UserProfileAbout userId={this.props.profileId}/>;
+        break;
+      case 'friends':
+        profileContent = <div></div>;
+        break;
+      default:
+        profileContent = <div></div>;
+        break;
+    }
+
     return (
       <div className="profile-container">
       {(!!this.props.userInfo) ?
         <div>
-          <div className='profile-tabs'>
-            <div id='posts-tab' onClick={() => this.handleSwitch('posts')}>Posts</div>
-            <div id='about-tab' onClick={() => this.handleSwitch('about')}>About</div>
-            <div id='friends-tab' onClick={() => this.handleSwitch('friends')}>Friends</div>
-          </div>
           <div className='profile-main'> 
             <UserProfilePicture/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
             {(this.props.sessionId !== this.props.profileId) ? 
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}
+            <div className='profile-tabs'>
+              <div className={(this.state.displayedInfo === 'posts') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('posts')}>Posts</div>
+              <div className={(this.state.displayedInfo === 'about') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('about')}>About</div>
+              <div className={(this.state.displayedInfo === 'friends') ? 'active-profile-tab' : 'profile-tab'}  onClick={() => this.handleSwitch('friends')}>Friends</div>
+            </div>
           </div>
           <div className='profile-intro'>
             <div className='profile-description'></div>
-            { (this.state.displayedInfo === 'posts') ?
-              <UserProfileWall userId={this.props.profileId}/> : <></>
-            }
-            { (this.state.displayedInfo === 'about') ?
-              <UserProfileAbout userId={this.props.profileId}/> : <></>
-            }
-            { (this.state.displayedInfo === 'friends') ?
-              <UserProfileWall userId={this.props.profileId}/> : <></>
-            }
           </div>
           <div>
+            {profileContent}
           </div>
         </div> : <></> }
           

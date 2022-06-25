@@ -1,3 +1,31 @@
+.profile-tabs{
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-tabs div{
+  width: 60px;
+  font-size: 15px;
+  padding: 15px 8px;
+  margin: 0 2px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.profile-tab{
+  border-radius: 3px;
+}
+
+.profile-tab:hover{
+  background-color: gray;
+  transition: 200ms;
+}
+
+.active-profile-tab{
+  color: #3578E5;
+  border-bottom: 3px solid #1877F2;
+}
+
 #profile-picture img{
   height: 168px;
   border-radius: 100%;
