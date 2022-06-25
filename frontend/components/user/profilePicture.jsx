@@ -10,7 +10,7 @@ function UserProfilePicture(props){
   if (!props.userImg) {
     return (
       <div id='profile-picture'>
-        <img src="./assets/default.png"/>
+        <img src="https://i.imgur.com/7x6fTDK.png"/>
       </div>
     )
   } else {

@@ -5,6 +5,7 @@ import FriendRequestButton from '../friends/friendRequestButton';
 import { fetchUser } from '../../actions/user_actions';
 import UserProfileWall from './profileWall';
 import UserProfileAbout from './profileAbout';
+import UserProfilePicture from './profilePicture';
 
 const mSTP = (state, ownProps) => ({
   sessionId: state.session.id,
@@ -56,9 +57,7 @@ class UserProfile extends React.Component{
             <div id='friends-tab' onClick={() => this.handleSwitch('friends')}>Friends</div>
           </div>
           <div className='profile-main'> 
-            <div className='profile-picture'>
-              {/* <img src=`${}` alt="" /> */}
-            </div>
+            <UserProfilePicture/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
             {(this.props.sessionId !== this.props.profileId) ? 
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}
