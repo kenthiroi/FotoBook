@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 const mSTP = (state) => {
   return {
     sessionId: state.session.id,
+    profilePicture: state.entities.user[state.session.id]
   }
 }
 
@@ -39,7 +40,11 @@ class SettingsDropdown extends React.Component{
     return (
       <div>
         <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown} className="util-btn">
-          <div className="dropdown">&#8964;</div>
+          {!!this.props.profilePicture ? 
+            <img id="header-profile-pic" src="https://i.imgur.com/7x6fTDK.png"/>
+            :
+            <img id="header-profile-pic" src={this.props.profilePicture}/>
+          }
         </button>
         {this.state.openDropdown ? 
         <div className="util-container">
