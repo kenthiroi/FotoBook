@@ -40,12 +40,17 @@ header {
   transition: 200ms;
 }
 
+.main-util-btn:hover{
+  filter: contrast(80%);
+  transition: 200ms;
+}
+
 .main-util-btn:active{
   filter: contrast(50%);
   transition: 200ms;
 }
 
-.main-util-btn img, #header-profile-shadow{
+.main-util-btn img{
   border-radius: 100%;
   height: inherit;
 }
@@ -69,11 +74,13 @@ header {
   height: 40px;
   width: 40px;
   border: none;
+  transition: 200ms;
 }
 
 .util-btn:hover{
   cursor: pointer;
   background-color: #d2d5dd; 
+  transition: 200ms;
 }
 
 #active-nav-button{
@@ -93,6 +100,10 @@ header {
 #header-right {
   display: flex;
   flex-direction: row;
+}
+
+#header-right > div{
+  margin: 0 4px;
 }
 
 #icon-font{

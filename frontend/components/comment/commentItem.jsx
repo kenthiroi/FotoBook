@@ -89,7 +89,7 @@ class CommentItem extends React.Component{
           <UserInfoHover userId={this.props.comment.author_id}/>
           <div className='comment-body'>{this.props.comment.body}</div>
           {this.props.comment.author_id === this.props.sessionId ?
-            <div className="comment-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
+            <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
             :
             <></>
           }

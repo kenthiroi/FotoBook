@@ -26,6 +26,7 @@ const mDTP = dispatch => ({
 class PostItem extends React.Component {
   constructor(props){
     super(props);
+
     this.state = {
       editDropdown: false,
     }
@@ -66,14 +67,14 @@ class PostItem extends React.Component {
     return(
       <div className="post-item-box">
         {this.props.post.user_id === this.props.user_id ?
-          <div className="posts-option" onClick={this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
+          <button className="posts-option" onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>&hellip;</button>
           :
           <></>
         }   
         {this.state.editDropdown ? 
         <div className="edit-container">
-          <div onClick={() => this.props.openModal(this.props.post)}>Edit Post</div>
-          <div onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</div>
+          <button onMouseDown={() => this.props.openModal(this.props.post)}>Edit Post</button>
+          <button onMouseDown={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
         </div> : <></>}
         {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
         <UserInfoHover userId={this.props.post.user_id}/>

@@ -39,7 +39,7 @@ class CreatePostDropdown extends React.Component{
   render(){
     return (
       <div>
-        <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={() => this.closeDropdown()} className="util-btn">
+        <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown} className="util-btn">
           <div className="dropdown">&#43;</div>
         </button>
         { this.state.openDropdown ? 

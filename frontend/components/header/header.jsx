@@ -83,7 +83,6 @@ class HeaderNav extends React.Component {
       <div id="header-right">
         <ProfileButton/>
         <CreatePostDropdown/>
-        <FriendRequestDropdown/>
         <NotificationDropdown/>
         <SettingsDropdown logout={this.props.logout}/>
       </div>

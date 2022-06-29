@@ -68,7 +68,7 @@ class UserProfile extends React.Component{
       {(!!this.props.userInfo) ?
         <div>
           <div className='profile-main'> 
-            <UserProfilePicture/>
+            <UserProfilePicture profileId={this.props.profileId}/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
             {(this.props.sessionId !== this.props.profileId) ? 
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}
