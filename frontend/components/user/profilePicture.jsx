@@ -58,13 +58,13 @@ class UserProfilePicture extends React.Component{
     
     if (!!this.props.userImg) {
       profilePicture = (<img src={this.props.userImg}/>);
-      editDropdown = (<div className="comment-edit-container">
+      editDropdown = (<div className="propic-edit-container">
                         <div onClick={this.props.openProfilePicModal}>View Profile Picture</div>
                         <div onClick={this.openEditPicModal}>Update Profile Picture</div>
                       </div>)
     } else {
       profilePicture = (<img src="https://i.imgur.com/7x6fTDK.png"/>)
-      editDropdown = (<div className="comment-edit-container">
+      editDropdown = (<div className="propic-edit-container">
                         <div onClick={this.openEditPicModal}>Update Profile Picture</div>
                       </div>)
     }

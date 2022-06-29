@@ -38,34 +38,32 @@ class UserProfileBanner extends React.Component{
     let bannerPhoto;
     let editDropdown;
 
-    if (this.props.sessionId === parseInt(this.props.profileId)){
-      editButton = (<button onClick={this.openEditPicModal}>{!!this.props.bannerImg ? 'Edit Cover Photo' : 'Add Cover Photo'}</button>)
-      onClickEvent = this.openDropdown;
-    } else if(!this.props.bannerImg) {
+    if (this.props.sessionId === parseInt(this.props.profileId)) {
+      editButton = (<button className="banner-edit-button" onClick={this.state.displayDropdown ? this.closeDropdown : this.openDropdown}>{!!this.props.bannerImg ? 'Edit Cover Photo' : 'Add Cover Photo'}</button>)
+    } else if (!this.props.bannerImg) {
       onClickEvent = null;
-    } else { 
+    } else {
       onClickEvent = this.props.openModal;
-    } 
+    }
     
     if (!!this.props.bannerImg) {
-      bannerPhoto = (<img src={this.props.bannerImg}/>);
-      editDropdown = (<div className="comment-edit-container">
+      bannerPhoto = (<img className="profile-banner" src={this.props.bannerImg}/>);
+      editDropdown = (<div className="banner-edit">
                         <div onClick={this.props.openModal}>Upload Photo</div>
-                        <div onClick={this.delete}>Remove</div>
+                        <div onClick={() => this.deleteUserBanner(this.props.sessionId)}>Remove</div>
                       </div>)
     } else {
       bannerPhoto = (<div className="empty-profile-banner"/>)
-      editDropdown = (<div className="comment-edit-container">
+      editDropdown = (<div className="banner-edit">
                         <div onClick={this.props.openModal}>Upload Photo</div>
                       </div>)
     }
 
     return (
-      <div id='profile-picture' onClick={onClickEvent}>
+      <div id='profile-banner-container' onClick={onClickEvent}>
         {bannerPhoto}
         {editButton}
-        {this.state.displayDropdown ? 
-          editDropdown : <></>}
+        {this.state.displayDropdown ? editDropdown : <></>}
       </div>
     )
   }

@@ -32,6 +32,14 @@ export const signup = user => dispatch => (
   ))
 );
 
+export const updateUser = user => dispatch => (
+  UserAPIUtil.updateUser(user).then(user => (
+    dispatch(receiveUserInfo(user))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
+
 export const fetchUser = userId => dispatch => (
   UserAPIUtil.getUser(userId).then(user => (
     dispatch(receiveUserInfo(user))
