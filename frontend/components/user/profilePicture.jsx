@@ -38,7 +38,7 @@ class UserProfilePicture extends React.Component{
   };
   
   closeDropdown(){
-    this.setState({editDropdown: false});
+    this.setState({displayDropdown: false});
   }
 
   render(){
@@ -47,7 +47,7 @@ class UserProfilePicture extends React.Component{
     let profilePicture;
     let editDropdown;
 
-    if (this.props.sessionId === this.props.profileId){
+    if (this.props.sessionId === parseInt(this.props.profileId)){
       editButton = (<button onClick={this.openEditPicModal}></button>)
       onClickEvent = this.openDropdown;
     } else if(!this.props.userImg) {
@@ -60,12 +60,12 @@ class UserProfilePicture extends React.Component{
       profilePicture = (<img src={this.props.userImg}/>);
       editDropdown = (<div className="comment-edit-container">
                         <div onClick={this.props.openProfilePicModal}>View Profile Picture</div>
-                        <div onClick={this.open}>Update Profile Picture</div>
+                        <div onClick={this.openEditPicModal}>Update Profile Picture</div>
                       </div>)
     } else {
       profilePicture = (<img src="https://i.imgur.com/7x6fTDK.png"/>)
       editDropdown = (<div className="comment-edit-container">
-                        <div onClick={this.open}>Update Profile Picture</div>
+                        <div onClick={this.openEditPicModal}>Update Profile Picture</div>
                       </div>)
     }
 
@@ -74,7 +74,7 @@ class UserProfilePicture extends React.Component{
         {profilePicture}
         {editButton}
         {this.state.displayDropdown ? 
-          {editDropdown} : <></>}
+          editDropdown : <></>}
       </div>
     )
   }
