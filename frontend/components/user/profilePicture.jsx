@@ -7,8 +7,8 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  openProfilePicModal: () => dispatch(openModal('picture')),
-  openEditPicModal: () => dispatch(openModal('editProfilePic')),
+  openProfilePicModal: () => dispatch(openModal({type: 'showPhoto'})),
+  openEditPicModal: (userId) => dispatch(openModal({type: 'editProfilePic'}, userId)),
 })
 
 class UserProfilePicture extends React.Component{
@@ -48,7 +48,7 @@ class UserProfilePicture extends React.Component{
     let editDropdown;
 
     if (this.props.sessionId === parseInt(this.props.profileId)){
-      editButton = (<button onClick={this.openEditPicModal}></button>)
+      editButton = (<button onClick={() => this.props.openEditPicModal(this.props.userId)}></button>)
       onClickEvent = this.openDropdown;
     } else if(!this.props.userImg) {
       onClickEvent = null;
@@ -60,12 +60,12 @@ class UserProfilePicture extends React.Component{
       profilePicture = (<img src={this.props.userImg}/>);
       editDropdown = (<div className="propic-edit-container">
                         <div onClick={this.props.openProfilePicModal}>View Profile Picture</div>
-                        <div onClick={this.openEditPicModal}>Update Profile Picture</div>
+                        <div onClick={() => this.props.openEditPicModal(this.props.userId)}>Update Profile Picture</div>
                       </div>)
     } else {
       profilePicture = (<img src="https://i.imgur.com/7x6fTDK.png"/>)
       editDropdown = (<div className="propic-edit-container">
-                        <div onClick={this.openEditPicModal}>Update Profile Picture</div>
+                        <div onClick={() => this.props.openEditPicModal(this.props.userId)}>Update Profile Picture</div>
                       </div>)
     }
 

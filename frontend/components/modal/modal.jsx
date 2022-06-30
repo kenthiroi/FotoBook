@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SignupFormContainer from './signupModalContainer';
+import ProfilePicModal from './profilePicModal';
 import PostModal from './postModal';
 
 function Modal({modal, closeModal}) {
@@ -18,6 +19,11 @@ function Modal({modal, closeModal}) {
       break;
     case 'editPost':
       component = <PostModal type="edit" post={modal.post}/>;
+      break;
+    case 'showPhoto':
+      break;
+    case 'editProfilePic':
+      component = <ProfilePicModal />
       break;
     default:
       return null;

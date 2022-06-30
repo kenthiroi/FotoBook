@@ -16,7 +16,7 @@ const mDTP = (dispatch) => {
   return {
     closeModal: () => dispatch(closeModal()),
     uploadPost: (post) => dispatch(createPost(post)),
-    updatePhoto: (user) => dispatch(updateUser(user)),
+    updateUserPhoto: (user) => dispatch(updateUser(user)),
   }
 }
 
@@ -24,20 +24,12 @@ class ProfilePictureModal extends React.Component {
   constructor(props){
     super(props)
 
-    if (!this.props.post) {
-      this.state = {
-        body: "",
-        userId: this.props.userId,
-        photoFile: undefined,
-      }
-    } else {
-      this.state = {
-        postId: this.props.post.id,
-        body: this.props.post.body,
-        userId: this.props.userId,
-        photoFile: this.props.post.photoFile,
-      }
+    this.state = {
+      body: "",
+      userId: this.props.userId,
+      photoFile: undefined,
     }
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
   }
@@ -63,7 +55,7 @@ class ProfilePictureModal extends React.Component {
       userFormData.append('user[id]', this.props.userId);
       userFormData.append('user[profile_picture]', res.id);
   
-      this.props.updateUser(userFormData);
+      this.props.updateUserPhoto(userFormData);
       this.props.closeModal();
     })
 
@@ -78,7 +70,7 @@ class ProfilePictureModal extends React.Component {
   render(){
     return <div className="profile-modal">
       <div className="modal-title">Update profile picture</div>
-      <form >
+      <form>
         <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
         <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
         <input type="file" onChange={this.handleFile}/>
