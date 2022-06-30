@@ -31,7 +31,9 @@ class UserProfile extends React.Component{
   }
 
   componentDidMount(){
-    this.props.fetchUserInfo(this.props.profileId);
+    this.props.fetchUserInfo(this.props.profileId).then(res => {
+      console.log(res);
+    })
   }
 
   componentDidUpdate(prevProps){

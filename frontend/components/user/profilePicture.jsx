@@ -2,9 +2,12 @@ import React from 'react';
 import { openModal } from "../../actions/modal_actions"
 import { connect } from 'react-redux';
 
-const mSTP = state => ({
-  sessionId: state.session.id,
-})
+const mSTP = (state, ownProps) => {
+  return {
+    sessionId: state.session.id,
+    userImg: state.entities.posts[parseInt(state.entities.user[ownProps.profileId].profile_picture)].photoUrl
+  }
+}
 
 const mDTP = dispatch => ({
   openProfilePicModal: () => dispatch(openModal({type: 'showPhoto'})),
@@ -42,6 +45,8 @@ class UserProfilePicture extends React.Component{
   }
 
   render(){
+    console.log(this.props.test);
+
     let editButton;
     let onClickEvent;
     let profilePicture;

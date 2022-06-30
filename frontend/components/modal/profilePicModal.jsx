@@ -50,15 +50,14 @@ class ProfilePictureModal extends React.Component {
     
     // How do i get the post ID after I upload?
     this.props.uploadPost(postFormData).then(res => {
+      console.log(res.post);
       const userFormData = new FormData();
-  
-      userFormData.append('user[id]', this.props.userId);
-      userFormData.append('user[profile_picture]', res.id);
+      userFormData.append('user[id]', res.post.user_id);
+      userFormData.append('user[profile_picture]', parseInt(res.post.id));
   
       this.props.updateUserPhoto(userFormData);
       this.props.closeModal();
     })
-
   }
 
   updateState(type){
@@ -72,7 +71,7 @@ class ProfilePictureModal extends React.Component {
       <div className="modal-title">Update profile picture</div>
       <form>
         <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
-        <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
+        <input type="submit" value={'Upload Photo'} onClick={this.handleSubmit}/>
         <input type="file" onChange={this.handleFile}/>
       </form>
     </div>
