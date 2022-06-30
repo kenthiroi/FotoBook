@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_30_151643) do
+ActiveRecord::Schema.define(version: 2022_06_30_192029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 2022_06_30_151643) do
     t.string "school"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "profile_picture"
-    t.string "profile_banner"
+    t.integer "profile_picture"
+    t.integer "profile_banner"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end

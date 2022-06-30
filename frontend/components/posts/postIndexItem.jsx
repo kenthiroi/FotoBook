@@ -77,7 +77,7 @@ class PostItem extends React.Component {
           <button onMouseDown={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
         </div> : <></>}
         {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
-        <UserInfoHover userId={this.props.post.user_id}/>
+        <UserInfoHover userId={this.props.post.user_id} post={this.props.post}/>
         <div className="posts-body">{this.props.post.body}</div>
         {photoContainer}
         <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}/>

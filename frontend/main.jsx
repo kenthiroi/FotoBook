@@ -9,7 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.currentUser) {
     const preloadedState = {
       entities: {
-        user: { [window.currentUser.id]: window.currentUser }
+        user: { [window.currentUser.id]: {
+          ...window.currentUser, 
+          hometown: window.currentUser.hometown === "" ? null : window.currentUser.hometown,
+          profile_banner: window.currentUser.profile_banner === "" ? null : parseInt(window.currentUser.profile_banner),
+          profile_picture: window.currentUser.profile_picture === "" ? null : parseInt(window.currentUser.profile_picture),
+          school: window.currentUser.school === "" ? null : window.currentUser.school,
+        }}
       },
       session: { id: window.currentUser.id }
     };
