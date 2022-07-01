@@ -21,6 +21,10 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
+      @photo_post = Post.find_by(id: @user.profile_picture)
+      if @photo_post
+        @photoUrl = @photo_post.photo
+      end
       render :show
     else
       render json: @user.errors.full_messages, status: 422

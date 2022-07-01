@@ -17,6 +17,12 @@ class Api::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      # if post_params[:profile_pic_update]
+      #   @user = User.find(@post.user_id)
+      #   puts @user.posts
+      #   @user.post_with_profile_picture = @post
+      #   puts @user.post_with_profile_picture.photoUrl
+      # end
       render :show
     else
       render json: @post.errors.full_messages, status: 400
