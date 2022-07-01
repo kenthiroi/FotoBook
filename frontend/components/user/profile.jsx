@@ -8,11 +8,21 @@ import UserProfileAbout from './profileAbout';
 import UserProfilePicture from './profilePicture';
 import { getPost } from '../../actions/post_actions';
 
-const mSTP = (state, ownProps) => ({
-  sessionId: state.session.id,
-  profileId: ownProps.match.params.userId,
-  userInfo: state.entities.user[ownProps.match.params.userId]
-})
+const mSTP = (state, ownProps) => {
+  let userInfo = state.entities.user[ownProps.match.params.userId];
+  let userImg;
+  try {
+    userImg = state.entities.posts[userInfo.profile_picture].photoUrl;
+  } catch (e) {
+    userImg = 'https://i.imgur.com/7x6fTDK.png';
+  }
+  return {
+    sessionId: state.session.id,
+    profileId: ownProps.match.params.userId,
+    userInfo: userInfo,
+    userImg: userImg,
+  }
+}
 
 const mDTP = dispatch => ({
   fetchUserInfo: (userId) => dispatch(fetchUser(userId)),
@@ -79,7 +89,7 @@ class UserProfile extends React.Component{
       {(!!this.props.userInfo) ?
         <div>
           <div className='profile-main'> 
-            <UserProfilePicture profileId={this.props.profileId} userInfo={this.props.userInfo}/>
+            <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg}/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
             {(this.props.sessionId !== this.props.profileId) ? 
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}

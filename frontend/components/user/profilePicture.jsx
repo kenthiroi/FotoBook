@@ -6,7 +6,6 @@ import { getPost } from '../../actions/post_actions';
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    // userImg: state.entities.posts[ownProps.userInfo.profile_picture].photoUrl
   }
 }
 
@@ -18,7 +17,6 @@ const mDTP = dispatch => ({
 })
 
 class UserProfilePicture extends React.Component{
-
   constructor(props){
     super(props)
 
@@ -32,7 +30,7 @@ class UserProfilePicture extends React.Component{
   }
 
   componentDidMount(){
-    this.props.getPost(this.props.userInfo.profile_picture);
+    this.props.getPost(this.props.userImg);
   }
     
   openDropdown(){
