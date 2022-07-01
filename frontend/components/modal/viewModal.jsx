@@ -27,4 +27,4 @@ class ViewModal extends React.Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewModal)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewModal);

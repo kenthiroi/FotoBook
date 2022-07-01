@@ -44,7 +44,9 @@ class UserProfile extends React.Component{
 
   componentDidMount(){
     this.props.fetchUserInfo(this.props.profileId).then(res => {
-      this.props.getPost(res.user.profile_picture);
+      if (!!res.user.profile_picture){
+        this.props.getPost(res.user.profile_picture);
+      }
     })
   }
 

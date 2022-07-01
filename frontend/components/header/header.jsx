@@ -8,17 +8,28 @@ import CreatePostDropdown from "./createPostDropdown";
 import SettingsDropdown from "./settingsDropdown";
 import ProfileButton from "./profileButton";
 import NotificationDropdown from "./notificationDropdown";
+import { getPost } from '../../actions/post_actions';
+
 
 const mapStateToProps = (state, ownProps) => {
+  let userImg;
+  try {
+    userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture].photoUrl;
+  } catch (e) {
+    userImg = 'https://i.imgur.com/7x6fTDK.png';
+  }
   return {
     sessionId: state.session.id,
     user: state.entities.user[state.session.id],
+    profileImgId: state.entities.user[state.session.id].profile_picture,
+    userImg: userImg,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
+    getPost: (postId) => dispatch(getPost(postId)),
   }
 }
 
@@ -36,6 +47,12 @@ class HeaderNav extends React.Component {
 
     this.handleOpenDropdown = this.handleOpenDropdown.bind(this);
     this.handleCloseDropdown = this.handleCloseDropdown.bind(this);
+  }
+
+  componentDidMount(){
+    if (!this.props.userImg){
+      this.props.getPost(this.props.profileImgId);
+    }
   }
 
   handleOpenDropdown(type){
@@ -84,7 +101,7 @@ class HeaderNav extends React.Component {
         <ProfileButton/>
         <CreatePostDropdown/>
         <NotificationDropdown/>
-        <SettingsDropdown logout={this.props.logout}/>
+        <SettingsDropdown logout={this.props.logout} profilePicture={this.props.userImg}/>
       </div>
     </div>
   }
