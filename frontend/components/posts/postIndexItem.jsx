@@ -16,11 +16,15 @@ const mSTP = state => {
 const mDTP = dispatch => ({
   fetchAllPosts: () => dispatch(getAllPosts()),
   deletePost: (postId) => dispatch(deletePost(postId)),
-  openModal: (post) => dispatch(openModal({
+  openEditModal: (post) => dispatch(openModal({
     type: 'editPost', 
     post
-  }
-  )),
+  })),
+  openViewModal: (post) => dispatch(openModal({
+    type: 'showPhoto',
+    post
+  }))
+
 })
 
 class PostItem extends React.Component {
@@ -60,7 +64,7 @@ class PostItem extends React.Component {
     let photoContainer;
     if (this.props.post.photoUrl) {
       photoContainer = <div className="posts-photo">
-          <img src={this.props.post.photoUrl}/>
+          <img onClick={() => this.props.openViewModal(this.props.post)} src={this.props.post.photoUrl}/>
         </div>;
     }
     
@@ -73,7 +77,7 @@ class PostItem extends React.Component {
         }   
         {this.state.editDropdown ? 
         <div className="edit-container">
-          <button onMouseDown={() => this.props.openModal(this.props.post)}>Edit Post</button>
+          <button onMouseDown={() => this.props.openEditModal(this.props.post)}>Edit Post</button>
           <button onMouseDown={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
         </div> : <></>}
         {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}

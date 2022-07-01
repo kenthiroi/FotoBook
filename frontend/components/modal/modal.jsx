@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SignupFormContainer from './signupModalContainer';
 import ProfilePicModal from './profilePicModal';
 import PostModal from './postModal';
+import ViewModal from './viewModal';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -21,6 +22,7 @@ function Modal({modal, closeModal}) {
       component = <PostModal type="edit" post={modal.post}/>;
       break;
     case 'showPhoto':
+      component = <ViewModal postId={modal.post.id}/>;
       break;
     case 'editProfilePic':
       component = <ProfilePicModal />
