@@ -6,6 +6,7 @@ import { fetchUser } from '../../actions/user_actions';
 import UserProfileWall from './profileWall';
 import UserProfileAbout from './profileAbout';
 import UserProfilePicture from './profilePicture';
+import { getPost } from '../../actions/post_actions';
 
 const mSTP = (state, ownProps) => ({
   sessionId: state.session.id,
@@ -14,7 +15,8 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = dispatch => ({
-  fetchUserInfo: (userId) => dispatch(fetchUser(userId))
+  fetchUserInfo: (userId) => dispatch(fetchUser(userId)),
+  getPost: (postId) => dispatch(getPost(postId)),
 })
 
 
@@ -32,7 +34,7 @@ class UserProfile extends React.Component{
 
   componentDidMount(){
     this.props.fetchUserInfo(this.props.profileId).then(res => {
-      console.log(res);
+      this.props.getPost(res.user.profile_picture);
     })
   }
 
@@ -42,6 +44,10 @@ class UserProfile extends React.Component{
       this.props.fetchUserInfo(this.props.profileId)
     }
   }
+
+  componentWillUnmount(){
+    console.log('unmount');
+  }
   
   handleSwitch(tabName){
     this.setState({displayedInfo: tabName})
@@ -49,6 +55,9 @@ class UserProfile extends React.Component{
   
   render(){
     let profileContent; 
+
+    console.log('mounted');
+    // console.log(this.props.userInfo);
 
     switch (this.state.displayedInfo){
       case 'posts':
@@ -70,7 +79,7 @@ class UserProfile extends React.Component{
       {(!!this.props.userInfo) ?
         <div>
           <div className='profile-main'> 
-            <UserProfilePicture profileId={this.props.profileId}/>
+            <UserProfilePicture profileId={this.props.profileId} userInfo={this.props.userInfo}/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
             {(this.props.sessionId !== this.props.profileId) ? 
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}

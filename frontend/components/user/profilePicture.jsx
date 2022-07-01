@@ -1,11 +1,12 @@
 import React from 'react';
 import { openModal } from "../../actions/modal_actions"
 import { connect } from 'react-redux';
+import { getPost } from '../../actions/post_actions';
 
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    userImg: state.entities.posts[state.entities.user[ownProps.profileId].profile_picture].photoUrl
+    // userImg: state.entities.posts[ownProps.userInfo.profile_picture].photoUrl
   }
 }
 
@@ -13,6 +14,7 @@ const mDTP = dispatch => ({
   openProfilePicModal: () => dispatch(openModal({type: 'showPhoto'})),
   openEditPicModal: (userId) => dispatch(openModal({type: 'editProfilePic'}, userId)),
   updateUserPhoto: (user) => dispatch(updateUser(user)),
+  getPost: (postId) => dispatch(getPost(postId)),
 })
 
 class UserProfilePicture extends React.Component{
@@ -29,6 +31,9 @@ class UserProfilePicture extends React.Component{
     this.unlinkProfilePhoto = this.unlinkProfilePhoto.bind(this);
   }
 
+  componentDidMount(){
+    this.props.getPost(this.props.userInfo.profile_picture);
+  }
     
   openDropdown(){
     if (!this.state.displayDropdown) {
