@@ -39,7 +39,7 @@ class SettingsDropdown extends React.Component{
     return (
       <div>
         <button onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown} className="main-util-btn">
-          <img id="header-profile-pic" src={this.props.profilePicture}/>
+          <img src={this.props.profilePicture}/>
         </button>
         {this.state.openDropdown ? 
         <div className="util-container">

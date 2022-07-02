@@ -9,20 +9,24 @@ import SettingsDropdown from "./settingsDropdown";
 import ProfileButton from "./profileButton";
 import NotificationDropdown from "./notificationDropdown";
 import { getPost } from '../../actions/post_actions';
+import { fetchUser } from "../../actions/user_actions";
 
 
 const mapStateToProps = (state, ownProps) => {
+  let user = state.entities.user[state.session.id];
   let userImg;
   try {
-    userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture].photoUrl;
+    // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
+    userImg = user.photoUrl,
+    console
   } catch (e) {
     userImg = 'https://i.imgur.com/7x6fTDK.png';
   }
   return {
     sessionId: state.session.id,
-    user: state.entities.user[state.session.id],
     profileImgId: state.entities.user[state.session.id].profile_picture,
-    userImg: userImg,
+    userImg,
+    user,
   }
 }
 
@@ -30,6 +34,7 @@ const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
     getPost: (postId) => dispatch(getPost(postId)),
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
   }
 }
 
@@ -51,7 +56,7 @@ class HeaderNav extends React.Component {
 
   componentDidMount(){
     if (!this.props.userImg){
-      this.props.getPost(this.props.profileImgId);
+      this.props.fetchUser(this.props.sessionId);
     }
   }
 

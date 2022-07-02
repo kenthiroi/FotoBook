@@ -32,11 +32,13 @@ header {
 }
 
 .main-util-btn{
+  position: relative;
   border-radius: 100%;
   height: 40px;
   width: 40px;
   border: none;
   padding: 0;
+  overflow: hidden;
   transition: 200ms;
 }
 
@@ -51,8 +53,9 @@ header {
 }
 
 .main-util-btn img{
-  border-radius: 100%;
-  height: inherit;
+  position: absolute;
+  height: 40px;
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
 .util-container{
