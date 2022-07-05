@@ -7,11 +7,15 @@ import { updateUser } from '../../actions/user_actions';
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
+    postId: state.entities.user[state.session.id].profile_picture
   }
 }
 
 const mDTP = dispatch => ({
-  openProfilePicModal: () => dispatch(openModal({type: 'showPhoto'})),
+  openViewModal: (post) => dispatch(openModal({
+    type: 'showPhoto',
+    post
+  })),
   openEditPicModal: (userId) => dispatch(openModal({type: 'editProfilePic'}, userId)),
   updateUserPhoto: (user) => dispatch(updateUser(user)),
   getPost: (postId) => dispatch(getPost(postId)),
@@ -57,9 +61,6 @@ class UserProfilePicture extends React.Component{
   }
 
   render(){
-    // debugger
-    console.log(this.props.test);
-
     let editButton;
     let onClickEvent;
     let profilePicture = (<img src={this.props.userImg}/>);
@@ -72,12 +73,14 @@ class UserProfilePicture extends React.Component{
     } else if(this.props.userImg === defaultImgUrl) {
       onClickEvent = null;
     } else { 
-      onClickEvent = this.props.openProfilePicModal;
+      onClickEvent = (() => this.props.openViewModal({id: this.props.postId}));
+      console.log(onClickEvent);
+      console.log(this.props.postId);
     } 
     
     if (this.props.userImg !== defaultImgUrl) {
       editDropdown = (<div className="propic-edit-container">
-                        <div onClick={this.props.openProfilePicModal}>View Profile Picture</div>
+                        <div onClick={() => this.props.openViewModal({id: this.props.postId})}>View Profile Picture</div>
                         <div onClick={() => this.props.openEditPicModal(this.props.userId)}>Update Profile Picture</div>
                         <div onClick={this.unlinkProfilePhoto}>Remove Profile Picture</div>
                       </div>)
