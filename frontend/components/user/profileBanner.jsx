@@ -5,12 +5,19 @@ import { openModal } from '../../actions/modal_actions';
 const mSTP = state => {
   return {
     sessionId: state.session.id,
+    postId: state.entities.user[state.session.id].profile_banner
   }
 }
 
 const mDTP = dispatch => {
   return {
-    openModal: () => dispatch(openModal('bannerPhoto'))
+    openViewModal: (post) => dispatch(openModal({
+      type: 'showPhoto',
+      post
+    })),
+    openPhotoModal: () => dispatch(openModal({
+      type: ''
+    }))
   }
 }
 
@@ -22,6 +29,9 @@ class UserProfileBanner extends React.Component{
     this.state = {
       displayDropdown: false,
     }
+
+    this.openDropdown = this.openDropdown.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
   openDropdown(){
@@ -43,13 +53,13 @@ class UserProfileBanner extends React.Component{
     } else if (!this.props.bannerImg) {
       onClickEvent = null;
     } else {
-      onClickEvent = this.props.openModal;
+      onClickEvent = (() => this.props.openModal({id: this.props.postId}));
     }
     
     if (!!this.props.bannerImg) {
       bannerPhoto = (<img className="profile-banner" src={this.props.bannerImg}/>);
       editDropdown = (<div className="banner-edit">
-                        <div onClick={this.props.openModal}>Upload Photo</div>
+                        <div onClick={() => this.props.openModal({id: this.props.postId})}>Upload Photo</div>
                         <div onClick={() => this.deleteUserBanner(this.props.sessionId)}>Remove</div>
                       </div>)
     } else {
@@ -69,4 +79,4 @@ class UserProfileBanner extends React.Component{
   }
 }
 
-export default connect(mSTP, null)(UserProfileBanner);
+export default connect(mSTP, mDTP)(UserProfileBanner);

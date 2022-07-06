@@ -6,21 +6,30 @@ import { fetchUser } from '../../actions/user_actions';
 import UserProfileWall from './profileWall';
 import UserProfileAbout from './profileAbout';
 import UserProfilePicture from './profilePicture';
+import UserProfileBanner from './profileBanner';
 import { getPost } from '../../actions/post_actions';
 
 const mSTP = (state, ownProps) => {
   let userInfo = state.entities.user[ownProps.match.params.userId];
   let userImg;
+  let bannerImg;
   try {
     userImg = state.entities.posts[userInfo.profile_picture].photoUrl;
   } catch (e) {
     userImg = 'https://i.imgur.com/7x6fTDK.png';
   }
+  try {
+    bannerImg = state.entities.posts[userInfo.profile_banner].photoUrl;
+  } catch (e) {
+    bannerImg = null;
+  }
+  
   return {
     sessionId: state.session.id,
     profileId: ownProps.match.params.userId,
-    userInfo: userInfo,
-    userImg: userImg,
+    userInfo,
+    userImg,
+    bannerImg,
   }
 }
 
@@ -47,13 +56,16 @@ class UserProfile extends React.Component{
       if (!!res.user.profile_picture){
         this.props.getPost(res.user.profile_picture);
       }
+      if (!!res.user.profile_banner){
+        this.props.getPost(res.user.profile_banner);
+      }
     })
   }
 
   componentDidUpdate(prevProps){
     if(this.props.match.params.userId !== prevProps.match.params.userId){
-      console.log('updated')
-      this.props.fetchUserInfo(this.props.profileId)
+      // console.log('updated');
+      this.props.fetchUserInfo(this.props.profileId);
     }
   }
 
@@ -91,6 +103,7 @@ class UserProfile extends React.Component{
       {(!!this.props.userInfo) ?
         <div>
           <div className='profile-main'> 
+            <UserProfileBanner profileId={this.props.profileId} bannerImg={this.props.bannerImg}/>
             <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg}/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
             {(this.props.sessionId !== this.props.profileId) ? 

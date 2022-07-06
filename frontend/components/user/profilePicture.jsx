@@ -74,8 +74,6 @@ class UserProfilePicture extends React.Component{
       onClickEvent = null;
     } else { 
       onClickEvent = (() => this.props.openViewModal({id: this.props.postId}));
-      console.log(onClickEvent);
-      console.log(this.props.postId);
     } 
     
     if (this.props.userImg !== defaultImgUrl) {
