@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
+import { updateUser } from '../../actions/user_actions';
+
 
 const mSTP = state => {
   return {
@@ -18,7 +20,8 @@ const mDTP = dispatch => {
     openBannerModal: (userId) => dispatch(openModal({
       type: 'editUserPic',
       mode: 'banner',
-    }, userId))
+    }, userId)),
+    updateUserPhoto: (user) => dispatch(updateUser(user)),
   }
 }
 
@@ -36,11 +39,19 @@ class UserProfileBanner extends React.Component{
   }
 
   openDropdown(){
-    this.setState({editDropdown: true});
+    this.setState({displayDropdown: true});
   };
 
   closeDropdown(){
-    this.setState({editDropdown: false});
+    this.setState({displayDropdown: false});
+  }
+
+  deleteUserBanner(){
+    const userFormData = new FormData();
+    userFormData.append('user[id]', this.props.sessionId);
+    userFormData.append('user[profile_banner]', null);
+
+    this.props.updateUserPhoto(userFormData);
   }
   
   render(){
@@ -51,29 +62,25 @@ class UserProfileBanner extends React.Component{
 
     if (this.props.sessionId === parseInt(this.props.profileId)) {
       editButton = (<button className="banner-edit-button" onClick={this.state.displayDropdown ? this.closeDropdown : this.openDropdown}>{!!this.props.bannerImg ? 'Edit Cover Photo' : 'Add Cover Photo'}</button>)
-    } else if (!this.props.bannerImg) {
-      onClickEvent = null;
-    } else {
-      onClickEvent = (() => this.props.openModal({id: this.props.postId}));
     }
     
     if (!!this.props.bannerImg) {
       bannerPhoto = (<div className='profile-banner'>
-                      <img src={this.props.bannerImg}/>
+                      <img onClick={() => this.props.openViewModal({id: this.props.postId})} src={this.props.bannerImg}/>
                     </div>)
       editDropdown = (<div className="banner-edit">
-                        <div onClick={() => this.props.openModal({id: this.props.postId})}>Upload Photo</div>
+                        <div onClick={() => this.props.openBannerModal(this.props.sessionId)}>Update Profile Banner</div>
                         <div onClick={() => this.deleteUserBanner(this.props.sessionId)}>Remove</div>
                       </div>)
     } else {
       bannerPhoto = (<div className="profile-banner empty-profile-banner"/>)
       editDropdown = (<div className="banner-edit">
-                        <div onClick={this.props.openModal}>Upload Photo</div>
+                        <div onClick={() => this.props.openBannerModal(this.props.sessionId)}>Upload Photo</div>
                       </div>)
     }
 
     return (
-      <div id='profile-banner-container' onClick={onClickEvent}>
+      <div id='profile-banner-container'>
         {bannerPhoto}
         {editButton}
         {this.state.displayDropdown ? editDropdown : <></>}
