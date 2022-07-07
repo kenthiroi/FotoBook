@@ -66,6 +66,7 @@ class UserProfilePicture extends React.Component{
   render(){
     let editButton;
     let onClickEvent;
+    let onBlurEvent;
     let profilePicture = (<img src={this.props.userImg}/>);
     let editDropdown;
     let defaultImgUrl = 'https://i.imgur.com/7x6fTDK.png';
@@ -73,8 +74,10 @@ class UserProfilePicture extends React.Component{
     if (this.props.sessionId === parseInt(this.props.profileId)){
       editButton = (<button onClick={() => this.props.openEditPicModal(this.props.userId)}></button>)
       onClickEvent = this.openDropdown;
+      onBlurEvent = this.closeDropdown;
     } else if(this.props.userImg === defaultImgUrl) {
       onClickEvent = null;
+      onBlurEvent = null;
     } else { 
       onClickEvent = (() => this.props.openViewModal({id: this.props.postId}));
     } 
@@ -92,7 +95,7 @@ class UserProfilePicture extends React.Component{
     }
 
     return (
-      <div id='profile-picture' onClick={onClickEvent}>
+      <div id='profile-picture' onClick={!!this.state.displayDropdown ? onBlurEvent : onClickEvent} onBlur={onBlurEvent}>
         {profilePicture}
         {editButton}
         {this.state.displayDropdown ? 

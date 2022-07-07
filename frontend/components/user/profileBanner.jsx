@@ -56,12 +56,11 @@ class UserProfileBanner extends React.Component{
   
   render(){
     let editButton;
-    let onClickEvent;
     let bannerPhoto;
     let editDropdown;
 
     if (this.props.sessionId === parseInt(this.props.profileId)) {
-      editButton = (<button className="banner-edit-button" onClick={this.state.displayDropdown ? this.closeDropdown : this.openDropdown}>{!!this.props.bannerImg ? 'Edit Cover Photo' : 'Add Cover Photo'}</button>)
+      editButton = (<button className="banner-edit-button" onClick={this.state.displayDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>{!!this.props.bannerImg ? 'Edit Cover Photo' : 'Add Cover Photo'}</button>)
     }
     
     if (!!this.props.bannerImg) {

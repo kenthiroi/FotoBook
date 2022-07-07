@@ -87,7 +87,7 @@ class ProfilePictureModal extends React.Component {
 
   render(){
     return <div className="profile-modal">
-      <div className="modal-title">Update profile picture</div>
+      <div className="modal-title">{this.props.mode === 'profile' ? 'Update profile picture' : 'Update cover photo'}</div>
       <form>
         <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
         <input type="submit" value={'Upload Photo'} onClick={this.handleSubmit}/>
