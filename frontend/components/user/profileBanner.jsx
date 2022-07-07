@@ -15,9 +15,10 @@ const mDTP = dispatch => {
       type: 'showPhoto',
       post
     })),
-    openPhotoModal: () => dispatch(openModal({
-      type: ''
-    }))
+    openBannerModal: (userId) => dispatch(openModal({
+      type: 'editUserPic',
+      mode: 'banner',
+    }, userId))
   }
 }
 
@@ -57,13 +58,15 @@ class UserProfileBanner extends React.Component{
     }
     
     if (!!this.props.bannerImg) {
-      bannerPhoto = (<img className="profile-banner" src={this.props.bannerImg}/>);
+      bannerPhoto = (<div className='profile-banner'>
+                      <img src={this.props.bannerImg}/>
+                    </div>)
       editDropdown = (<div className="banner-edit">
                         <div onClick={() => this.props.openModal({id: this.props.postId})}>Upload Photo</div>
                         <div onClick={() => this.deleteUserBanner(this.props.sessionId)}>Remove</div>
                       </div>)
     } else {
-      bannerPhoto = (<div className="empty-profile-banner"/>)
+      bannerPhoto = (<div className="profile-banner empty-profile-banner"/>)
       editDropdown = (<div className="banner-edit">
                         <div onClick={this.props.openModal}>Upload Photo</div>
                       </div>)

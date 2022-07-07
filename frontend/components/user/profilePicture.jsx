@@ -16,7 +16,10 @@ const mDTP = dispatch => ({
     type: 'showPhoto',
     post
   })),
-  openEditPicModal: (userId) => dispatch(openModal({type: 'editProfilePic'}, userId)),
+  openEditPicModal: (userId) => dispatch(openModal({
+    type: 'editUserPic',
+    mode: 'profile',
+  }, userId)),
   updateUserPhoto: (user) => dispatch(updateUser(user)),
   getPost: (postId) => dispatch(getPost(postId)),
 })

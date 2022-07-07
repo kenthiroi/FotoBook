@@ -46,18 +46,37 @@ class ProfilePictureModal extends React.Component {
     postFormData.append('post[body]', this.state.body);
     postFormData.append('post[user_id]', this.state.userId);
     postFormData.append('post[photo]', this.state.photoFile);
-    postFormData.append('post[profile_pic_update]', true);
+
+    switch (this.props.mode){
+      case 'profile':
+        postFormData.append('post[profile_pic_update]', true);
+        this.props.uploadPost(postFormData).then(res => {
+          const userFormData = new FormData();
+          userFormData.append('user[id]', res.post.user_id);
+          userFormData.append('user[profile_picture]', res.post.id);
+      
+          this.props.updateUserPhoto(userFormData);
+
+          this.props.closeModal();
+        })
+        break;
+      case 'banner':
+        postFormData.append('post[profile_banner_update]', true);
+        this.props.uploadPost(postFormData).then(res => {
+          const userFormData = new FormData();
+          userFormData.append('user[id]', res.post.user_id);
+          userFormData.append('user[profile_banner]', res.post.id);
+      
+          this.props.updateUserPhoto(userFormData);
+          
+          this.props.closeModal();
+        })
+        break;
+      default:
+        break;
+    }
     
     // How do i get the post ID after I upload?
-    this.props.uploadPost(postFormData).then(res => {
-      console.log(res.post);
-      const userFormData = new FormData();
-      userFormData.append('user[id]', res.post.user_id);
-      userFormData.append('user[profile_picture]', res.post.id);
-  
-      this.props.updateUserPhoto(userFormData);
-      this.props.closeModal();
-    })
   }
 
   updateState(type){

@@ -24,8 +24,8 @@ function Modal({modal, closeModal}) {
     case 'showPhoto':
       component = <ViewModal postId={modal.post.id}/>;
       break;
-    case 'editProfilePic':
-      component = <ProfilePicModal />
+    case 'editUserPic':
+      component = <ProfilePicModal mode={modal.mode}/>
       break;
     default:
       return null;
