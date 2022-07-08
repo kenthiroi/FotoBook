@@ -2,7 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SignupFormContainer from './signupModalContainer';
-import ProfilePicModal from './profilePicModal';
+import UserPicModal from './userPicModal';
 import PostModal from './postModal';
 import ViewModal from './viewModal';
 
@@ -25,7 +25,7 @@ function Modal({modal, closeModal}) {
       component = <ViewModal postId={modal.post.id}/>;
       break;
     case 'editUserPic':
-      component = <ProfilePicModal mode={modal.mode}/>
+      component = <UserPicModal mode={modal.mode}/>;
       break;
     default:
       return null;

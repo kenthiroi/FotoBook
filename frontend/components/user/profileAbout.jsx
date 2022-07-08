@@ -33,9 +33,6 @@ class UserProfileAbout extends React.Component{
       case 'contacts':
         aboutContents = <div></div>;
         break;
-      case 'details':
-        aboutContents = <div></div>;
-        break;
       default:
         aboutContents = <div></div>;
         break;
@@ -60,10 +57,6 @@ class UserProfileAbout extends React.Component{
             <div className={(this.state.displayedInfo === 'contacts') ? 'active-about-button' : 'about-button'} 
               onClick={() => this.handleSwitch('contacts')}>
               Contact and basic info
-            </div>
-            <div className={(this.state.displayedInfo === 'details') ? 'active-about-button' : 'about-button'} 
-              onClick={() => this.handleSwitch('details')}>
-              Details about you
             </div>
           </div>
           <div className='about-contents'>

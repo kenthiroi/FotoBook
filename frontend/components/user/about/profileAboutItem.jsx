@@ -2,13 +2,13 @@ import React from 'react';
 
 
 
-class AboutOverview extends React.Component{
+class AboutItem extends React.Component{
 
   constructor(props){
     super(props)
 
     this.state = {
-      
+
     }
   }
 
@@ -17,10 +17,10 @@ class AboutOverview extends React.Component{
 
     return (
       <div>
-        
+
       </div>
     )
   }
 }
 
-export default AboutOverview;
+export default AboutItem;
