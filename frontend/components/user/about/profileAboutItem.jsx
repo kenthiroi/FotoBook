@@ -8,7 +8,7 @@ class AboutItem extends React.Component{
     super(props)
 
     this.state = {
-
+      
     }
   }
 
@@ -17,7 +17,7 @@ class AboutItem extends React.Component{
 
     return (
       <div>
-
+        
       </div>
     )
   }
