@@ -36,13 +36,13 @@ class AddAboutItem extends React.Component{
           buttonType = 'a workplace';
         case 'relationship':
           buttonType = 'a relationship status';
-          inputForm = <RelationshipForm />;
+          inputForm = <RelationshipForm closeForm={this.closeForm}/>;
           break;
         default:
           inputForm = <AboutTextForm formType={this.props.formType} closeForm={this.closeForm}/>;
           console.log('default');
       }
-      
+
     return (
       <div>
         {this.state.displayForm ? 

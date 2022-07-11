@@ -33,12 +33,15 @@ class AboutTextForm extends React.Component {
     }
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     const formData = new FormData();
     formData.append('user[id]', this.state.userId);
     formData.append(`user[${this.props.formType}]`, this.state.body);
 
-    this.props.updateUserAbout(formData);
+    this.props.updateUserAbout(formData).then(() => {
+      this.props.closeForm();
+    });
   }
 
   render(){
@@ -51,5 +54,6 @@ class AboutTextForm extends React.Component {
       </div>
   }
 }
+
 
 export default connect(mSTP, mDTP)(AboutTextForm);
