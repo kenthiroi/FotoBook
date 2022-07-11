@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AboutTextForm from './forms/TextForm';
 
 
 class AddAboutItem extends React.Component{
@@ -22,29 +22,34 @@ class AddAboutItem extends React.Component{
   closeForm(){
     this.setState({displayForm: false});
   }
-
   
   render(){
     let buttonType;
-    let updateForm;
+    let inputForm;
 
-    switch(this.props.itemType){
-      case 'work':
-        break;
-      case 'school':
-        break;
-      case 'hometown':
-        break;
-      case 'relationship':
-        break;
-      default:
-        break;
-    }
-
-
+      switch (this.props.formType){
+        case 'hometown':
+          buttonType = 'hometown';
+        case 'school':
+          buttonType = 'a high school or college';
+        case 'work':
+          buttonType = 'a workplace';
+        case 'relationship':
+          buttonType = 'a relationship status';
+          inputForm = <RelationshipForm />;
+          break;
+        default:
+          inputForm = <AboutTextForm formType={this.props.formType} closeForm={this.closeForm}/>;
+          console.log('default');
+      }
+      
     return (
       <div>
-        
+        {this.state.displayForm ? 
+          inputForm
+            : 
+          <button className='add-item' onClick={this.openForm}>Add {buttonType}</button>
+        }
       </div>
     )
   }

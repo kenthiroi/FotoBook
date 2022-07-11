@@ -10,7 +10,7 @@ const mDTP = dispatch => ({
   updateUserAbout: (user) => dispatch(updateUser(user)),
 })
 
-class CommentField extends React.Component {
+class AboutTextForm extends React.Component {
   constructor(props){
     super(props);
 
@@ -20,8 +20,11 @@ class CommentField extends React.Component {
     }
 
     this.updateState = this.updateState.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillUnmount(){
+    this.setState({body: ""});
   }
 
   updateState(){
@@ -30,28 +33,23 @@ class CommentField extends React.Component {
     }
   }
 
-  handleKeyDown(e){
-    if (e.key === 'Enter') {
-      this.handleSubmit();
-    }
-  }
-
   handleSubmit(){
     const formData = new FormData();
     formData.append('user[id]', this.state.userId);
-    formData.append(`user[${this.props.aboutText.type}]`, this.state.body);
+    formData.append(`user[${this.props.formType}]`, this.state.body);
 
     this.props.updateUserAbout(formData);
   }
 
   render(){
-    return <div>
+    return <div className="about-form">
         <form action="">
-          <input ref={this.props.inputRef} onChange={this.updateState} onKeyDown={this.handleKeyDown} value={this.state.body}/>
-          <input type="submit" />
+          <input ref={this.props.inputRef} onChange={this.updateState} value={this.state.body}/>
+          <button id="about-save" onClick={this.handleSubmit}>Save</button>
+          <button id="about-cancel" onClick={this.props.closeForm}>Cancel</button>
         </form>
       </div>
   }
 }
 
-export default connect(mSTP, mDTP)(CommentField);
+export default connect(mSTP, mDTP)(AboutTextForm);
