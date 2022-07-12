@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AboutOverview from './about/pages/profileAboutOverview';
 
 
 class UserProfileAbout extends React.Component{
@@ -22,7 +22,7 @@ class UserProfileAbout extends React.Component{
     let aboutContents; 
     switch (this.state.displayedInfo){
       case 'overview':
-        aboutContents = <div></div>;
+        aboutContents = <AboutOverview userId={this.props.userId}/>;
         break;
       case 'profession':
         aboutContents = <div></div>;

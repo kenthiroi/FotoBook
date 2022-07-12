@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateUser } from '../../actions/user_actions';
+import { updateUser } from "../../../../actions/user_actions";
 
 const mSTP = state => ({
   userId: state.session.id,
