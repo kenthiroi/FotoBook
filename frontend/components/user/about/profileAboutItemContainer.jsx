@@ -8,12 +8,16 @@ const mSTP = (state, ownProps) => {
   switch (ownProps.formType){
     case 'work':
       aboutData = state.entities.user[ownProps.userId].work;
+      break;
     case 'hometown':
       aboutData = state.entities.user[ownProps.userId].hometown;
+      break;
     case 'school':
       aboutData = state.entities.user[ownProps.userId].school;
+      break;
     case 'relationship':
       aboutData = state.entities.user[ownProps.userId].relationship;
+      break;
     default:
       break;
   }
@@ -24,7 +28,7 @@ const mSTP = (state, ownProps) => {
   }
 }
 
-class AboutItem extends React.Component{
+class AboutItemContainer extends React.Component{
 
   constructor(props){
     super(props)
@@ -39,11 +43,12 @@ class AboutItem extends React.Component{
 
   
   render(){
-    let aboutItemNull;
+    let aboutItem;
+    console.log(typeof this.props.userId);
     if (this.props.sessionId === this.props.userId) {
-      aboutItemNull = <AddAboutItem formType={this.props.formType}/>;
+      aboutItem = <AddAboutItem formType={this.props.formType}/>;
     } else {
-      aboutItemNull = <AboutItemNull formType={this.props.formType}/>;
+      aboutItem = <AboutItemNull formType={this.props.formType}/>;
     }
 
     return (
@@ -51,11 +56,11 @@ class AboutItem extends React.Component{
         {(!!this.props.aboutData) ? 
           <AboutItemLabel aboutData={this.props.aboutData} formType={this.props.formType}/>
           :
-          aboutItemNull
+          aboutItem
         }
       </div>
     )
   }
 }
 
-export default connect(mSTP, null)(AboutItem);
+export default connect(mSTP, null)(AboutItemContainer);

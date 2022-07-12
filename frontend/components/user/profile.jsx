@@ -26,7 +26,7 @@ const mSTP = (state, ownProps) => {
   
   return {
     sessionId: state.session.id,
-    profileId: ownProps.match.params.userId,
+    profileId: parseInt(ownProps.match.params.userId),
     userInfo,
     userImg,
     bannerImg,

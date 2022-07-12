@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutItem from '../profileAboutItem';
+import AboutItemContainer from '../profileAboutItemContainer';
 
 
 function AboutOverview({userId}){
@@ -8,10 +8,10 @@ function AboutOverview({userId}){
   
   return (
     <div>
-      <AboutItem formType='work' userId={userId}/>
-      <AboutItem formType='hometown' userId={userId}/>
-      <AboutItem formType='work' userId={userId}/>
-      <AboutItem formType='relationship' userId={userId}/>
+      <AboutItemContainer formType='school' userId={userId}/>
+      <AboutItemContainer formType='hometown' userId={userId}/>
+      <AboutItemContainer formType='work' userId={userId}/>
+      <AboutItemContainer formType='relationship' userId={userId}/>
     </div>
   )
 
