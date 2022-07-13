@@ -34,10 +34,6 @@ class UserProfileAbout extends React.Component{
         break;
       case 'contacts':
         aboutContents = <div></div>;
-        break;
-      default:
-        aboutContents = <div></div>;
-        break;
     }
     return (
       <div>

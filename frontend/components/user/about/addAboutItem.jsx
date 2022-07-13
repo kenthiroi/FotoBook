@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutTextForm from './forms/TextForm';
+import AboutTextForm from './forms/textForm';
 import RelationshipForm from './forms/relationshipForm';
 
 

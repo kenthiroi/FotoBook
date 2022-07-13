@@ -18,8 +18,8 @@ const mSTP = (state, ownProps) => {
     case 'relationship':
       aboutData = state.entities.user[ownProps.userId].relationship;
       break;
-    default:
-      break;
+    case 'email':
+      aboutData = state.entities.user[ownProps.userId].email;
   }
 
   return {
@@ -32,13 +32,6 @@ class AboutItemContainer extends React.Component{
 
   constructor(props){
     super(props)
-
-
-    this.state = {
-
-    }
-
-
   }
 
   

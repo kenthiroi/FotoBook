@@ -17,9 +17,6 @@ function AboutItemNull({formType}){
       break;
     case 'relationship':
       itemContents = 'No relationship info to show';
-      break;
-    default:
-      break;
   }
   
   return (

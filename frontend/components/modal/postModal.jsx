@@ -97,7 +97,7 @@ class PostModal extends React.Component {
 
     return <div className="post-modal">
       <div className="modal-title">{modal_title}</div>
-      <form >
+      <form>
         <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
         <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
         <input type="file" onChange={this.handleFile}/>

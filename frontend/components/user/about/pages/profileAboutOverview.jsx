@@ -3,8 +3,6 @@ import AboutItemContainer from '../profileAboutItemContainer';
 
 
 function AboutOverview({userId}){
-
-  console.log(userId);
   
   return (
     <div>

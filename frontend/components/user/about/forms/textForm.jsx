@@ -23,14 +23,8 @@ class AboutTextForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillUnmount(){
-    this.setState({body: ""});
-  }
-
-  updateState(){
-    return (e) =>{
-      this.setState({ ['body']: e.target.value })
-    }
+  updateState(e){
+    this.setState({ body: e.target.value });
   }
 
   handleSubmit(e){
@@ -46,8 +40,8 @@ class AboutTextForm extends React.Component {
 
   render(){
     return <div className="about-form">
-        <form action="">
-          <input ref={this.props.inputRef} onChange={this.updateState} value={this.state.body}/>
+        <form>
+          <textarea onChange={this.updateState}/>
           <button id="about-save" onClick={this.handleSubmit}>Save</button>
           <button id="about-cancel" onClick={this.props.closeForm}>Cancel</button>
         </form>
