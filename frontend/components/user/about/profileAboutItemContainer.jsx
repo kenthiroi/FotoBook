@@ -38,8 +38,9 @@ class AboutItemContainer extends React.Component{
   
   render(){
     let aboutItem;
-    
-    if (this.props.sessionId === this.props.userId) {
+    const isOwner = this.props.sessionId === this.props.userId;
+
+    if (isOwner) {
       aboutItem = <AddAboutItem formType={this.props.formType}/>;
     } else {
       aboutItem = <AboutItemNull formType={this.props.formType}/>;
@@ -48,7 +49,7 @@ class AboutItemContainer extends React.Component{
     return (
       <div>
         {(!!this.props.aboutData) ? 
-          <AboutItemLabel aboutData={this.props.aboutData} formType={this.props.formType}/>
+          <AboutItemLabel isOwner={isOwner} aboutData={this.props.aboutData} formType={this.props.formType}/>
           :
           aboutItem
         }

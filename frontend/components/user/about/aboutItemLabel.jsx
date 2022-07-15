@@ -17,6 +17,9 @@ function AboutItemLabel({aboutData, formType}){
       break;
     case 'relationship':
       itemIcon = 'No relationship info to show';
+      break;
+    case 'email':
+      
   }
   
   return (

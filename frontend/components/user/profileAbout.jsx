@@ -1,5 +1,6 @@
 import React from 'react';
 import AboutCareer from './about/pages/profileAboutCareer';
+import AboutContacts from './about/pages/profileAboutContacts';
 import AboutLocation from './about/pages/profileAboutLocation';
 import AboutOverview from './about/pages/profileAboutOverview';
 
@@ -33,7 +34,7 @@ class UserProfileAbout extends React.Component{
         aboutContents = <AboutLocation userId={this.props.userId}/>;
         break;
       case 'contacts':
-        aboutContents = <div></div>;
+        aboutContents = <AboutContacts userId={this.props.userId}/>;
     }
     return (
       <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function AboutItemNull({aboutData, formType}){
+function AboutItemNull({formType}){
   let itemContents;
 
   switch (formType){
@@ -21,7 +21,7 @@ function AboutItemNull({aboutData, formType}){
   return (
     <div className='empty-item'>
       <img className={itemIcon}/>
-      <span>{aboutData}</span>
+      <span>{itemContents}</span>
     </div>
   )
 
