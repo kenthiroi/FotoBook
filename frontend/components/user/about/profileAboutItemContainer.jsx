@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AddAboutItem from './addAboutItem';
 import AboutItemNull from './aboutItemNull';
+import AboutItemLabel from './aboutItemLabel';
 
 const mSTP = (state, ownProps) => {
   let aboutData;
@@ -37,7 +38,7 @@ class AboutItemContainer extends React.Component{
   
   render(){
     let aboutItem;
-    console.log(typeof this.props.userId);
+    
     if (this.props.sessionId === this.props.userId) {
       aboutItem = <AddAboutItem formType={this.props.formType}/>;
     } else {

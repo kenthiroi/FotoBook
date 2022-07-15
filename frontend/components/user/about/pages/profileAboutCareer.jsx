@@ -7,6 +7,7 @@ function AboutCareer({userId}){
   return (
     <div>
       <AboutItemContainer formType='work' userId={userId}/>
+      <AboutItemContainer formType='school' userId={userId}/>
     </div>
   )
 
