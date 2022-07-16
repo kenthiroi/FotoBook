@@ -1,6 +1,7 @@
 import React from 'react';
 import AboutTextForm from './forms/textForm';
 import RelationshipForm from './forms/relationshipForm';
+import { BsPlusCircle } from 'react-icons/bs';
 
 
 class AddAboutItem extends React.Component{
@@ -51,7 +52,10 @@ class AddAboutItem extends React.Component{
         {this.state.displayForm ? 
           inputForm
             : 
-          <button className='add-item' onClick={this.openForm}>Add {buttonType}</button>
+            <button className='add-item' onClick={this.openForm}>
+              <BsPlusCircle/>
+              Add {buttonType}
+            </button>
         }
       </div>
     )
