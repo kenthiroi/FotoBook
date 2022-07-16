@@ -1,5 +1,8 @@
 import React from 'react';
-
+import { IoLocationSharp, IoSchoolSharp } from 'react-icons/io5';
+import { FaBriefcase } from 'react-icons/fa';
+import { RiHeartsFill } from 'react-icons/ri';
+import { MdEmail } from 'react-icons/md';
 
 function AboutItemLabel({aboutData, formType}){
   let itemContents;
@@ -7,24 +10,24 @@ function AboutItemLabel({aboutData, formType}){
 
   switch (formType){
     case 'work':
-      itemIcon = 'No workplaces to show';
+      itemIcon = <FaBriefcase/>;
       break;
     case 'hometown':
-      itemIcon = 'No places to show';
+      itemIcon = <IoLocationSharp/>;
       break;
     case 'school':
-      itemIcon = 'No schools to show';
+      itemIcon = <IoSchoolSharp/>;
       break;
     case 'relationship':
-      itemIcon = 'No relationship info to show';
+      itemIcon = <RiHeartsFill/>;
       break;
     case 'email':
-      
+      itemIcon = <MdEmail/>;
   }
   
   return (
     <div className='about-item'>
-      <img className={itemIcon}/>
+      {itemIcon}
       <span>{aboutData}</span>
     </div>
   )
