@@ -37,30 +37,28 @@ class UserProfileAbout extends React.Component{
         aboutContents = <AboutContacts userId={this.props.userId}/>;
     }
     return (
-      <div>
-        <div className='about-container'>
+      <div className='about-container'>
+        <div className='about-tabs'>
           <div id='about-title'>About</div>
-          <div className='about-tabs'>
-            <div className={(this.state.displayedInfo === 'overview') ? 'active-about-button' : 'about-button'} 
-              onClick={() => this.handleSwitch('overview')}>
-              Overview
-            </div>
-            <div className={(this.state.displayedInfo === 'profession') ? 'active-about-button' : 'about-button'} 
-              onClick={() => this.handleSwitch('profession')}>
-              Work and education
-            </div>
-            <div className={(this.state.displayedInfo === 'places') ? 'active-about-button' : 'about-button'} 
-              onClick={() => this.handleSwitch('places')}>
-              Places lived
-            </div>
-            <div className={(this.state.displayedInfo === 'contacts') ? 'active-about-button' : 'about-button'} 
-              onClick={() => this.handleSwitch('contacts')}>
-              Contact and basic info
-            </div>
+          <div className={(this.state.displayedInfo === 'overview') ? 'active-about-button' : 'about-button'} 
+            onClick={() => this.handleSwitch('overview')}>
+            Overview
           </div>
-          <div className='about-contents'>
-            {aboutContents}
+          <div className={(this.state.displayedInfo === 'profession') ? 'active-about-button' : 'about-button'} 
+            onClick={() => this.handleSwitch('profession')}>
+            Work and education
           </div>
+          <div className={(this.state.displayedInfo === 'places') ? 'active-about-button' : 'about-button'} 
+            onClick={() => this.handleSwitch('places')}>
+            Places lived
+          </div>
+          <div className={(this.state.displayedInfo === 'contacts') ? 'active-about-button' : 'about-button'} 
+            onClick={() => this.handleSwitch('contacts')}>
+            Contact and basic info
+          </div>
+        </div>
+        <div className='about-contents'>
+          {aboutContents}
         </div>
       </div>
     )
