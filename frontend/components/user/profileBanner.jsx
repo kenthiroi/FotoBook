@@ -66,6 +66,9 @@ class UserProfileBanner extends React.Component{
     if (!!this.props.bannerImg) {
       bannerPhoto = (<div className='profile-banner'>
                       <img onClick={() => this.props.openViewModal({id: this.props.postId})} src={this.props.bannerImg}/>
+                      <div className='banner-background'>
+                        <img src={this.props.bannerImg}/>
+                      </div>
                     </div>)
       editDropdown = (<div className="banner-edit">
                         <div onClick={() => this.props.openBannerModal(this.props.sessionId)}>Update Profile Banner</div>
@@ -79,7 +82,7 @@ class UserProfileBanner extends React.Component{
     }
 
     return (
-      <div id='profile-banner-container'>
+      <div className='profile-banner-container'>
         {bannerPhoto}
         {editButton}
         {this.state.displayDropdown ? editDropdown : <></>}

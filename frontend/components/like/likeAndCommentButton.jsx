@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { createLike, deleteLike } from "../../actions/like_actions";
 import { openModal } from "../../actions/modal_actions";
 import CommentField from "../comment/commentField";
+import { IoChatboxOutline } from "react-icons/io5";
+import { BsHandThumbsUp, BsHandThumbsUpFill } from "react-icons/bs";
 
 
 const mapStateToProps = (state) => {
@@ -53,7 +55,9 @@ class LikeAndCommentButton extends React.Component{
     this.toggleLike = this.toggleLike.bind(this);
   }
 
-  toggleLike(){
+  toggleLike(e){
+    e.preventDefault();
+    
     if (!this.state.likedByUser) {
       let like = {
         user_id: this.props.user_id,
@@ -92,8 +96,14 @@ class LikeAndCommentButton extends React.Component{
           <></>
         }
         <div className="button-section">
-          <button className="like-button">{this.state.likedByUser ? "Unlike" : "Like"}</button>
-          <button className="comment-button">Comment</button>
+          <button className="like-button" onClick={this.toggleLike}>
+            {this.state.likedByUser ? <BsHandThumbsUpFill/> : <BsHandThumbsUp/>}
+            Like
+          </button>
+          <button className="comment-button">
+            <IoChatboxOutline/>
+            Comment
+          </button>
         </div>
       </div>
     )
