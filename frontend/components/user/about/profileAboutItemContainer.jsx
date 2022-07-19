@@ -47,9 +47,9 @@ class AboutItemContainer extends React.Component{
     }
 
     return (
-      <div className='about-item'>
+      <div className='about-item-container'>
         {(!!this.props.aboutData) ? 
-          <AboutItemLabel isOwner={isOwner} aboutData={this.props.aboutData} formType={this.props.formType}/>
+          <AboutItemLabel userId={this.props.userId} isOwner={isOwner} aboutData={this.props.aboutData} formType={this.props.formType}/>
           :
           aboutItem
         }

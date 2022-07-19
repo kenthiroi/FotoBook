@@ -30,7 +30,7 @@ class RelationshipForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('user[id]', this.state.userId);
+    formData.append('user[id]', this.props.userId);
     formData.append(`user[relationship]`, this.state.value);
 
     this.props.updateUserAbout(formData).then(() => {

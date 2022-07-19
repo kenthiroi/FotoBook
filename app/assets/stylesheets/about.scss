@@ -1,7 +1,10 @@
 .about-container{
+  margin: auto;
   display: flex;
   position: relative;
   max-width: 1186px;
+  background-color: white;
+  border-radius: 15px;
 }
 
 .about-tabs{
@@ -9,11 +12,16 @@
 }
 
 .about-contents{
+  width: 100%;
+}
 
+.about-item-container{
+  height: 48px;
 }
 
 .about-item{
-  
+  padding: auto;
+  align-items: stretch;
 }
 
 .active-about-button{

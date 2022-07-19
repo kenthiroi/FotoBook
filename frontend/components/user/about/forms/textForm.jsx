@@ -16,7 +16,6 @@ class AboutTextForm extends React.Component {
 
     this.state = {
       body: "",
-      userId: this.props.userId,
     }
 
     this.updateState = this.updateState.bind(this);
@@ -30,7 +29,7 @@ class AboutTextForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const formData = new FormData();
-    formData.append('user[id]', this.state.userId);
+    formData.append('user[id]', this.props.userId);
     formData.append(`user[${this.props.formType}]`, this.state.body);
 
     this.props.updateUserAbout(formData).then(() => {
