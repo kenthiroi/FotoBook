@@ -3,6 +3,7 @@ import { openModal } from "../../actions/modal_actions"
 import { connect } from 'react-redux';
 import { getPost } from '../../actions/post_actions';
 import { updateUser } from '../../actions/user_actions';
+import { BsFillCameraFill } from "react-icons/bs";
 
 const mSTP = (state, ownProps) => {
   return {
@@ -38,6 +39,7 @@ class UserProfilePicture extends React.Component{
   }
     
   openDropdown(){
+    console.log('run');
     if (!this.state.displayDropdown) {
       this.setState({
         displayDropdown: true,
@@ -58,7 +60,7 @@ class UserProfilePicture extends React.Component{
 
     const userFormData = new FormData();
     userFormData.append('user[id]', this.props.sessionId);
-    userFormData.append('user[profile_picture]', null);
+    userFormData.append('user[profile_picture]', '');
 
     this.props.updateUserPhoto(userFormData);
   }
@@ -72,7 +74,9 @@ class UserProfilePicture extends React.Component{
     let defaultImgUrl = 'https://i.imgur.com/7x6fTDK.png';
 
     if (this.props.isOwner){
-      editButton = (<button onClick={() => this.props.openEditPicModal(this.props.userId)}></button>)
+      editButton = (<button onClick={() => this.props.openEditPicModal(this.props.userId)}>
+        <BsFillCameraFill/>
+      </button>)
       onClickEvent = this.openDropdown;
       onBlurEvent = this.closeDropdown;
     } else if (this.props.userImg === defaultImgUrl) {
@@ -95,11 +99,13 @@ class UserProfilePicture extends React.Component{
     }
 
     return (
-      <div id='profile-picture' onClick={!!this.state.displayDropdown ? onBlurEvent : onClickEvent} onBlur={onBlurEvent}>
-        {profilePicture}
+      <div className='profile-picture-container'>
         {editButton}
         {this.state.displayDropdown ? 
           editDropdown : <></>}
+        <div id='profile-picture' onClick={!!this.state.displayDropdown ? onBlurEvent : onClickEvent} onBlur={onBlurEvent}>
+          {profilePicture}
+        </div>
       </div>
     )
   }

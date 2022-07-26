@@ -37,10 +37,22 @@
   height: inherit;
 }
 
+.banner-edit{
+  z-index: 2;
+}
+
 .empty-profile-banner{
-  width: 100%;
-  height: 100%;
   background-color: inherit;
+  height: 100%;
+  max-width: 1250px;
+  max-height: 463px;
+  width: 100%;
+}
+
+.propic-edit-container{
+  background-color: #FFFFFF;
+  position: absolute;
+  z-index: 2;
 }
 
 .profile-tabs{
@@ -62,7 +74,7 @@
 }
 
 .profile-tab:hover{
-  background-color: gray;
+  background-color: #808080;
   transition: 200ms;
 }
 
@@ -71,24 +83,31 @@
   border-bottom: 3px solid #1877F2;
 }
 
-#profile-picture{
+.profile-picture-container{
   display: block;
-  position: relative;
-  overflow: hidden;
-  border-radius: 100%;
-  height: 168px;
-  width: 168px;
-  border: 2px solid grey;
-  text-align: center;
-  align-content: center;
-  align-items: center;
 }
 
-#profile-picture img{
+#profile-picture{
+  align-items: center;
+  border: 2px solid #808080;
+  border-radius: 100%;
+  display: flex;
+  height: 168px;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 168px;
+}
+
+#profile-picture > img{
+  width: 100%;
+  transform: scale(1.5);
+  top: 0;
   position: absolute;
-  transform: translate(-50%, -50%) scale(1.5);
-  top: 50%;
-  left: 50%;
-  max-height: 100%;
-  max-width: 100%;
+}
+
+#profile-picture > button{
+  position: absolute;
+  z-index: 2;
 }
