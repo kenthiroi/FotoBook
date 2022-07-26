@@ -4,10 +4,10 @@ import { openModal } from '../../actions/modal_actions';
 import { updateUser } from '../../actions/user_actions';
 
 
-const mSTP = state => {
+const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    postId: state.entities.user[state.session.id].profile_banner
+    postId: state.entities.user[ownProps.profileId].profile_banner
   }
 }
 
@@ -49,7 +49,7 @@ class UserProfileBanner extends React.Component{
   deleteUserBanner(){
     const userFormData = new FormData();
     userFormData.append('user[id]', this.props.sessionId);
-    userFormData.append('user[profile_banner]', null);
+    userFormData.append('user[profile_banner]', '');
 
     this.props.updateUserPhoto(userFormData);
   }

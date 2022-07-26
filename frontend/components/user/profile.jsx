@@ -79,9 +79,17 @@ class UserProfile extends React.Component{
   
   render(){
     let profileContent; 
+    let isOwner;
 
     console.log('mounted');
+
+    if (this.props.sessionId === this.props.profileId){
+      isOwner = true;
+    } else {
+      isOwner = false;
+    }
     // console.log(this.props.userInfo);
+    console.log(isOwner);
 
     switch (this.state.displayedInfo){
       case 'posts':
@@ -103,8 +111,8 @@ class UserProfile extends React.Component{
       {(!!this.props.userInfo) ?
         <div>
           <div className='profile-main'> 
-            <UserProfileBanner profileId={this.props.profileId} bannerImg={this.props.bannerImg}/>
-            <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg}/>
+            <UserProfileBanner profileId={this.props.profileId} bannerImg={this.props.bannerImg} isOwner={isOwner}/>
+            <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg} isOwner={isOwner}/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
             {(this.props.sessionId !== this.props.profileId) ? 
             <FriendRequestButton profileId={this.props.profileId}/> : <></>}

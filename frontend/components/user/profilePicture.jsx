@@ -7,7 +7,7 @@ import { updateUser } from '../../actions/user_actions';
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    postId: state.entities.user[state.session.id].profile_picture
+    postId: state.entities.user[ownProps.profileId].profile_picture
   }
 }
 
@@ -71,11 +71,11 @@ class UserProfilePicture extends React.Component{
     let editDropdown;
     let defaultImgUrl = 'https://i.imgur.com/7x6fTDK.png';
 
-    if (this.props.sessionId === parseInt(this.props.profileId)){
+    if (this.props.isOwner){
       editButton = (<button onClick={() => this.props.openEditPicModal(this.props.userId)}></button>)
       onClickEvent = this.openDropdown;
       onBlurEvent = this.closeDropdown;
-    } else if(this.props.userImg === defaultImgUrl) {
+    } else if (this.props.userImg === defaultImgUrl) {
       onClickEvent = null;
       onBlurEvent = null;
     } else { 
