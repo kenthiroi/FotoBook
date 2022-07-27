@@ -25,7 +25,6 @@ class UserInfoHover extends React.Component{
     }
 
     if (!this.props.user){
-      console.log('fetching user');
       this.props.fetchUserInfo(this.props.userId);
     }
 
@@ -37,15 +36,12 @@ class UserInfoHover extends React.Component{
     this.setState({
       showInfo: true
     })
-
-    console.log(this.state.showInfo);
   }
 
   handleMouseLeave(){
     this.setState({
       showInfo: false
     })
-    console.log(this.state.showInfo);
   }
 
   render(){

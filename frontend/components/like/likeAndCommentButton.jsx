@@ -97,12 +97,10 @@ class LikeAndCommentButton extends React.Component{
         }
         <div className="button-section">
           <button className="like-button" onClick={this.toggleLike}>
-            {this.state.likedByUser ? <BsHandThumbsUpFill/> : <BsHandThumbsUp/>}
-            Like
+            {this.state.likedByUser ? <BsHandThumbsUpFill/> : <BsHandThumbsUp/>} Like
           </button>
           <button className="comment-button">
-            <IoChatboxOutline/>
-            Comment
+            <IoChatboxOutline/> Comment
           </button>
         </div>
       </div>
