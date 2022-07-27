@@ -53,9 +53,9 @@ class UserInfoHover extends React.Component{
     
     if (!!this.props.post){
       if (this.props.post.profile_pic_update) {
-        sideMessage = <span className='light-text-description'>updated their profile picture.</span>
+        sideMessage = <span className='light-text-description'> updated their profile picture.</span>
       } else if (this.props.post.profile_banner_update){
-        sideMessage = <span className='light-text-description'>updated their cover photo.</span>
+        sideMessage = <span className='light-text-description'> updated their cover photo.</span>
       }
     }
     

@@ -10,23 +10,22 @@
   width: 100%;
 }
 
-
 .edit-container {
-  position: absolute;
-  z-index: 1;
-  width: 330px;
-  display: flex;
-  flex-direction: column; 
-  flex-wrap: wrap;
   background: white;
   border-radius: 8px;
   box-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;
+  position: absolute;
+  width: 330px;
+  z-index: 1;
 }
 
 .post-index {
+  align-content: space-around;
   display: flex;
   flex-direction: column;
-  align-content: space-around;
 }
 
 .post-item-box {
@@ -34,7 +33,7 @@
   margin: 5px 0 5px 0;
   border-radius: 6px;
   box-shadow: 0 1px 2px var(--shadow-2);
-  background-color: white;
+  background-color: #FFF;
 }
 
 .posts-username {
@@ -49,17 +48,19 @@
 }
 
 .posts-option {
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  font-family: ui-rounded;
-  font-weight: 945;
-  color: grey;
-  float: right;
-  text-align: center;
-  cursor: pointer;
+  background-color: #FFF;
+  border: none;
   border-radius: 100%;
+  color: grey;
+  cursor: pointer;
+  float: right;
+  font-family: ui-rounded;
+  font-size: 24px;
+  font-weight: 945;
+  height: 40px;
+  text-align: center;
   transition: 0.3s;
+  width: 40px;
 }
 
 .posts-option:hover {
