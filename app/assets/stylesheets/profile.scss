@@ -87,6 +87,10 @@
   display: block;
 }
 
+.user-posts{
+  max-width: 680px;
+}
+
 #profile-picture{
   align-items: center;
   border: 2px solid #808080;
@@ -107,7 +111,11 @@
   position: absolute;
 }
 
-#profile-picture > button{
+.profile-picture-container > button{
+  border: 0;
+  border-radius: 100%;
+  color: #000;
+  font-size: 24px;
   position: absolute;
   z-index: 2;
 }
