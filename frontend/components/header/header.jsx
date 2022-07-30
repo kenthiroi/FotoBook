@@ -10,6 +10,9 @@ import ProfileButton from "./profileButton";
 import NotificationDropdown from "./notificationDropdown";
 import { getPost } from '../../actions/post_actions';
 import { fetchUser } from "../../actions/user_actions";
+import { AiFillHome, AiOutlineHome } from "react-icons/ai";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { MdWork } from "react-icons/md"
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -37,7 +40,6 @@ const mapDispatchToProps = dispatch => {
     fetchUser: (userId) => dispatch(fetchUser(userId)),
   }
 }
-
 
 
 class HeaderNav extends React.Component {
@@ -80,6 +82,8 @@ class HeaderNav extends React.Component {
 
 
   render() {
+
+
     return <div id="navbar">
       <div id="header-left">
         <div id="header-link">
@@ -90,16 +94,16 @@ class HeaderNav extends React.Component {
       </div>
       <div id="header-center">
         <button id={this.state.onHomePage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/newsfeed')} className="center-btn">
-          Home
+          {this.state.onHomePage ? <AiFillHome/> : <AiOutlineHome/>}
         </button>
         <Link to="github">
-          Github
+          <BsGithub/>
         </Link>
         <Link to="linkedin">
-          LinkedIn
+          <BsLinkedin/>
         </Link>
         <Link to="newsfeed">
-          My Site
+          <MdWork/>
         </Link>
       </div>
       <div id="header-right">
