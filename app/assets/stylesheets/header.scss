@@ -88,14 +88,40 @@ header {
 
 #active-nav-button{
   background-color: lightskyblue;
-  color: blue;
+  color: #1876f2;
   font-weight: bold;
+}
+
+#header-center {
+  display: flex;
+  justify-content: center;
+  width: 390px;
+}
+
+#header-center a, #header-center button{
+  background-color: none;
+  border-radius: 4px;
+  color: #1876f2;
+  font-size: 32px;
+  height: 56px;
+  padding-top: 8px;
+  text-align: center;
+  width: 25%;
+}
+
+#header-center button{
+  border: none;
+}
+
+#header-center a:hover, #header-center button:hover{
+  background-color: #dfdfdf;
+  transition: 200ms;
 }
 
 #header-link {
   height: 40px;
   width: 40px;
-  background-color: rgb(32, 122, 178);
+  background-color: #1876f2;
   border-radius: 100%;
   overflow: hidden;
 }
@@ -112,7 +138,7 @@ header {
 #icon-font{
   font-weight: 500;
   margin-left: 11px;
-  margin-top: -4px;
+  margin-top: -16px;
   color: #FFFFFF;
   font-size: 65px;
 }
@@ -121,5 +147,4 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 8px 18px 0 18px;
 }
