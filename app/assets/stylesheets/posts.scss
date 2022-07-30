@@ -2,12 +2,17 @@
   display: flex;
 }
 
-.comment-button {
+.like-button, .comment-button{
+  background-color: white;
+  border: none;
+  color: #65676b;
+  font-size: 16px;
+  font-weight: 500;
   width: 100%;
 }
 
-.like-button {
-  width: 100%;
+.light-text-description{
+  color: #65676b;
 }
 
 .edit-container {
@@ -65,4 +70,8 @@
 
 .posts-option:hover {
   background-color: rgb(228, 228, 228);
+}
+
+.user-name{
+  color: #000
 }

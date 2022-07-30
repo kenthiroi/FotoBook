@@ -68,7 +68,7 @@ class CommentField extends React.Component {
   }
 
   render(){
-    return <div>
+    return <div className="comment-field">
         <form action="">
           <input ref={this.props.inputRef} onChange={this.updateState('body')} onKeyDown={this.handleKeyDown} value={this.state.body}/>
         </form>
