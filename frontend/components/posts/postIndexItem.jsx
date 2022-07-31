@@ -81,12 +81,16 @@ class PostItem extends React.Component {
           <button onMouseDown={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
         </div> : <></>}
         {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
-        <UserInfoHover userId={this.props.post.user_id} post={this.props.post}/>
-        <div className="posts-body">{this.props.post.body}</div>
+        <div className="user-and-post-container">
+          <UserInfoHover userId={this.props.post.user_id} post={this.props.post}/>
+          <div>{this.props.post.body}</div>
+        </div>
         {photoContainer}
-        <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}/>
-        <CommentIndex comments={this.props.post.comments}/>
-        <CommentField post_id={this.props.post.id}/>
+        <div className="likes-and-comment-container">
+          <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}/>
+          <CommentIndex comments={this.props.post.comments}/>
+          <CommentField post_id={this.props.post.id}/>
+        </div>
       </div>)
   } 
 }

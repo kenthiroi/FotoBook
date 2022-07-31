@@ -1,18 +1,30 @@
 .button-section {
+  border-top: 1px solid #d2d5dd;
+  border-bottom: 1px solid #d2d5dd;
   display: flex;
 }
 
 .like-button, .comment-button{
-  background-color: white;
+  background-color: transparent;
   border: none;
   color: #65676b;
+  cursor: pointer;
   font-size: 16px;
   font-weight: 500;
+  height: 36px;
   width: 100%;
+}
+
+.active-like {
+  color: #1876f2;
 }
 
 .light-text-description{
   color: #65676b;
+}
+
+.likes-and-comment-container{
+  padding: 0 12px 0 12px;
 }
 
 .edit-container {
@@ -25,6 +37,11 @@
   position: absolute;
   width: 330px;
   z-index: 1;
+}
+
+.user-and-post-container {
+  padding: 12px 16px 16px 16px;
+  font-weight: 400;
 }
 
 .post-index {
@@ -45,11 +62,6 @@
   padding: 10px;
   font-weight: 600;
   padding-bottom: 8px;
-}
-
-.posts-body {
-  padding: 10px;
-  font-weight: 400;
 }
 
 .posts-option {
