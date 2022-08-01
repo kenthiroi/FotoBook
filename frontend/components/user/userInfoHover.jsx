@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { fetchUser } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => ({
-  user: state.entities.user[ownProps.userId],
   sessionId: state.session.id,
   friends: state.entities.friends,
 })
@@ -22,10 +21,6 @@ class UserInfoHover extends React.Component{
 
     this.state = {
       showInfo: false
-    }
-
-    if (!this.props.user){
-      this.props.fetchUserInfo(this.props.userId);
     }
 
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
@@ -56,14 +51,17 @@ class UserInfoHover extends React.Component{
     }
     
     return (
-      <div className="user-info">
+      <div className="user-info-container">
         {!!this.props.user ? 
-        <Link to={`/profile/${this.props.userId}`} 
-          className="user-name" 
-          onMouseEnter={this.handleMouseEnter} 
-          onMouseLeave={this.handleMouseLeave}>
-            {this.props.user.first_name} {this.props.user.last_name}
-        </Link> 
+        <div className="user-info">
+          <img src={this.props.user.photoUrl}/>
+          <Link to={`/profile/${this.props.userId}`} 
+            className="user-name" 
+            onMouseEnter={this.handleMouseEnter} 
+            onMouseLeave={this.handleMouseLeave}>
+              {this.props.user.first_name} {this.props.user.last_name}
+          </Link>
+        </div>
         : <></>}
         {sideMessage}
         {/* {!!this.props.user && this.props.post.profile_picture_update ? <span className='light-text-description'>updated their profile picture.</span> : <></>}

@@ -59,7 +59,7 @@ class UserProfileBanner extends React.Component{
     let bannerPhoto;
     let editDropdown;
 
-    if (this.props.sessionId === parseInt(this.props.profileId)) {
+    if (this.props.isOwner) {
       editButton = (<button className="banner-edit-button" onClick={this.state.displayDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>{!!this.props.bannerImg ? 'Edit Cover Photo' : 'Add Cover Photo'}</button>)
     }
     

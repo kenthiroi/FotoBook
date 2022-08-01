@@ -103,7 +103,6 @@ class UserProfile extends React.Component{
         break;
       default:
         profileContent = <div></div>;
-        break;
     }
 
     return (
