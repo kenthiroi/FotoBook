@@ -72,18 +72,32 @@
   cursor: pointer;
   float: right;
   font-family: ui-rounded;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 945;
-  height: 40px;
+  height: 36px;
   text-align: center;
   transition: 0.3s;
-  width: 40px;
+  width: 36px;
 }
 
 .posts-option:hover {
   background-color: rgb(228, 228, 228);
 }
 
+.user-info {
+  display: flex;
+  padding: 0 0 6px 0;
+}
+
+.user-info img, .comment-field img{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-right: 6px;
+}
+
 .user-name{
-  color: #000
+  color: #000;
+  font-weight: 500;
+  margin: 0 4px 6px 0;
 }

@@ -3,9 +3,21 @@ import { createComment, editComment } from "../../actions/comment_actions";
 import { connect } from "react-redux";
 import { getPost } from "../../actions/post_actions";
 
-const mSTP = state => ({
-  user_id: state.session.id,
-})
+const mSTP = state => {
+  let userInfo = state.entities.user[state.session.id];
+  let userImg;
+
+  try {
+    userImg = state.entities.posts[userInfo.profile_picture].photoUrl;
+  } catch (e) {
+    userImg = 'https://i.imgur.com/7x6fTDK.png';
+  }
+
+  return {
+    user_id: state.session.id,
+    userImg,
+  }
+}
 
 const mDTP = dispatch => ({
   fetchPost: (postId) => dispatch(getPost(postId)),
@@ -69,6 +81,7 @@ class CommentField extends React.Component {
 
   render(){
     return <div className="comment-field">
+        <img src={this.props.userImg} />
         <form action="">
           <input ref={this.props.inputRef} onChange={this.updateState('body')} onKeyDown={this.handleKeyDown} value={this.state.body}/>
         </form>

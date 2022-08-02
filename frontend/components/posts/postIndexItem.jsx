@@ -17,6 +17,7 @@ const mSTP = (state, ownProps) => {
   } catch (e) {
     userImg = 'https://i.imgur.com/7x6fTDK.png';
   }
+
   return {
     user_id: state.session.id,
     userInfo,
@@ -50,11 +51,6 @@ class PostItem extends React.Component {
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
-  componentDidMount(){
-    if (!this.props.userInfo){
-      this.props.fetchUserInfo(this.props.post.user_id);
-    }
-  }
   // componentDidUpdate(){
   //   console.log("did update", this.props.post);
   // }
@@ -86,11 +82,6 @@ class PostItem extends React.Component {
     if (!!this.props.userInfo){
       return(
         <div className="post-item-box">
-          {this.props.post.user_id === this.props.user_id ?
-            <button className="posts-option" onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>&hellip;</button>
-            :
-            <></>
-          }   
           {this.state.editDropdown ? 
           <div className="edit-container">
             <button onMouseDown={() => this.props.openEditModal(this.props.post)}>Edit Post</button>
@@ -98,6 +89,11 @@ class PostItem extends React.Component {
           </div> : <></>}
           {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
           <div className="user-and-post-container">
+            {this.props.post.user_id === this.props.user_id ?
+              <button className="posts-option" onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>&hellip;</button>
+              :
+              <></>
+            }   
             <UserInfoHover user={this.props.userInfo} post={this.props.post}/>
             <div>{this.props.post.body}</div>
           </div>
@@ -109,7 +105,7 @@ class PostItem extends React.Component {
           </div>
         </div>)
     } else {
-      console.log(this.props.userInfo)
+      console.log('testing')
       return <div></div>
     }
   } 

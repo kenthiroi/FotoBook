@@ -54,16 +54,19 @@ class UserInfoHover extends React.Component{
       <div className="user-info-container">
         {!!this.props.user ? 
         <div className="user-info">
-          <img src={this.props.user.photoUrl}/>
-          <Link to={`/profile/${this.props.userId}`} 
+          <img src={this.props.user.photoUrl}
+          onMouseEnter={this.handleMouseEnter} 
+          onMouseLeave={this.handleMouseLeave}
+          />
+          <Link to={`/profile/${this.props.user.id}`} 
             className="user-name" 
             onMouseEnter={this.handleMouseEnter} 
             onMouseLeave={this.handleMouseLeave}>
               {this.props.user.first_name} {this.props.user.last_name}
           </Link>
+          {sideMessage}
         </div>
         : <></>}
-        {sideMessage}
         {/* {!!this.props.user && this.props.post.profile_picture_update ? <span className='light-text-description'>updated their profile picture.</span> : <></>}
         {!!this.props.user && this.props.post.profile_banner_update ? <span className='light-text-description'>updated their cover photo.</span> : <></>} */}
         {this.state.showInfo ? <div className="user-hover-container">
