@@ -26,6 +26,10 @@
   border: none;
 }
 
+.comment-field input:focus{
+  outline: none;
+}
+
 .comment-field form > div{
   color: #65676b;
   font-size: 12px;

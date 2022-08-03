@@ -15,8 +15,11 @@
 
 .create-post-container {
   background-color: #FFF;
-  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px #c4c4c4;
   display: flex;
+  margin-top: 20px;
+  padding: 16px;
 }
 
 //Whats on your mind? bar
@@ -25,6 +28,7 @@
   border-radius: 24px;
   background-color: #F0F2F5;
   color: #65676b;
+  cursor: pointer;
   font-size: 17px;
   height: 40px;
   padding: 7px 16px;
@@ -33,7 +37,7 @@
 }
 
 .create-post-container div:hover{
-  background-color: #F0F2F5;
+  background-color: #dadada;
   transition: 100ms;
 }
 

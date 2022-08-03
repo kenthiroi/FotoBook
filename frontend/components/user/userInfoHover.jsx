@@ -7,6 +7,7 @@ import { fetchUser } from '../../actions/user_actions';
 const mSTP = (state, ownProps) => ({
   sessionId: state.session.id,
   friends: state.entities.friends,
+  user: state.entities.user[ownProps.userId],
 })
 
 const mDTP = dispatch => ({

@@ -8,7 +8,7 @@ import PostItem from '../posts/postIndexItem';
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    userPosts: selectUsersPosts(state, ownProps.userId),
+    userPosts: selectUsersPosts(state, ownProps.userInfo.id),
   }
 }
 
@@ -35,21 +35,27 @@ class UserProfileWall extends React.Component{
   }
 
   componentDidUpdate(prevProps){
-    if (this.props.userId !== prevProps.userId){
+    if (this.props.userInfo.id !== prevProps.userInfo.id){
       this.fetchPosts();
     }
   }
 
   fetchPosts(){
     const formData = new FormData();
-    console.log(this.props.userId);
-    formData.append('post[user_id]', this.props.userId);
+    console.log(this.props.userInfo.id);
+    formData.append('post[user_id]', this.props.userInfo.id);
     this.props.fetchUsersPosts(formData);
   }
   
   render(){
     return (
       <div className="user-posts">
+        {this.props.isOwner ? 
+          <div className="create-post-container">
+            <img src={this.props.userImg}/>
+            <div onClick={this.props.openModal}>Whats on your mind?</div>
+          </div>
+        : <></>}
         {!this.state.posts ? 
         <></>
         :

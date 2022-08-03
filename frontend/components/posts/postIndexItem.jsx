@@ -94,7 +94,7 @@ class PostItem extends React.Component {
               :
               <></>
             }   
-            <UserInfoHover user={this.props.userInfo} post={this.props.post}/>
+            <UserInfoHover userId={this.props.userInfo.id} post={this.props.post}/>
             <div>{this.props.post.body}</div>
           </div>
           {photoContainer}

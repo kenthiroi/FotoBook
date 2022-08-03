@@ -93,10 +93,10 @@ class UserProfile extends React.Component{
 
     switch (this.state.displayedInfo){
       case 'posts':
-        profileContent = <UserProfileWall userId={this.props.profileId}/>;
+        profileContent = <UserProfileWall userInfo={this.props.userInfo} userImg={this.props.userImg} isOwner={isOwner}/>;
         break;
       case 'about':
-        profileContent = <UserProfileAbout userId={this.props.profileId}/>;
+        profileContent = <UserProfileAbout userId={this.props.profileId} isOwner={isOwner}/>;
         break;
       case 'friends':
         profileContent = <div></div>;
@@ -113,8 +113,7 @@ class UserProfile extends React.Component{
             <UserProfileBanner profileId={this.props.profileId} bannerImg={this.props.bannerImg} isOwner={isOwner}/>
             <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg} isOwner={isOwner}/>
             <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
-            {(this.props.sessionId !== this.props.profileId) ? 
-            <FriendRequestButton profileId={this.props.profileId}/> : <></>}
+            {!isOwner ? <FriendRequestButton profileId={this.props.profileId}/> : <></>}
             <div className='profile-tabs'>
               <div className={(this.state.displayedInfo === 'posts') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('posts')}>Posts</div>
               <div className={(this.state.displayedInfo === 'about') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('about')}>About</div>
