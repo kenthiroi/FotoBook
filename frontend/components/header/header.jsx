@@ -82,7 +82,7 @@ class HeaderNav extends React.Component {
 
 
   render() {
-
+    let currentPage = this.props.history.location.pathname === `/newsfeed`;
 
     return <div id="navbar">
       <div id="header-left">
@@ -93,7 +93,7 @@ class HeaderNav extends React.Component {
         </div>
       </div>
       <div id="header-center">
-        <button id={this.state.onHomePage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/newsfeed')} className="center-btn">
+        <button id={currentPage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/newsfeed')} className="center-btn">
           {this.state.onHomePage ? <AiFillHome/> : <AiOutlineHome/>}
         </button>
         <Link to="github">
