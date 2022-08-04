@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom"
 import { connect } from 'react-redux';
 import { deleteComment, editComment } from '../../actions/comment_actions';
 import { getPost } from "../../actions/post_actions";
 import CommentField from './commentField';
-import UserInfoHover from '../user/userInfoHover';
+import { fetchUser } from '../../actions/user_actions';
+import { BsThreeDots } from 'react-icons/bs';
+import NameHover from '../posts/nameHover';
 
 const mSTP = (state, ownProps) => {
   let userInfo = state.entities.user[ownProps.comment.author_id];
@@ -28,6 +29,7 @@ const mDTP = dispatch => {
     fetchPost: (postId) => dispatch(getPost(postId)),
     editComment: (comment) => dispatch(editComment(comment)),
     deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+    fetchUserInfo: (userId) => dispatch(fetchUser(userId)),
   }
 }
 
@@ -47,13 +49,6 @@ class CommentItem extends React.Component{
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
-
-  componentDidMount(){
-    if(!this.props.user){
-      
-    }
-  }
-
     
   openDropdown(){
     if (!this.state.editDropdown) {
@@ -108,46 +103,35 @@ class CommentItem extends React.Component{
   }
 
   render(){
-    if(!!this.props.userInfo){
-      if (this.state.editing) {
-        return(
-          <div className="comment-item" onKeyDown={this.handleKeyDown}>
-            <CommentField comment={this.props.comment}/>
-          </div>
-        )
-      }
-      else {
-        return(
-          <div className="comment-item">
-            <div className="user-info">
-              <img src={this.props.photoUrl}
-              onMouseEnter={this.handleMouseEnter} 
-              onMouseLeave={this.handleMouseLeave}
-              />
-              <Link to={`/profile/${this.props.user.id}`} 
-                className="user-name" 
-                onMouseEnter={this.handleMouseEnter} 
-                onMouseLeave={this.handleMouseLeave}>
-                  {this.props.user.first_name} {this.props.user.last_name}
-              </Link>
-            </div>
-            <div className='comment-body'>{this.props.comment.body}</div>
-            {this.props.comment.author_id === this.props.sessionId ?
-              <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div>
-              :
-              <></>
-            }
-            
-            {this.state.editDropdown ? 
-            <div className="comment-edit-container">
-              <div onClick={this.toggleEdit}>Edit Comment</div>
-              <div onClick={this.handleDelete}>Delete Comment</div>
-            </div> : <></>}
-          </div>
-        )
-      }
-    } else {
+
+    console.log(this.props.user);
+
+    if (this.state.editing) {
+      return(
+        <div className="comment-item" onKeyDown={this.handleKeyDown}>
+          <CommentField comment={this.props.comment}/>
+        </div>
+      )
+    } else if (!this.props.user){
+      this.props.fetchUserInfo(this.props.comment.author_id);
       return <div></div>
+    } else {
+      return(
+        <div className="comment-item">
+          <NameHover user={this.props.user}/>
+          <div className='comment-body'>{this.props.comment.body}</div>
+          {this.props.comment.author_id === this.props.sessionId ?
+            <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
+            :
+            <></>
+          }
+          {this.state.editDropdown ? 
+          <div className="comment-edit-container">
+            <div onClick={this.toggleEdit}>Edit Comment</div>
+            <div onClick={this.handleDelete}>Delete Comment</div>
+          </div> : <></>}
+        </div>
+      )
     }
   }
 }

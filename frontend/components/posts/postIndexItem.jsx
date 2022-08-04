@@ -7,6 +7,8 @@ import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
 import { fetchUser } from '../../actions/user_actions';
 import UserInfoHover from "../user/userInfoHover";
+import NameHover from "./nameHover";
+import PostProfilePicture from "./postProfilePic";
 
 const mSTP = (state, ownProps) => {
   let userInfo = state.entities.user[ownProps.post.user_id];
@@ -74,11 +76,22 @@ class PostItem extends React.Component {
   render(){
     // debugger
     let photoContainer;
+    let sideMessage;
+
     if (this.props.post.photoUrl) {
       photoContainer = <div className="posts-photo">
           <img onClick={() => this.props.openViewModal(this.props.post)} src={this.props.post.photoUrl}/>
         </div>;
     }
+
+    if (!!this.props.post){
+      if (this.props.post.profile_pic_update) {
+        sideMessage = <span className='light-text-description'> updated their profile picture.</span>
+      } else if (this.props.post.profile_banner_update){
+        sideMessage = <span className='light-text-description'> updated their cover photo.</span>
+      }
+    }
+
     if (!!this.props.userInfo){
       return(
         <div className="post-item-box">
@@ -94,7 +107,10 @@ class PostItem extends React.Component {
               :
               <></>
             }   
-            <UserInfoHover userId={this.props.userInfo.id} post={this.props.post}/>
+              {/* <UserInfoHover userId={this.props.userInfo.id} post={this.props.post}/> */}
+              <PostProfilePicture user={this.props.userInfo}/>
+              <NameHover user={this.props.userInfo}/>
+              {sideMessage}
             <div>{this.props.post.body}</div>
           </div>
           {photoContainer}
