@@ -6,6 +6,7 @@ import CommentField from './commentField';
 import { fetchUser } from '../../actions/user_actions';
 import { BsThreeDots } from 'react-icons/bs';
 import NameHover from '../posts/nameHover';
+import PostProfilePicture from '../posts/postProfilePic';
 
 const mSTP = (state, ownProps) => {
   let userInfo = state.entities.user[ownProps.comment.author_id];
@@ -104,8 +105,6 @@ class CommentItem extends React.Component{
 
   render(){
 
-    console.log(this.props.user);
-
     if (this.state.editing) {
       return(
         <div className="comment-item" onKeyDown={this.handleKeyDown}>
@@ -118,8 +117,11 @@ class CommentItem extends React.Component{
     } else {
       return(
         <div className="comment-item">
-          <NameHover user={this.props.user}/>
-          <div className='comment-body'>{this.props.comment.body}</div>
+          <PostProfilePicture user={this.props.user}/>
+          <div className='comment-body-container'>
+            <NameHover user={this.props.user}/>
+            <div className='comment-body'>{this.props.comment.body}</div>
+          </div>
           {this.props.comment.author_id === this.props.sessionId ?
             <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
             :

@@ -2,16 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.comment-field{
-  padding: 10px 0;
-  display: flex;
+.comment-body-container {
+  background-color: #F0F2F5;
+  border-radius: 18px;
+  padding: 8px 12px;
 }
 
-.comment-field img{
+.comment-item {
+  display: flex;
+  padding: 4px 0 0 0;
+}
+
+.comment-item img, .comment-field img{
   border-radius: 50%;
   height: 32px;
   width: 32px;
   margin-right: 6px;
+}
+
+.comment-field{
+  padding: 10px 0;
+  display: flex;
 }
 
 .comment-field form, .comment-field input{
@@ -33,4 +44,14 @@
 .comment-field form > div{
   color: #65676b;
   font-size: 12px;
+}
+
+.comment-option {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  font-size: 24px;
+  height: 32px;
+  margin-left: 6px;
+  width: 32px;
 }
