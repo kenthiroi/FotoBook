@@ -108,10 +108,12 @@ class PostItem extends React.Component {
               <></>
             }   
               {/* <UserInfoHover userId={this.props.userInfo.id} post={this.props.post}/> */}
-              <PostProfilePicture user={this.props.userInfo}/>
-              <NameHover user={this.props.userInfo}/>
-              {sideMessage}
-            <div>{this.props.post.body}</div>
+              <div>
+                <PostProfilePicture user={this.props.userInfo}/>
+                <NameHover user={this.props.userInfo}/>
+                {sideMessage}
+              </div>
+            <div className="post-body">{this.props.post.body}</div>
           </div>
           {photoContainer}
           <div className="likes-and-comment-container">
