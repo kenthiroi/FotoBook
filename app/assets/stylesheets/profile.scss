@@ -28,13 +28,17 @@
   top: 0;
   height: inherit;
   position: absolute;
-  // z-index: 0;
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
 }
 
 .banner-background img{
   width: 100%;
   height: inherit;
+}
+
+.banner-edit-button {
+  position: absolute;
+  z-index: 1;
 }
 
 .banner-edit{
@@ -54,6 +58,7 @@
   position: absolute;
   z-index: 2;
 }
+
 
 .profile-tabs{
   display: flex;
@@ -78,6 +83,10 @@
   transition: 200ms;
 }
 
+.profile-top {
+
+}
+
 .active-profile-tab{
   color: #1876F2;
   border-bottom: 3px solid #1876F2;
@@ -99,7 +108,7 @@
   display: flex;
   height: 168px;
   justify-content: center;
-  margin: auto;
+  // margin: ;
   overflow: hidden;
   position: relative;
   width: 168px;

@@ -111,9 +111,11 @@ class UserProfile extends React.Component{
         <div>
           <div className='profile-main'> 
             <UserProfileBanner profileId={this.props.profileId} bannerImg={this.props.bannerImg} isOwner={isOwner}/>
-            <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg} isOwner={isOwner}/>
-            <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
-            {!isOwner ? <FriendRequestButton profileId={this.props.profileId}/> : <></>}
+            <div className='profile-top'>
+              <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg} isOwner={isOwner}/>
+              <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
+              {!isOwner ? <FriendRequestButton profileId={this.props.profileId}/> : <></>}
+            </div>
             <div className='profile-tabs'>
               <div className={(this.state.displayedInfo === 'posts') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('posts')}>Posts</div>
               <div className={(this.state.displayedInfo === 'about') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('about')}>About</div>
