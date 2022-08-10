@@ -6,7 +6,7 @@ import CommentField from "../comment/commentField";
 import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
 import { fetchUser } from '../../actions/user_actions';
-import UserInfoHover from "../user/userInfoHover";
+import { BsThreeDots } from 'react-icons/bs';
 import NameHover from "./nameHover";
 import PostProfilePicture from "./postProfilePic";
 
@@ -103,7 +103,7 @@ class PostItem extends React.Component {
           {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
           <div className="user-and-post-container">
             {this.props.post.user_id === this.props.user_id ?
-              <button className="posts-option" onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>&hellip;</button>
+              <button className="posts-option" onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button>
               :
               <></>
             }   

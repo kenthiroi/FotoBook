@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/user_actions';
 
-// const mSTP = (state, ownProps) => ({
-// })
+const mSTP = (state, ownProps) => ({
+
+})
 
 const mDTP = dispatch => ({
   updateUserAbout: (user) => dispatch(updateUser(user)),
@@ -21,9 +22,9 @@ class UserProfileIntro extends React.Component{
     }
 
     this.updateState = this.updateState.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.openForm = this.openForm.bind(this);
     this.closeForm = this.closeForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   updateState(e){
@@ -56,6 +57,7 @@ class UserProfileIntro extends React.Component{
   render(){
     
     let introBio;
+    
 
     return (
       <div className='intro-container'>

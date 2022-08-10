@@ -57,7 +57,7 @@ class AboutItemLabel extends React.Component{
   handleDelete(){
     const formData = new FormData();
     formData.append('user[id]', this.props.userId);
-    formData.append(`user[${this.props.formType}]`, null);
+    formData.append(`user[${this.props.formType}]`, '');
 
     this.props.updateUserAbout(formData).then(() => {
       this.closeForm();
