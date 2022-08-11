@@ -8,6 +8,7 @@ import UserProfileAbout from './profileAbout';
 import UserProfilePicture from './profilePicture';
 import UserProfileBanner from './profileBanner';
 import { getPost } from '../../actions/post_actions';
+import ProfileIntro from './profileIntro';
 
 const mSTP = (state, ownProps) => {
   let userInfo = state.entities.user[ownProps.match.params.userId];
@@ -123,7 +124,9 @@ class UserProfile extends React.Component{
             </div>
           </div>
           <div className='profile-intro'>
-            <div className='profile-description'></div>
+            <div className='profile-description'>
+              <ProfileIntro userInfo={this.props.userInfo} isOwner={isOwner}/>
+            </div>
           </div>
           <div>
             {profileContent}

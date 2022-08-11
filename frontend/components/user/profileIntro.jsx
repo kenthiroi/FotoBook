@@ -2,10 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/user_actions';
 
-const mSTP = (state, ownProps) => ({
-
-})
-
 const mDTP = dispatch => ({
   updateUserAbout: (user) => dispatch(updateUser(user)),
 })
@@ -57,18 +53,36 @@ class UserProfileIntro extends React.Component{
   render(){
     
     let introBio;
-    
+
+    if (!!this.props.userInfo.intro_bio && this.props.isOwner){
+      introBio = (<div>
+        <div className='bio-body'>{this.props.userInfo.introBio}</div>
+        <button onClick={this.openForm}>Edit Bio</button>
+      </div>)
+    } else if (!this.props.userInfo.intro_bio && this.props.isOwner){
+      introBio = (<div>
+        <button onClick={this.openForm}>Add Bio</button>
+      </div>)
+    } else if (!!this.props.userInfo.intro_bio){
+      introBio = (<div>
+        <div className='bio-body'>{this.props.userInfo.introBio}</div>
+      </div>)
+    } else {
+      introBio = <div></div>
+    }
 
     return (
       <div className='intro-container'>
-        {this.state.showForm ? introBio : 
+        Intro
+        {this.state.showForm ? 
           <div className="intro-form">
             <form>
-              <textarea onChange={this.updateState}/>
-              <button id="intro-save" onClick={this.handleSubmit}>Save</button>
-              <button id="intro-cancel" onClick={this.props.closeForm}>Cancel</button>
+              <textarea onChange={this.updateState}></textarea>
+              <button className="intro-save" onClick={this.handleSubmit}>Save</button>
+              <button className="intro-cancel" onClick={this.closeForm}>Cancel</button>
             </form>
-          </div>}
+          </div>
+          : introBio}
       </div>
     )
   }
