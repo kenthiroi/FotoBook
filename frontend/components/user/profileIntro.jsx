@@ -73,7 +73,7 @@ class UserProfileIntro extends React.Component{
 
     return (
       <div className='intro-container'>
-        Intro
+        <h2>Intro</h2>
         {this.state.showForm ? 
           <div className="intro-form">
             <form>

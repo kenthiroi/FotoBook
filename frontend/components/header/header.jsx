@@ -88,7 +88,7 @@ class HeaderNav extends React.Component {
       <div id="header-left">
         <div id="header-link">
           <Link to="/" id="header-icon">
-            <div id="icon-font">f</div>
+            <div id="icon-font">fotobook</div>
           </Link>
         </div>
       </div>
