@@ -94,7 +94,7 @@ class HeaderNav extends React.Component {
       </div>
       <div id="header-center">
         <button id={currentPage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/newsfeed')} className="center-btn">
-          {this.state.onHomePage ? <AiFillHome/> : <AiOutlineHome/>}
+          {currentPage ? <AiFillHome/> : <AiOutlineHome/>}
         </button>
         <Link to="github">
           <BsGithub/>
