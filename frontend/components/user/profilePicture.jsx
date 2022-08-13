@@ -31,6 +31,7 @@ class UserProfilePicture extends React.Component{
 
     this.state = {
       displayDropdown: false,
+      displayEdit: false,
     }
 
     this.openDropdown = this.openDropdown.bind(this);
@@ -99,7 +100,7 @@ class UserProfilePicture extends React.Component{
     }
 
     return (
-      <div className='profile-picture-container'>
+      <div className='profile-picture-container' onMouseOver={this.handleHoverIn} onMouseOut={this.handleHoverOut}>
         {editButton}
         {this.state.displayDropdown ? 
           editDropdown : <></>}

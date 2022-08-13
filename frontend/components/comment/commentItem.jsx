@@ -40,6 +40,7 @@ class CommentItem extends React.Component{
     this.state = {
       editDropdown: false,
       editing: false,
+      displayEdit: false,
     }
 
     this.openDropdown = this.openDropdown.bind(this);
@@ -47,8 +48,8 @@ class CommentItem extends React.Component{
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleHoverIn = this.handleHoverIn.bind(this);
+    this.handleHoverOut = this.handleHoverOut.bind(this);
   }
     
   openDropdown(){
@@ -91,19 +92,16 @@ class CommentItem extends React.Component{
     })
   }
 
-  handleMouseEnter(){
-    this.setState({
-      showInfo: true
-    })
+  handleHoverIn(){
+    this.setState({displayEdit: true});
   }
 
-  handleMouseLeave(){
-    this.setState({
-      showInfo: false
-    })
+  handleHoverOut(){
+    this.setState({displayEdit: false});
   }
 
   render(){
+    let isOwner = this.props.comment.author_id === this.props.sessionId;
 
     if (this.state.editing) {
       return(
@@ -116,17 +114,15 @@ class CommentItem extends React.Component{
       return <div></div>
     } else {
       return(
-        <div className="comment-item">
+        <div className="comment-item" onMouseOver={this.handleHoverIn} onMouseOut={this.handleHoverOut}>
           <PostProfilePicture user={this.props.user}/>
           <div className='comment-body-container'>
             <NameHover user={this.props.user}/>
             <div className='comment-body'>{this.props.comment.body}</div>
           </div>
-          {this.props.comment.author_id === this.props.sessionId ?
-            <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
-            :
-            <></>
-          }
+          {this.state.displayEdit && isOwner ? 
+           <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
+            : <></>}
           {this.state.editDropdown ? 
           <div className="comment-edit-container">
             <div onClick={this.toggleEdit}>Edit Comment</div>
