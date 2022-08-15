@@ -13,6 +13,7 @@ import Modal from './modal/modal';
 import NewsfeedContainer from './newsfeed/newsfeedContainer';
 import HeaderNav from './header/header'
 import UserProfile from './user/profile';
+import SideNav from './header/sideNav';
 
 
 
@@ -24,6 +25,7 @@ const App = (props) => (
       <Fragment>
         <header>
           <HeaderNav/>
+          <SideNav/>
         </header>
         {/* News Feed Component */}
         <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 

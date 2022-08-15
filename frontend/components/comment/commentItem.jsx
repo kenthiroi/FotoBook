@@ -122,7 +122,7 @@ class CommentItem extends React.Component{
           </div>
           {this.state.displayEdit && isOwner ? 
            <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
-            : <></>}
+             : <></>}
           {this.state.editDropdown ? 
           <div className="comment-edit-container">
             <div onClick={this.toggleEdit}>Edit Comment</div>

@@ -92,23 +92,7 @@ class HeaderNav extends React.Component {
           </Link>
         </div>
       </div>
-      <div id="header-center">
-        <button id={currentPage ? 'active-nav-button' : ''} onClick={() => this.props.history.push('/newsfeed')} className="center-btn">
-          {currentPage ? <AiFillHome/> : <AiOutlineHome/>}
-        </button>
-        <Link to="github">
-          <BsGithub/>
-        </Link>
-        <Link to="linkedin">
-          <BsLinkedin/>
-        </Link>
-        <Link to="newsfeed">
-          <MdWork/>
-        </Link>
-      </div>
       <div id="header-right">
-        <ProfileButton/>
-        <CreatePostDropdown/>
         <NotificationDropdown/>
         <SettingsDropdown logout={this.props.logout} profilePicture={this.props.userImg}/>
       </div>
