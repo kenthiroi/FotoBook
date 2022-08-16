@@ -11,7 +11,7 @@ function SideNav({userInfo, history}){
   let currentPage = history.location.pathname === `/newsfeed`;
 
   return(
-    <div className={currentPage ? 'expand-sidenav' : 'collapse-sidenav'}>
+    <div className={currentPage ? 'expand-sidenav sidenav' : 'collapse-sidenav sidenav'}>
       <button className={currentPage ? 'active-nav-button center-btn' : 'center-btn'} onClick={() => history.push('/newsfeed')}>
         {currentPage ? <AiFillHome/> : <AiOutlineHome/>}
       </button>
