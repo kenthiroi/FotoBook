@@ -22,6 +22,13 @@
   z-index: -3;
 }
 
+.profile-top{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  max-width: 1186px;
+}
+
 .banner-background{
   left: 0;
   right: 0;
@@ -83,10 +90,6 @@
   transition: 200ms;
 }
 
-.profile-top {
-
-}
-
 .add-item {
   background-color: transparent;
   border: none;
@@ -102,6 +105,7 @@
 
 .profile-picture-container{
   display: block;
+  margin-top: -90px;
 }
 
 .user-posts{
@@ -121,6 +125,7 @@
   overflow: hidden;
   position: relative;
   width: 168px;
+  z-index: 2;
 }
 
 #profile-picture > img{
