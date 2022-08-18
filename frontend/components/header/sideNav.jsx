@@ -9,22 +9,22 @@ import { withRouter } from 'react-router-dom';
 
 function SideNav({userInfo, history}){
 
-  let currentPage = history.location.pathname === `/newsfeed`;
+  let homePage = history.location.pathname === `/newsfeed`;
 
   return(
-    <div className={currentPage ? 'expand-sidenav sidenav' : 'collapse-sidenav sidenav'}>
-      <div className={currentPage ? 'active-nav-button sidenav-btn' : 'sidenav-btn'} onClick={() => history.push('/newsfeed')}>
-        {currentPage ? <AiFillHome/> : <AiOutlineHome/>}
+    <div className={homePage ? 'expand-sidenav sidenav' : 'collapse-sidenav sidenav'}>
+      <div className={homePage ? 'active-nav-button sidenav-btn' : 'sidenav-btn'} onClick={() => history.push('/newsfeed')}>
+        {homePage ? <AiFillHome/> : <AiOutlineHome/>}
       </div>
-      <ProfileSideButton/>
+      <ProfileSideButton onHomepage={homePage}/>
       <Link to="github" className="sidenav-btn">
-        <BsGithub/> Github
+        <BsGithub/>{homePage ? "Github" : ""}
       </Link>
       <Link to="linkedin" className="sidenav-btn">
-        <BsLinkedin/> LinkedIn
+        <BsLinkedin/>{homePage ? "LinkedIn" : ""}
       </Link>
       <Link to="newsfeed" className="sidenav-btn">
-        <MdWork/> My Work
+        <MdWork/> {homePage ? "My Work" : ""}
       </Link>
     </div>
   )

@@ -35,10 +35,10 @@ class ProfileSideButton extends React.Component{
   render(){
 
     return (
-        <div onClick={this.handleClick} className="sidenav-btn">
-          <img src={this.props.userInfo.photoUrl}/>
-          {this.props.userInfo.first_name} {this.props.userInfo.last_name}
-        </div>
+      <div onClick={this.handleClick} className="sidenav-btn">
+        <img src={this.props.userInfo.photoUrl}/>
+          {this.props.onHomepage ? this.props.userInfo.first_name + " " + this.props.userInfo.last_name : ""}
+      </div>
     )
   }
 }

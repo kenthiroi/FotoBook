@@ -66,7 +66,7 @@ header {
   top: 0; 
   left: 0;
   font-size: 18px;
-  overflow-x: hidden;
+  overflow: hidden;
   padding-top: 70px; 
   z-index: -1;
   transition: 500ms;
@@ -95,9 +95,10 @@ header {
 
 .sidenav-btn img{
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  margin-right: 6px;
+  height: 24px;
+  float: left;
+  width: 24px;
+  margin-right: 12px;
   cursor: pointer;
 }
 
