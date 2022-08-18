@@ -13,18 +13,18 @@ function SideNav({userInfo, history}){
 
   return(
     <div className={currentPage ? 'expand-sidenav sidenav' : 'collapse-sidenav sidenav'}>
-      <div className={currentPage ? 'active-nav-button center-btn' : 'center-btn'} onClick={() => history.push('/newsfeed')}>
+      <div className={currentPage ? 'active-nav-button sidenav-btn' : 'sidenav-btn'} onClick={() => history.push('/newsfeed')}>
         {currentPage ? <AiFillHome/> : <AiOutlineHome/>}
       </div>
       <ProfileSideButton/>
-      <Link to="github">
-        <BsGithub/>
+      <Link to="github" className="sidenav-btn">
+        <BsGithub/> Github
       </Link>
-      <Link to="linkedin">
-        <BsLinkedin/>
+      <Link to="linkedin" className="sidenav-btn">
+        <BsLinkedin/> LinkedIn
       </Link>
-      <Link to="newsfeed">
-        <MdWork/>
+      <Link to="newsfeed" className="sidenav-btn">
+        <MdWork/> My Work
       </Link>
     </div>
   )

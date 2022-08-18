@@ -69,15 +69,28 @@ header {
   overflow-x: hidden;
   padding-top: 70px; 
   z-index: -1;
-}
-
-.sidenav div, .sidenav a, .sidenav button{
-  width: 60px;
-  height: 40px;
+  transition: 500ms;
 }
 
 .expand-sidenav {
   background-color: transparent;
+  width: 300px;
+  // width: 100%;
+}
+
+.sidenav-btn{
+  border-radius: 6px;
+  height: 40px;
+  padding: 6px 18px;
+  width: 100%;
+  border: none;
+  transition: 200ms;
+}
+
+.sidenav-btn:hover{
+  cursor: pointer;
+  background-color: #d2d5dd; 
+  transition: 200ms;
 }
 
 .collapse-sidenav {
