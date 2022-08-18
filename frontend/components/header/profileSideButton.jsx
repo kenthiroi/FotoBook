@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 const mSTP = (state, ownProps) => {
   return {
     sessionId: state.session.id,
-    name: state.entities.user[state.session.id].first_name,
+    userInfo: state.entities.user[state.session.id],
   }
 }
 
@@ -15,23 +15,31 @@ const mSTP = (state, ownProps) => {
 //   }
 // }
 
-function SidenavProfileButton ({userInfo}){
+class ProfileSideButton extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   handleClick(e){
     e.preventDefault();
-    if (this.props.history.location.pathname !== `/profile/${sessionId}`){
-      this.props.history.push(`/profile/${sessionId}`);
+    if (this.props.history.location.pathname !== `/profile/${this.props.sessionId}`){
+      this.props.history.push(`/profile/${this.props.sessionId}`);
+      this.setState({onProfile: true});
+    } else {
+      this.setState({onProfile: false});
     }
   }
 
-  return (
-    <div>
-      <button onClick={this.handleClick} className="util-btn">
-        <img src={userInfo.photoUrl}/>
-        {userInfo.first_name} {userInfo.last_name}
-      </button>
-    </div>
-  )
+  render(){
+
+    return (
+        <div onClick={this.handleClick} className="util-btn">
+          {this.props.userInfo.first_name} {this.props.userInfo.last_name}
+        </div>
+    )
+  }
 }
 
-export default connect(mSTP, null)(withRouter(SidenavProfileButton));
+export default connect(mSTP, null)(withRouter(ProfileSideButton));

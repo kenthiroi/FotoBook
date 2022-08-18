@@ -56,7 +56,7 @@ class ProfileButton extends React.Component{
   }
 
   render(){
-    console.log(this.state.onProfile);
+    console.log(this.props.history);
     return (
       <div>
         <button id={this.state.onProfile ? 'active-nav-button' : ''} onClick={this.handleClick} className="util-btn">

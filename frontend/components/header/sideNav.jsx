@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileButton from "./profileButton";
+import ProfileSideButton from "./profileSideButton";
 import { AiFillHome, AiOutlineHome } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdWork } from "react-icons/md"
@@ -12,10 +13,10 @@ function SideNav({userInfo, history}){
 
   return(
     <div className={currentPage ? 'expand-sidenav sidenav' : 'collapse-sidenav sidenav'}>
-      <button className={currentPage ? 'active-nav-button center-btn' : 'center-btn'} onClick={() => history.push('/newsfeed')}>
+      <div className={currentPage ? 'active-nav-button center-btn' : 'center-btn'} onClick={() => history.push('/newsfeed')}>
         {currentPage ? <AiFillHome/> : <AiOutlineHome/>}
-      </button>
-      <ProfileButton/>
+      </div>
+      <ProfileSideButton/>
       <Link to="github">
         <BsGithub/>
       </Link>
