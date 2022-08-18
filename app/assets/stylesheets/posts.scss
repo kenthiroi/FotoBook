@@ -66,6 +66,10 @@
   background-color: #FFF;
 }
 
+.posts-photo {
+  cursor: pointer;
+}
+
 .posts-username {
   padding: 10px;
   font-weight: 600;
@@ -101,6 +105,7 @@
   height: 40px;
   width: 40px;
   margin-right: 6px;
+  cursor: pointer;
 }
 
 .user-name{
