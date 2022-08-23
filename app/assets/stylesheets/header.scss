@@ -95,7 +95,7 @@ header {
   border-radius: 6px;
   color: #000;
   height: 40px;
-  padding: 6px 18px;
+  padding: 24px 14px;
   width: 100%;
   border: none;
   transition: 200ms;
@@ -127,12 +127,28 @@ header {
   cursor: pointer;
 }
 
-.collapse-sidenav svg{
+.collapse-sidenav svg, .expand-sidenav svg{
   margin: 7px;
 }
 
 .collapse-sidenav>div>svg:first-of-type{
   margin: 0;
+}
+
+.expand-sidenav a>div{
+  margin-right: 9px;
+}
+
+.expand-sidenav > #sidenav-profile-button{
+  margin-left: 4px;
+}
+
+.expand-sidenav #sidenav-profile-button > img{
+  margin-right: 13px;
+}
+
+.expand-sidenav #sidenav-home-button > svg{
+  margin-right: 16px;
 }
 
 
@@ -168,32 +184,6 @@ header {
   background-color: lightskyblue;
   color: #1876f2;
   font-weight: bold;
-}
-
-#header-center {
-  display: flex;
-  justify-content: center;
-  width: 390px;
-}
-
-#header-center a, #header-center button{
-  background-color: transparent;
-  border-radius: 4px;
-  color: #1876f2;
-  font-size: 32px;
-  height: 56px;
-  padding-top: 8px;
-  text-align: center;
-  width: 25%;
-}
-
-#header-center button{
-  border: none;
-}
-
-#header-center a:hover, #header-center button:hover{
-  background-color: #dfdfdf;
-  transition: 200ms;
 }
 
 #header-link {
