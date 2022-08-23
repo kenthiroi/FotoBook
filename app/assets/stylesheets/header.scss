@@ -58,6 +58,8 @@ header {
   transform: translate(-50%, -50%) scale(1.25);
 }
 
+//Sidenav
+
 .sidenav {
   display: flex;
   flex-direction: column;
@@ -78,6 +80,14 @@ header {
   // width: 100%;
 }
 
+.expand-sidenav .sidenav-btn {
+  justify-content: left;
+}
+
+.collapse-sidenav .sidenav-btn{
+  justify-content: center;
+}
+
 .sidenav-btn{
   align-items: center;
   display: flex;
@@ -91,6 +101,11 @@ header {
   transition: 200ms;
 }
 
+.collapse-sidenav {
+  width: 59px;
+  background-color: #FFF;
+}
+
 .sidenav-btn:hover{
   cursor: pointer;
   background-color: #d2d5dd; 
@@ -102,22 +117,24 @@ header {
   width: 32px;
   border-radius: 50%;
   background-color: #d2d5dd;
-  margin-right: 12px;
 }
 
 .sidenav-btn img{
   height: 24px;
   width: 24px;
-  margin-right: 12px;
   border-radius: 50%;
   float: left;
   cursor: pointer;
 }
 
-.collapse-sidenav {
-  width: 59px;
-  background-color: #FFF;
+.collapse-sidenav svg{
+  margin: 7px;
 }
+
+.collapse-sidenav>div>svg:first-of-type{
+  margin: 0;
+}
+
 
 .util-container{
   position: absolute;

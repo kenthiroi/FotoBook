@@ -14,7 +14,7 @@ function SideNav({userInfo, history}){
   return(
     <div className={homePage ? 'expand-sidenav sidenav' : 'collapse-sidenav sidenav'}>
       <div className={homePage ? 'active-nav-button sidenav-btn' : 'sidenav-btn'} onClick={() => history.push('/newsfeed')}>
-        {homePage ? <div><AiFillHome/> Home</div> : <AiOutlineHome/>}
+        {homePage ? <><AiFillHome/>Home</> : <AiOutlineHome/>}
       </div>
       <ProfileSideButton onHomepage={homePage}/>
       <Link to="github" className="sidenav-btn">
