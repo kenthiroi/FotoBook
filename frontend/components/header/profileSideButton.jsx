@@ -26,9 +26,6 @@ class ProfileSideButton extends React.Component{
     e.preventDefault();
     if (this.props.history.location.pathname !== `/profile/${this.props.sessionId}`){
       this.props.history.push(`/profile/${this.props.sessionId}`);
-      this.setState({onProfile: true});
-    } else {
-      this.setState({onProfile: false});
     }
   }
 
@@ -36,6 +33,7 @@ class ProfileSideButton extends React.Component{
 
     return (
       <div onClick={this.handleClick} className="sidenav-btn" id="sidenav-profile-button">
+        <span className={this.props.onProfile ? "active-sidenav-btn" : ""}></span>
         <img src={this.props.userInfo.photoUrl}/>
           {this.props.onHomepage ? this.props.userInfo.first_name + " " + this.props.userInfo.last_name : ""}
       </div>
