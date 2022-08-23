@@ -79,7 +79,10 @@ header {
 }
 
 .sidenav-btn{
+  display: flex;
+  flex-direction: row;
   border-radius: 6px;
+  color: #000;
   height: 40px;
   padding: 6px 18px;
   width: 100%;
@@ -93,12 +96,20 @@ header {
   transition: 200ms;
 }
 
-.sidenav-btn img{
+.sidenav-btn div{
+  height: 32px;
+  width: 32px;
   border-radius: 50%;
+  background-color: #d2d5dd;
+  margin-right: 12px;
+}
+
+.sidenav-btn img{
   height: 24px;
-  float: left;
   width: 24px;
   margin-right: 12px;
+  border-radius: 50%;
+  float: left;
   cursor: pointer;
 }
 

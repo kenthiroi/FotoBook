@@ -18,13 +18,13 @@ function SideNav({userInfo, history}){
       </div>
       <ProfileSideButton onHomepage={homePage}/>
       <Link to="github" className="sidenav-btn">
-        <BsGithub/>{homePage ? "Github" : ""}
+        <div><BsGithub/></div>{homePage ? "Github" : ""}
       </Link>
       <Link to="linkedin" className="sidenav-btn">
-        <BsLinkedin/>{homePage ? "LinkedIn" : ""}
+        <div><BsLinkedin/></div>{homePage ? "LinkedIn" : ""}
       </Link>
       <Link to="newsfeed" className="sidenav-btn">
-        <MdWork/> {homePage ? "My Work" : ""}
+        <div><MdWork/></div> {homePage ? "My Work" : ""}
       </Link>
     </div>
   )
