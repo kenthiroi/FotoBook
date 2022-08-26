@@ -71,9 +71,12 @@ class UserProfileIntro extends React.Component{
       introBio = <div></div>
     }
 
+    
+
     return (
       <div className='intro-container'>
         <h2>Intro</h2>
+        {introBio}
         {this.state.showForm ? 
           <div className="intro-form">
             <form>
