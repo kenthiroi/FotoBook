@@ -1,5 +1,6 @@
 import React from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import { IoNotifications } from "react-icons/io5";
 
 const mSTP = (state) => {
   return {
@@ -46,7 +47,7 @@ class NotificationsDropdown extends React.Component{
     return (
       <div>
         <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown} className="util-btn">
-          <div className="dropdown">&#xf0f3;</div>
+          <div className="dropdown"><IoNotifications/></div>
         </button>
         {this.state.openDropdown ? 
         <div className="util-container">
