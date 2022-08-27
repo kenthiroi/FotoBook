@@ -9,6 +9,7 @@ import UserProfilePicture from './profilePicture';
 import UserProfileBanner from './profileBanner';
 import { getPost } from '../../actions/post_actions';
 import ProfileIntro from './profileIntro';
+import ProfilePostsContainer from './profilePostsContainer';
 
 const mSTP = (state, ownProps) => {
   let userInfo = state.entities.user[ownProps.match.params.userId];
@@ -94,7 +95,7 @@ class UserProfile extends React.Component{
 
     switch (this.state.displayedInfo){
       case 'posts':
-        profileContent = <UserProfileWall userInfo={this.props.userInfo} userImg={this.props.userImg} isOwner={isOwner}/>;
+        profileContent = <ProfilePostsContainer userInfo={this.props.userInfo} userImg={this.props.userImg} isOwner={isOwner}/>;
         break;
       case 'about':
         profileContent = <UserProfileAbout userId={this.props.profileId} isOwner={isOwner}/>;
@@ -121,11 +122,6 @@ class UserProfile extends React.Component{
               <div className={(this.state.displayedInfo === 'posts') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('posts')}>Posts</div>
               <div className={(this.state.displayedInfo === 'about') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('about')}>About</div>
               <div className={(this.state.displayedInfo === 'friends') ? 'active-profile-tab' : 'profile-tab'}  onClick={() => this.handleSwitch('friends')}>Friends</div>
-            </div>
-          </div>
-          <div className='profile-intro'>
-            <div className='profile-description'>
-              <ProfileIntro userInfo={this.props.userInfo} isOwner={isOwner}/>
             </div>
           </div>
           <div>
