@@ -71,7 +71,33 @@ class UserProfileIntro extends React.Component{
       introBio = <div></div>
     }
 
-    
+    //hometown, work, school and relationship
+    let hometown;
+    let work;
+    let school;
+    let relationship;
+
+    if (!!this.props.userInfo.hometown){
+      hometown = (
+        <div></div>
+      )
+    }
+    if (!!this.props.userInfo.work){
+      work = (
+        <div></div>
+      )
+    }
+    if (!!this.props.userInfo.school){
+      school = (
+        <div></div>
+      )
+    }
+    if (!!this.props.userInfo.relationship){
+      relationship = (
+        <div></div>
+      )
+    }
+
 
     return (
       <div className='intro-container'>
