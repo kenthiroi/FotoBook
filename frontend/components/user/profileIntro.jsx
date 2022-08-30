@@ -79,22 +79,22 @@ class UserProfileIntro extends React.Component{
 
     if (!!this.props.userInfo.hometown){
       hometown = (
-        <div></div>
+        <div className='bio-info'>{this.props.userInfo.hometown}</div>
       )
     }
     if (!!this.props.userInfo.work){
       work = (
-        <div></div>
+        <div className='bio-info'>{this.props.userInfo.work}</div>
       )
     }
     if (!!this.props.userInfo.school){
       school = (
-        <div></div>
+        <div className='bio-info'>{this.props.userInfo.school}</div>
       )
     }
     if (!!this.props.userInfo.relationship){
       relationship = (
-        <div></div>
+        <div className='bio-info'>{this.props.userInfo.relationship}</div>
       )
     }
 
@@ -102,7 +102,6 @@ class UserProfileIntro extends React.Component{
     return (
       <div className='intro-container'>
         <h2>Intro</h2>
-        {introBio}
         {this.state.showForm ? 
           <div className="intro-form">
             <form>
@@ -112,6 +111,10 @@ class UserProfileIntro extends React.Component{
             </form>
           </div>
           : introBio}
+        {hometown}
+        {work}
+        {school}
+        {relationship}
       </div>
     )
   }
