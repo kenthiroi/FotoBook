@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/user_actions';
+import AboutItemContainer from '../profileAboutItemContainer';
+
 
 const mDTP = dispatch => ({
   updateUserAbout: (user) => dispatch(updateUser(user)),
@@ -79,22 +81,22 @@ class UserProfileIntro extends React.Component{
 
     if (!!this.props.userInfo.hometown){
       hometown = (
-        <div className='bio-info'>{this.props.userInfo.hometown}</div>
+        <AboutItemContainer formType='hometown' userId={this.props.userInfo.id}/>
       )
     }
     if (!!this.props.userInfo.work){
       work = (
-        <div className='bio-info'>{this.props.userInfo.work}</div>
+        <AboutItemContainer formType='work' userId={this.props.userInfo.id}/>
       )
     }
     if (!!this.props.userInfo.school){
       school = (
-        <div className='bio-info'>{this.props.userInfo.school}</div>
+        <AboutItemContainer formType='school' userId={this.props.userInfo.id}/>
       )
     }
     if (!!this.props.userInfo.relationship){
       relationship = (
-        <div className='bio-info'>{this.props.userInfo.relationship}</div>
+        <AboutItemContainer formType='relationship' userId={this.props.userInfo.id}/>
       )
     }
 
