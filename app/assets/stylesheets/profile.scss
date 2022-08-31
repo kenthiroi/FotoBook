@@ -23,6 +23,18 @@
 
 .intro-container{
   background-color: #FFF;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px #c4c4c4;
+  margin: 20px 0;
+}
+
+.intro-container h2{
+  padding: 6px;
+}
+
+.intro-container div{
+  padding: 6px;
+  width: 100%;
 }
 
 .profile-banner-container{
@@ -44,8 +56,15 @@
   z-index: 1;
 }
 
+.profile-posts-container{
+  max-width: 1186px;
+  margin: auto;
+}
+
 .profile-left{
   float: left;
+  max-width: 490px;
+  width: 100%;
 }
 
 .profile-right{
@@ -86,10 +105,12 @@
 }
 
 .profile-tabs{
-  position: sticky;
-  top: 56px;
   display: flex;
   flex-direction: row;
+  margin: auto;
+  max-width: 1186px;
+  position: sticky;
+  top: 56px;
 }
 
 .profile-tabs div{
