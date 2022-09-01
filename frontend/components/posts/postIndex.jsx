@@ -28,7 +28,6 @@ class PostIndex extends React.Component{
         {this.props.posts.reverse().map(post => {
           let userInfo = this.props.users[post.user_id];
           if (!!userInfo){
-            console.log('working');
             return <PostItem key={post.id} post={post} userInfo={userInfo}/>
           } else {
             this.props.fetchUser(post.user_id).then(res => {

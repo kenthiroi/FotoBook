@@ -5,14 +5,16 @@ import { IoNotifications } from "react-icons/io5";
 const mSTP = (state) => {
   return {
     sessionId: state.session.id,
+    friendRequests: state.entities.friendRequests,
+    users: state.entities.user,
   }
 }
 
-// const mDTP = (dispatch) => {
-//   return {
-    
-//   }
-// }
+const mDTP = (dispatch) => {
+  return {
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
+  }
+}
 
 class NotificationsDropdown extends React.Component{
   constructor(props){
@@ -53,6 +55,22 @@ class NotificationsDropdown extends React.Component{
         <div className="util-container">
           <div className="util-container">
             {/* renders all notifications */}
+            {this.props.friendRequests.reverse().map(friendRequests => {
+              let userInfo;
+              if (this.props.sessionId === friendRequests.sender_id){
+                userInfo = this.props.users[friendRequests.receiver_id];
+              } else {
+                userInfo = this.props.users[friendRequests.sender_id];
+              }
+              if (!!userInfo){
+                return <></>
+              } else {
+                this.props.fetchUser(post.user_id).then(res => {
+                  return <></>
+                })
+              }
+            })
+            }
           </div>
         </div> : <></>}
       </div>
@@ -60,4 +78,4 @@ class NotificationsDropdown extends React.Component{
   }
 }
 
-export default connect(mSTP, null)(NotificationsDropdown);
+export default connect(mSTP, mDTP)(NotificationsDropdown);

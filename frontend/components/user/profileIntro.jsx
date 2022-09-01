@@ -117,6 +117,7 @@ class UserProfileIntro extends React.Component{
         {work}
         {school}
         {relationship}
+        {!!this.props.isOwner ? <button>Edit Details</button> : <></>}
       </div>
     )
   }
