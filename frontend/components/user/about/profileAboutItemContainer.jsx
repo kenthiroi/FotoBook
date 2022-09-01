@@ -38,7 +38,13 @@ class AboutItemContainer extends React.Component{
   
   render(){
     let aboutItem;
-    const isOwner = this.props.sessionId === this.props.userId;
+    let isOwner;
+
+    if (!!this.props.onProfilePage){
+      isOwner = false;
+    } else {
+      isOwner = this.props.sessionId === this.props.userId;
+    }
 
     if (isOwner) {
       aboutItem = <AddAboutItem formType={this.props.formType}/>;
