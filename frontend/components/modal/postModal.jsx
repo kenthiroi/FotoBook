@@ -6,6 +6,7 @@ import { createPost, editPost } from '../../actions/post_actions';
 const mapStateToProps = (state) => {
   return {
     userId: state.session.id,
+    userInfo: state.entities.user[state.session.id],
   }
 }
 
@@ -98,7 +99,13 @@ class PostModal extends React.Component {
     return <div className="post-modal">
       <div className="modal-title">{modal_title}</div>
       <form>
-        <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
+        <textarea 
+          onChange={this.updateState('body')} 
+          defaultValue={this.state.body}
+          rows="4"
+          placeholder={"Whats on your mind, " + this.props.userInfo.first_name + "?"} 
+          autofocus
+        />
         <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
         <input type="file" onChange={this.handleFile}/>
       </form>
