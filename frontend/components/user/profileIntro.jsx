@@ -117,7 +117,11 @@ class UserProfileIntro extends React.Component{
         {work}
         {school}
         {relationship}
-        {!!this.props.isOwner ? <button>Edit Details</button> : <></>}
+        {!!this.props.isOwner ? 
+        <div>
+          <button onClick={this.props.handleSwitch}>Edit Details</button>
+        </div>
+        : <></>}
       </div>
     )
   }

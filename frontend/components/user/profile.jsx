@@ -95,7 +95,7 @@ class UserProfile extends React.Component{
 
     switch (this.state.displayedInfo){
       case 'posts':
-        profileContent = <ProfilePostsContainer userInfo={this.props.userInfo} userImg={this.props.userImg} isOwner={isOwner}/>;
+        profileContent = <ProfilePostsContainer userInfo={this.props.userInfo} userImg={this.props.userImg} isOwner={isOwner} handleSwitch={() => this.handleSwitch('about')}/>;
         break;
       case 'about':
         profileContent = <UserProfileAbout userId={this.props.profileId} isOwner={isOwner}/>;
