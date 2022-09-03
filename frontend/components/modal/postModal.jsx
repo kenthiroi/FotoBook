@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { createPost, editPost } from '../../actions/post_actions';
+import { VscChromeClose } from 'react-icons/vsc'
 
 const mapStateToProps = (state) => {
   return {
@@ -97,12 +98,18 @@ class PostModal extends React.Component {
     }
 
     return <div className="post-modal">
-      <div className="modal-title">{modal_title}</div>
+      <div>
+        <div id="modal-closebtn" onClick={this.props.closeModal}>
+          <VscChromeClose/>
+        </div>
+        <h2 className="modal-title">{modal_title}</h2>
+      </div>
       <form>
         <textarea 
           onChange={this.updateState('body')} 
           defaultValue={this.state.body}
           rows="4"
+          cols="37"
           placeholder={"Whats on your mind, " + this.props.userInfo.first_name + "?"} 
           autofocus
         />
