@@ -97,25 +97,27 @@ class PostModal extends React.Component {
         submit_text = "oops";
     }
 
-    return <div className="post-modal">
-      <div>
-        <div id="modal-closebtn" onClick={this.props.closeModal}>
-          <VscChromeClose/>
+    return <div className="modal-child" onClick={e => e.stopPropagation()}>
+      <div className="post-modal">
+        <div>
+          <div id="modal-closebtn" onClick={this.props.closeModal}>
+            <VscChromeClose/>
+          </div>
+          <h2 className="modal-title">{modal_title}</h2>
         </div>
-        <h2 className="modal-title">{modal_title}</h2>
+        <form>
+          <textarea 
+            onChange={this.updateState('body')} 
+            defaultValue={this.state.body}
+            rows="4"
+            cols="37"
+            placeholder={"Whats on your mind, " + this.props.userInfo.first_name + "?"} 
+            autofocus
+            />
+          <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
+          <input type="file" onChange={this.handleFile}/>
+        </form>
       </div>
-      <form>
-        <textarea 
-          onChange={this.updateState('body')} 
-          defaultValue={this.state.body}
-          rows="4"
-          cols="37"
-          placeholder={"Whats on your mind, " + this.props.userInfo.first_name + "?"} 
-          autofocus
-        />
-        <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
-        <input type="file" onChange={this.handleFile}/>
-      </form>
     </div>
   }
 

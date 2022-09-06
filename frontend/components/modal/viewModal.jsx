@@ -29,17 +29,15 @@ class ViewModal extends React.Component {
         <img src={this.props.post.photoUrl}/>
       </div>
       <div className='info-container'>
-        <div className='post-container'>
-          <div className='exit-button' onClick={this.props.closeModal}></div>
-          <div className='post-main'>
-            <UserInfoHover userId={this.props.post.user_id} post={this.props.post}/>
-            <div className="posts-body">{this.props.post.body}</div>
-          </div>
-          <div className='post-comments'>
-            <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}/>
-            <CommentIndex comments={this.props.post.comments}/>
-            <CommentField post_id={this.props.post.id}/>
-          </div>
+        <div className='exit-button' onClick={this.props.closeModal}></div>
+        <div className='post-main'>
+          <UserInfoHover userId={this.props.post.user_id} post={this.props.post}/>
+          <div className="posts-body">{this.props.post.body}</div>
+        </div>
+        <div className='post-comments'>
+          <LikeAndCommentButton likes={this.props.post.likes} post_id={this.props.post.id}/>
+          <CommentIndex comments={this.props.post.comments}/>
+          <CommentField post_id={this.props.post.id}/>
         </div>
       </div>
     </div> : <></>
