@@ -1,4 +1,3 @@
-
 .modal-background {
   position: fixed;
   top: 0;
@@ -16,16 +15,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-}
-
-.photo-container img{
-  max-width: 80vw;
-  max-height: 100vh;
-  border-radius: 8px;
-}
-
-.view-modal{
-  display: flex;
 }
 
 //post modal
