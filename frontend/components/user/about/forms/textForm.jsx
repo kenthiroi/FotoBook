@@ -40,7 +40,7 @@ class AboutTextForm extends React.Component {
   render(){
     return <div className="about-form">
         <form>
-          <textarea onChange={this.updateState}/>
+          <input onChange={this.updateState}/>
           <button id="about-save" onClick={this.handleSubmit}>Save</button>
           <button id="about-cancel" onClick={this.props.closeForm}>Cancel</button>
         </form>

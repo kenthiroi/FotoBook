@@ -1,3 +1,4 @@
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -19,13 +20,13 @@
 
 //post modal
 
-textarea{
+.post-container textarea{
   font-size: 24px;
   resize: none;
   border: none;
 }
 
-textarea:focus{
+.post-container textarea:focus{
   outline: none;
 }
 

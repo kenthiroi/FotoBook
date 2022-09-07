@@ -107,7 +107,7 @@ class UserProfileIntro extends React.Component{
         {this.state.showForm ? 
           <div className="intro-form">
             <form>
-              <textarea onChange={this.updateState}></textarea>
+              <input onChange={this.updateState}></input>
               <button className="intro-save" onClick={this.handleSubmit}>Save</button>
               <button className="intro-cancel" onClick={this.closeForm}>Cancel</button>
             </form>
