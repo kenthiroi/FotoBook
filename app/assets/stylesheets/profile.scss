@@ -15,6 +15,9 @@
 .banner-edit-button {
   position: absolute;
   z-index: 1;
+  right: 160px;
+  top: 400px;
+  width: 130px;
 }
 
 .banner-edit{
@@ -49,10 +52,16 @@
   background-color: #E4E6EB;
 }
 
+.intro-container button:hover{
+  background-color: #d2d5dd;
+  transition: 200ms;
+}
+
 //banner
 
 .profile-banner-container{
   margin-top: -25px;
+  position: relative;
 }
 
 .profile-banner{
