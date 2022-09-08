@@ -85,8 +85,8 @@ class UserProfileBanner extends React.Component{
 
     return (
       <div className='profile-banner-container'>
-        {bannerPhoto}
         {editButton}
+        {bannerPhoto}
         {this.state.displayDropdown ? editDropdown : <></>}
       </div>
     )

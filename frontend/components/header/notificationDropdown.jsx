@@ -28,14 +28,6 @@ class NotificationsDropdown extends React.Component{
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
-  componentDidMount(){
-
-  }
-
-  componentDidUpdate(){
-    
-  }
-
   openDropdown(e){
     e.preventDefault();
     this.setState({openDropdown: true});
@@ -46,6 +38,8 @@ class NotificationsDropdown extends React.Component{
   }
 
   render(){
+    console.log(this.props.friendRequests);
+
     return (
       <div>
         <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown} className="util-btn">
@@ -55,7 +49,7 @@ class NotificationsDropdown extends React.Component{
         <div className="util-container">
           <div className="util-container">
             {/* renders all notifications */}
-            {this.props.friendRequests.reverse().map(friendRequests => {
+            {/* {this.props.friendRequests.reverse().map(friendRequests => {
               let userInfo;
               if (this.props.sessionId === friendRequests.sender_id){
                 userInfo = this.props.users[friendRequests.receiver_id];
@@ -70,7 +64,7 @@ class NotificationsDropdown extends React.Component{
                 })
               }
             })
-            }
+            } */}
           </div>
         </div> : <></>}
       </div>

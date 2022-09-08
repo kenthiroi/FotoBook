@@ -74,7 +74,7 @@ class UserInfoHover extends React.Component{
           <div className="user-hover-name">{this.props.user.first_name} {this.props.user.last_name}</div>
           <div className="user-hover-info">
             {/* <div className="user-hometown">{this.props.user.hometown}</div> */}
-            <div className="user-mutual-friends">39</div>
+            <div className="user-mutual-friends"></div>
           </div>
         </div> : <></>}
       </div>
