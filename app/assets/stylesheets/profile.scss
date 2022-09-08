@@ -15,7 +15,6 @@
 .banner-edit-button {
   position: absolute;
   z-index: 1;
-  right: 160px;
   top: 400px;
   width: 130px;
 }
@@ -128,16 +127,17 @@
 }
 
 .profile-tabs{
+  border-top: 1px #c4c4c4 solid;
   display: flex;
   flex-direction: row;
-  margin: auto;
+  margin: 10px auto;
   max-width: 1186px;
   position: sticky;
   top: 56px;
 }
 
 .profile-tabs div{
-  width: 60px;
+  width: 85px;
   font-size: 15px;
   padding: 15px 8px;
   margin: 0 2px;
