@@ -20,8 +20,11 @@ const mapStateToProps = (state, ownProps) => {
   let userImg;
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
-    userImg = user.photoUrl,
-    console
+    if (typeof user.photoUrl === 'undefined'){
+      userImg = 'https://i.imgur.com/7x6fTDK.png';
+    } else {
+      userImg = user.photoUrl;
+    }
   } catch (e) {
     userImg = 'https://i.imgur.com/7x6fTDK.png';
   }
@@ -83,6 +86,7 @@ class HeaderNav extends React.Component {
 
   render() {
     let currentPage = this.props.history.location.pathname === `/newsfeed`;
+    // console.log(this.props.userImg);
 
     return <div id="navbar">
       <div id="header-left">

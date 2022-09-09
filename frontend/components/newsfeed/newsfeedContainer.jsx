@@ -8,8 +8,11 @@ const mSTP = state => {
   let userImg;
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
-    userImg = userInfo.photoUrl,
-    console
+    if (typeof userInfo.photoUrl === 'undefined'){
+      userImg = 'https://i.imgur.com/7x6fTDK.png';
+    } else {
+      userImg = userInfo.photoUrl;
+    }
   } catch (e) {
     userImg = 'https://i.imgur.com/7x6fTDK.png';
   }
