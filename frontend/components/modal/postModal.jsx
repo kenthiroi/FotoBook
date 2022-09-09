@@ -112,7 +112,7 @@ class PostModal extends React.Component {
             rows="4"
             cols="37"
             placeholder={"Whats on your mind, " + this.props.userInfo.first_name + "?"} 
-            autofocus
+            autoFocus
             />
           <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
           <input type="file" onChange={this.handleFile}/>

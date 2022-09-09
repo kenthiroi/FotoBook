@@ -38,7 +38,7 @@ class NotificationsDropdown extends React.Component{
   }
 
   render(){
-    console.log(this.props.friendRequests);
+    let friendRequests = Object.values(this.props.friendRequests);
 
     return (
       <div>
@@ -49,7 +49,7 @@ class NotificationsDropdown extends React.Component{
         <div className="util-container">
           <div className="util-container">
             {/* renders all notifications */}
-            {/* {this.props.friendRequests.reverse().map(friendRequests => {
+            {friendRequests.length === 0 ? friendRequests.reverse().map(friendRequests => {
               let userInfo;
               if (this.props.sessionId === friendRequests.sender_id){
                 userInfo = this.props.users[friendRequests.receiver_id];
@@ -64,7 +64,7 @@ class NotificationsDropdown extends React.Component{
                 })
               }
             })
-            } */}
+            : <></>}
           </div>
         </div> : <></>}
       </div>
