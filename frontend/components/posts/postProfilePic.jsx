@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const mSTP = (state, ownProps) => {
@@ -18,21 +18,20 @@ const mSTP = (state, ownProps) => {
 }
 
 function PostProfilePicture({user, userImg}){
-  const [showInfo, setShowInfo] = useState(false);
+  let history = useHistory();
+  let location = useLocation();
 
+  const handleClick = (e) =>{
+    e.preventDefault();
+    if (location.pathname !== `/profile/${user.id}`){
+      history.push(`/profile/${user.id}`);
+    }
+  }
+
+  
   return (
     <div>
-      <img src={userImg}
-        onMouseEnter={() => setShowInfo(true)} 
-        onMouseLeave={() => setShowInfo(false)}
-      />
-      {showInfo ? <div className="user-hover-container">
-        <div className="user-hover-name">{user.first_name} {user.last_name}</div>
-        <div className="user-hover-info">
-          {/* <div className="user-hometown">{user.hometown}</div> */}
-          <div className="user-mutual-friends"></div>
-        </div>
-      </div> : <></>}
+      <img src={userImg} onClick={handleClick}/>
     </div>
   )
 }
