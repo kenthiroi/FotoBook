@@ -15,7 +15,7 @@
 
 .view-modal{
   display: flex;
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 100vw;
   height: 100vh;
@@ -23,7 +23,7 @@
 }
 
 // profile img
-.user-info img{
+.post-main img{
   border-radius: 50%;
   height: 40px;
   width: 40px;

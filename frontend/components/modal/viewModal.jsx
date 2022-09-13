@@ -26,14 +26,23 @@ class ViewModal extends React.Component {
     super(props);
   }
 
+  componentDidMount() {    
+    document.body.style.overflow = 'hidden';
+  }
   
+  componentWillUnmount() {
+    document.body.style.overflow = 'unset';
+  }
 
   render(){
     return (this.props.post ? <div className="view-modal">
-      <PostProfilePicture user={this.props.userInfo}/>
+      <div className='photo-container'>
+        <img src={this.props.post.photoUrl}/>
+      </div>
       <div className='info-container'>
         <div className='exit-button' onClick={this.props.closeModal}></div>
         <div className='post-main'>
+          <PostProfilePicture user={this.props.userInfo}/>
           <NameHover user={this.props.userInfo}/>
           <div className="posts-body">{this.props.post.body}</div>
         </div>
