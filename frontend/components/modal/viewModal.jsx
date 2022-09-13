@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import UserInfoHover from "../user/userInfoHover";
+import NameHover from '../posts/nameHover';
 import LikeAndCommentButton from "../like/likeAndCommentButton";
 import CommentIndex from "../comment/commentIndex";
 import CommentField from "../comment/commentField";
+import PostProfilePicture from '../posts/postProfilePic';
 import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  let post = state.entities.posts[ownProps.postId];
   return {
-    post: state.entities.posts[ownProps.postId],
+    userInfo: state.entities.user[post.user_id],
+    post,
   }
 }
 
@@ -23,15 +26,15 @@ class ViewModal extends React.Component {
     super(props);
   }
 
+  
+
   render(){
     return (this.props.post ? <div className="view-modal">
-      <div className='photo-container'>
-        <img src={this.props.post.photoUrl}/>
-      </div>
+      <PostProfilePicture user={this.props.userInfo}/>
       <div className='info-container'>
         <div className='exit-button' onClick={this.props.closeModal}></div>
         <div className='post-main'>
-          <UserInfoHover userId={this.props.post.user_id} post={this.props.post}/>
+          <NameHover user={this.props.userInfo}/>
           <div className="posts-body">{this.props.post.body}</div>
         </div>
         <div className='post-comments'>
