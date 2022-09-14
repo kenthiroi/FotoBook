@@ -38,6 +38,7 @@ class ViewModal extends React.Component {
     return (this.props.post ? <div className="view-modal">
       <div className='photo-container'>
         <img src={this.props.post.photoUrl}/>
+        <div id='photo-background' onClick={this.props.closeModal}></div>
       </div>
       <div className='info-container'>
         <div className='exit-button' onClick={this.props.closeModal}></div>

@@ -1,25 +1,33 @@
-.photo-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: auto;
-  max-width: 80vw;
-  max-height: 100vh;
-}
-
-.info-container{
-  background-color: #FFF;
-  min-width: 350px;
-  padding: 18px;
-}
-
 .view-modal{
   display: flex;
   position: fixed;
   right: 0;
   width: 100vw;
+  height: 95vh;
+  z-index: 2;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 76vw;
+  max-height: 100vh;
+  width: 100%;
+  align-content: space-between;
+}
+
+#photo-background {
+  width: 100vw;
   height: 100vh;
   z-index: 2;
+}
+
+//post caption/comments
+.info-container{
+  background-color: #FFF;
+  min-width: 350px;
+  padding: 18px;
 }
 
 // profile img
