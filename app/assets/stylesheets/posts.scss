@@ -31,12 +31,26 @@
   background: white;
   border-radius: 8px;
   box-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+  top: 50px;
+  right: 0;
   display: flex;
   flex-direction: column; 
   flex-wrap: wrap;
   position: absolute;
   width: 330px;
   z-index: 1;
+}
+
+.edit-container button{
+  background-color: #FFF;
+  border: none;
+  border-radius: 6px;
+  text-align: left;
+}
+
+.edit-container button:hover{
+  background-color: #c4c4c4;
+  transition: 300ms;
 }
 
 .user-and-post-container {
@@ -59,8 +73,9 @@
 }
 
 .post-item-box {
+  position: relative;
   font-size: 15px;
-  margin: 20px 0;
+  margin: 10px 0;
   border-radius: 6px;
   box-shadow: 0 1px 2px #c4c4c4;
   background-color: #FFF;
