@@ -8,7 +8,7 @@ import { deletePost } from "../../actions/post_actions";
 import { fetchUser } from '../../actions/user_actions';
 import { BsThreeDots } from 'react-icons/bs';
 import { MdOutlineEdit } from 'react-icons/md';
-import { IoTrashOutline } from 'react-icons/io';
+import { IoTrashOutline } from 'react-icons/io5';
 import NameHover from "./nameHover";
 import PostProfilePicture from "./postProfilePic";
 

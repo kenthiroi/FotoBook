@@ -34,18 +34,26 @@
   top: 50px;
   right: 0;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
   width: 330px;
   z-index: 1;
 }
 
-.edit-container button{
+.edit-container button {
   background-color: #FFF;
   border: none;
+  display: flex;
   border-radius: 6px;
+  align-content: center;
   text-align: left;
+  align-items: center;
+}
+
+.edit-container svg{
+  margin: 8px;
+  font-size: 20px;
 }
 
 .edit-container button:hover{
@@ -112,6 +120,10 @@
 
 .posts-option:hover {
   background-color: rgb(228, 228, 228);
+}
+
+.posts-option:active{
+  background-color: #c4c4c4;
 }
 
 .user-info {
