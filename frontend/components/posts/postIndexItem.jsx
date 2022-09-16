@@ -7,6 +7,8 @@ import { openModal } from '../../actions/modal_actions';
 import { deletePost } from "../../actions/post_actions";
 import { fetchUser } from '../../actions/user_actions';
 import { BsThreeDots } from 'react-icons/bs';
+import { MdOutlineEdit } from 'react-icons/md';
+import { IoTrashOutline } from 'react-icons/io';
 import NameHover from "./nameHover";
 import PostProfilePicture from "./postProfilePic";
 
@@ -97,8 +99,8 @@ class PostItem extends React.Component {
         <div className="post-item-box">
           {this.state.editDropdown ? 
           <div className="edit-container">
-            <button onMouseDown={() => this.props.openEditModal(this.props.post)}>Edit Post</button>
-            <button onMouseDown={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
+            <button onMouseDown={() => this.props.openEditModal(this.props.post)}><MdOutlineEdit/>Edit Post</button>
+            <button onMouseDown={() => this.props.deletePost(this.props.post.id)}><IoTrashOutline/>Delete Post</button>
           </div> : <></>}
           {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
           <div className="user-and-post-container">
