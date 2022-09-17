@@ -6,6 +6,8 @@ import CommentIndex from "../comment/commentIndex";
 import CommentField from "../comment/commentField";
 import PostProfilePicture from '../posts/postProfilePic';
 import { closeModal, openModal } from '../../actions/modal_actions';
+import { VscChromeClose } from 'react-icons/vsc';
+
 
 const mapStateToProps = (state, ownProps) => {
   let post = state.entities.posts[ownProps.postId];
@@ -36,6 +38,9 @@ class ViewModal extends React.Component {
 
   render(){
     return (this.props.post ? <div className="view-modal">
+      <div id="view-modal-closebtn" onClick={this.props.closeModal}>
+        <VscChromeClose/>
+      </div>
       <div className='photo-container'>
         <img src={this.props.post.photoUrl}/>
       </div>

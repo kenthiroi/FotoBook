@@ -31,10 +31,18 @@
   z-index: -1;
 }
 
+#view-modal-closebtn {
+  color: #FFF;
+  font-size: 20px;
+  left: 20px;
+  top: 20px;
+}
+
 //post caption/comments
 .info-container{
   background-color: #FFF;
   min-width: 350px;
+  width: 350px;
   padding: 18px;
 }
 
