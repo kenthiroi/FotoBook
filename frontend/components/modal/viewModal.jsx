@@ -52,6 +52,7 @@ class ViewModal extends React.Component {
           <CommentField post_id={this.props.post.id}/>
         </div>
       </div>
+      <div id="photo-background" onClick={this.props.closeModal}></div>
     </div> : <></>
   )
   }
