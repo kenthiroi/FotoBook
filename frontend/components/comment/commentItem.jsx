@@ -120,8 +120,8 @@ class CommentItem extends React.Component{
             <NameHover user={this.props.user}/>
             <div className='comment-body'>{this.props.comment.body}</div>
           </div>
-          {this.state.displayEdit && isOwner ? 
-           <div className="comment-option" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
+          {isOwner ? 
+           <div className="comment-option" id={this.state.displayEdit ? "" : "hidden-object"} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
              : <></>}
           {this.state.editDropdown ? 
           <div className="comment-edit-container">
