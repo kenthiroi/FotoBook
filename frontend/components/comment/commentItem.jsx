@@ -65,6 +65,7 @@ class CommentItem extends React.Component{
   };
 
   closeDropdown(){
+    console.log('running');
     this.setState({editDropdown: false});
   }
 
@@ -121,7 +122,7 @@ class CommentItem extends React.Component{
             <div className='comment-body'>{this.props.comment.body}</div>
           </div>
           {isOwner ? 
-           <div className="comment-option" id={this.state.displayEdit ? "" : "hidden-object"} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></div>
+           <button className="comment-option" id={this.state.displayEdit || this.state.editDropdown ? "" : "hidden-object"} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button>
              : <></>}
           {this.state.editDropdown ? 
           <div className="comment-edit-container">
