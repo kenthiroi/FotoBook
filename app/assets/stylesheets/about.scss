@@ -13,6 +13,8 @@
 }
 
 .about-contents{
+  font-size: 24px;
+  height: 100%;
   width: 100%;
 }
 
@@ -22,6 +24,7 @@
 
 .about-item{
   padding: auto;
+  height: 48px;
   align-items: stretch;
 }
 
@@ -29,6 +32,16 @@
   width: 80px;
   margin: 10px 6px;
   background-color: lightskyblue;
+}
+
+.about-edit-button{
+  background-color: rgb(228, 228, 228);
+  border: none;
+  border-radius: 50%;
+  color: #808080;
+  float: right;
+  height: 36px;
+  padding: 5px;
 }
 
 #about-title{

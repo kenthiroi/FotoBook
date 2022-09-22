@@ -6,6 +6,7 @@ import { IoLocationSharp, IoSchoolSharp } from 'react-icons/io5';
 import { FaBriefcase } from 'react-icons/fa';
 import { RiHeartsFill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
+import { BsThreeDots } from 'react-icons/bs';
 import { updateUser } from "../../../actions/user_actions";
 
 const mDTP = dispatch => ({
@@ -99,7 +100,7 @@ class AboutItemLabel extends React.Component{
         <div className='about-item'>
           {itemIcon}
           <span>{this.props.aboutData}</span>
-          {this.props.isOwner ? <div onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}>&hellip;</div> : <></>}
+          {this.props.isOwner ? <button className="about-edit-button" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button> : <></>}
           {this.state.openDropdown ? 
             <div className="about-edit-container">
               <div onClick={this.openForm}>Edit {this.props.formType}</div>

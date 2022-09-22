@@ -69,11 +69,17 @@
 }
 
 .banner-edit-button {
-  background-color: #F5F6F7;
+  background-color: #FFF;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  height: 36px;
   position: absolute;
+  align-content: center;
   top: 400px;
   right: 100px;
-  width: 130px;
+  width: 162px;
   z-index: 1;
 }
 
