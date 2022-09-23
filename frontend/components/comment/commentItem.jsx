@@ -124,8 +124,17 @@ class CommentItem extends React.Component{
             <div className='comment-body'>{this.props.comment.body}</div>
           </div>
           {isOwner ? 
-           <button className="comment-option" id={this.state.displayEdit || this.state.editDropdown ? "" : "hidden-object"} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button>
-             : <></>}
+           <button 
+            className={
+              this.state.displayEdit || this.state.editDropdown ?
+              "comment-option" : "comment-option hidden-object"} 
+            onClick={
+              this.state.openDropdown ? 
+              this.closeDropdown : this.openDropdown} 
+            onBlur={this.closeDropdown}>
+              <BsThreeDots/>
+            </button>
+            : <></>}
           {this.state.editDropdown ? 
           <div className="comment-edit-container">
             <button onClick={this.toggleEdit}><MdOutlineEdit/> Edit Comment</button>
