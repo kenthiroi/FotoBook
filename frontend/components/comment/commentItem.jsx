@@ -5,6 +5,8 @@ import { getPost } from "../../actions/post_actions";
 import CommentField from './commentField';
 import { fetchUser } from '../../actions/user_actions';
 import { BsThreeDots } from 'react-icons/bs';
+import { MdOutlineEdit } from 'react-icons/md';
+import { IoTrashOutline } from 'react-icons/io5';
 import NameHover from '../posts/nameHover';
 import PostProfilePicture from '../posts/postProfilePic';
 
@@ -126,8 +128,8 @@ class CommentItem extends React.Component{
              : <></>}
           {this.state.editDropdown ? 
           <div className="comment-edit-container">
-            <div onClick={this.toggleEdit}>Edit Comment</div>
-            <div onClick={this.handleDelete}>Delete Comment</div>
+            <button onClick={this.toggleEdit}><MdOutlineEdit/> Edit Comment</button>
+            <button onClick={this.handleDelete}><IoTrashOutline/> Delete Comment</button>
           </div> : <></>}
         </div>
       )

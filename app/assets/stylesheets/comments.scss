@@ -81,3 +81,27 @@
   width: 330px;
   z-index: 1;
 }
+
+.comment-edit-container button {
+  background-color: #FFF;
+  border: none;
+  display: flex;
+  border-radius: 6px;
+  align-content: center;
+  text-align: left;
+  align-items: center;
+}
+
+.comment-edit-container svg{
+  margin: 8px;
+  font-size: 20px;
+}
+
+.comment-edit-container button:hover{
+  background-color: #d2d5dd;
+  transition: 300ms;
+}
+
+.comment-edit-container button:active{
+  background-color: #c4c4c4;
+}
