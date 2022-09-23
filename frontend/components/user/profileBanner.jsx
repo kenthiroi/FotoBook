@@ -65,32 +65,33 @@ class UserProfileBanner extends React.Component{
     }
     
     if (!!this.props.bannerImg) {
+      editDropdown = (<div className="banner-edit">
+                        <div onClick={() => this.props.openBannerModal(this.props.sessionId)}>Update Profile Banner</div>
+                        <div onClick={() => this.deleteUserBanner(this.props.sessionId)}>Remove</div>
+                      </div>)
       bannerPhoto = (<div className='profile-banner'>
                       <img onClick={() => this.props.openViewModal({id: this.props.postId})} src={this.props.bannerImg}/>
                       <div className='banner-background' style={{backgroundImage: `url(${this.props.bannerImg})`}}>
                         {/* <img src={this.props.bannerImg}/> */}
                         {editButton}
+                        {this.state.displayDropdown ? editDropdown : <></>}
                       </div>
                     </div>)
-      editDropdown = (<div className="banner-edit">
-                        <div onClick={() => this.props.openBannerModal(this.props.sessionId)}>Update Profile Banner</div>
-                        <div onClick={() => this.deleteUserBanner(this.props.sessionId)}>Remove</div>
-                      </div>)
     } else {
-      bannerPhoto = (<div className="profile-banner">
-                      <div className='empty-profile-banner'>
-                      </div>                      
-                      {editButton}
-                    </div>)
       editDropdown = (<div className="banner-edit">
                         <div onClick={() => this.props.openBannerModal(this.props.sessionId)}>Upload Photo</div>
                       </div>)
+      bannerPhoto = (<div className="profile-banner">
+                      <div className='empty-profile-banner'>
+                        {editButton}
+                        {this.state.displayDropdown ? editDropdown : <></>}
+                      </div>                      
+                    </div>)
     }
 
     return (
       <div className='profile-banner-container'>
         {bannerPhoto}
-        {this.state.displayDropdown ? editDropdown : <></>}
       </div>
     )
   }
