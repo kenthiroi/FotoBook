@@ -79,7 +79,7 @@ class UserProfileBanner extends React.Component{
                     </div>)
     } else {
       editDropdown = (<div className="banner-edit">
-                        <div onClick={() => this.props.openBannerModal(this.props.sessionId)}>Upload Photo</div>
+                        <button onClick={() => this.props.openBannerModal(this.props.sessionId)}>Upload Photo</button>
                       </div>)
       bannerPhoto = (<div className="profile-banner">
                       <div className='empty-profile-banner'>
