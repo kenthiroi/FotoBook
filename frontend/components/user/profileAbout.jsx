@@ -40,19 +40,19 @@ class UserProfileAbout extends React.Component{
       <div className='about-container'>
         <div className='about-tabs'>
           <div id='about-title'>About</div>
-          <div className={(this.state.displayedInfo === 'overview') ? 'active-about-button' : 'about-button'} 
+          <div className={(this.state.displayedInfo === 'overview') ? 'about-button active-about-button' : 'about-button'} 
             onClick={() => this.handleSwitch('overview')}>
             Overview
           </div>
-          <div className={(this.state.displayedInfo === 'profession') ? 'active-about-button' : 'about-button'} 
+          <div className={(this.state.displayedInfo === 'profession') ? 'about-button active-about-button' : 'about-button'} 
             onClick={() => this.handleSwitch('profession')}>
             Work and education
           </div>
-          <div className={(this.state.displayedInfo === 'places') ? 'active-about-button' : 'about-button'} 
+          <div className={(this.state.displayedInfo === 'places') ? 'about-button active-about-button' : 'about-button'} 
             onClick={() => this.handleSwitch('places')}>
             Places lived
           </div>
-          <div className={(this.state.displayedInfo === 'contacts') ? 'active-about-button' : 'about-button'} 
+          <div className={(this.state.displayedInfo === 'contacts') ? 'about-button active-about-button' : 'about-button'} 
             onClick={() => this.handleSwitch('contacts')}>
             Contact and basic info
           </div>
