@@ -54,7 +54,8 @@ class CommentItem extends React.Component{
     this.handleHoverOut = this.handleHoverOut.bind(this);
   }
     
-  openDropdown(){
+  openDropdown(e){
+    e.preventDefault();
     if (!this.state.editDropdown) {
       this.setState({
         editDropdown: true,
@@ -123,23 +124,25 @@ class CommentItem extends React.Component{
             <NameHover user={this.props.user}/>
             <div className='comment-body'>{this.props.comment.body}</div>
           </div>
-          {isOwner ? 
-           <button 
+          <div>
+            {isOwner ? 
+            <button 
             className={
-              this.state.displayEdit || this.state.editDropdown ?
-              "comment-option" : "comment-option hidden-object"} 
+            this.state.displayEdit || this.state.editDropdown ?
+            "comment-option" : "comment-option hidden-object"} 
             onClick={
               this.state.openDropdown ? 
-              this.closeDropdown : this.openDropdown} 
->
+              this.closeDropdown : this.openDropdown}
+              onBlur={this.closeDropdown}>
               <BsThreeDots/>
             </button>
             : <></>}
             {this.state.editDropdown ? 
-              <div className="comment-edit-container">
-                <button onClick={this.toggleEdit} onBlur={this.closeDropdown}><MdOutlineEdit/> Edit Comment</button>
-                <button onClick={this.handleDelete} onBlur={this.closeDropdown}><IoTrashOutline/> Delete Comment</button>
-              </div> : <></>}
+            <div className="comment-edit-container">
+              <button onClick={this.toggleEdit}><MdOutlineEdit/> Edit Comment</button>
+              <button onClick={this.handleDelete}><IoTrashOutline/> Delete Comment</button>
+            </div> : <></>}
+          </div>
         </div>
       )
     }

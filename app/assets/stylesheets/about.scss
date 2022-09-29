@@ -1,6 +1,6 @@
 .about-container{
   margin: 20px auto;
-  padding: 15px;
+  padding: 15px 6px;
   display: flex;
   position: relative;
   max-width: 1186px;
@@ -10,6 +10,8 @@
 
 .about-tabs{
   width: 287px;
+  border-right: 1px solid #cdcdcd;
+  padding-right: 7px;
 }
 
 .about-contents{
@@ -29,14 +31,18 @@
 }
 
 .about-button{
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
   padding: 10px 12px;
-  font-size: 20px;
+  text-align: left;
+  width: 100%;
 }
 
 .active-about-button{
-  width: 80px;
-  margin: 10px 6px;
-  background-color: lightskyblue;
+  // margin: 10px 6px;
+  color: #1876F2;
+  background-color: #E7F3FF;
 }
 
 .about-edit-button{
@@ -52,4 +58,5 @@
 #about-title{
   font-size: 20px;
   font-weight: 700;
+  padding-left: 12px;
 }
