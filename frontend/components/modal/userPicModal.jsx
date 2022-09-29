@@ -35,6 +35,7 @@ class ProfilePictureModal extends React.Component {
   }
 
   handleFile(e){
+    //If file browser is not opening, try restarting chrome.
     this.setState({photoFile: e.currentTarget.files[0]});
   }
 

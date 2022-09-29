@@ -131,15 +131,15 @@ class CommentItem extends React.Component{
             onClick={
               this.state.openDropdown ? 
               this.closeDropdown : this.openDropdown} 
-            onBlur={this.closeDropdown}>
+>
               <BsThreeDots/>
             </button>
             : <></>}
-          {this.state.editDropdown ? 
-          <div className="comment-edit-container">
-            <button onClick={this.toggleEdit}><MdOutlineEdit/> Edit Comment</button>
-            <button onClick={this.handleDelete}><IoTrashOutline/> Delete Comment</button>
-          </div> : <></>}
+            {this.state.editDropdown ? 
+              <div className="comment-edit-container">
+                <button onClick={this.toggleEdit} onBlur={this.closeDropdown}><MdOutlineEdit/> Edit Comment</button>
+                <button onClick={this.handleDelete} onBlur={this.closeDropdown}><IoTrashOutline/> Delete Comment</button>
+              </div> : <></>}
         </div>
       )
     }
