@@ -78,7 +78,7 @@ class AboutItemLabel extends React.Component{
         break;
       case 'hometown':
         itemIcon = <IoLocationSharp/>;
-        description = 'Live in';
+        description = 'Lives in';
         inputForm = <AboutTextForm formType={this.props.formType} closeForm={this.closeForm}/>;
         break;
       case 'school':

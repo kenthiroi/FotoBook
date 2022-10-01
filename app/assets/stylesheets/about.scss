@@ -15,7 +15,6 @@
 }
 
 .about-contents{
-  font-size: 24px;
   height: 100%;
   padding: 0 16px;
   width: 100%;
@@ -27,6 +26,7 @@
 
 .about-item{
   color: #525252;
+  font-size: 18px;
   padding: auto;
   height: 48px;
   align-items: stretch;
@@ -36,8 +36,8 @@
   color: #000;
 }
 
-.about-item svg{
-  margin: 0 2px;
+.about-item > svg{
+  margin: 0 6px;
 }
 
 .about-button{
@@ -68,6 +68,7 @@
   border: none;
   border-radius: 50%;
   color: #808080;
+  font-size: 24px;
   float: right;
   height: 36px;
   padding: 5px;
