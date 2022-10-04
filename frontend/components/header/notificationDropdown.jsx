@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import FriendRequestDropdownItem from "../friends/friendRequestDropdownItem";
 import { IoNotifications } from "react-icons/io5";
 
 const mSTP = (state) => {
@@ -50,18 +51,18 @@ class NotificationsDropdown extends React.Component{
         <div className="util-container">
           <h1>Notification</h1>
           {/* renders all notifications */}
-          {friendRequests.length !== 0 ? friendRequests.reverse().map(friendRequests => {
+          {friendRequests.length !== 0 ? friendRequests.reverse().map(friendRequest => {
             let userInfo;
-            if (this.props.sessionId === friendRequests.sender_id){
-              userInfo = this.props.users[friendRequests.receiver_id];
+            if (this.props.sessionId === friendRequest.sender_id){
+              userInfo = this.props.users[friendRequest.receiver_id];
             } else {
-              userInfo = this.props.users[friendRequests.sender_id];
+              userInfo = this.props.users[friendRequest.sender_id];
             }
             if (!!userInfo){
-              return <></>
+              return <FriendRequestDropdownItem friendRequest={friendRequest}/>
             } else {
               this.props.fetchUser(post.user_id).then(res => {
-                return <></>
+                return <FriendRequestDropdownItem friendRequest={friendRequest}/>
               })
             }
           })
