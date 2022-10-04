@@ -39,6 +39,7 @@ class NotificationsDropdown extends React.Component{
 
   render(){
     let friendRequests = Object.values(this.props.friendRequests);
+    console.log(friendRequests.length);
 
     return (
       <div>
@@ -47,25 +48,26 @@ class NotificationsDropdown extends React.Component{
         </button>
         {this.state.openDropdown ? 
         <div className="util-container">
-          <div className="util-container">
-            {/* renders all notifications */}
-            {friendRequests.length === 0 ? friendRequests.reverse().map(friendRequests => {
-              let userInfo;
-              if (this.props.sessionId === friendRequests.sender_id){
-                userInfo = this.props.users[friendRequests.receiver_id];
-              } else {
-                userInfo = this.props.users[friendRequests.sender_id];
-              }
-              if (!!userInfo){
+          <h1>Notification</h1>
+          {/* renders all notifications */}
+          {friendRequests.length !== 0 ? friendRequests.reverse().map(friendRequests => {
+            let userInfo;
+            if (this.props.sessionId === friendRequests.sender_id){
+              userInfo = this.props.users[friendRequests.receiver_id];
+            } else {
+              userInfo = this.props.users[friendRequests.sender_id];
+            }
+            if (!!userInfo){
+              return <></>
+            } else {
+              this.props.fetchUser(post.user_id).then(res => {
                 return <></>
-              } else {
-                this.props.fetchUser(post.user_id).then(res => {
-                  return <></>
-                })
-              }
-            })
-            : <></>}
-          </div>
+              })
+            }
+          })
+          : <div className="empty-dropdown">
+              <div>You have no notifications</div>
+            </div>}
         </div> : <></>}
       </div>
     )
