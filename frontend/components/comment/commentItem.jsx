@@ -68,7 +68,6 @@ class CommentItem extends React.Component{
   };
 
   closeDropdown(){
-    console.log('running');
     this.setState({editDropdown: false});
   }
 
@@ -133,7 +132,8 @@ class CommentItem extends React.Component{
             onClick={
               this.state.openDropdown ? 
               this.closeDropdown : this.openDropdown}
-              onBlur={this.closeDropdown}>
+            onBlur={this.closeDropdown}
+              >
               <BsThreeDots/>
             </button>
             : <></>}

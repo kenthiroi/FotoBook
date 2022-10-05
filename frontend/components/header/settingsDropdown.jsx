@@ -1,5 +1,6 @@
 import React from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import { ImExit } from "react-icons/im";
 
 const mSTP = (state) => {
   return {
@@ -44,7 +45,7 @@ class SettingsDropdown extends React.Component{
         {this.state.openDropdown ? 
         <div className="util-container">
           <button onMouseDown={this.props.logout} className="logout-btn">
-            <div>Log Out</div>
+            <div><ImExit/></div> Log Out
           </button>
         </div> : <></>}
       </div>

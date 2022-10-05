@@ -105,7 +105,12 @@ class PostItem extends React.Component {
           {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
           <div className="user-and-post-container">
             {this.props.post.user_id === this.props.user_id ?
-              <button className="posts-option" onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button>
+              <button 
+                className="posts-option" 
+                onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} 
+                onBlur={this.closeDropdown}>
+                <BsThreeDots/>
+              </button>
               :
               <></>
             }   
