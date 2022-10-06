@@ -3,7 +3,8 @@ import { openModal } from "../../actions/modal_actions"
 import { connect } from 'react-redux';
 import { getPost } from '../../actions/post_actions';
 import { updateUser } from '../../actions/user_actions';
-import { BsFillCameraFill } from "react-icons/bs";
+import { BsFillCameraFill, BsCamera, BsTrash } from "react-icons/bs";
+import { MdPhotoLibrary } from "react-icons/md";
 
 const mSTP = (state, ownProps) => {
   return {
@@ -89,9 +90,9 @@ class UserProfilePicture extends React.Component{
     
     if (this.props.userImg !== defaultImgUrl) {
       editDropdown = (<div className="propic-edit-container">
-                        <div onClick={() => this.props.openViewModal({id: this.props.postId})}>View Profile Picture</div>
-                        <div onClick={() => this.props.openEditPicModal(this.props.userId)}>Update Profile Picture</div>
-                        <div onClick={this.unlinkProfilePhoto}>Remove Profile Picture</div>
+                        <div onClick={() => this.props.openViewModal({id: this.props.postId})}><MdPhotoLibrary/> View Profile Picture</div>
+                        <div onClick={() => this.props.openEditPicModal(this.props.userId)}><BsCamera/> Update Profile Picture</div>
+                        <div onClick={this.unlinkProfilePhoto}><BsTrash/> Remove Profile Picture</div>
                       </div>)
     } else {
       editDropdown = (<div className="propic-edit-container">
