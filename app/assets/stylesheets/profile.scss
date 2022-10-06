@@ -144,8 +144,10 @@
 
 .propic-edit-container{
   background-color: #FFFFFF;
+  bottom: -60px;
+  width: 100%;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
 }
 
 .profile-tabs{
@@ -193,6 +195,18 @@
 .profile-picture-container{
   display: block;
   margin-top: -90px;
+  position: relative;
+}
+
+.profile-picture-container > button{
+  border: 0;
+  border-radius: 100%;
+  color: #000;
+  font-size: 24px;
+  margin: 125px 0 0 125px;
+  padding: 2px 5px 0 5px;
+  position: absolute;
+  z-index: 3;
 }
 
 .user-posts{
@@ -219,15 +233,4 @@
   width: 100%;
   transform: scale(1.5);
   position: absolute;
-}
-
-.profile-picture-container > button{
-  border: 0;
-  border-radius: 100%;
-  color: #000;
-  font-size: 24px;
-  margin: 125px 0 0 125px;
-  padding: 2px 5px 0 5px;
-  position: absolute;
-  z-index: 3;
 }
