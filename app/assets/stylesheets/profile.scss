@@ -32,6 +32,21 @@
   transition: 200ms;
 }
 
+.intro-form{
+
+}
+
+.intro-form input{
+  background-color: #d2d5dd;
+  height: 70px;
+  text-align: center;
+  width: 100%;
+}
+
+.intro-form input:focus{
+  background-color: #fff;
+}
+
 //banner
 
 .profile-banner-container{
