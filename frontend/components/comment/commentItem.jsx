@@ -139,8 +139,8 @@ class CommentItem extends React.Component{
             : <></>}
             {this.state.editDropdown ? 
             <div className="comment-edit-container">
-              <button onClick={this.toggleEdit}><MdOutlineEdit/> Edit Comment</button>
-              <button onClick={this.handleDelete}><IoTrashOutline/> Delete Comment</button>
+              <div onClick={this.toggleEdit}><MdOutlineEdit/> Edit Comment</div>
+              <div onClick={this.handleDelete}><IoTrashOutline/> Delete Comment</div>
             </div> : <></>}
           </div>
         </div>

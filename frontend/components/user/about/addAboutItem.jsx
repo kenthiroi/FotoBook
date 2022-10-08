@@ -53,8 +53,7 @@ class AddAboutItem extends React.Component{
           inputForm
             : 
             <button className='add-item' onClick={this.openForm}>
-              <BsPlusCircle/>
-              Add {buttonType}
+              <BsPlusCircle/>  Add {buttonType}
             </button>
         }
       </div>
