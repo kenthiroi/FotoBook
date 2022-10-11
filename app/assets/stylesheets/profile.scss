@@ -33,18 +33,30 @@
 }
 
 .intro-form{
-
+  padding: 0 20px;
 }
 
-.intro-form input{
-  background-color: #d2d5dd;
+.intro-form textarea{
+  background-color: #f0f2f5;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
   height: 70px;
   text-align: center;
   width: 100%;
+  resize: none;
 }
 
-.intro-form input:focus{
+.intro-form textarea:focus{
   background-color: #fff;
+}
+
+.intro-form textarea:hover{
+  background-color: #f0f2f5;
+}
+
+.intro-form textarea:active{
+  background-color: #c4c4c4;
 }
 
 //banner
