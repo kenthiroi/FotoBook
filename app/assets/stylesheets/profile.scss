@@ -33,7 +33,6 @@
 }
 
 .intro-form{
-  padding: 0 20px;
 }
 
 .intro-form textarea{
@@ -57,6 +56,10 @@
 
 .intro-form textarea:active{
   background-color: #c4c4c4;
+}
+
+.intro-form button{
+  margin: 5px 0;
 }
 
 //banner

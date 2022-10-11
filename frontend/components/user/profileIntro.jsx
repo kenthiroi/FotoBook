@@ -44,11 +44,11 @@ class UserProfileIntro extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     const formData = new FormData();
-    formData.append('user[id]', this.props.userId);
+    formData.append('user[id]', this.props.userInfo.id);
     formData.append(`user[intro_bio]`, this.state.body);
 
     this.props.updateUserAbout(formData).then(() => {
-      this.props.closeForm();
+      this.closeForm();
     });
   }
 
