@@ -51,10 +51,10 @@ class AddAboutItem extends React.Component{
       <div>
         {this.state.displayForm ? 
           inputForm
-            : 
-            <button className='add-item' onClick={this.openForm}>
-              <BsPlusCircle/>  <span>Add {buttonType}</span>
-            </button>
+          : 
+          <button className='add-item' onClick={this.openForm}>
+            <BsPlusCircle/>  <span>Add {buttonType}</span>
+          </button>
         }
       </div>
     )

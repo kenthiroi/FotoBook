@@ -38,9 +38,23 @@ class AboutTextForm extends React.Component {
   }
 
   render(){
+    let inputLabel;
+
+    switch (this.props.formType){
+      case 'work':
+        inputLabel = 'Company and position';
+        break;
+      case 'hometown':
+        inputLabel = 'Hometown';
+        break;
+      case 'school':
+        inputLabel = 'School name';
+    }
+
     return <div className="about-form">
         <form>
           <input onChange={this.updateState}/>
+          <span className="input-label">{inputLabel}</span>
           <button id="about-save" onClick={this.handleSubmit}>Save</button>
           <button id="about-cancel" onClick={this.props.closeForm}>Cancel</button>
         </form>
