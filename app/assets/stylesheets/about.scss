@@ -74,6 +74,18 @@
   padding: 5px;
 }
 
+.add-item {
+  background-color: transparent;
+  border: none;
+  color: #1876F2;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.add-item span:hover{
+  text-decoration: underline;
+}
+
 #about-title{
   font-size: 20px;
   font-weight: 700;
