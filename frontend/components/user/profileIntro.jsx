@@ -53,12 +53,15 @@ class UserProfileIntro extends React.Component{
   }
 
   render(){
+
+    console.log(typeof this.props.userInfo.id);
+
     
     let introBio;
 
     if (!!this.props.userInfo.intro_bio && this.props.isOwner){
       introBio = (<div>
-        <div className='bio-body'>{this.props.userInfo.introBio}</div>
+        <div className='bio-body'>{this.props.userInfo.intro_bio}</div>
         <button onClick={this.openForm}>Edit Bio</button>
       </div>)
     } else if (!this.props.userInfo.intro_bio && this.props.isOwner){
@@ -67,7 +70,7 @@ class UserProfileIntro extends React.Component{
       </div>)
     } else if (!!this.props.userInfo.intro_bio){
       introBio = (<div>
-        <div className='bio-body'>{this.props.userInfo.introBio}</div>
+        <div className='bio-body'>{this.props.userInfo.intro_bio}</div>
       </div>)
     } else {
       introBio = <div></div>

@@ -109,8 +109,8 @@ class AboutItemLabel extends React.Component{
           {this.props.isOwner ? <button className="about-edit-button" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button> : <></>}
           {this.state.openDropdown ? 
             <div className="about-edit-container">
-              <div onClick={this.openForm}>Edit {this.props.formType}</div>
-              <div onClick={this.handleDelete}>Delete {this.props.formType}</div>
+              <button onClick={this.openForm}>Edit {this.props.formType}</button>
+              <button onClick={this.handleDelete}>Delete {this.props.formType}</button>
           </div> : <></>}
         </div>
       )
