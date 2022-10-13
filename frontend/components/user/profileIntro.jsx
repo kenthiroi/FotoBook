@@ -43,6 +43,7 @@ class UserProfileIntro extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+    console.log('submitting');
     const formData = new FormData();
     formData.append('user[id]', this.props.userInfo.id);
     formData.append(`user[intro_bio]`, this.state.body);
@@ -53,10 +54,6 @@ class UserProfileIntro extends React.Component{
   }
 
   render(){
-
-    console.log(typeof this.props.userInfo.id);
-
-    
     let introBio;
 
     if (!!this.props.userInfo.intro_bio && this.props.isOwner){
@@ -111,8 +108,8 @@ class UserProfileIntro extends React.Component{
           <div className="intro-form">
             <form>
               <textarea onChange={this.updateState} placeholder="Describe who you are"></textarea>
-              <button className="intro-save" onClick={this.handleSubmit}>Save</button>
-              <button className="intro-cancel" onClick={this.closeForm}>Cancel</button>
+              <button className="intro-save" onMouseDown={this.handleSubmit}>Save</button>
+              <button className="intro-cancel" onMouseDown={this.closeForm}>Cancel</button>
             </form>
           </div>
           : introBio}

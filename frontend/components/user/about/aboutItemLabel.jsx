@@ -103,15 +103,15 @@ class AboutItemLabel extends React.Component{
     else {
       return (
         <div className='about-item'>
+          {this.state.openDropdown ? 
+            <div className="about-edit-container">
+              <button onMouseDown={this.openForm}>Edit {this.props.formType}</button>
+              <button onMouseDown={this.handleDelete}>Delete {this.props.formType}</button>
+          </div> : <></>}
           {itemIcon}
           {description}
           <span> {this.props.aboutData}</span>
           {this.props.isOwner ? <button className="about-edit-button" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button> : <></>}
-          {this.state.openDropdown ? 
-            <div className="about-edit-container">
-              <button onClick={this.openForm}>Edit {this.props.formType}</button>
-              <button onClick={this.handleDelete}>Delete {this.props.formType}</button>
-          </div> : <></>}
         </div>
       )
     }

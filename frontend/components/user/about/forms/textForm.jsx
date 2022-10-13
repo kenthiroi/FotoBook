@@ -40,8 +40,6 @@ class AboutTextForm extends React.Component {
   render(){
     let inputLabel;
 
-    console.log(typeof this.props.userId);
-
     switch (this.props.formType){
       case 'work':
         inputLabel = 'Company and position';
