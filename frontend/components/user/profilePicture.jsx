@@ -38,10 +38,11 @@ class UserProfilePicture extends React.Component{
     this.openDropdown = this.openDropdown.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
     this.unlinkProfilePhoto = this.unlinkProfilePhoto.bind(this);
+    this.openViewModal = this.openViewModal.bind(this);
+    this.openEditPicModal = this.openEditPicModal.bind(this);
   }
     
   openDropdown(){
-    console.log('run');
     if (!this.state.displayDropdown) {
       this.setState({
         displayDropdown: true,
@@ -55,16 +56,28 @@ class UserProfilePicture extends React.Component{
   
   closeDropdown(){
     this.setState({displayDropdown: false});
+    console.log('running');
   }
 
   unlinkProfilePhoto(){
     //Does not remove photo post from db, only the post_id from the user node.
+    this.closeDropdown;
 
     const userFormData = new FormData();
     userFormData.append('user[id]', this.props.sessionId);
     userFormData.append('user[profile_picture]', '');
 
     this.props.updateUserPhoto(userFormData);
+  }
+
+  openViewModal(){
+    this.closeDropdown;
+    this.props.openViewModal({id: this.props.postId});
+  }
+
+  openEditPicModal(){
+    this.closeDropdown;
+    this.props.openEditPicModal(this.props.userId);
   }
 
   render(){
@@ -85,18 +98,18 @@ class UserProfilePicture extends React.Component{
       onClickEvent = null;
       onBlurEvent = null;
     } else { 
-      onClickEvent = (() => this.props.openViewModal({id: this.props.postId}));
+      onClickEvent = (this.openViewModal);
     } 
     
     if (this.props.userImg !== defaultImgUrl) {
       editDropdown = (<div className="propic-edit-container">
-                        <div onClick={() => this.props.openViewModal({id: this.props.postId})}><MdPhotoLibrary/> View Profile Picture</div>
-                        <div onClick={() => this.props.openEditPicModal(this.props.userId)}><BsCamera/> Update Profile Picture</div>
+                        <div onClick={this.openViewModal}><MdPhotoLibrary/> View Profile Picture</div>
+                        <div onClick={this.openEditPicModal}><BsCamera/> Update Profile Picture</div>
                         <div onClick={this.unlinkProfilePhoto}><BsTrash/> Remove Profile Picture</div>
                       </div>)
     } else {
       editDropdown = (<div className="propic-edit-container">
-                        <div onClick={() => this.props.openEditPicModal(this.props.userId)}>Update Profile Picture</div>
+                        <div onClick={this.openEditPicModal}><BsCamera/> Update Profile Picture</div>
                       </div>)
     }
 
