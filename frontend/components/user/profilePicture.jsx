@@ -61,7 +61,7 @@ class UserProfilePicture extends React.Component{
 
   unlinkProfilePhoto(){
     //Does not remove photo post from db, only the post_id from the user node.
-    this.closeDropdown;
+    this.closeDropdown();
 
     const userFormData = new FormData();
     userFormData.append('user[id]', this.props.sessionId);
@@ -71,12 +71,12 @@ class UserProfilePicture extends React.Component{
   }
 
   openViewModal(){
-    this.closeDropdown;
+    this.closeDropdown();
     this.props.openViewModal({id: this.props.postId});
   }
 
   openEditPicModal(){
-    this.closeDropdown;
+    this.closeDropdown();
     this.props.openEditPicModal(this.props.userId);
   }
 
