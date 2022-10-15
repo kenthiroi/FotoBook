@@ -26,7 +26,7 @@ function AboutItemNull({formType}){
   }
   
   return (
-    <div className='empty-item'>
+    <div className='about-item'>
       {itemIcon}
       <span>{itemContents}</span>
     </div>
