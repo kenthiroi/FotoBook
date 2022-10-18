@@ -119,6 +119,46 @@
   text-decoration: underline;
 }
 
+.about-form input{
+  border: 1px solid #808080;
+  border-radius: 6px;
+  height: 56px;
+  font-size: 18px;
+  padding: 26px 16px 10px 16px;
+  width: 100%;
+}
+
+.about-options{
+  display: flex;
+  flex-direction: row;
+  float: right;
+}
+
+.about-options button {
+  align-content: center;
+  align-items: center;
+  background-color: #E4E6EB;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 2px;
+  padding: 12px;
+  text-align: center;
+  width: 76px;
+  text-align: left;
+}
+
+.about-options button:hover{
+  background-color: #d2d5dd;
+  transition: 300ms;
+}
+
+.about-options button:active{
+  background-color: #c4c4c4;
+}
+
 .bio-body{
   font-size: 15px;
   text-align: center;
