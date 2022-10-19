@@ -56,8 +56,8 @@ class AboutTextForm extends React.Component {
           <input onChange={this.updateState}/>
           <span className="input-label">{inputLabel}</span>
           <div className="about-options">
-            <button id="about-cancel" onClick={this.props.closeForm}>Cancel</button>
-            <button id="about-save" onClick={this.handleSubmit}>Save</button>
+            <button className="about-cancel" onClick={this.props.closeForm}>Cancel</button>
+            <button className={this.state.body.length === 0 ? "about-save disabled-button" : "about-save"} onClick={this.handleSubmit}>Save</button>
           </div>
         </form>
       </div>
