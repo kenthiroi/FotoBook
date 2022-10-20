@@ -144,7 +144,7 @@
   font-size: 14px;
   font-weight: 600;
   margin: 2px;
-  padding: 12px;
+  padding: 8px;
   text-align: center;
   width: 76px;
   text-align: left;
@@ -159,8 +159,14 @@
   background-color: #c4c4c4;
 }
 
+.about-save{
+  background-color: #1876F2;
+}
+
 .disabled-button{
   background-color: #c4c4c4;
+  color: #d2d5dd;
+  cursor: not-allowed;
 }
 
 .bio-body{
