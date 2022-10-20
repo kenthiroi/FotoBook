@@ -60,7 +60,7 @@ class AboutTextForm extends React.Component {
               Cancel
             </button>
             <button 
-              className={this.state.body.length === 0 ? "about-save disabled-button" : "about-save"} 
+              className={this.state.body.length === 0 ? "disabled-button about-save" : "about-save"} 
               onClick={this.handleSubmit}
               disabled={this.state.body.length === 0 ? true : false}
               >

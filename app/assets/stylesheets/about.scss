@@ -119,6 +119,10 @@
   text-decoration: underline;
 }
 
+.about-form{
+  height: 100px;
+}
+
 .about-form input{
   border: 1px solid #808080;
   border-radius: 6px;
@@ -137,35 +141,39 @@
 .about-options button {
   align-content: center;
   align-items: center;
-  background-color: #E4E6EB;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
   font-size: 14px;
   font-weight: 600;
   margin: 2px;
   padding: 8px;
   text-align: center;
   width: 76px;
-  text-align: left;
+  text-align-last: center;
 }
 
-.about-options button:hover{
+.about-cancel{
+  background-color: #E4E6EB;
+  cursor: pointer;
+}
+
+.about-cancel button:hover{
   background-color: #d2d5dd;
   transition: 300ms;
 }
 
-.about-options button:active{
+.about-cancel button:active{
   background-color: #c4c4c4;
 }
 
 .about-save{
   background-color: #1876F2;
+  cursor: pointer;
 }
 
 .disabled-button{
-  background-color: #c4c4c4;
-  color: #d2d5dd;
+  background-color: #eaeaea;
+  color: #c4c4c4;
   cursor: not-allowed;
 }
 
