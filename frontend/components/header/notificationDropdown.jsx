@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import FriendRequestDropdownItem from "../friends/friendRequestDropdownItem";
 import { IoNotifications } from "react-icons/io5";
+import { getFriendRequests } from "../../actions/friend_request_actions";
 
 const mSTP = (state) => {
   return {
@@ -14,6 +15,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
   return {
     fetchUser: (userId) => dispatch(fetchUser(userId)),
+    fetchFriendRequests: (userId) => dispatch(getFriendRequests(userId)),
   }
 }
 
@@ -31,7 +33,9 @@ class NotificationsDropdown extends React.Component{
 
   openDropdown(e){
     e.preventDefault();
-    this.setState({openDropdown: true});
+    this.props.fetchFriendRequests(this.props.sessionId).then(res => {
+      this.setState({openDropdown: true});
+    })
   }
   
   closeDropdown(){
@@ -58,17 +62,16 @@ class NotificationsDropdown extends React.Component{
           {/* renders all notifications */}
           {friendRequests.length !== 0 ? friendRequests.reverse().map(friendRequest => {
             let userInfo;
-            if (this.props.sessionId === friendRequest.sender_id){
+            if (this.props.sessionId === friendRequest.receiver_id){
               userInfo = this.props.users[friendRequest.receiver_id];
-            } else {
-              userInfo = this.props.users[friendRequest.sender_id];
-            }
-            if (!!userInfo){
-              return <FriendRequestDropdownItem friendRequest={friendRequest}/>
-            } else {
-              this.props.fetchUser(post.user_id).then(res => {
-                return <FriendRequestDropdownItem friendRequest={friendRequest}/>
-              })
+              //Checks if User info is in local state
+              if (!!userInfo){
+                return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest}/>
+              } else {
+                this.props.fetchUser(post.user_id).then(res => {
+                  return <FriendRequestDropdownItem friendRequest={friendRequest}/>
+                })
+              }
             }
           })
           : <div className="empty-dropdown">
