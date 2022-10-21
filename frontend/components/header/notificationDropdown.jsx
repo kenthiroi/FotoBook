@@ -44,11 +44,16 @@ class NotificationsDropdown extends React.Component{
 
     return (
       <div>
-        <button id={this.state.openDropdown ? 'active-nav-button' : ''} onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown} className="util-btn">
+        <button 
+          id={this.state.openDropdown ? 'active-nav-button' : ''} 
+          onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} 
+          onBlur={this.closeDropdown} 
+          className="util-btn"
+        >
           <div className="dropdown"><IoNotifications/></div>
         </button>
         {this.state.openDropdown ? 
-        <div className="util-container">
+        <div className="notification-dropdown">
           <h1>Notification</h1>
           {/* renders all notifications */}
           {friendRequests.length !== 0 ? friendRequests.reverse().map(friendRequest => {
