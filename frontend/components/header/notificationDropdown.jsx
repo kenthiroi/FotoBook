@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import FriendRequestDropdownItem from "../friends/friendRequestDropdownItem";
 import { IoNotifications } from "react-icons/io5";
+import { fetchUser } from "../../actions/user_actions";
 import { getFriendRequests } from "../../actions/friend_request_actions";
 
 const mSTP = (state) => {
@@ -31,11 +32,10 @@ class NotificationsDropdown extends React.Component{
     this.closeDropdown = this.closeDropdown.bind(this);
   }
 
-  openDropdown(e){
-    e.preventDefault();
-    this.props.fetchFriendRequests(this.props.sessionId).then(res => {
-      this.setState({openDropdown: true});
-    })
+  openDropdown(){
+    this.props.fetchFriendRequests(this.props.sessionId);
+
+    this.setState({openDropdown: true});
   }
   
   closeDropdown(){
@@ -44,7 +44,8 @@ class NotificationsDropdown extends React.Component{
 
   render(){
     let friendRequests = Object.values(this.props.friendRequests);
-    console.log(friendRequests.length);
+
+    console.log(friendRequests);
 
     return (
       <div>
@@ -54,7 +55,7 @@ class NotificationsDropdown extends React.Component{
           onBlur={this.closeDropdown} 
           className="util-btn"
         >
-          <div className="dropdown"><IoNotifications/></div>
+        <div className="dropdown"><IoNotifications/></div>
         </button>
         {this.state.openDropdown ? 
         <div className="notification-dropdown">
