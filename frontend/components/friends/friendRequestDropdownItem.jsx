@@ -7,7 +7,7 @@ const mSTP = (state, ownProps) => {
   let user = state.entities.user[ownProps.friendRequest.sender_id];
   let userImg;
 
-  console.log(ownProps.friendRequest);
+  console.log(user);
 
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
@@ -20,7 +20,8 @@ const mSTP = (state, ownProps) => {
     userImg = 'https://i.imgur.com/7x6fTDK.png';
   }
   return {
-    user_id: state.session.id,
+    userImg,
+    sessionId: state.session.id,
   }
 }
 
