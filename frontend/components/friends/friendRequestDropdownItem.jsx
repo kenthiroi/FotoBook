@@ -4,11 +4,11 @@ import { createFriend } from "../../actions/friend_actions";
 import { deleteFriendRequest } from "../../actions/friend_request_actions";
 
 const mSTP = (state, ownProps) => {
-  let user = state.entities.user[ownProps.friendRequest.sender.id];
+  let user = state.entities.user[ownProps.friendRequest.sender_id];
   let userImg;
 
-  console.log(ownProps.friendRequest.sender.photoUrl);
-  
+  console.log(ownProps.friendRequest);
+
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
     if (typeof user.photoUrl === 'undefined'){
@@ -56,10 +56,10 @@ class FriendRequestDropdownItem extends React.Component{
   render(){
     return (
       <div className="friend-request-box">
-        <img src=""/>
+        <img src={this.props.userImg}/>
         <div className="friend-request-sender">{this.props.friendRequest.sender_first_name} {this.props.friendRequest.sender_last_name}</div>
-        <input type="submit" value={"Confirm"} onClick={this.handleConfirm}/>
-        <input type="submit" value={"Delete"} onClick={this.handleDelete}/>
+        <button type="submit" value={"Confirm"} onMouseDown={this.handleConfirm}/>
+        <button type="submit" value={"Delete"} onMouseDown={this.handleDelete}/>
       </div>
     )
   }
