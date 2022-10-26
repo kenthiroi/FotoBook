@@ -6,6 +6,20 @@
   width: 100%;
 }
 
-.friend-request-box input{
+.friend-request-box button:first-of-type{
+  background-color: #1876f2;
+}
+
+.friend-request-box button{
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  height: 36px;
+  text-align: center;
+  width: 104px;
+}
+
+.friend-request-box button:hover{
   
 }

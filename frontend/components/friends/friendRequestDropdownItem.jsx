@@ -45,21 +45,29 @@ class FriendRequestDropdownItem extends React.Component{
     formData.append('friend[user_id]', this.props.friendRequest.receiver_id);
     formData.append('friend[friend_id]', this.props.friendRequest.sender_id);
 
-    this.props.createFriend(formData);
+    this.props.createFriend(formData).then(()=> {
+      this.props.closeDropdown;
+    });
   }
 
   handleDelete(e){
     e.preventDefault();
-    this.props.deleteFriendRequest(this.props.friendRequest.id);
+    this.props.deleteFriendRequest(this.props.friendRequest.id).then(()=> {
+      this.props.closeDropdown;
+    });
   }
 
   render(){
     return (
       <div className="friend-request-box">
         <img src={this.props.userImg}/>
-        <div className="friend-request-sender">{this.props.friendRequest.sender_first_name} {this.props.friendRequest.sender_last_name}</div>
-        <button type="submit" value={"Confirm"} onMouseDown={this.handleConfirm}/>
-        <button type="submit" value={"Delete"} onMouseDown={this.handleDelete}/>
+        <div className="friend-request-sender">
+          <span>
+            {this.props.friendRequest.sender_first_name + " " + this.props.friendRequest.sender_last_name}
+          </span> sent you a friend request.
+        </div>
+        <button onMouseDown={this.handleConfirm}>Confirm</button>
+        <button onMouseDown={this.handleDelete}>Delete</button>
       </div>
     )
   }

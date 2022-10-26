@@ -34,7 +34,6 @@ class NotificationsDropdown extends React.Component{
 
   openDropdown(){
     this.props.fetchFriendRequests(this.props.sessionId);
-
     this.setState({openDropdown: true});
   }
   
@@ -67,10 +66,10 @@ class NotificationsDropdown extends React.Component{
               userInfo = this.props.users[friendRequest.receiver_id];
               //Checks if User info is in local state
               if (!!userInfo){
-                return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest}/>
+                return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest} closeDropdown={this.closeDropdown}/>
               } else {
                 this.props.fetchUser(post.user_id).then(res => {
-                  return <FriendRequestDropdownItem friendRequest={friendRequest}/>
+                  return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest} closeDropdown={this.closeDropdown}/>
                 })
               }
             }
