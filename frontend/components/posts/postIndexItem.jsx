@@ -23,7 +23,7 @@ const mSTP = (state, ownProps) => {
   }
 
   return {
-    user_id: state.session.id,
+    sessionId: state.session.id,
     userInfo,
     userImg,
   }
@@ -104,7 +104,7 @@ class PostItem extends React.Component {
           </div> : <></>}
           {/* <div className="posts-username">{`${this.props.post.first_name} ${this.props.post.last_name}`}</div> */}
           <div className="user-and-post-container">
-            {this.props.post.user_id === this.props.user_id ?
+            {this.props.post.user_id === this.props.sessionId ?
               <button 
                 className="posts-option" 
                 onClick={this.state.editDropdown ? this.closeDropdown : this.openDropdown} 
