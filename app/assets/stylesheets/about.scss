@@ -119,24 +119,38 @@
   text-decoration: underline;
 }
 
-.input-label{
-  font-size: 16px;
-  font-weight: 100;
+// .input-label{
+//   font-size: 16px;
+//   font-weight: 100;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   pointer-events: none;
+//   transform: translateY(30px);
+// }
+
+// .input-label:focus{
+//   font-size: 14px;
+//   transform: translateY(0);
+// }
+
+.input-label {
   position: absolute;
-  top: 0;
   left: 0;
-  pointer-events: none;
-  transform: translateY(30px);
+  top: 10px;
+  color: #999;
+  z-index: 5;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
 }
 
-//test line
-
-.input-label:focus{
-  font-size: 14px;
-  transform: translateY(0);
+.input-label.input-filled{
+  transform: translateY(-125%);
+  font-size: .75em;
 }
+
 
 .about-form{
+  position: relative;
   height: 100px;
 }
 

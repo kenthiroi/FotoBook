@@ -53,8 +53,8 @@ class AboutTextForm extends React.Component {
 
     return <div className="about-form">
         <form>
+          <label className={this.state.body.length === 0 ? "input-label" : "input-label input-filled"}>{inputLabel}</label>
           <input onChange={this.updateState}/>
-          <span className="input-label">{inputLabel}</span>
           <div className="about-options">
             <button className="about-cancel" onClick={this.props.closeForm}>
               Cancel
