@@ -48,7 +48,7 @@ class AddAboutItem extends React.Component{
       }
 
     return (
-      <div>
+      <>
         {this.state.displayForm ? 
           inputForm
           : 
@@ -56,7 +56,7 @@ class AddAboutItem extends React.Component{
             <BsPlusCircle/>  <span>Add {buttonType}</span>
           </button>
         }
-      </div>
+      </>
     )
   }
 }
