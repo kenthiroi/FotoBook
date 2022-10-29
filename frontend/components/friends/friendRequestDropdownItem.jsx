@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux"
 import { createFriend } from "../../actions/friend_actions";
 import { deleteFriendRequest } from "../../actions/friend_request_actions";
+import NameHover from "../posts/nameHover";
 
 const mSTP = (state, ownProps) => {
   let user = state.entities.user[ownProps.friendRequest.sender_id];
@@ -21,6 +22,7 @@ const mSTP = (state, ownProps) => {
   }
   return {
     userImg,
+    user,
     sessionId: state.session.id,
   }
 }
@@ -47,7 +49,7 @@ class FriendRequestDropdownItem extends React.Component{
     formData.append('friend[friend_id]', this.props.friendRequest.sender_id);
 
     this.props.createFriend(formData);
-    
+
     this.props.deleteFriendRequest(this.props.friendRequest.id);
     this.props.closeDropdown();
   }
@@ -65,7 +67,8 @@ class FriendRequestDropdownItem extends React.Component{
         <img src={this.props.userImg}/>
         <div className="friend-request-sender">
           <span>
-            {this.props.friendRequest.sender_first_name + " " + this.props.friendRequest.sender_last_name}
+            {/* {this.props.friendRequest.sender_first_name + " " + this.props.friendRequest.sender_last_name} */}
+            <NameHover user={this.props.user}/>
           </span> sent you a friend request.
         </div>
         <button onMouseDown={this.handleConfirm}>Confirm</button>
