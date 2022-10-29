@@ -46,15 +46,16 @@ class FriendRequestDropdownItem extends React.Component{
     formData.append('friend[user_id]', this.props.friendRequest.receiver_id);
     formData.append('friend[friend_id]', this.props.friendRequest.sender_id);
 
-    this.props.createFriend(formData).then(()=> {
-      this.props.closeDropdown;
-    });
+    this.props.createFriend(formData);
+    
+    this.props.deleteFriendRequest(this.props.friendRequest.id);
+    this.props.closeDropdown();
   }
 
   handleDelete(e){
     e.preventDefault();
     this.props.deleteFriendRequest(this.props.friendRequest.id).then(()=> {
-      this.props.closeDropdown;
+      this.props.closeDropdown();
     });
   }
 
