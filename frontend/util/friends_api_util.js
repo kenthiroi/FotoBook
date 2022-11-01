@@ -1,11 +1,11 @@
 export const createFriend = friend => {
   return (
     $.ajax({
+      url: '/api/friends',
       method: "POST",
-      url: "/api/friends",
-      data: {
-        friend
-      }
+      data: friend,
+      contentType: false,
+      processData: false
     })
   )
 }
