@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux"
 import { createFriend } from "../../actions/friend_actions";
 import { deleteFriendRequest } from "../../actions/friend_request_actions";
+import { fetchUser } from "../../actions/user_actions";
 import NameHover from "../posts/nameHover";
 
 const mSTP = (state, ownProps) => {
@@ -30,7 +31,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch) => {
   return {
     createFriend: (friend) => dispatch(createFriend(friend)),
-    deleteFriendRequest: (friendRequestId) => dispatch(deleteFriendRequest(friendRequestId))
+    deleteFriendRequest: (friendRequestId) => dispatch(deleteFriendRequest(friendRequestId)),
+    fetchUser: (userId) => dispatch(fetchUser(userId))
   }
 }
 
@@ -40,6 +42,12 @@ class FriendRequestDropdownItem extends React.Component{
 
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  componentDidMount(){
+    if (!this.props.user){
+      this.props.fetchUser(this.props.friendRequest.sender_id);
+    }
   }
 
   handleConfirm(e){
@@ -62,18 +70,24 @@ class FriendRequestDropdownItem extends React.Component{
   }
 
   render(){
+
+    
     return (
-      <div className="friend-request-box">
-        <img src={this.props.userImg}/>
-        <div className="friend-request-sender">
-          <span>
-            {/* {this.props.friendRequest.sender_first_name + " " + this.props.friendRequest.sender_last_name} */}
-            <NameHover user={this.props.user}/>
-          </span> sent you a friend request.
-        </div>
-        <button onMouseDown={this.handleConfirm}>Confirm</button>
-        <button onMouseDown={this.handleDelete}>Delete</button>
-      </div>
+      <>
+      { !!this.props.user ?
+        <div className="friend-request-box">
+          <img src={this.props.userImg}/>
+          <div className="friend-request-sender">
+            <span>
+              {/* {this.props.friendRequest.sender_first_name + " " + this.props.friendRequest.sender_last_name} */}
+              <NameHover user={this.props.user}/>
+            </span> sent you a friend request.
+          </div>
+          <button onMouseDown={this.handleConfirm}>Confirm</button>
+          <button onMouseDown={this.handleDelete}>Delete</button>
+        </div> : <></>
+      }
+      </>
     )
   }
 }
