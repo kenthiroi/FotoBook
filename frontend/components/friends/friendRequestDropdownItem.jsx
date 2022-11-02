@@ -30,7 +30,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = (dispatch) => {
   return {
-    createFriend: (friend) => dispatch(createFriend(friend)),
+    createFriend: (formData) => dispatch(createFriend(formData)),
     deleteFriendRequest: (friendRequestId) => dispatch(deleteFriendRequest(friendRequestId)),
     fetchUser: (userId) => dispatch(fetchUser(userId))
   }
@@ -56,9 +56,10 @@ class FriendRequestDropdownItem extends React.Component{
     formData.append('friend[user_id]', this.props.friendRequest.receiver_id);
     formData.append('friend[friend_id]', this.props.friendRequest.sender_id);
 
-    this.props.createFriend(formData);
-
-    this.props.deleteFriendRequest(this.props.friendRequest.id);
+    this.props.createFriend(formData).then(() => {
+      this.props.deleteFriendRequest(this.props.friendRequest.id);
+    })
+    
     this.props.closeDropdown();
   }
 

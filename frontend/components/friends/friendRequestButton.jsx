@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux"
 import { createFriendRequest, getFriendRequests, deleteFriendRequest } from "../../actions/friend_request_actions";
+import { MdPersonAddAlt1, MdPersonRemoveAlt1 } from "react-icons/md"
 
 const mSTP = (state) => {
   return {
@@ -59,11 +60,14 @@ class FriendRequestButton extends React.Component{
 
   render(){
     return (
-      <div className="friend-request-box">
+      <div className="friend-request-button">
       {!this.state.requestMade ? 
-        <input type="submit" value="Add Friend" onClick={() => this.handleFriendRequest('add')}/>
-       : <input type="submit" value="Delete Request" onClick={() => this.handleFriendRequest('delete')}/>
-      //  Add button here to handle removing friend
+        <button type="submit" onMouseDown={() => this.handleFriendRequest('add')}>
+          <MdPersonAddAlt1/> Add Friend
+        </button>
+       : <button type="submit" onMouseDown={() => this.handleFriendRequest('delete')}>
+          <MdPersonRemoveAlt1/> Remove Friend
+       </button>
       }
       </div>
     )
