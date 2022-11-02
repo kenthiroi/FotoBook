@@ -66,7 +66,7 @@ class FriendRequestButton extends React.Component{
           <MdPersonAddAlt1/> Add Friend
         </button>
        : <button type="submit" onMouseDown={() => this.handleFriendRequest('delete')}>
-          <MdPersonRemoveAlt1/> Remove Friend
+          <MdPersonRemoveAlt1/> Delete Request
        </button>
       }
       </div>
