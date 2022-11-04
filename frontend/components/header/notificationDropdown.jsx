@@ -59,17 +59,14 @@ class NotificationsDropdown extends React.Component{
           <h1>Notification</h1>
           {/* renders all notifications */}
           {friendRequests.length !== 0 ? friendRequests.reverse().map(friendRequest => {
-            let userInfo;
-            if (this.props.sessionId === friendRequest.receiver_id){
-              userInfo = this.props.users[friendRequest.receiver_id];
-              //Checks if User info is in local state
-              if (!!userInfo){
+            let userInfo = this.props.users[friendRequest.receiver_id];
+            //Checks if User info is in local state
+            if (!!userInfo){
+              return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest} closeDropdown={this.closeDropdown}/>
+            } else {
+              this.props.fetchUser(post.user_id).then(res => {
                 return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest} closeDropdown={this.closeDropdown}/>
-              } else {
-                this.props.fetchUser(post.user_id).then(res => {
-                  return <FriendRequestDropdownItem key={friendRequest.id} friendRequest={friendRequest} closeDropdown={this.closeDropdown}/>
-                })
-              }
+              })
             }
           })
           : <div className="empty-dropdown">
