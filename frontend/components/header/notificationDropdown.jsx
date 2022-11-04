@@ -42,9 +42,7 @@ class NotificationsDropdown extends React.Component{
   }
 
   render(){
-    let friendRequests = Object.values(this.props.friendRequests);
-
-    console.log(friendRequests);
+    let friendRequests = Object.values(this.props.friendRequests).filter((friendRequest) => friendRequest.receiver_id === this.props.sessionId);
 
     return (
       <div>
