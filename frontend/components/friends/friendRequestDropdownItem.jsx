@@ -9,8 +9,6 @@ const mSTP = (state, ownProps) => {
   let user = state.entities.user[ownProps.friendRequest.sender_id];
   let userImg;
 
-  console.log(user);
-
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
     if (typeof user.photoUrl === 'undefined'){

@@ -7,6 +7,7 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdWork } from "react-icons/md"
 import { Link } from "react-router-dom"
 import { withRouter } from 'react-router-dom';
+import useWindowDimensions from '../customHooks';
 
 const mSTP = (state) => {
   return {
@@ -15,9 +16,9 @@ const mSTP = (state) => {
 }
 
 function SideNav({userInfo, history, sessionId}){
+  const { width } = useWindowDimensions();
 
-  let onHomePage = history.location.pathname === `/newsfeed` || !window.innerWidth <= 900;
-  console.log(onHomePage);
+  let onHomePage = history.location.pathname === `/newsfeed` && width >= 900;
   let onProfile = history.location.pathname === `/profile/${sessionId}`
 
   return(
