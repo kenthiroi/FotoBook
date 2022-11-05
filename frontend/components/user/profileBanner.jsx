@@ -76,9 +76,9 @@ class UserProfileBanner extends React.Component{
                       </div>)
       bannerPhoto = (<div className='profile-banner'>
                       <img onClick={() => this.props.openViewModal({id: this.props.postId})} src={this.props.bannerImg}/>
-                      <div className='banner-background' style={{backgroundImage: `url(${this.props.bannerImg})`}}>
+                      {/* <div className='banner-background' style={{backgroundImage: `url(${this.props.bannerImg})`}}> */}
                         {editButton}
-                      </div>
+                      {/* </div> */}
                     </div>)
     } else {
       editDropdown = (<div className="banner-edit">
