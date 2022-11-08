@@ -6,13 +6,10 @@ import useWindowDimensions from '../customHooks';
 
 function ProfilePostsContainer({userInfo, userImg, isOwner, handleSwitch}){
   const { width } = useWindowDimensions();
-  const [mobileView, setMobileView] = useState(width >= 900);
-
-  console.log(width);
 
   return (
     <div className="profile-posts-container">
-      {mobileView ? 
+      {width >= 1230 ? 
         <>
           <div className="profile-left">
             <ProfileIntro userInfo={userInfo} isOwner={isOwner} handleSwitch={handleSwitch}/>
@@ -23,12 +20,8 @@ function ProfilePostsContainer({userInfo, userImg, isOwner, handleSwitch}){
         </>
         : 
         <>
-          <div className="profile-left">
             <ProfileIntro userInfo={userInfo} isOwner={isOwner} handleSwitch={handleSwitch}/>
-          </div>
-          <div className="profile-right">
             <ProfileWall userInfo={userInfo} userImg={userImg} isOwner={isOwner}/>
-          </div>
         </>
       }
     </div>
