@@ -74,13 +74,16 @@
   display: flex;
   max-width: 1250px;
   max-height: 463px;
-  overflow: hidden;
   margin: auto;
-  border-radius: 5px;
   position: relative;
 }
 
-.profile-banner > img{
+.img-container{
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.img-container > img{
   margin: auto;
   width: 100%;
   z-index: 1;
