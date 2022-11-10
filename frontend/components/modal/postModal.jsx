@@ -52,13 +52,6 @@ class PostModal extends React.Component {
     if (this.state.photoFile !== undefined) {
       formData.append('post[photo]', this.state.photoFile);
     }
-    // $.ajax({
-    //   url: '/api/posts',
-    //   method: 'POST',
-    //   data: formData,
-    //   contentType: false,
-    //   processData: false
-    // });
 
     switch (this.props.type){
       case 'create':

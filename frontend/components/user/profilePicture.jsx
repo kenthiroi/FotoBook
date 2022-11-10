@@ -89,7 +89,7 @@ class UserProfilePicture extends React.Component{
     let defaultImgUrl = 'https://i.imgur.com/7x6fTDK.png';
 
     if (this.props.isOwner){
-      editButton = (<button onClick={() => this.props.openEditPicModal(this.props.userId)}>
+      editButton = (<button onMouseDown={() => this.props.openEditPicModal(this.props.userId)}>
         <BsFillCameraFill/>
       </button>)
       onClickEvent = this.openDropdown;
