@@ -131,12 +131,23 @@
   padding: 0 0 6px 0;
 }
 
-.user-and-post-container img{
+.post-profile-picture{
+  align-items: center;
+  border: 1px solid #c0c0c0;
   border-radius: 50%;
+  display: flex;
   height: 40px;
+  margin: 0 8px 0 0;
+  overflow: hidden;
+  position: relative;
   width: 40px;
-  margin-right: 6px;
-  cursor: pointer;
+  z-index: 2;
+}
+
+.post-profile-picture img{
+  width: 100%;
+  transform: scale(1.5);
+  position: absolute;
 }
 
 .user-name{

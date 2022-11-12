@@ -30,7 +30,7 @@ function PostProfilePicture({user, userImg}){
 
   
   return (
-    <div>
+    <div className='post-profile-picture'>
       <img src={userImg} onClick={handleClick}/>
     </div>
   )
