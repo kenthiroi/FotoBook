@@ -51,8 +51,10 @@ class UserProfileWall extends React.Component{
     return (
       <div className="user-posts">
         {this.props.isOwner ? 
-          <div className="create-post-container">
-            <img src={this.props.userImg}/>
+          <div className="create-post-container">    
+            <div className="create-post-profile-pic">
+              <img src={this.props.userImg}/>
+            </div>
             <div onClick={this.props.openModal}>Whats on your mind?</div>
           </div>
         : <></>}

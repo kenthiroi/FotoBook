@@ -24,8 +24,10 @@
 
 .main-util-btn{
   position: relative;
-  border-radius: 100%;
+  border-radius: 50%;
   height: 40px;
+  justify-content: center;
+  display: flex;
   width: 40px;
   border: none;
   padding: 0;
@@ -44,7 +46,10 @@
 }
 
 .main-util-btn img{
-  height: 40px;
+  top: 8px;
+  width: 100%;
+  transform: scale(1.5);
+  position: absolute;
 }
 
 //Sidenav

@@ -21,10 +21,11 @@
   display: flex;
   margin: 10px 0;
   padding: 16px;
+  position: relative;
 }
 
 //Whats on your mind? bar
-.create-post-container div{
+.create-post-container div:last-child{
   align-content: center;
   border-radius: 24px;
   background-color: #F0F2F5;
@@ -43,9 +44,20 @@
 }
 
 //Profile picture
-.create-post-container img{
+.create-post-profile-pic{
+  border: 1px solid #c0c0c0;
   border-radius: 50%;
+  display: flex;
+  margin-right: 6px;
+  overflow: hidden;
+  justify-content: center;
   height: 40px;
   width: 40px;
-  margin-right: 6px;
+  position: inherit;
+}
+
+.create-post-profile-pic img{
+  width: 100%;
+  transform: scale(1.5);
+  position: absolute;
 }
