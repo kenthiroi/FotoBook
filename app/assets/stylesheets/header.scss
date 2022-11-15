@@ -123,12 +123,20 @@
   background-color: #d2d5dd;
 }
 
-.sidenav-btn img{
-  height: 24px;
-  width: 24px;
+#profile-button-pic-container{
   border-radius: 50%;
-  float: left;
   cursor: pointer;
+  float: left;
+  height: 24px;
+  overflow: hidden;
+  position: relative;
+  width: 24px;
+}
+
+.sidenav-btn img{  
+  width: 100%;
+  transform: scale(1.25);
+  position: absolute;
 }
 
 .collapse-sidenav svg, .expand-sidenav svg, .util-container svg{

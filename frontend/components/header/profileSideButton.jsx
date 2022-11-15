@@ -48,7 +48,9 @@ class ProfileSideButton extends React.Component{
     return (
       <div onClick={this.handleClick} className="sidenav-btn" id="sidenav-profile-button">
         <span className={this.props.onProfile ? "active-sidenav-btn" : ""}></span>
-        <img src={this.props.userImg}/>
+        <div id="profile-button-pic-container">
+          <img src={this.props.userImg}/>
+        </div>
           {this.props.onHomepage ? this.props.userInfo.first_name + " " + this.props.userInfo.last_name : ""}
       </div>
     )
