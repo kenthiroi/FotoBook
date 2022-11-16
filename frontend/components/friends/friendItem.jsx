@@ -1,14 +1,16 @@
 import React from 'react';
 import NameHover from '../posts/nameHover';
+import PropTypes from 'prop-types';
+
 
 function FriendItem({user}){
   
   let photoUrl;
   let userDescription;
 
-  if (!!user.photoUrl){
+  try{
     photoUrl = user.photoUrl;
-  } else {
+  } catch {
     photoUrl = 'https://i.imgur.com/7x6fTDK.png';
   }
 
