@@ -45,3 +45,4 @@ function FriendIndex({sessionId, users, fetchUser, friendList}){
   )
 }
 
+export default connect(mSTP, mDTP)(FriendIndex);

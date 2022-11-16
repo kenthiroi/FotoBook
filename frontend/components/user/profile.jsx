@@ -10,6 +10,7 @@ import UserProfileBanner from './profileBanner';
 import { getPost } from '../../actions/post_actions';
 import ProfileIntro from './profileIntro';
 import ProfilePostsContainer from './profilePostsContainer';
+import FriendIndex from '../friends/friendIndex';
 
 const mSTP = (state, ownProps) => {
   let userInfo = state.entities.user[ownProps.match.params.userId];
@@ -101,7 +102,7 @@ class UserProfile extends React.Component{
         profileContent = <UserProfileAbout userId={this.props.profileId} isOwner={isOwner}/>;
         break;
       case 'friends':
-        profileContent = <div></div>;
+        profileContent = <FriendIndex friendList={this.props.userInfo.friends}/>;
         break;
       default:
         profileContent = <div></div>;
