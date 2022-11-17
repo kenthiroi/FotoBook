@@ -10,6 +10,9 @@ function FriendItem({user}){
 
   try{
     photoUrl = user.photoUrl;
+    if (!photoUrl){
+      throw 'undefined photo url'
+    }
   } catch {
     photoUrl = 'https://i.imgur.com/7x6fTDK.png';
   }
@@ -28,10 +31,13 @@ function FriendItem({user}){
       userDescription = '';
   }
 
+  console.log(photoUrl);
 
   return(
     <div className='friend-item'>
-      <img src={user.photoUrl}/>
+      <div className='friend-item-profile-pic'>
+        <img src={photoUrl}/>
+      </div>
       <NameHover user={user}/>
       <div>
         {userDescription}

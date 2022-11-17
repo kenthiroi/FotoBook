@@ -20,7 +20,10 @@ function FriendIndex({sessionId, users, fetchUser, friendList}){
 
   return(
     <div className='friend-index'>
-      {Object.values(friendList).reverse().map(friend => {
+      {!friendList ? 
+        <></>
+        :
+        Object.values(friendList).reverse().map(friend => {
         let friendId;
 
         if (friend.user_id === sessionId) {
