@@ -31,8 +31,6 @@ function FriendItem({user}){
       userDescription = '';
   }
 
-  console.log(photoUrl);
-
   return(
     <div className='friend-item'>
       <div className='friend-item-profile-pic'>
