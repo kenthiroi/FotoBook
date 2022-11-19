@@ -2,14 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.friend-index{
+.friend-tab{
+  background-color: #FFF;
   margin: 20px auto;
   padding: 15px;
-  display: flex;
-  position: relative;
   max-width: 1186px;
-  background-color: #FFF;
   border-radius: 15px;
+  position: relative;
+}
+
+.friend-index{
+  display: flex;
+}
+
+.friend-index h2{
+  display: block;
 }
 
 .friend-item{

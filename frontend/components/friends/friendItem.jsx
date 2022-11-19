@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 function FriendItem({user}){
   
+  
   let photoUrl;
   let userDescription;
 
