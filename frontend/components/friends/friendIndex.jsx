@@ -20,6 +20,7 @@ function FriendIndex({sessionId, users, fetchUser, friendList}){
 
   return(
     <div className='friend-index'>
+      <h2>Friends</h2>
       {!friendList ? 
         <></>
         :

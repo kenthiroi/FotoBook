@@ -2,16 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.friend-index{
+  margin: 20px auto;
+  padding: 15px;
+  display: flex;
+  position: relative;
+  max-width: 1186px;
+  background-color: #FFF;
+  border-radius: 15px;
+}
+
 .friend-item{
   align-items: center;
   background-color: #fff;
-  border: 1px solid #e7e7e7;
+  border: 1px solid #f9f9f9;
   border-radius: 6px;
   display: flex;
   margin: 2px;
   height: 115px;
   padding: 16px;
-  width: 475px;
+  min-width: 250px;
+  width: 50%;
 }
 
 .friend-item-profile-pic{
