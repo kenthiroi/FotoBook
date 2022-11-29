@@ -17,13 +17,19 @@ const mDTP = (dispatch) => {
 }
 
 function FriendItemDropdown({friendId, deleteFriend}){
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const [dropdownState, setDropdownState] = useState(false);
 
-  const 
+  const openDropdown = () => {
+    setDropdownState(true);
+  }
+
+  const closeDropdown = () => {
+    setDropdownState(false);
+  }
 
   const removeFriend = () => {
     deleteFriend(friendId).then(() => {
-      setOpenDropdown(false);
+      setDropdownState(false);
     })
   }
 
@@ -31,13 +37,13 @@ function FriendItemDropdown({friendId, deleteFriend}){
     <div className='friend-item-dropdown'>
       <button 
         className="friend-item-option" 
-        onClick={openDropdown ? () => setOpenDropdown(false) : () => setOpenDropdown(true)} 
-        onBlur={() => setOpenDropdown(false)}>
+        onClick={dropdownState ? closeDropdown : openDropdown} 
+        onBlur={closeDropdown}>
         <BsThreeDots/>
       </button>
       {openDropdown ? 
         <div className="edit-container">
-          <button onMouseDown={() => removeFriend}><IoTrashOutline/>Delete Friend</button>
+          <button onMouseDown={removeFriend}><IoTrashOutline/>Delete Friend</button>
         </div> : <></>}
     </div>
   )
