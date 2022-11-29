@@ -1,10 +1,11 @@
 import React from 'react';
 import NameHover from '../posts/nameHover';
 import PropTypes from 'prop-types';
+import FriendItemDropdown from './friendItemDropdown';
 
 
 function FriendItem({user}){
-  
+
   
   let photoUrl;
   let userDescription;
@@ -41,6 +42,7 @@ function FriendItem({user}){
       <div>
         {userDescription}
       </div>
+      <FriendItemDropdown friendId={user.id}/>
     </div>
   )
 }

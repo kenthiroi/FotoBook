@@ -41,7 +41,7 @@ function FriendItemDropdown({friendId, deleteFriend}){
         onBlur={closeDropdown}>
         <BsThreeDots/>
       </button>
-      {openDropdown ? 
+      {dropdownState ? 
         <div className="edit-container">
           <button onMouseDown={removeFriend}><IoTrashOutline/>Delete Friend</button>
         </div> : <></>}
