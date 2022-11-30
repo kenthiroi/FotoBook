@@ -49,3 +49,26 @@
   width: 100%;
   position: absolute;
 }
+
+.friend-item-option {
+  background-color: #FFF;
+  border: none;
+  border-radius: 50%;
+  color: #808080;
+  cursor: pointer;
+  float: right;
+  font-size: 18px;
+  font-weight: 945;
+  line-height: 42px;
+  height: 36px;
+  transition: 0.3s;
+  width: 36px;
+}
+
+.friend-item-option:hover {
+  background-color: rgb(228, 228, 228);
+}
+
+.friend-item-option:active{
+  background-color: #c4c4c4;
+}
