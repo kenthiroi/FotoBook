@@ -34,7 +34,7 @@ function FriendItemDropdown({friendId, deleteFriend}){
   }
 
   return(
-    <div className='friend-item-dropdown'>
+    <>
       <button 
         className="friend-item-option" 
         onClick={dropdownState ? closeDropdown : openDropdown} 
@@ -42,10 +42,10 @@ function FriendItemDropdown({friendId, deleteFriend}){
         <BsThreeDots/>
       </button>
       {dropdownState ? 
-        <div className="edit-container">
+        <div className="friend-edit-container">
           <button onMouseDown={removeFriend}><IoTrashOutline/>Delete Friend</button>
         </div> : <></>}
-    </div>
+    </>
   )
 }
 

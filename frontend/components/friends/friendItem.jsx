@@ -34,13 +34,17 @@ function FriendItem({user}){
   }
 
   return(
-    <div className='friend-item'>
-      <div className='friend-item-profile-pic'>
-        <img src={photoUrl}/>
-      </div>
-      <NameHover user={user}/>
-      <div>
-        {userDescription}
+    <div className='friend-item-container'>
+      <div className='friend-item'>
+        <div className='friend-item-profile-pic'>
+          <img src={photoUrl}/>
+        </div>
+        <div className='friend-item-name'>
+          <NameHover user={user}/>
+          <div>
+            {userDescription}
+          </div>
+        </div>
       </div>
       <FriendItemDropdown friendId={user.id}/>
     </div>

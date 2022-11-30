@@ -19,17 +19,24 @@
   display: block;
 }
 
-.friend-item{
+.friend-item-container{
   align-items: center;
   background-color: #fff;
   border: 1px solid #f9f9f9;
   border-radius: 6px;
   display: flex;
-  margin: 2px;
   height: 115px;
-  padding: 16px;
+  margin: 2px;
   min-width: 250px;
+  padding: 16px;
+  position: relative;
+  justify-content: space-between;
   width: 50%;
+}
+
+.friend-item{
+  display: flex;
+  align-items: center;
 }
 
 .friend-item-profile-pic{
@@ -70,5 +77,45 @@
 }
 
 .friend-item-option:active{
+  background-color: #c4c4c4;
+}
+
+.friend-edit-container {
+  background: #FFF;
+  border-radius: 8px;
+  box-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+  top: 80px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 330px;
+  z-index: 3;
+}
+
+
+
+.friend-edit-container button {
+  background-color: #FFF;
+  border: none;
+  display: flex;
+  border-radius: 6px;
+  align-content: center;
+  text-align: left;
+  align-items: center;
+}
+
+.friend-edit-container svg{
+  margin: 8px;
+  font-size: 20px;
+}
+
+.friend-edit-container button:hover{
+  background-color: #d2d5dd;
+  transition: 300ms;
+}
+
+.friend-edit-container button:active{
   background-color: #c4c4c4;
 }
