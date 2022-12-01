@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FriendItemDropdown from './friendItemDropdown';
 
 
-function FriendItem({user}){
+function FriendItem({user, friendNodeId}){
 
   
   let photoUrl;
@@ -46,7 +46,7 @@ function FriendItem({user}){
           </div>
         </div>
       </div>
-      <FriendItemDropdown friendId={user.id}/>
+      <FriendItemDropdown friendNodeId={friendNodeId}/>
     </div>
   )
 }

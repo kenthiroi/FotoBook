@@ -27,6 +27,7 @@ function FriendIndex({sessionId, users, fetchUser, friendList}){
           :
           Object.values(friendList).reverse().map(friend => {
           let friendId;
+          console.log(friend.id);
 
           if (friend.user_id === sessionId) {
             friendId = friend.friend_id;
@@ -37,10 +38,10 @@ function FriendIndex({sessionId, users, fetchUser, friendList}){
           let userInfo = users[friendId];
 
           if (!!userInfo){
-            return <FriendItem key={friend.id} user={userInfo}/>
+            return <FriendItem key={friend.id} friendNodeId={friend.id} user={userInfo}/>
           } else {
             fetchUser(friendId).then(res => {
-              return <FriendItem key={friend.id} user={res.user}/>
+              return <FriendItem key={friend.id} friendNodeId={friend.id} user={res.user}/>
             })
           }
         })

@@ -16,7 +16,7 @@ const mDTP = (dispatch) => {
   }
 }
 
-function FriendItemDropdown({friendId, deleteFriend}){
+function FriendItemDropdown({friendNodeId, deleteFriend}){
   const [dropdownState, setDropdownState] = useState(false);
 
   const openDropdown = () => {
@@ -28,7 +28,7 @@ function FriendItemDropdown({friendId, deleteFriend}){
   }
 
   const removeFriend = () => {
-    deleteFriend(friendId).then(() => {
+    deleteFriend(friendNodeId).then(() => {
       setDropdownState(false);
     })
   }
