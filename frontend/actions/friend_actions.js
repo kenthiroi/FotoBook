@@ -15,9 +15,9 @@ export const receiveFriend = friend => ({
   friend
 })
 
-export const removeFriend = friend =>  ({
+export const removeFriend = friendId =>  ({
   type: REMOVE_FRIEND,
-  friend
+  friendId
 })
 
 export const createFriend = friend => dispatch => (
@@ -29,8 +29,8 @@ export const createFriend = friend => dispatch => (
 )
 
 export const deleteFriend = friendId => dispatch => (
-  FriendAPIUtil.deleteFriend(friendId).then(friend => (
-    dispatch(removeFriend(friend))
+  FriendAPIUtil.deleteFriend(friendId).then(friendId => (
+    dispatch(removeFriend(friendId))
   ), err => (
     dispatch(receiveErrors(err.responseJSON))
   ))
