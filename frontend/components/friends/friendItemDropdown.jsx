@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { BsThreeDots } from 'react-icons/bs';
 import { IoTrashOutline } from 'react-icons/io5';
@@ -47,6 +48,10 @@ function FriendItemDropdown({friendNodeId, deleteFriend}){
         </div> : <></>}
     </>
   )
+}
+
+FriendItemDropdown.propTypes = {
+  friendNodeId: PropTypes.number.isRequired,
 }
 
 export default connect(mSTP, mDTP)(FriendItemDropdown);
