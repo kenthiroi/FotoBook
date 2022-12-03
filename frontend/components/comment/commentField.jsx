@@ -82,7 +82,7 @@ class CommentField extends React.Component {
   render(){
     return <div className="comment-field">
         <img src={this.props.userImg} />
-        <form action="">
+        <form>
           <input ref={this.props.inputRef} onChange={this.updateState('body')} onKeyDown={this.handleKeyDown} value={this.state.body} placeholder='Write a comment...'/>
           <div>Press Enter to post.</div>
         </form>

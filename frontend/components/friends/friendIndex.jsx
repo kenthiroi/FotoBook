@@ -5,7 +5,6 @@ import { fetchUser } from '../../actions/user_actions';
 
 const mSTP = (state) => {
   return {
-    sessionId: state.session.id,
     users: state.entities.user,
   }
 }
@@ -16,7 +15,8 @@ const mDTP = (dispatch) => {
   }
 }
 
-function FriendIndex({sessionId, users, fetchUser, friendList}){
+function FriendIndex({profileId, isOwner, users, fetchUser, friendList}){
+
 
   return(
     <div className='friend-tab'>
@@ -27,9 +27,8 @@ function FriendIndex({sessionId, users, fetchUser, friendList}){
           :
           Object.values(friendList).reverse().map(friend => {
           let friendId;
-          console.log(friend.id);
 
-          if (friend.user_id === sessionId) {
+          if (friend.user_id === profileId) {
             friendId = friend.friend_id;
           } else {
             friendId = friend.user_id;
@@ -38,10 +37,10 @@ function FriendIndex({sessionId, users, fetchUser, friendList}){
           let userInfo = users[friendId];
 
           if (!!userInfo){
-            return <FriendItem key={friend.id} friendNodeId={friend.id} user={userInfo}/>
+            return <FriendItem key={friend.id} friendNodeId={friend.id} user={userInfo} isOwner={isOwner}/>
           } else {
             fetchUser(friendId).then(res => {
-              return <FriendItem key={friend.id} friendNodeId={friend.id} user={res.user}/>
+              return <FriendItem key={friend.id} friendNodeId={friend.id} user={res.user} isOwner={isOwner}/>
             })
           }
         })

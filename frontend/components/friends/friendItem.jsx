@@ -46,7 +46,7 @@ function FriendItem({user, friendNodeId}){
           </div>
         </div>
       </div>
-      <FriendItemDropdown friendNodeId={friendNodeId}/>
+      {isOwner ? <FriendItemDropdown friendNodeId={friendNodeId}/> : <></> }
     </div>
   )
 }
