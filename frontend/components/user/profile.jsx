@@ -31,6 +31,7 @@ const mSTP = (state, ownProps) => {
     sessionId: state.session.id,
     profileId: parseInt(ownProps.match.params.userId),
     userInfo,
+    // friends: userInfo.friends,
     userImg,
     bannerImg,
   }
@@ -67,7 +68,6 @@ class UserProfile extends React.Component{
 
   componentDidUpdate(prevProps){
     if(this.props.match.params.userId !== prevProps.match.params.userId){
-      // console.log('updated');
       this.props.fetchUserInfo(this.props.profileId);
     }
   }
@@ -91,7 +91,7 @@ class UserProfile extends React.Component{
     } else {
       isOwner = false;
     }
-    // console.log(this.props.userInfo);
+
     console.log(isOwner);
 
     switch (this.state.displayedInfo){
@@ -117,7 +117,8 @@ class UserProfile extends React.Component{
             <div className='profile-top'>
               <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg} isOwner={isOwner}/>
               <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>
-              {!isOwner ? <FriendRequestButton profileId={this.props.profileId}/> : <></>}
+              {/* {!!this.props.friends[]} */}
+              {isOwner ? <></> : <FriendRequestButton profileId={this.props.profileId}/>}
             </div>
             <div className='profile-tabs'>
               <div className={(this.state.displayedInfo === 'posts') ? 'active-profile-tab' : 'profile-tab'} onClick={() => this.handleSwitch('posts')}>Posts</div>
