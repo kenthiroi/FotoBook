@@ -103,6 +103,7 @@ class UserProfile extends React.Component{
         break;
       case 'friends':
         profileContent = <FriendIndex profileId={this.props.userInfo.id} friendList={this.props.userInfo.friends} isOwner={isOwner}/>;
+        console.log(this.props.userInfo);
         break;
       default:
         profileContent = <div></div>;

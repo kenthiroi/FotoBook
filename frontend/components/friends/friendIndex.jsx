@@ -26,24 +26,24 @@ function FriendIndex({profileId, isOwner, users, fetchUser, friendList}){
           <></>
           :
           Object.values(friendList).reverse().map(friend => {
-          let friendId;
+            let friendId;
 
-          if (friend.user_id === profileId) {
-            friendId = friend.friend_id;
-          } else {
-            friendId = friend.user_id;
-          }
+            if (friend.user_id === profileId) {
+              friendId = friend.friend_id;
+            } else {
+              friendId = friend.user_id;
+            }
 
-          let userInfo = users[friendId];
+            let userInfo = users[friendId];
 
-          if (!!userInfo){
-            return <FriendItem key={friend.id} friendNodeId={friend.id} user={userInfo} isOwner={isOwner}/>
-          } else {
-            fetchUser(friendId).then(res => {
-              return <FriendItem key={friend.id} friendNodeId={friend.id} user={res.user} isOwner={isOwner}/>
-            })
-          }
-        })
+            if (!!userInfo){
+              return <FriendItem key={friend.id} friendNodeId={friend.id} user={userInfo} isOwner={isOwner}/>
+            } else {
+              fetchUser(friendId).then(res => {
+                return <FriendItem key={friend.id} friendNodeId={friend.id} user={res.user} isOwner={isOwner}/>
+              })
+            }
+          })
         }
       </div>
     </div>
