@@ -15,17 +15,15 @@
 }
 
 .intro-container button{
-  padding: 6px;
-  width: 100%;
-}
-
-.intro-container button{
+  background-color: #E4E6EB;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-  background-color: #E4E6EB;
+  margin: 7px 0;
+  padding: 6px;
+  width: 100%;
 }
 
 .intro-container button:hover{

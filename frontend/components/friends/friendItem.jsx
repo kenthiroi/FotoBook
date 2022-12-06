@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FriendItemDropdown from './friendItemDropdown';
 
 
-function FriendItem({user, friendNodeId}){
+function FriendItem({user, friendNodeId, isOwner}){
 
   
   let photoUrl;
