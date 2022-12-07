@@ -300,3 +300,15 @@
   transform: scale(1.25);
   position: absolute;
 }
+
+.friend-request-button button{
+    background-color: #E4E6EB;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 7px 0;
+    padding: 6px;
+    width: 100%;
+}
