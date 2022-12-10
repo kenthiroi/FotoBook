@@ -114,12 +114,15 @@ class UserProfilePicture extends React.Component{
     }
 
     return (
-      <div className='profile-picture-container' onMouseOver={this.handleHoverIn} onMouseOut={this.handleHoverOut}>
+      <div className='profile-picture-container'>
+      {/* <div className='profile-picture-container' onMouseOver={this.handleHoverIn} onMouseOut={this.handleHoverOut}> */}
         {editButton}
         {this.state.displayDropdown ? 
           editDropdown : <></>}
-        <div id='profile-picture' onClick={!!this.state.displayDropdown ? onBlurEvent : onClickEvent} onBlur={onBlurEvent}>
+        <div id='profile-picture'>
           {profilePicture}
+          <button id='profile-picture-button' onClick={!!this.state.displayDropdown ? onBlurEvent : onClickEvent} onBlur={onBlurEvent}>
+          </button>
         </div>
       </div>
     )

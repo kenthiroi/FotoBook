@@ -301,6 +301,13 @@
   position: absolute;
 }
 
+#profile-picture-button{
+  position: absolute;
+  height: 100%;
+  opacity: 0;
+  width: 100%;
+}
+
 .friend-request-button button{
     background-color: #E4E6EB;
     border: none;
