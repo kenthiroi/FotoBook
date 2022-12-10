@@ -107,7 +107,8 @@ class AboutItemLabel extends React.Component{
             <div className="about-edit-container">
               <button onMouseDown={this.openForm}>Edit {this.props.formType}</button>
               <button onMouseDown={this.handleDelete}>Delete {this.props.formType}</button>
-          </div> : <></>}
+            </div> : <></>
+          }
           {itemIcon}
           {description}
           <span> {this.props.aboutData}</span>

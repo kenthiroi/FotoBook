@@ -187,8 +187,15 @@
   align-items: flex-end;
   display: flex;
   flex-direction: row;
-  margin: auto;
+  // max-width: 1186px;
+}
+
+.profile-top-container{
   max-width: 1186px;
+  min-width: 600px;
+  margin: auto;
+  width: 100%;
+  position: relative;
 }
 
 .empty-profile-banner{
@@ -308,14 +315,20 @@
   width: 100%;
 }
 
+.friend-request-button{
+  float: right;
+  right: 50px;
+  position: absolute;
+}
+
 .friend-request-button button{
-    background-color: #E4E6EB;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    margin: 7px 0;
-    padding: 6px;
-    width: 100%;
+  background-color: #E4E6EB;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 7px 0;
+  padding: 6px;
+  width: 100%;
 }
