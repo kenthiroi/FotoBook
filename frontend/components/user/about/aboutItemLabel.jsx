@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from "react-redux";
 import AboutTextForm from './forms/textForm';
 import RelationshipForm from './forms/relationshipForm';
-import { IoLocationSharp, IoSchoolSharp } from 'react-icons/io5';
+import { IoLocationSharp, IoSchoolSharp, IoTrashOutline } from 'react-icons/io5';
 import { FaBriefcase } from 'react-icons/fa';
 import { RiHeartsFill } from 'react-icons/ri';
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdOutlineEdit } from 'react-icons/md';
 import { BsThreeDots } from 'react-icons/bs';
 import { updateUser } from "../../../actions/user_actions";
 
@@ -105,8 +105,8 @@ class AboutItemLabel extends React.Component{
         <div className='about-item'>
           {this.state.openDropdown ? 
             <div className="about-edit-container">
-              <button onMouseDown={this.openForm}>Edit {this.props.formType}</button>
-              <button onMouseDown={this.handleDelete}>Delete {this.props.formType}</button>
+              <button onMouseDown={this.openForm}><MdOutlineEdit/>Edit {this.props.formType}</button>
+              <button onMouseDown={this.handleDelete}><IoTrashOutline/>Delete {this.props.formType}</button>
             </div> : <></>
           }
           {itemIcon}
