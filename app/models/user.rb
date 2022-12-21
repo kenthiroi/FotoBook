@@ -11,7 +11,9 @@ class User < ApplicationRecord
 
   has_many :likes
 
-  has_many :friends
+  has_many :friends,
+     ->(user) { unscope(where: :user_id).where("user_id = ? OR friend_id = ?", user.id, user.id) }, 
+     class_name: :Friend
 
   has_many :friend_requests
 
