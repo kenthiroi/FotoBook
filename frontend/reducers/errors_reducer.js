@@ -2,7 +2,6 @@ import { RECEIVE_SESSION_ERRORS } from "../actions/session_actions";
 
 const errorsReducer = (state = {}, action) => {
   Object.freeze(state);
-  const nextState = Object.assign({}, state);
   switch(action.type){
     case RECEIVE_SESSION_ERRORS:
       return action.errors;

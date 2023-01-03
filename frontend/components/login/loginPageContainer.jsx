@@ -4,7 +4,10 @@ import LoginPage from './loginPage';
 import { login } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    errors: state.errors,
+    session: state.session,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

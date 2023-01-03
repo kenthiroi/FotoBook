@@ -25,6 +25,7 @@
 .main-util-btn{
   position: relative;
   border-radius: 50%;
+  cursor: pointer;
   height: 40px;
   justify-content: center;
   display: flex;
@@ -257,5 +258,5 @@
   position: fixed;
   justify-content: space-between;
   width: 100%;
-  z-index: 3;
+  z-index: 4;
 }

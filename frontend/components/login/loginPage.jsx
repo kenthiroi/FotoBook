@@ -31,6 +31,18 @@ class LoginPage extends React.Component {
   }
 
   render(){
+    if (this.props.session.currentUser) {
+      return <Redirect to="/newsfeed"></Redirect>;
+    }
+    //handle errors
+
+    const errorArr =
+      this.props.errors.login.length && !this.props.modal
+        ? this.props.errors.login.map((error) => {
+            return <li>{error}</li>;
+          })
+        : [];
+
     return <div className="login-container">
       <div className="login-left">
         <div className="login-logo">fotobook</div>
