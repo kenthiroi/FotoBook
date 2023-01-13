@@ -4,7 +4,9 @@ import { signup } from '../../actions/session_actions';
 import SignUpModal from './signupModal';
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    errors: state.errors,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

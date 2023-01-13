@@ -58,6 +58,12 @@ class SignUpModal extends React.Component{
         return <option value={day} key={day}>{day}</option>
     });
 
+    const errorArrayMsgs =
+      this.props.errors.login.length ? this.props.errors.login.map((error) => {
+            return <li>{error}</li>;
+          })
+        : [];
+
     return <div className="modal-child">
       <div className="signup-modal">
         <span id="close-btn" onClick={this.props.closeModal}>&#x2715;</span>
@@ -67,18 +73,37 @@ class SignUpModal extends React.Component{
         </div>
         <form className="form-bottom">
           <div id="name-box">
-            <input type="text" placeholder="First name" onChange={this.updateState("first_name")}/>
-            <input type="text" placeholder="Last name" onChange={this.updateState("last_name")}/> 
+            <input 
+              type="text" 
+              placeholder="First name" 
+              onChange={this.updateState("first_name")}
+            />
+            <input 
+              type="text" 
+              placeholder="Last name" 
+              onChange={this.updateState("last_name")}
+            /> 
           </div>
           <div id="email-box">
-            <input type="text" placeholder="Email" onChange={this.updateState("email")}/>
+            <input 
+              type="text" 
+              placeholder="Email" 
+              onChange={this.updateState("email")}
+            />
           </div>
           <div id="password-box">
-            <input type="password" placeholder="New password" onChange={this.updateState("password")}/>
+            <input 
+              type="password"
+              placeholder="New password"
+              onChange={this.updateState("password")}
+            />
           </div>
           <div className="select-label">Birthday</div>
           <div id="birthdate-box">
-            <select onChange={this.updateDate('month')} defaultValue={`${todaysDate.getMonth()}`}>
+            <select 
+              onChange={this.updateDate('month')} 
+              defaultValue={`${todaysDate.getMonth()}`}
+            >
             {/* <select onChange={this.updateDate('month')} value={`10`}> */}
 
               <option value="0" key="0">Jan</option>
@@ -94,10 +119,16 @@ class SignUpModal extends React.Component{
               <option value="10" key="10">Nov</option>
               <option value="11" key="11">Dec</option>
             </select>
-            <select onChange={this.updateDate('day')} defaultValue={`${todaysDate.getDate()}`}>
+            <select 
+              onChange={this.updateDate('day')} 
+              defaultValue={`${todaysDate.getDate()}`}
+            >
               {dayOptions}
             </select>
-            <select onChange={this.updateDate('year')} defaultValue={`${todaysDate.getYear()}`}>
+            <select 
+              onChange={this.updateDate('year')} 
+              defaultValue={`${todaysDate.getYear()}`}
+            >
               {yearOptions}
             </select>
           </div>
@@ -119,6 +150,7 @@ class SignUpModal extends React.Component{
               </label>
             </div>
           </div>
+          { errorArrayMsgs.length ? <ul className="error">{errorArrayMsgs}</ul> : <></> }
           <input id="submit-btn" type="submit" onClick={this.handleClick} value="Sign Up"/>
         </form>
       </div>

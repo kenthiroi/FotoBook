@@ -31,13 +31,16 @@ class LoginPage extends React.Component {
   }
 
   render(){
+
+    //Redirect user w/ a session to newsfeed
     if (this.props.session.currentUser) {
       return <Redirect to="/newsfeed"></Redirect>;
     }
-    //handle errors
 
-    const errorArr =
-      this.props.errors.login.length && !this.props.modal
+
+    //Handle errors
+    const errorArrayMsg =
+      this.props.errors.login.length
         ? this.props.errors.login.map((error) => {
             return <li>{error}</li>;
           })
@@ -55,6 +58,9 @@ class LoginPage extends React.Component {
           </div>
           <div>
             <input type="password" placeholder="Password" onChange={this.updateState("password")} value={this.state.password}/>
+          </div>
+          <div className="error-text">
+            {errorArrayMsg}
           </div>
           <div>
             <input id="login-button" type="submit" onClick={this.handleClick} value="Log In"/>
