@@ -41,7 +41,7 @@ class LoginPage extends React.Component {
     console.log(this.props.errors);
 
     const errorArrayMsg =
-      !!this.props.errors.login.length
+      !!this.props.errors.login
         ? this.props.errors.login.map((error) => {
             return <li>{error}</li>;
           })
