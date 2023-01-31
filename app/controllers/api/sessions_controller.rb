@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
         login(@user)
         render "api/users/show"
       else
-        render json: ["Invalid login credentials"], status: 401
+        render json: ["The password you’ve entered is incorrect."], status: 401
       end
     else
       render json: ["The email you entered isn’t connected to an account. Create a new account and log in."], status: 401
