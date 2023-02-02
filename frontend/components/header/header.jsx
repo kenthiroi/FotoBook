@@ -12,7 +12,7 @@ import { getPost } from '../../actions/post_actions';
 import { fetchUser } from "../../actions/user_actions";
 import { AiFillHome, AiOutlineHome } from "react-icons/ai";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { MdWork } from "react-icons/md"
+import { MdWork } from "react-icons/md";
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -65,6 +65,12 @@ class HeaderNav extends React.Component {
     }
   }
 
+  componentDidUpdate(){
+    if (!!this.props.user){
+      this.props.history.push("/");
+    }
+  }
+
   handleOpenDropdown(type){
     return (e) => {
       this.setState({
@@ -83,10 +89,12 @@ class HeaderNav extends React.Component {
   }
 
 
-
   render() {
     let currentPage = this.props.history.location.pathname === `/newsfeed`;
     // console.log(this.props.userImg);
+    if (!!this.props.user){
+      this.props.history.push("/");
+    }
 
     return <div id="navbar">
       <div id="header-left">
