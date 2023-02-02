@@ -65,12 +65,6 @@ class HeaderNav extends React.Component {
     }
   }
 
-  componentDidUpdate(){
-    if (!!this.props.user){
-      this.props.history.push("/");
-    }
-  }
-
   handleOpenDropdown(type){
     return (e) => {
       this.setState({

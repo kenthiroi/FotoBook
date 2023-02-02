@@ -55,10 +55,22 @@ class LoginPage extends React.Component {
       <div className="login-right">
         <form>
           <div>
-            <input type="text" placeholder="Email" onChange={this.updateState("email")} value={this.state.email}/>
+            <input 
+              type="text" 
+              className={errorArrayMsg.length ? 'error-input' : ''}
+              placeholder="Email" 
+              onChange={this.updateState("email")} 
+              value={this.state.email}
+            />
           </div>
           <div>
-            <input type="password" placeholder="Password" onChange={this.updateState("password")} value={this.state.password}/>
+            <input 
+              type="password"
+              className={errorArrayMsg.length ? 'error-input' : ''}
+              placeholder="Password" 
+              onChange={this.updateState("password")} 
+              value={this.state.password}
+            />
           </div>
           <div className="error-text">
             {errorArrayMsg}
