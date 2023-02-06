@@ -86,9 +86,9 @@ class HeaderNav extends React.Component {
   render() {
     let currentPage = this.props.history.location.pathname === `/newsfeed`;
     // console.log(this.props.userImg);
-    if (!!this.props.user){
-      this.props.history.push("/");
-    }
+    // if (!!this.props.user){
+    //   this.props.history.push("/");
+    // }
 
     return <div id="navbar">
       <div id="header-left">
