@@ -6,13 +6,13 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import LoginPageContainer from './login/loginPageContainer';
-import Modal from './modal/modal';
-import NewsfeedContainer from './newsfeed/newsfeedContainer';
-import HeaderNav from './header/header'
-import UserProfile from './user/profile';
-import SideNav from './header/sideNav';
+import { AuthRoute, ProtectedRoute } from '../../util/route_util';
+import LoginPageContainer from '../login/loginPageContainer';
+import Modal from '../modal/modal';
+import NewsfeedContainer from '../newsfeed/newsfeedContainer';
+import HeaderNav from '../header/header'
+import UserProfile from '../user/profile';
+import SideNav from '../header/sideNav';
 
 const Home = ({ user }) => (
   <>
@@ -47,4 +47,4 @@ const mSTP = (state) => ({
   user: state.entities.users[state.session.id],
 });
 
-export default connect(mSTP, null)(Home);
+export default Home;

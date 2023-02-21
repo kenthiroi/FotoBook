@@ -15,7 +15,7 @@ import NewsfeedContainer from './newsfeed/newsfeedContainer';
 import HeaderNav from './header/header'
 import UserProfile from './user/profile';
 import SideNav from './header/sideNav';
-import ComponentRoutes from './componentRoutes';
+import componentRoutesContainer from './routes/componentRoutesContainer';
 
 
 
@@ -47,9 +47,9 @@ import ComponentRoutes from './componentRoutes';
 // );
 
 const App = (props) => (
-  <div className="app-container">
+  <div>
     <Routes>
-      <Route path="/*" element={<ComponentRoutes />} />
+      <Route path="/*" element={componentRoutesContainer} />
     </Routes>
   </div>
 )
