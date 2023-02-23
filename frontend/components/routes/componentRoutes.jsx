@@ -14,8 +14,8 @@ import HeaderNav from '../header/header'
 import UserProfile from '../user/profile';
 import SideNav from '../header/sideNav';
 
-const Home = ({ user }) => (
-  <>
+const ComponentRoutes = ({ user }) => (
+  <div>
     <Modal/>
     <Switch>
       {user ? (
@@ -40,11 +40,7 @@ const Home = ({ user }) => (
         <AuthRoute exact path="/" component={LoginPageContainer}/>
       )}
     </Switch>
-  </>
+  </div>
 );
 
-const mSTP = (state) => ({
-  user: state.entities.users[state.session.id],
-});
-
-export default Home;
+export default ComponentRoutes;
