@@ -26,20 +26,20 @@ const ComponentRoutes = ({ user }) => (
           </header>
           {/* News Feed Component */}
           <Routes>
-          <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 
-          <ProtectedRoute exact path='/profile/:userId' component={UserProfile} />
-          <ProtectedRoute exact path='/github' component={() => { 
-            window.location.href = 'https://github.com/kenthiroi'; 
-            return null;
-          }}/>
-          <ProtectedRoute exact path='/linkedin' component={() => { 
-            window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
-            return null;
-          }}/>
+            <Route exact path='/newsfeed' component={NewsfeedContainer}/> 
+            <Route exact path='/profile/:userId' component={UserProfile} />
+            <Route exact path='/github' component={() => { 
+              window.location.href = 'https://github.com/kenthiroi'; 
+              return null;
+            }}/>
+            <Route exact path='/linkedin' component={() => { 
+              window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
+              return null;
+            }}/>
           </Routes>
         </Fragment>
       ) : (
-        <AuthRoute exact path="/" component={LoginPageContainer}/>
+        <Route exact path="/" component={LoginPageContainer}/>
       )}
   </>
 );
