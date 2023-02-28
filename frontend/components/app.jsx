@@ -19,39 +19,39 @@ import ComponentRoutesContainer from './routes/componentRoutesContainer';
 
 
 
-const App = (props) => (
-  <div>
-    <Modal/>
-    <Switch>
-      <AuthRoute exact path="/" component={LoginPageContainer}/>
-      <Fragment>
-        <header>
-          <HeaderNav/>
-          <SideNav/>
-        </header>
-        {/* News Feed Component */}
-        <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 
-        <ProtectedRoute exact path='/profile/:userId' component={UserProfile} />
-        <ProtectedRoute exact path='/github' component={() => { 
-          window.location.href = 'https://github.com/kenthiroi'; 
-          return null;
-        }}/>
-        <ProtectedRoute exact path='/linkedin' component={() => { 
-          window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
-          return null;
-        }}/>
-      </Fragment>
-      {/* Login landing page */}
-    </Switch>
-  </div>
-);
-
 // const App = (props) => (
 //   <div>
-//     <Routes>
-//       <Route path="/*" element={<ComponentRoutesContainer/>} />
-//     </Routes>
+//     <Modal/>
+//     <Switch>
+//       <AuthRoute exact path="/" component={LoginPageContainer}/>
+//       <Fragment>
+//         <header>
+//           <HeaderNav/>
+//           <SideNav/>
+//         </header>
+//         {/* News Feed Component */}
+//         <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 
+//         <ProtectedRoute exact path='/profile/:userId' component={UserProfile} />
+//         <ProtectedRoute exact path='/github' component={() => { 
+//           window.location.href = 'https://github.com/kenthiroi'; 
+//           return null;
+//         }}/>
+//         <ProtectedRoute exact path='/linkedin' component={() => { 
+//           window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
+//           return null;
+//         }}/>
+//       </Fragment>
+//       {/* Login landing page */}
+//     </Switch>
 //   </div>
-// )
+// );
+
+const App = (props) => (
+  <div>
+    <Routes>
+      <Route path="/*" element={<ComponentRoutesContainer/>} />
+    </Routes>
+  </div>
+)
 
 export default App;

@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Route,
+  Routes,
   Redirect,
   Switch,
   Link,
@@ -15,9 +16,8 @@ import UserProfile from '../user/profile';
 import SideNav from '../header/sideNav';
 
 const ComponentRoutes = ({ user }) => (
-  <div>
+  <>
     <Modal/>
-    <Switch>
       {user ? (
         <Fragment>
           <header>
@@ -25,6 +25,7 @@ const ComponentRoutes = ({ user }) => (
             <SideNav/>
           </header>
           {/* News Feed Component */}
+          <Routes>
           <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 
           <ProtectedRoute exact path='/profile/:userId' component={UserProfile} />
           <ProtectedRoute exact path='/github' component={() => { 
@@ -35,12 +36,12 @@ const ComponentRoutes = ({ user }) => (
             window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
             return null;
           }}/>
+          </Routes>
         </Fragment>
       ) : (
         <AuthRoute exact path="/" component={LoginPageContainer}/>
       )}
-    </Switch>
-  </div>
+  </>
 );
 
 export default ComponentRoutes;
