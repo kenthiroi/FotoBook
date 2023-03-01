@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   Route,
   Routes,
@@ -19,7 +20,7 @@ const ComponentRoutes = ({ user }) => (
   <>
     <Modal/>
       {user ? (
-        <Fragment>
+        <>
           <header>
             <HeaderNav/>
             <SideNav/>
@@ -28,20 +29,24 @@ const ComponentRoutes = ({ user }) => (
           <Routes>
             <Route exact path='/newsfeed' component={NewsfeedContainer}/> 
             <Route exact path='/profile/:userId' component={UserProfile} />
-            <Route exact path='/github' component={() => { 
+            {/* <Route exact path='/github' component={() => { 
               window.location.href = 'https://github.com/kenthiroi'; 
               return null;
             }}/>
             <Route exact path='/linkedin' component={() => { 
               window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
               return null;
-            }}/>
+            }}/> */}
           </Routes>
-        </Fragment>
+        </>
       ) : (
-        <Route exact path="/" component={LoginPageContainer}/>
+        <LoginPageContainer/>
       )}
   </>
 );
+
+ComponentRoutes.propTypes = {
+  currentUser: PropTypes.object,
+}
 
 export default ComponentRoutes;
