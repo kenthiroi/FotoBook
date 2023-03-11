@@ -42,19 +42,21 @@ class RelationshipForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <select id="relationship" value={this.state.value} onChange={this.handleChange}>
+          <select id="relationship-form" value={this.state.value} onChange={this.handleChange}>
             <option value="">Status</option>
-            <option value="single">Single</option>
-            <option value="relationship">In a relationship</option>
-            <option value="engaged">Engaged</option>
-            <option value="married">Married</option>
-            <option value="complicated">It's complicated</option>
-            <option value="separated">Separated</option>
-            <option value="divorced">Divorced</option>
-            <option value="widowed">Widowed</option>
+            <option value="Single">Single</option>
+            <option value="Relationship">In a relationship</option>
+            <option value="Engaged">Engaged</option>
+            <option value="Married">Married</option>
+            <option value="It's Complicated">It's complicated</option>
+            <option value="Separated">Separated</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
           </select>
-          <input type="submit" value="Save"/>
-          <button onClick={this.props.closeForm}>Cancel</button>
+          <div className='relationship-options'>
+            <button className="about-save" onClick={this.handleSubmit}>Save</button>
+            <button className="about-cancel" onClick={this.props.closeForm}>Cancel</button>
+          </div>
         </form>
       </div>
     )

@@ -212,3 +212,30 @@
   font-weight: 700;
   padding-left: 12px;
 }
+
+.about-container #relationship-form{
+  background-color: #e9e9e9;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 550;
+  height: 35px;
+  margin: 10px 0;
+  padding: 7px;
+  width: 100%;
+}
+
+.relationship-options button{
+  align-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 6px;
+  float: right;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 2px;
+  padding: 8px;
+  text-align: center;
+  width: 76px;
+  text-align-last: center;
+}
