@@ -73,17 +73,17 @@ class AboutItemLabel extends React.Component{
     switch (this.props.formType){
       case 'work':
         itemIcon = <FaBriefcase/>;
-        description = 'Works at';
+        description = 'Works at ';
         inputForm = <AboutTextForm formType={this.props.formType} closeForm={this.closeForm}/>;
         break;
       case 'hometown':
         itemIcon = <IoLocationSharp/>;
-        description = 'Lives in';
+        description = 'Lives in ';
         inputForm = <AboutTextForm formType={this.props.formType} closeForm={this.closeForm}/>;
         break;
       case 'school':
         itemIcon = <IoSchoolSharp/>;
-        description = 'Studied at';
+        description = 'Studied at ';
         inputForm = <AboutTextForm formType={this.props.formType} closeForm={this.closeForm}/>;
         break;
       case 'relationship':
@@ -111,7 +111,7 @@ class AboutItemLabel extends React.Component{
           }
           {itemIcon}
           {description}
-          <span> {this.props.aboutData}</span>
+          <span>{this.props.aboutData}</span>
           {this.props.isOwner ? <button className="about-edit-button" onClick={this.state.openDropdown ? this.closeDropdown : this.openDropdown} onBlur={this.closeDropdown}><BsThreeDots/></button> : <></>}
         </div>
       )
