@@ -43,7 +43,7 @@ class RelationshipForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <select id="relationship" value={this.state.value} onChange={this.handleChange}>
-            <option selected disabled value="">Status</option>
+            <option value="">Status</option>
             <option value="single">Single</option>
             <option value="relationship">In a relationship</option>
             <option value="engaged">Engaged</option>

@@ -25,7 +25,6 @@ const ComponentRoutes = ({ user }) => (
             <HeaderNav/>
             <SideNav/>
           </header>
-          {/* News Feed Component */}
           <Routes>
             <Route exact path='/newsfeed' component={NewsfeedContainer}/> 
             <Route exact path='/profile/:userId' component={UserProfile} />
@@ -46,7 +45,7 @@ const ComponentRoutes = ({ user }) => (
 );
 
 ComponentRoutes.propTypes = {
-  currentUser: PropTypes.object,
+  user: PropTypes.object,
 }
 
 export default ComponentRoutes;
