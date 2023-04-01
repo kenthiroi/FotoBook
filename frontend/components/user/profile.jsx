@@ -116,7 +116,12 @@ class UserProfile extends React.Component{
           <div className='profile-main'> 
             <UserProfileBanner profileId={this.props.profileId} bannerImg={this.props.bannerImg} isOwner={isOwner}/>
             <div className='profile-top-container'>
-              {isOwner ? <></> : <FriendRequestButton profileId={this.props.profileId}/>}
+              {isOwner 
+                ? 
+                  <></> 
+                : 
+                  <FriendRequestButton profileId={this.props.profileId}/>
+              }
               <div className='profile-top'>
                 <UserProfilePicture profileId={this.props.profileId} userImg={this.props.userImg} isOwner={isOwner}/>
                 <div className="profile-name">{this.props.userInfo.first_name} {this.props.userInfo.last_name}</div>

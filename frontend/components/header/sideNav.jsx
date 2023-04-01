@@ -18,7 +18,7 @@ const mSTP = (state) => {
 function SideNav({userInfo, history, sessionId}){
   const { width } = useWindowDimensions();
 
-  let onHomePage = history.location.pathname === `/newsfeed` && width >= 1000;
+  let onHomePage = history.location.pathname === `/newsfeed` && width >= 1050;
   let onProfile = history.location.pathname === `/profile/${sessionId}`
 
   return(

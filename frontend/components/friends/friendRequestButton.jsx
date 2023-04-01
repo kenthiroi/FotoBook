@@ -6,7 +6,8 @@ import { MdPersonAddAlt1, MdPersonRemoveAlt1 } from "react-icons/md"
 const mSTP = (state) => {
   return {
     userId: state.session.id,
-    friendReqs: state.entities.friendRequests
+    friendReqs: state.entities.friendRequests,
+    friends: state.entities.friends
   }
 }
 
@@ -59,20 +60,31 @@ class FriendRequestButton extends React.Component{
   }
 
   render(){
-    return (
-      <div className="friend-request-button">
-      {!this.state.requestMade ? 
-        <button type="submit" onMouseDown={() => this.handleFriendRequest('add')}>
-          <MdPersonAddAlt1/> Add Friend
+    if (
+      this.props.friends.contains(friend => friend.friendId === this.props.profileId)
+      ||
+      this.props.friends.contains(friends => friends.userId === this.props.profileId)
+      ){
+      return (
+        <div className="friend-request-button">
+          <MdPersonRemoveAlt1/>
+        </div>
+      )
+    } else {
+      return (
+        <div className="friend-request-button">
+        {!this.state.requestMade ? 
+          <button type="submit" onMouseDown={() => this.handleFriendRequest('add')}>
+            <MdPersonAddAlt1/> Add Friend
+          </button>
+        : 
+        <button type="submit" onMouseDown={() => this.handleFriendRequest('delete')}>
+            <MdPersonRemoveAlt1/> Delete Request
         </button>
-       : 
-       <button type="submit" onMouseDown={() => this.handleFriendRequest('delete')}>
-          <MdPersonRemoveAlt1/> Delete Request
-       </button>
-      }
-      </div>
-    )
-    
+        }
+        </div>
+      )
+    } 
   }
 }
 
