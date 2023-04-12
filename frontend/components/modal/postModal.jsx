@@ -109,11 +109,11 @@ class PostModal extends React.Component {
             placeholder={"Whats on your mind, " + this.props.userInfo.first_name + "?"} 
             autoFocus
             />
-          <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
-          <label className='input-icon'>
+          <label id='image-icon'>
             <FaImages/>
             <input type="file" style={{display: 'none'}} onChange={this.handleFile}/>
           </label>
+          <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
         </form>
       </div>
     </div>

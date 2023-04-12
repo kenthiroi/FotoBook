@@ -47,6 +47,28 @@
   z-index: 3;
 }
 
+#image-icon{
+  align-items: center;
+  border-radius: 50%;
+  color: #24ae2b;  
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  padding: 8px 8px;
+  width: 50px;
+}
+
+#image-icon svg{
+  width: 100px;
+  height: 100px;
+}
+
+#image-icon:hover{
+  cursor: pointer;
+  background-color: #d2d5dd; 
+  transition: 200ms;
+}
+
 #modal-closebtn{
   font-size: 24px;
   float: right;
