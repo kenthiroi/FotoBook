@@ -7,7 +7,7 @@ const mSTP = (state) => {
   return {
     userId: state.session.id,
     friendReqs: state.entities.friendRequests,
-    friends: state.entities.friends
+    friends: Object.values(state.entities.friends)
   }
 }
 
@@ -61,9 +61,9 @@ class FriendRequestButton extends React.Component{
 
   render(){
     if (
-      this.props.friends.contains(friend => friend.friendId === this.props.profileId)
+      this.props.friends.includes(this.props.profileId)
       ||
-      this.props.friends.contains(friends => friends.userId === this.props.profileId)
+      this.props.friends.includes(this.props.profileId)
       ){
       return (
         <div className="friend-request-button">

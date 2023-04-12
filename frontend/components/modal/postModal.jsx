@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { createPost, editPost } from '../../actions/post_actions';
-import { VscChromeClose } from 'react-icons/vsc'
+import { VscChromeClose } from 'react-icons/vsc';
+import { FaImages } from 'react-icons/fa';
+
 
 const mapStateToProps = (state) => {
   return {
@@ -108,7 +110,10 @@ class PostModal extends React.Component {
             autoFocus
             />
           <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
-          <input type="file" onChange={this.handleFile}/>
+          <label className='input-icon'>
+            <FaImages/>
+            <input type="file" style={{display: 'none'}} onChange={this.handleFile}/>
+          </label>
         </form>
       </div>
     </div>
