@@ -1,8 +1,17 @@
 .modal-button{
-  padding: 10px;
-  width: 100%;
+  align-content: center;
+  align-items: center;
   background-color: #1876F2;
+  border: none;
+  border-radius: 6px;
   color: #FFF;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 2px;
+  padding: 8px;
+  text-align: center;
+  text-align-last: center;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -30,7 +39,7 @@
 
 .post-modal{
   padding: 10px;
-  height: 428px;
+  height: 475x;
   width: 500px;
 }
 
@@ -54,12 +63,22 @@
   z-index: 3;
 }
 
+#icon-section{
+  border: 1px #c4c4c4;
+  border-radius: 6px;
+  padding: 14px;
+  margin: 8px;
+  font-size: 18px;
+  width: 100%;
+}
+
 #image-icon{
   align-items: center;
   border-radius: 50%;
   color: #24ae2b;  
   display: flex;
   flex-direction: row;
+  float: right;
   height: 50px;
   padding: 8px 8px;
   width: 50px;

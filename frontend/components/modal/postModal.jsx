@@ -109,17 +109,22 @@ class PostModal extends React.Component {
             placeholder={"Whats on your mind, " + this.props.userInfo.first_name + "?"} 
             autoFocus
             />
-          <label id='image-icon'>
-            <FaImages/>
-            <input type="file" style={{display: 'none'}} onChange={this.handleFile}/>
-          </label>
-          <input 
-            className={this.state.body.length === 0 ? 'disabled-button' : ''} 
-            id="submit-button" 
-            type="submit"
-            value={submit_text}            
-            disabled={this.state.body.length === 0 ? true : false}
-            onClick={this.handleSubmit}/>
+          <div id="icon-section">
+            Add to your post
+            <label id='image-icon'>
+              <FaImages/>
+              <input type="file" style={{display: 'none'}} onChange={this.handleFile}/>
+            </label>
+          </div>
+          <div>
+            <input 
+              className="modal-button"
+              id={this.state.body.length === 0 ? 'disabled-button' : ''}
+              type="submit"
+              value={submit_text}            
+              disabled={this.state.body.length === 0 ? true : false}
+              onClick={this.handleSubmit}/>
+          </div>
         </form>
       </div>
     </div>
