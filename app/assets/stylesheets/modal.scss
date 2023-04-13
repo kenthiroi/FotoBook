@@ -1,3 +1,10 @@
+.modal-button{
+  padding: 10px;
+  width: 100%;
+  background-color: #1876F2;
+  color: #FFF;
+  cursor: pointer;
+}
 
 .modal-background {
   position: fixed;
@@ -72,4 +79,10 @@
 #modal-closebtn{
   font-size: 24px;
   float: right;
+}
+
+#disabled-button{
+  background-color: #eaeaea;
+  color: #c4c4c4;
+  cursor: not-allowed;
 }

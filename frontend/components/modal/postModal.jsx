@@ -113,7 +113,13 @@ class PostModal extends React.Component {
             <FaImages/>
             <input type="file" style={{display: 'none'}} onChange={this.handleFile}/>
           </label>
-          <input type="submit" value={submit_text} onClick={this.handleSubmit}/>
+          <input 
+            className={this.state.body.length === 0 ? 'disabled-button' : ''} 
+            id="submit-button" 
+            type="submit"
+            value={submit_text}            
+            disabled={this.state.body.length === 0 ? true : false}
+            onClick={this.handleSubmit}/>
         </form>
       </div>
     </div>
