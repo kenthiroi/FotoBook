@@ -35,7 +35,7 @@
   z-index: 5;
 }
 
-//post modal
+//Post Modal
 
 .post-modal{
   padding: 10px;
@@ -59,8 +59,39 @@
   text-align: center;
 }
 
+//Profile Modal
+
 .profile-modal{
+  padding: 10px;
+  height: 475x;
+  width: 500px;
   z-index: 3;
+}
+
+.profile-input-label {
+  position: absolute;
+  font-size: 16px;
+  left: 28px;
+  top: 65px;
+  color: #999;
+  user-select: none;
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
+}
+
+.profile-input-label.profile-input-filled{
+  transform: translateY(-100%);
+  font-size: .95em;
+}
+
+#profile-modal-text{
+  border: 1px solid #aeaeae;
+  border-radius: 6px;
+  height: 150px;
+  font-size: 18px;
+  padding: 16px 16px 10px 16px;
+  width: 100%;
 }
 
 #icon-section{

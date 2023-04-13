@@ -4,6 +4,7 @@ import { closeModal, openModal } from '../../actions/modal_actions';
 import { updateUser } from '../../actions/user_actions';
 import { createPost, editPost } from '../../actions/post_actions';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { VscChromeClose } from 'react-icons/vsc';
 
 
 const mSTP = (state) => {
@@ -90,16 +91,25 @@ class ProfilePictureModal extends React.Component {
   render(){
     return <div className='modal-child'>
       <div className="profile-modal">
-        <div className="modal-title">{this.props.mode === 'profile' ? 'Update profile picture' : 'Update cover photo'}</div>
+        <div>
+          <div id="modal-closebtn" onClick={this.props.closeModal}>
+            <VscChromeClose/>
+          </div>
+          <h2 className="modal-title">{this.props.mode === 'profile' ? 'Update profile picture' : 'Update cover photo'}</h2>
+        </div>
         <form>
-          <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
-          <label>
-            <AiOutlinePlus/> Upload Photo
-            <input 
-              type="file" 
-              onChange={this.handleFile}
-            />
-          </label>
+          {/* Leave picture preview here */}
+          <label className={this.state.body.length === 0 ? "profile-input-label" : "profile-input-label profile-input-filled"}>Description</label>
+          <textarea id='profile-modal-text' onChange={this.updateState('body')} defaultValue={this.state.body}/>
+          <div>
+            <label>
+              <AiOutlinePlus/> Upload Photo
+              <input 
+                type="file" 
+                onChange={this.handleFile}
+              />
+            </label>
+          </div>
           <div>
             <input 
               className='modal-button'
