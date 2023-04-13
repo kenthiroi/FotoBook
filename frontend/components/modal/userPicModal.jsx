@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal, openModal } from '../../actions/modal_actions';
 import { updateUser } from '../../actions/user_actions';
 import { createPost, editPost } from '../../actions/post_actions';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 
 const mSTP = (state) => {
@@ -92,8 +93,23 @@ class ProfilePictureModal extends React.Component {
         <div className="modal-title">{this.props.mode === 'profile' ? 'Update profile picture' : 'Update cover photo'}</div>
         <form>
           <textarea onChange={this.updateState('body')} defaultValue={this.state.body}/>
-          <input type="submit" value={'Upload Photo'} onClick={this.handleSubmit}/>
-          <input type="file" onChange={this.handleFile}/>
+          <label>
+            <AiOutlinePlus/> Upload Photo
+            <input 
+              type="file" 
+              onChange={this.handleFile}
+            />
+          </label>
+          <div>
+            <input 
+              className='modal-button'
+              id={!!this.state.photoFile ? 'disabled-button' : ''}
+              type="submit" 
+              value={'Save'} 
+              disabled={!!this.state.photoFile ? true : false}
+              onClick={this.handleSubmit}
+            />
+          </div>
         </form>
       </div>
     </div>
