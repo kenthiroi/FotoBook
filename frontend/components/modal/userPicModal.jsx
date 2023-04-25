@@ -113,10 +113,10 @@ class ProfilePictureModal extends React.Component {
           <div>
             <input 
               className='modal-button'
-              id={!!this.state.photoFile ? 'disabled-button' : ''}
+              id={this.state.photoFile ? '' : 'disabled-button'}
               type="submit" 
               value={'Save'} 
-              disabled={!!this.state.photoFile ? true : false}
+              disabled={this.state.photoFile ? false : true}
               onClick={this.handleSubmit}
             />
           </div>

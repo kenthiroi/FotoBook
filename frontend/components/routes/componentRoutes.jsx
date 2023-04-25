@@ -25,7 +25,7 @@ const ComponentRoutes = ({ user }) => (
             <HeaderNav/>
             <SideNav/>
           </header>
-          <Routes>
+          <Switch>
             <Route exact path='/newsfeed' component={NewsfeedContainer}/> 
             <Route exact path='/profile/:userId' component={UserProfile} />
             {/* <Route exact path='/github' component={() => { 
@@ -36,7 +36,7 @@ const ComponentRoutes = ({ user }) => (
               window.location.href = 'https://www.linkedin.com/in/kent-hiroi-381880103/'; 
               return null;
             }}/> */}
-          </Routes>
+          </Switch>
         </>
       ) : (
         <LoginPageContainer/>
