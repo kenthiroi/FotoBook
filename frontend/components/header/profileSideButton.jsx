@@ -55,7 +55,7 @@ class ProfileSideButton extends React.Component{
       fullName = ""
     }
 
-    return (!this.props.userInfo ? 
+    return (this.props.userInfo ? 
         <div onClick={this.handleClick} className="sidenav-btn" id="sidenav-profile-button">
           <span className={this.props.onProfile ? "active-sidenav-btn" : ""}></span>
           <div id="profile-button-pic-container">
