@@ -17,20 +17,20 @@ import { MdWork } from "react-icons/md";
 
 const mapStateToProps = (state, ownProps) => {
   let user = state.entities.user[state.session.id];
+  let defaultImg = 'https://i.imgur.com/7x6fTDK.png';
   let userImg;
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
     if (typeof user.photoUrl === 'undefined'){
-      userImg = 'https://i.imgur.com/7x6fTDK.png';
+      userImg = defaultImg;
     } else {
       userImg = user.photoUrl;
     }
   } catch (e) {
-    userImg = 'https://i.imgur.com/7x6fTDK.png';
+    userImg = defaultImg;
   }
   return {
     sessionId: state.session.id,
-    profileImgId: state.entities.user[state.session.id].profile_picture,
     userImg,
     user,
   }
