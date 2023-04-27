@@ -16,11 +16,14 @@ const mSTP = (state, ownProps) => {
   } catch (e) {
     userImg = 'https://i.imgur.com/7x6fTDK.png';
   }
+  console.log(user);
+
   return {
     sessionId: state.session.id,
     userInfo: user,
     userImg,
   }
+
 }
 
 // const mDTP = (dispatch) => {
@@ -44,15 +47,22 @@ class ProfileSideButton extends React.Component{
   }
 
   render(){
+    let fullName;
 
-    return (
-      <div onClick={this.handleClick} className="sidenav-btn" id="sidenav-profile-button">
-        <span className={this.props.onProfile ? "active-sidenav-btn" : ""}></span>
-        <div id="profile-button-pic-container">
-          <img src={this.props.userImg}/>
-        </div>
-          {this.props.onHomepage ? this.props.userInfo.first_name + " " + this.props.userInfo.last_name : ""}
-      </div>
+    {this.props.onHomepage && this.props.userInfo ? 
+      fullName = this.props.userInfo.first_name + " " + this.props.userInfo.last_name 
+        : 
+      fullName = ""
+    }
+
+    return (!this.props.userInfo ? 
+        <div onClick={this.handleClick} className="sidenav-btn" id="sidenav-profile-button">
+          <span className={this.props.onProfile ? "active-sidenav-btn" : ""}></span>
+          <div id="profile-button-pic-container">
+            <img src={this.props.userImg}/>
+          </div>
+          {fullName}
+        </div> : <></>
     )
   }
 }
