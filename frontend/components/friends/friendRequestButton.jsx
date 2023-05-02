@@ -1,7 +1,8 @@
 import React from "react";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 import { createFriendRequest, getFriendRequests, deleteFriendRequest } from "../../actions/friend_request_actions";
-import { MdPersonAddAlt1, MdPersonRemoveAlt1 } from "react-icons/md"
+import { MdPersonAddAlt1, MdPersonRemoveAlt1 } from "react-icons/md";
+import { deleteFriend } from "../../actions/friend_actions";
 
 const mSTP = (state) => {
   return {
@@ -16,6 +17,7 @@ const mDTP = (dispatch) => {
     createFriendRequest: (friendReq) => dispatch(createFriendRequest(friendReq)),
     deleteFriendRequest: (friendReqId) => dispatch(deleteFriendRequest(friendReqId)),
     fetchFriendRequests: (userId) => dispatch(getFriendRequests(userId)),
+    deleteFriend: () => dispatch(deleteFriend()),
   }
 }
 
@@ -28,6 +30,7 @@ class FriendRequestButton extends React.Component{
     }
 
     this.handleFriendRequest = this.handleFriendRequest.bind(this);
+    this.handleDeleteFriend = this.handleDeleteFriend.bind(this);
   }
 
   componentDidMount(){
@@ -59,6 +62,10 @@ class FriendRequestButton extends React.Component{
     }
   }
 
+  handleDeleteFriend(){
+    this.props.deleteFriend()
+  }
+
   render(){
     if (
       this.props.friends.includes(this.props.profileId)
@@ -67,7 +74,9 @@ class FriendRequestButton extends React.Component{
       ){
       return (
         <div className="friend-request-button">
-          <MdPersonRemoveAlt1/>
+          <button type="submit" onMouseDown={() => this.handleDeleteFriend()}>
+            <MdPersonRemoveAlt1/> Remove Friend
+          </button>
         </div>
       )
     } else {
