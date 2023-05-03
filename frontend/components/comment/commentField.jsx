@@ -29,11 +29,15 @@ class CommentField extends React.Component {
   constructor(props){
     
     super(props);
+
+    this.textareaRef = React.createRef();
+
     if (this.props.comment){
       this.state = {
         body: this.props.comment.body,
         user_id: this.props.comment.author_id,
         post_id: this.props.comment.post_id,
+        textAreaSize: 1,
       }
     }
     else {
@@ -41,17 +45,24 @@ class CommentField extends React.Component {
         body: "",
         user_id: this.props.user_id,
         post_id: this.props.post_id,
+        textAreaSize: 1,
       }
     }
+
 
     this.updateState = this.updateState.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.setState({ ['textAreaSize']: this.textareaRef.current.rows})
+    console.log(this.textareaRef.current.rows);
+  }
+
   updateState(){
     return (e) =>{
-      this.setState({ ['body']: e.target.value })
+      this.setState({ ['body']: e.target.value, ['textAreaSize']: this.textareaRef.current.rows })
     }
   }
 
@@ -85,11 +96,12 @@ class CommentField extends React.Component {
         <img src={this.props.userImg} />
         <form>
           <textarea 
-            ref={this.props.inputRef} 
+            ref={this.textareaRef} 
             onChange={this.updateState('body')} 
             onKeyDown={this.handleKeyDown} 
             value={this.state.body} 
             placeholder='Write a comment...'
+            style={{height: this.state.textAreaSize * 30}}
           />
           <div>Press Enter to post.</div>
         </form>
