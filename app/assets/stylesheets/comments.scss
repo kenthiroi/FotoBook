@@ -27,19 +27,26 @@
   display: flex;
 }
 
-.comment-field form, .comment-field input{
+.comment-field form, .comment-field textarea{
   width: 100%;
 }
 
-.comment-field input{
-  padding: 16px 12px;
+.comment-field textarea{
+  padding: 6px 12px 26px;
   border-radius: 16px;
   height: 20px;
   background-color: #F0F2F5;
   border: none;
+  resize: none;
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
 }
 
-.comment-field input:focus{
+textarea::-webkit-scrollbar {
+  display: none; /* Chrome and Safari */
+}
+
+.comment-field textarea:focus{
   outline: none;
 }
 

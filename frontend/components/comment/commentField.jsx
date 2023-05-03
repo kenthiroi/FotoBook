@@ -27,6 +27,7 @@ const mDTP = dispatch => ({
 
 class CommentField extends React.Component {
   constructor(props){
+    
     super(props);
     if (this.props.comment){
       this.state = {
@@ -83,7 +84,13 @@ class CommentField extends React.Component {
     return <div className="comment-field">
         <img src={this.props.userImg} />
         <form>
-          <input ref={this.props.inputRef} onChange={this.updateState('body')} onKeyDown={this.handleKeyDown} value={this.state.body} placeholder='Write a comment...'/>
+          <textarea 
+            ref={this.props.inputRef} 
+            onChange={this.updateState('body')} 
+            onKeyDown={this.handleKeyDown} 
+            value={this.state.body} 
+            placeholder='Write a comment...'
+          />
           <div>Press Enter to post.</div>
         </form>
       </div>
