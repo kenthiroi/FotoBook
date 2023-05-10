@@ -47,4 +47,10 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom::urlsafe_base64
   end
 
+  def self.search(query)
+    all_users = User.all
+    by_first_name = query.reduce([]) { |acc, word| acc + all_users.where("LOWER (first_name) LIKE ?", "%#{word.downcase}%").to_a }
+    by_last_name = query.reduce([]) { |acc, word| acc + all_users.where("LOWER (last_name) LIKE ?", "%#{word.downcase}%").to_a }
+    all = (by_first_name + by_last_name).uniq
+  end
 end

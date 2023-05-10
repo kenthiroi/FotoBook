@@ -1,4 +1,14 @@
 class Api::UsersController < ApplicationController
+  def index
+    params_clone = params.clone
+    params_clone.delete("format")
+    params_clone.delete("controller")
+    params_clone.delete("action")
+
+    @users = User.search(params_clone.values[0].split(" "))
+    render :index
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
