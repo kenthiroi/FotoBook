@@ -14,3 +14,13 @@ export const updateUser = formData => {
     processData: false,
   })
 }
+
+export const searchUsers = formData => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/users`,
+    data: formData,
+    contentType: false,
+    processData: false,
+  })
+}

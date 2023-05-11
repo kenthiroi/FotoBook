@@ -7,8 +7,9 @@ function UserSearchBar() {
   const handleSearch = async (event) => {
     const { value } = event.target;
     setQuery(value);
-    const response = await fetch(`/search?q=${value}`);
-    const data = await response.json();
+
+
+
     setResults(data);
   };
 
@@ -22,6 +23,16 @@ function UserSearchBar() {
       </ul>
     </div>
   );
+}
+
+const mSTP = (state, ownProps) => {
+  return {
+  }
+}
+
+const mDTP = (dispatch) => {
+  return {
+  }
 }
 
 export default UserSearchBar;

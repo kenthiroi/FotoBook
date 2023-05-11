@@ -8,6 +8,7 @@ import CreatePostDropdown from "./createPostDropdown";
 import SettingsDropdown from "./settingsDropdown";
 import ProfileButton from "./profileButton";
 import NotificationDropdown from "./notificationDropdown";
+import UserSearchBar from "../search/userSearchBar";
 import { getPost } from '../../actions/post_actions';
 import { fetchUser } from "../../actions/user_actions";
 import { AiFillHome, AiOutlineHome } from "react-icons/ai";
@@ -97,6 +98,9 @@ class HeaderNav extends React.Component {
             <div id="icon-font">fotobook</div>
           </Link>
         </div>
+      </div>
+      <div id="header-center">
+        <UserSearchBar/>
       </div>
       <div id="header-right">
         <NotificationDropdown/>
