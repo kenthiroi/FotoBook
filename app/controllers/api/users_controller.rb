@@ -1,11 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    params_clone = params.clone
-    params_clone.delete("format")
-    params_clone.delete("controller")
-    params_clone.delete("action")
-
-    @users = User.search(params_clone.values[0].split(" "))
+    @users = User.find_all_by(first_name: user_params.first_name, last_name: user_params.last_name)
     render :index
   end
   

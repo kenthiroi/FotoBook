@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { fetchSearchResults } from '../../actions/user_actions';
 
-function UserSearchBar() {
+function UserSearchBar(searchUsers) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
   const handleSearch = async (event) => {
     const { value } = event.target;
     setQuery(value);
+    searchInput = value.split(" ");
 
+    const formData = new FormData();
+    formData.append('user[first_name]', searchInput[0]);
+    formData.append('user[last_name]', searchInput[1]);
 
-
-    setResults(data);
+    searchUsers(formData).then(searchResults => { 
+      setResults(searchResults)
+    })
   };
 
   return (
@@ -27,12 +34,14 @@ function UserSearchBar() {
 
 const mSTP = (state, ownProps) => {
   return {
+
   }
 }
 
 const mDTP = (dispatch) => {
   return {
+    searchUsers: (searchQuery) => dispatch(fetchSearchResults(searchQuery)),
   }
 }
 
-export default UserSearchBar;
+export default connect(mSTP, mDTP)(UserSearchBar);
