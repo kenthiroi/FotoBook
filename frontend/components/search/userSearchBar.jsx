@@ -13,7 +13,7 @@ function UserSearchBar(searchUsers) {
 
     const formData = new FormData();
     formData.append('user[first_name]', searchInput[0]);
-    formData.append('user[last_name]', searchInput[1]);
+    formData.append('user[last_name]', searchInput.pop);
 
     searchUsers(formData).then(searchResults => { 
       setResults(searchResults)

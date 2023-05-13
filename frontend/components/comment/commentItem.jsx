@@ -118,17 +118,12 @@ class CommentItem extends React.Component{
     } else {
       return(
         <div className="comment-item" onMouseOver={this.handleHoverIn} onMouseOut={this.handleHoverOut}>
-          {this.state.editDropdown ? 
-            <div className="comment-edit-container">
-              <div onMouseDown={this.toggleEdit}><MdOutlineEdit/> Edit Comment</div>
-              <div onMouseDown={this.handleDelete}><IoTrashOutline/> Delete Comment</div>
-            </div> : <></>}
           <PostProfilePicture user={this.props.user}/>
           <div className='comment-body-container'>
             <NameHover user={this.props.user}/>
             <div className='comment-body'>{this.props.comment.body}</div>
           </div>
-          <div>
+          <div className='edit-button-container'>
             {isOwner ? 
             <button 
               className={
@@ -141,6 +136,11 @@ class CommentItem extends React.Component{
               <BsThreeDots/>
             </button>
             : <></>}
+            {this.state.editDropdown ? 
+            <div className="comment-edit-button">
+              <div onMouseDown={this.toggleEdit}><MdOutlineEdit/> Edit Comment</div>
+              <div onMouseDown={this.handleDelete}><IoTrashOutline/> Delete Comment</div>
+            </div> : <></>}
           </div>
         </div>
       )
