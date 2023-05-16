@@ -37,7 +37,7 @@ class CommentField extends React.Component {
         body: this.props.comment.body,
         user_id: this.props.comment.author_id,
         post_id: this.props.comment.post_id,
-        textAreaSize: 1,
+        textAreaSize: Math.ceil(this.props.comment.body.length / 90),
       }
     }
     else {
@@ -55,14 +55,10 @@ class CommentField extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount(){
-    this.setState({ ['textAreaSize']: this.textareaRef.current.rows})
-    console.log(this.textareaRef.current.rows);
-  }
-
   updateState(){
     return (e) =>{
-      this.setState({ ['body']: e.target.value, ['textAreaSize']: this.textareaRef.current.rows })
+      console.log(e.target.value.length)
+      this.setState({ ['body']: e.target.value, ['textAreaSize']: Math.ceil(e.target.value.length / 90) })
     }
   }
 
@@ -101,7 +97,7 @@ class CommentField extends React.Component {
             onKeyDown={this.handleKeyDown} 
             value={this.state.body} 
             placeholder='Write a comment...'
-            style={{height: this.state.textAreaSize * 30}}
+            style={{height: this.state.textAreaSize * 25}}
           />
           <div>Press Enter to post.</div>
         </form>
