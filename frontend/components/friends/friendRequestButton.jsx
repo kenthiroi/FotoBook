@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { createFriendRequest, getFriendRequests, deleteFriendRequest } from "../../actions/friend_request_actions";
 import { MdPersonAddAlt1, MdPersonRemoveAlt1 } from "react-icons/md";
 import { deleteFriend } from "../../actions/friend_actions";
+import PropTypes from 'prop-types';
 
-const mSTP = (state) => {
+
+const mSTP = (state, ownProps) => {
   return {
     userId: state.session.id,
     friendReqs: state.entities.friendRequests,
-    friends: Object.values(state.entities.friends)
+    friends: state.entities.user[ownProps.profileId].friends
   }
 }
 
@@ -67,11 +69,17 @@ class FriendRequestButton extends React.Component{
   }
 
   render(){
-    if (
-      this.props.friends.includes(this.props.profileId)
-      ||
-      this.props.friends.includes(this.props.profileId)
-      ){
+    let friendList;
+    
+    if (!!this.props.friends){
+      friendList = Object.values(this.props.friends).map(user => {
+        if (user.friend_id === this.props.userId || user.user_id === this.props.userId){
+          return user;
+        }
+      });
+    }
+
+    if (!!friendList){
       return (
         <div className="friend-request-button">
           <button type="submit" onMouseDown={() => this.handleDeleteFriend()}>
@@ -96,5 +104,6 @@ class FriendRequestButton extends React.Component{
     } 
   }
 }
+
 
 export default connect(mSTP, mDTP)(FriendRequestButton);

@@ -33,6 +33,7 @@ const mSTP = (state, ownProps) => {
     userInfo,
     // friends: userInfo.friends,
     userImg,
+    userFriends: state.entities.user[state.session.id].friends,
     bannerImg,
   }
 }
@@ -116,7 +117,7 @@ class UserProfile extends React.Component{
           <div className='profile-main'> 
             <UserProfileBanner profileId={this.props.profileId} bannerImg={this.props.bannerImg} isOwner={isOwner}/>
             <div className='profile-top-container'>
-              {isOwner 
+              {isOwner || !this.props.userFriends
                 ? 
                   <></> 
                 : 
