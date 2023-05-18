@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
   
   def index
-    @users = User.where(first_name: user_params['first_name'], last_name: user_params['last_name'])
+    @users = User.where("first_name ~* ?", user_params[:first_name])
+    # @users = User.where(first_name: user_params[:first_name], last_name: user_params[:last_name])
     render :index
   end
   
