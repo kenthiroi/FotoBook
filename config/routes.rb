@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:create, :update, :show]
+    resources :users, only: [:index, :create, :update, :show]
     resources :posts, only: [:show, :create, :update, :destroy, :index]
     post "/posts/by_user_id", to: "posts#index_by_user_id", as: "index_by_user_id"
     resources :likes, only: [:create, :show, :destroy]

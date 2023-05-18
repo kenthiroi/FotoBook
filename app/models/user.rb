@@ -53,4 +53,5 @@ class User < ApplicationRecord
     by_last_name = query.reduce([]) { |acc, word| acc + all_users.where("LOWER (last_name) LIKE ?", "%#{word.downcase}%").to_a }
     all = (by_first_name + by_last_name).uniq
   end
+  
 end
