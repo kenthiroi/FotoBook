@@ -56,7 +56,7 @@ export const fetchUser = userId => dispatch => (
   ))
 );
 
-export const fetchSearchResults = formData => dispatch (
+export const fetchSearchResults = formData => dispatch => (
   UserAPIUtil.searchUsers(formData).then(users => (
     dispatch(receiveUserSearchResults(users))
   ), err => (
