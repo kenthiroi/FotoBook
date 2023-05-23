@@ -11,9 +11,14 @@ function UserSearchBar(props) {
     setQuery(value);
     let searchInput = value.split(" ");
 
-    const formData = new FormData();
+    let formData = new FormData();
     formData.append('user[first_name]', searchInput[0]);
-    formData.append('user[last_name]', searchInput.pop);
+    if (searchInput.length > 1){
+      formData.append('user[last_name]', searchInput.pop());
+    }
+
+    // console.log(formData.get('user[first_name]'));
+    // console.log(formData.get('user[last_name]'));
 
     props.searchUsers(formData).then(searchResults => { 
       setResults(searchResults)
