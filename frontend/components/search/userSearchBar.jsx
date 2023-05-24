@@ -21,9 +21,11 @@ function UserSearchBar(props) {
     // console.log(formData.get('user[last_name]'));
 
     props.searchUsers(formData).then(searchResults => { 
-      setResults(searchResults)
+      setResults(Object.values(searchResults.users))
     })
   };
+
+  console.log(results);
 
   return (
     <div>
