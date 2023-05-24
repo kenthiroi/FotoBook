@@ -17,10 +17,10 @@ export const updateUser = formData => {
 
 export const searchUsers = formData => {
   console.log(formData.get('user[first_name]'));
-  
+
   return $.ajax({
-    method: 'GET',
-    url: `/api/users/`,
+    method: 'POST',
+    url: `/api/users/search`,
     data: formData,
     contentType: false,
     processData: false,

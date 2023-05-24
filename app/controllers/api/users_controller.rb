@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   
-  def index
+  def index_search
     @users = User.where("first_name ~* ?", user_params[:first_name]).or(User.where("last_name ~* ?", user_params[:last_name]))
     render :index
   end
