@@ -9,7 +9,7 @@ function UserSearchBar(props) {
   const handleSearch = async (event) => {
     const { value } = event.target;
     setQuery(value);
-    let searchInput = value.split(" ");
+    let searchInput = value.split(" ").filter(e => e); //Filters out empty spaces
 
     let formData = new FormData();
     formData.append('user[first_name]', searchInput[0]);
@@ -25,14 +25,12 @@ function UserSearchBar(props) {
     })
   };
 
-  console.log(results);
-
   return (
     <div>
       <input type="text" value={query} onChange={handleSearch} />
       <ul>
         {results.map((result) => (
-          <li key={result.id}>{result.name}</li>
+          <li key={result.id}>{result.first_name} {result.last_name}</li>
         ))}
       </ul>
     </div>
