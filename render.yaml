@@ -1,6 +1,6 @@
 databases:
   - name: fotobook
-    databaseName: fotobook-db
+    databaseName: fotobookdb
     user: fotobook
 
 services:
