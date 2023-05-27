@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchSearchResults } from '../../actions/user_actions';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 function UserSearchBar(props) {
   const [query, setQuery] = useState('');
@@ -27,7 +28,10 @@ function UserSearchBar(props) {
 
   return (
     <div>
-      <input type="text" value={query} onChange={handleSearch} />
+      <div id="header-search-bar">
+        <AiOutlineSearch/>
+        <input placeholder="Search Fotobook" type="text" value={query} onChange={handleSearch}/>
+      </div>
       <ul>
         {results.map((result) => (
           <li key={result.id}>{result.first_name} {result.last_name}</li>

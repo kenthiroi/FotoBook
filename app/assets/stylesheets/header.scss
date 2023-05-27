@@ -230,6 +230,13 @@
   height: 40px;
 }
 
+#header-center {
+  min-width: 580px;
+  max-width: 680px;
+  position: relative;
+  left: 17px;
+}
+
 #header-right {
   display: flex;
   flex-direction: row;
@@ -238,6 +245,31 @@
 
 #header-right > div{
   margin: 0 4px;
+}
+
+#header-search-bar{ 
+  align-content: center;
+  border-radius: 24px;
+  border: none;
+  background-color: #F0F2F5;
+  color: #65676b;
+  cursor: pointer;
+  font-size: 17px;
+  height: 40px;
+  padding: 7px 16px;
+  position: relative;
+  top: 8px;
+  transition: 300ms;
+  width: 100%;
+}
+
+#header-search-bar input {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top: -2px;
+  width: 95%;
 }
 
 #icon-font{
