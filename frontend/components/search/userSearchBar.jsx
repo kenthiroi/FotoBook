@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchSearchResults } from '../../actions/user_actions';
 import { AiOutlineSearch } from 'react-icons/ai';
+import SearchResultBox from './userBox';
 
 function UserSearchBar(props) {
   const [query, setQuery] = useState('');
@@ -26,17 +27,27 @@ function UserSearchBar(props) {
     })
   };
 
+  let searchResults;
+  console.log(results)
+  if (!results.isEmpty) {
+    //Add another condition to check if input element is in focus
+    searchResults = 
+    <div id='header-search-results'>
+      {results.map((user) => (
+        <SearchResultBox key={user.id} user={user}/>
+      ))}
+    </div>
+  } else {
+    searchResults = <></>
+  }
+
   return (
     <div>
       <div id="header-search-bar">
         <AiOutlineSearch/>
         <input placeholder="Search Fotobook" type="text" value={query} onChange={handleSearch}/>
       </div>
-      <ul>
-        {results.map((result) => (
-          <li key={result.id}>{result.first_name} {result.last_name}</li>
-        ))}
-      </ul>
+      {searchResults}
     </div>
   );
 }

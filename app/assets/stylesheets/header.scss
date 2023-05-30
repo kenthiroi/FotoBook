@@ -170,6 +170,17 @@
   color: #1876f2;
 }
 
+.search-result-box{
+  height: 35px;
+  width: 100%;
+}
+
+.search-result-box img{
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin-right: 6px;
+}
 
 .util-container, .notification-dropdown{
   position: absolute;
@@ -270,6 +281,12 @@
   position: relative;
   top: -2px;
   width: 95%;
+}
+
+#header-search-results{
+  height: 500px;
+  width: 650px;
+  left: 0px; 
 }
 
 #icon-font{
