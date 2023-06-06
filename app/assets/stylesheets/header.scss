@@ -170,8 +170,14 @@
   color: #1876f2;
 }
 
-.search-result-box{
-  height: 35px;
+.search-result-box {
+  align-items: center;
+  border-radius: 2%;
+  display: flex;
+  font-size: 15px;
+  height: 45px;
+  padding: 5px 2px;
+  position: relative;
   width: 100%;
 }
 
@@ -284,17 +290,17 @@
 }
 
 #header-search-results {
-  height: 500px;
-  width: 600px;
-  top: 58px;
-  left: -10px;
-  position: absolute;
-  background-color: #FFF;
-  padding: 20px 15px;
   align-items: center;
-  display: grid;
+  background-color: #FFF;
   border-radius: 2%;
   box-shadow: 0 2px 4px rgba(46, 46, 46, 0.2);
+  display: grid;
+  max-height: 500px;
+  left: -10px;
+  padding: 0px 12px;
+  position: absolute;
+  top: 58px;
+  width: 600px;
 }
 
 #icon-font{
