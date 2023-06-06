@@ -28,8 +28,7 @@ function UserSearchBar(props) {
   };
 
   let searchResults;
-  console.log(results)
-  if (!results.isEmpty) {
+  if (results.length !== 0) {
     //Add another condition to check if input element is in focus
     searchResults = 
     <div id='header-search-results'>

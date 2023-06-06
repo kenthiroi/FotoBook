@@ -283,10 +283,18 @@
   width: 95%;
 }
 
-#header-search-results{
+#header-search-results {
   height: 500px;
-  width: 650px;
-  left: 0px; 
+  width: 600px;
+  top: 58px;
+  left: -10px;
+  position: absolute;
+  background-color: #FFF;
+  padding: 20px 15px;
+  align-items: center;
+  display: grid;
+  border-radius: 2%;
+  box-shadow: 0 2px 4px rgba(46, 46, 46, 0.2);
 }
 
 #icon-font{
