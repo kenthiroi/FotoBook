@@ -78,9 +78,14 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+  # url: <%= ENV['DATABASE_URL'] %>
+#   database: fotobookdb
+#   username: fotobook
+#   password: <%= ENV['FOTOBOOK_DATABASE_PASSWORD'] %>
+
+#
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: fotobookdb
-  username: fotobook
-  password: <%= ENV['FOTOBOOK_DATABASE_PASSWORD'] %>
