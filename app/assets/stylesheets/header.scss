@@ -172,11 +172,13 @@
 
 .search-result-box {
   align-items: center;
-  border-radius: 2%;
+  border-radius: 4px;
+  color: #494949;
+  cursor: pointer;
   display: flex;
-  font-size: 15px;
-  height: 45px;
-  padding: 5px 2px;
+  font-size: 18px;
+  height: 55px;
+  padding: 0 8px;
   position: relative;
   width: 100%;
 }
@@ -186,6 +188,11 @@
   height: 32px;
   width: 32px;
   margin-right: 6px;
+}
+
+.search-result-box:hover{
+  background-color: #F0F2F5;
+  transition: 300ms;
 }
 
 .util-container, .notification-dropdown{
@@ -292,15 +299,22 @@
 #header-search-results {
   align-items: center;
   background-color: #FFF;
-  border-radius: 2%;
+  border-radius: 4px;
   box-shadow: 0 2px 4px rgba(46, 46, 46, 0.2);
   display: grid;
   max-height: 500px;
   left: -10px;
-  padding: 0px 12px;
+  // padding: 0px 12px;
   position: absolute;
   top: 58px;
   width: 600px;
+}
+
+#empty-search-results {
+  color: #808080;
+  font-size: 18px;
+  padding: 12px 12px;
+  text-align: center;
 }
 
 #icon-font{

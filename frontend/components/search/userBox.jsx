@@ -3,8 +3,15 @@ import { connect } from 'react-redux';
 
 function SearchResultBox(props) {
 
+  const handleClick = (e) =>{
+    e.preventDefault();
+    if (location.pathname !== `/profile/${props.user.id}`){
+      history.push(`/profile/${props.user.id}`);
+    }
+  }
+
   return (
-    <div className='search-result-box'>
+    <div className='search-result-box' onClick={handleClick}>
       <img src={props.userImg}/>
       <div>{props.user.first_name} {props.user.last_name}</div>
     </div>
