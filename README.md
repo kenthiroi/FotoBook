@@ -7,7 +7,7 @@ Fotobook is a Facebook clone, where users can:
 * add friends
 * like friends posts
 
-##### [Live Site](https://foto-book.herokuapp.com/)
+##### [Live Site](https://fotobook.onrender.com/)
 
 ### Technologies Used
 
