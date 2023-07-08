@@ -40,13 +40,9 @@ function UserSearchBar(props) {
         <SearchResultBox key={user.id} user={user}/>
       ))}
     </div>
-  } else if (query.length !== 0 && focused){
-    searchResults = <div id='header-search-results'>
-      <div id='empty-search-results'>No results, try another name?</div>
-    </div>
   } else if (focused) {
     searchResults = <div id='header-search-results'>
-      <div id='empty-search-results'>No recent searches</div>
+      <div id='empty-search-results'>No results</div>
     </div>
   } else {
     searchResults = <></>
