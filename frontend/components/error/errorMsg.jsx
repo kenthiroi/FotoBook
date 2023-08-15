@@ -6,17 +6,15 @@ const mSTP = (state) => {
   }
 }
 
-const mDTP = (dispatch) => {
-  return {
-
-  }
-}
-
-function ErrorMsg({errorMsg}){
+function ErrorMsg(errors){
   
   return(
-    <div></div>
+    <div id='global-error-bubble'>
+      {errors.map((error) => (
+        <div>{error}</div>
+      ))}
+    </div>
   )
 }
 
-export default connect(mSTP, mDTP)(withRouter(SideNav));
+export default connect(mSTP, null)(withRouter(ErrorMsg));
