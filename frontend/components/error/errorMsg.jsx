@@ -2,13 +2,13 @@ import React from 'react';
 
 const mSTP = (state) => {
   return {
-
+    errors: state.errors.user,
   }
 }
 
 const mDTP = (dispatch) => {
   return {
-    
+
   }
 }
 

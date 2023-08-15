@@ -3,7 +3,7 @@ import * as UserAPIUtil from '../util/users_api_util';
 
 export const RECEIVE_NEW_USER = "RECEIVE_NEW_USER";
 export const RECEIVE_USER_INFO = "RECEIVE_USER_INFO"
-export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 export const RECEIVE_USER_SEARCH_RESULTS = 'RECEIVE_USER_SEARCH_RESULTS';
 
 export const receiveNewUser = user => {
@@ -27,8 +27,8 @@ export const receiveUserSearchResults = users => {
   }
 }
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_SESSION_ERRORS,
+export const receiveUserErrors = errors => ({
+  type: RECEIVE_USER_ERRORS,
   errors
 });
 
@@ -36,7 +36,7 @@ export const signup = user => dispatch => (
   APIUtil.signup(user).then(user => (
     dispatch(receiveNewUser(user))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 );
 
@@ -44,7 +44,7 @@ export const updateUser = user => dispatch => (
   UserAPIUtil.updateUser(user).then(user => (
     dispatch(receiveUserInfo(user))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 );
 
@@ -52,7 +52,7 @@ export const fetchUser = userId => dispatch => (
   UserAPIUtil.getUser(userId).then(user => (
     dispatch(receiveUserInfo(user))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 );
 
@@ -60,6 +60,6 @@ export const fetchSearchResults = formData => dispatch => (
   UserAPIUtil.searchUsers(formData).then(users => (
     dispatch(receiveUserSearchResults(users))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 );
