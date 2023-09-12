@@ -7,6 +7,7 @@ function SearchResultBox(props) {
     console.log('fire');
     e.preventDefault();
     if (location.pathname !== `/profile/${props.user.id}`){
+      props.onBlurFunc();
       props.history.push(`/profile/${props.user.id}`);
     }
   }

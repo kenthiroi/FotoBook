@@ -5,15 +5,11 @@ function UserSearchContainer(props){
   const [focused, setFocused] = React.useState(false);
 
   const onFocus = () => setFocused(true);
-  const onBlur = () => {
-    console.log('before');
-    setFocused(false);
-    console.log('after');
-  }
+  const onBlur = () => setFocused(false);
 
   return (
     <div id='search-container' onFocus={onFocus} onBlur={onBlur}>
-      <UserSearchBar focused={focused}/>
+      <UserSearchBar focused={focused} onBlurFunc={onBlur}/>
     </div>
   );
 }

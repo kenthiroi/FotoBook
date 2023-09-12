@@ -34,7 +34,7 @@ function UserSearchBar(props) {
     searchResults = 
     <div id='header-search-results'>
       {results.map((user) => (
-        <SearchResultBox key={user.id} user={user}/>
+        <SearchResultBox key={user.id} user={user} onBlurFunc={props.onBlurFunc}/>
       ))}
     </div>
   } else if (props.focused) {
@@ -54,11 +54,11 @@ function UserSearchBar(props) {
   );
 }
 
-const mSTP = (state, ownProps) => {
-  return {
+// const mSTP = (state, ownProps) => {
+//   return {
 
-  }
-}
+//   }
+// }
 
 const mDTP = (dispatch) => {
   return {
@@ -66,4 +66,4 @@ const mDTP = (dispatch) => {
   }
 }
 
-export default connect(mSTP, mDTP)(UserSearchBar);
+export default connect(null, mDTP)(UserSearchBar);

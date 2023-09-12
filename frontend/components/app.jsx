@@ -16,6 +16,7 @@ import HeaderNav from './header/header'
 import UserProfile from './user/profile';
 import SideNav from './header/sideNav';
 import ComponentRoutesContainer from './routes/componentRoutesContainer';
+import ErrorMsg from './error/errorMsg';
 
 
 const App = (props) => (
@@ -24,6 +25,7 @@ const App = (props) => (
     <Switch>
       <AuthRoute exact path="/" component={LoginPageContainer}/>
       <Fragment>
+        <ErrorMsg/>
         <header>
           <HeaderNav/>
           <SideNav/>

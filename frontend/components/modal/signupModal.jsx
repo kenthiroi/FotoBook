@@ -9,7 +9,7 @@ class SignUpModal extends React.Component{
       email: "",
       password: "",
       birthdate: new Date(),
-      gender: ""
+      gender: "",
     }
     this.handleClick = this.handleClick.bind(this);
     this.updateState = this.updateState.bind(this);
@@ -41,6 +41,9 @@ class SignUpModal extends React.Component{
 
   handleClick(e){
     e.preventDefault();
+
+    // Check if birthdate and email is valid
+    // Check if all of the form is filled
     const user = Object.assign({}, this.state);
     this.props.signup(user);
     this.props.closeModal();
@@ -59,7 +62,7 @@ class SignUpModal extends React.Component{
     });
 
     const errorArrayMsgs =
-      this.props.errors.login.length ? this.props.errors.login.map((error) => {
+      !!this.props.errors ? this.props.errors.login.map((error) => {
             return <li>{error}</li>;
           })
         : [];
@@ -150,6 +153,20 @@ class SignUpModal extends React.Component{
               </label>
             </div>
           </div>
+          { this.state.gender === "Custom" && 
+            <div id="pronoun-section">
+              <select name="" id="">
+                <option value="She">She: "Wish her a happy birthday!"</option>
+                <option value="He">He: "Wish him a happy birthday!"</option>
+                <option value="They">They: "Wish them a happy birthday!"</option>
+              </select>
+              <div>Your pronoun is visible to everyone.</div>
+              <input 
+                id="gender-input" 
+                type="text" 
+                placeholder="Gender (Optional)"/>
+            </div>
+          }
           { errorArrayMsgs.length ? <ul className="error">{errorArrayMsgs}</ul> : <></> }
           <input id="submit-btn" type="submit" onClick={this.handleClick} value="Sign Up"/>
         </form>

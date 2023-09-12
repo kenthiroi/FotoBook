@@ -42,8 +42,9 @@
   padding: 5px;
 }
 
-.select-label {
+.select-label, #pronoun-section {
   padding-bottom: 0px !important;
+  color: #606770;
 }
 
 #birthdate-box, #gender-box, #name-box {
@@ -106,4 +107,10 @@
 #submit-btn:hover {
   background-color: #3f992d;
   transition: 0.2s;
+}
+
+#pronoun-section, #pronoun-section select{
+  display: grid;
+  margin: 5px 1px;
+  width: 100%;
 }

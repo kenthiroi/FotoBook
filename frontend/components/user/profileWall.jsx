@@ -59,12 +59,12 @@ class UserProfileWall extends React.Component{
           </div>
         : <></>}
         {!this.state.posts ? 
-        <></>
-        :
-        Object.values(this.props.userPosts).reverse().map(post => {
-          return <PostItem key={post.id} post={post}/>
-        })
-      }
+          <div id="empty-posts-section">No Posts Available</div>
+            :
+          Object.values(this.props.userPosts).reverse().map(post => {
+            return <PostItem key={post.id} post={post}/>
+          })
+        }
     </div>
     )
   }
