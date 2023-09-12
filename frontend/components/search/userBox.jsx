@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 function SearchResultBox(props) {
-
   const handleClick = (e) =>{
+    console.log('fire');
     e.preventDefault();
     if (location.pathname !== `/profile/${props.user.id}`){
       history.push(`/profile/${props.user.id}`);
