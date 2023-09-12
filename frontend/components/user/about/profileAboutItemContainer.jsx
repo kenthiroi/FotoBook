@@ -29,39 +29,32 @@ const mSTP = (state, ownProps) => {
   }
 }
 
-class AboutItemContainer extends React.Component{
+function AboutItemContainer(props){
 
-  constructor(props){
-    super(props)
+  let aboutItem;
+  let isOwner;
+
+  if (!!this.props.onProfilePage){
+    isOwner = false;
+  } else {
+    isOwner = this.props.sessionId === this.props.userId;
   }
 
-  
-  render(){
-    let aboutItem;
-    let isOwner;
-
-    if (!!this.props.onProfilePage){
-      isOwner = false;
-    } else {
-      isOwner = this.props.sessionId === this.props.userId;
-    }
-
-    if (isOwner) {
-      aboutItem = <AddAboutItem formType={this.props.formType}/>;
-    } else {
-      aboutItem = <AboutItemNull formType={this.props.formType}/>;
-    }
-
-    return (
-      <div className='about-item-container'>
-        {(!!this.props.aboutData) ? 
-          <AboutItemLabel userId={this.props.userId} isOwner={isOwner} aboutData={this.props.aboutData} formType={this.props.formType}/>
-          :
-          aboutItem
-        }
-      </div>
-    )
+  if (isOwner) {
+    aboutItem = <AddAboutItem formType={this.props.formType}/>;
+  } else {
+    aboutItem = <AboutItemNull formType={this.props.formType}/>;
   }
+
+  return (
+    <div className='about-item-container'>
+      {(!!this.props.aboutData) ? 
+        <AboutItemLabel userId={this.props.userId} isOwner={isOwner} aboutData={this.props.aboutData} formType={this.props.formType}/>
+        :
+        aboutItem
+      }
+    </div>
+  )
 }
 
 export default connect(mSTP, null)(AboutItemContainer);
