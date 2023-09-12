@@ -31,30 +31,31 @@ const mSTP = (state, ownProps) => {
 
 function AboutItemContainer(props){
 
-  let aboutItem;
-  let isOwner;
+    let aboutItem;
+    let isOwner;
 
-  if (!!this.props.onProfilePage){
-    isOwner = false;
-  } else {
-    isOwner = this.props.sessionId === this.props.userId;
+    if (!!props.onProfilePage){
+      isOwner = false;
+    } else {
+      isOwner = props.sessionId === props.userId;
+    }
+
+    if (isOwner) {
+      aboutItem = <AddAboutItem formType={props.formType}/>;
+    } else {
+      aboutItem = <AboutItemNull formType={props.formType}/>;
+    }
+
+    return (
+      <div className='about-item-container'>
+        {(!!props.aboutData) ? 
+          <AboutItemLabel userId={props.userId} isOwner={isOwner} aboutData={props.aboutData} formType={props.formType}/>
+          :
+          aboutItem
+        }
+      </div>
+    )
   }
 
-  if (isOwner) {
-    aboutItem = <AddAboutItem formType={this.props.formType}/>;
-  } else {
-    aboutItem = <AboutItemNull formType={this.props.formType}/>;
-  }
-
-  return (
-    <div className='about-item-container'>
-      {(!!this.props.aboutData) ? 
-        <AboutItemLabel userId={this.props.userId} isOwner={isOwner} aboutData={this.props.aboutData} formType={this.props.formType}/>
-        :
-        aboutItem
-      }
-    </div>
-  )
-}
 
 export default connect(mSTP, null)(AboutItemContainer);

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 function SearchResultBox(props) {
   const handleClick = (e) =>{
     console.log('fire');
     e.preventDefault();
     if (location.pathname !== `/profile/${props.user.id}`){
-      history.push(`/profile/${props.user.id}`);
+      props.history.push(`/profile/${props.user.id}`);
     }
   }
 
@@ -40,4 +41,4 @@ const mDTP = (dispatch) => {
   }
 }
 
-export default connect(mSTP, mDTP)(SearchResultBox);
+export default connect(mSTP, mDTP)(withRouter(SearchResultBox));
