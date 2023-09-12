@@ -337,3 +337,12 @@
   width: 100%;
   z-index: 4;
 }
+
+#global-error-bubble{
+  background-color: #ff5757;
+  box-shadow: 0 2px 4px rgba(46, 46, 46, .2);
+  top: 30px;
+  margin: auto;
+  position: absolute;
+  width: 300px;
+}
