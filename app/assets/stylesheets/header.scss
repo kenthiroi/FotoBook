@@ -300,6 +300,10 @@
   width: 95%;
 }
 
+#search-container:focus-within #header-search-results{
+  // display: grid;
+}
+
 #header-search-results {
   align-items: center;
   background-color: #FFF;
@@ -312,6 +316,7 @@
   position: absolute;
   top: 58px;
   width: 600px;
+  // display: none;
 }
 
 #empty-search-results {

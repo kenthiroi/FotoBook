@@ -12,7 +12,7 @@ function SearchResultBox(props) {
   }
 
   return (
-    <div className='search-result-box' onClick={handleClick}>
+    <div className='search-result-box' onMouseDown={handleClick}>
       <img src={props.userImg}/>
       <div>{props.user.first_name} {props.user.last_name}</div>
     </div>
