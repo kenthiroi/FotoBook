@@ -3,6 +3,7 @@ import NameInput from "./signupModal/nameInput";
 import EmailInput from "./signupModal/emailInput";
 import PasswordInput from "./signupModal/passwordInput";
 import BirthdateInput from "./signupModal/birthdateInput";
+import ErrorBubble from "./signupModal/errorBubble";
 
 class SignUpModal extends React.Component{
   constructor(props){
@@ -11,15 +12,15 @@ class SignUpModal extends React.Component{
       first_name: "",
       last_name: "",
       email: "",
-      verify_email: "",
       password: "",
       birthdate: new Date(),
       gender: "",
       custom_gender: "",
     }
-    this.handleClick = this.handleClick.bind(this);
+
     this.updateState = this.updateState.bind(this);
     this.updateDate = this.updateDate.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   updateState(type){
@@ -45,49 +46,22 @@ class SignUpModal extends React.Component{
     }
   }
 
-  verifyAge(){
-    const currentDate = new Date();
-    const userBirthDate = this.state.birthdate;
-    
-    // Calculate the difference in milliseconds
-    const ageInMilliseconds = currentDate - userBirthDate;
-  
-    // Convert milliseconds to years
-    const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
-  
-    // Round down to the nearest whole number
-    const age = Math.floor(ageInYears);
-  
-    return age >= 6;
-  }
-
   handleClick(e){
     e.preventDefault();
     // Check if birthdate and email is valid
     // Check if all of the form is filled
     // Check name if it has numbers or signs
 
-    const isFirstNameValid = this.alphabetCheck(this.state.first_name);
-    const isLastNameValid = this.alphabetCheck(this.state.last_name);
-    const validateEmailMatches = this.state.email === this.state.verify_email;
-    const isPasswordValid = this.passwordCheck(this.state.password);
-    const isBirthdateValid = this.verifyAge();
-    
+    // this.setState({first_name_error: !this.alphabetCheck(this.state.first_name)});
+    // this.setState({last_name_error: !this.alphabetCheck(this.state.last_name)});
+    // this.verifyAge();
+    // this.setState({gender_error: this.state.gender !== ""});
 
-    const user = Object.assign({}, this.state);
-    this.props.signup(user);
-    this.props.closeModal();
-  }
-
-  alphabetCheck(string){
-    //Checks  to see if there are only letters in the string
-    const alphabetPattern = /^[A-Za-z]+$/;
-    return alphabetPattern.test(string);
-  }
-
-  passwordCheck(string){
-    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
-    return passwordPattern.test(string) && string.length >= 6;
+    if(errorArr.every(e => e === false)){
+      const user = Object.assign({}, this.state);
+      this.props.signup(user);
+      this.props.closeModal();
+    }
   }
 
   render(){
@@ -101,12 +75,6 @@ class SignUpModal extends React.Component{
     //     return <option value={day} key={day}>{day}</option>
     // });
 
-    const errorArrayMsgs =
-      !!this.props.errors ? this.props.errors.login.map((error) => {
-            return <li>{error}</li>;
-          })
-        : [];
-
     return <div className="modal-child">
       <div className="signup-modal">
         <span id="close-btn" onClick={this.props.closeModal}>&#x2715;</span>
@@ -115,8 +83,10 @@ class SignUpModal extends React.Component{
           <div>It's quick and easy.</div>
         </div>
         <form className="form-bottom">
-          {console.log(this.state.birthdate)}
-          <NameInput updateFirstName={this.updateState("first_name")} updateLastName={this.updateState("last_name")}/>
+          <NameInput 
+            updateFirstName={this.updateState("first_name")} 
+            updateLastName={this.updateState("last_name")} 
+          />
           {/* <div id="name-box">
             <input 
               type="text" 
@@ -129,7 +99,10 @@ class SignUpModal extends React.Component{
               onChange={this.updateState("last_name")}
             /> 
           </div> */}
-          <EmailInput email={this.state.email} updateEmail={this.updateState("email")} updateVerifyEmail={this.updateState("verify_email")}/>
+          <EmailInput 
+            updateEmail={this.updateState("email")} 
+            updateVerifyEmail={this.updateState("verify_email")}
+          />
           {/* <div id="email-box">
             <input 
               type="text" 
@@ -137,7 +110,9 @@ class SignUpModal extends React.Component{
               onChange={this.updateState("email")}
             />
           </div> */}
-          <PasswordInput updatePassword={this.updateState("password")}/>
+          <PasswordInput 
+            updatePassword={this.updateState("password")}
+          />
           {/* <div id="password-box">
             <input 
               type="password"
@@ -146,7 +121,9 @@ class SignUpModal extends React.Component{
             />
           </div> */}
           <div className="select-label">Birthday</div>
-          <BirthdateInput updateDate={this.updateDate}/>
+          <BirthdateInput 
+            updateDate={this.updateDate}
+          />
           {/* <div id="birthdate-box">
             <select 
               onChange={this.updateDate('month')} 
@@ -196,9 +173,10 @@ class SignUpModal extends React.Component{
               </label>
             </div>
           </div>
+          {this.state.gender_error && <ErrorBubble error={"Please choose a gender."}/>}
           { this.state.gender === "Custom" && 
             <div id="pronoun-section">
-              <select>
+              <select onChange={this.updateState("custom_gender")}>
                 <option value="She">She: "Wish her a happy birthday!"</option>
                 <option value="He">He: "Wish him a happy birthday!"</option>
                 <option value="They">They: "Wish them a happy birthday!"</option>
@@ -210,7 +188,6 @@ class SignUpModal extends React.Component{
                 placeholder="Gender (Optional)"/>
             </div>
           }
-          { errorArrayMsgs.length ? <ul className="error">{errorArrayMsgs}</ul> : <></> }
           <input id="submit-btn" type="submit" onClick={this.handleClick} value="Sign Up"/>
         </form>
       </div>

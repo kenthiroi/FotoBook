@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import ErrorBubble from "./errorBubble";
 
 function BirthdateInput (props){
+  const [isInvalidBirthdate, setIsInvalidBirthdate] = useState(false);
+
+  const verifyAge = () => {
+    const currentDate = new Date();
+    const userBirthDate = props.birthdate;
+
+    const ageInMilliseconds = currentDate - userBirthDate;
+  
+    const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+  
+    const age = Math.floor(ageInYears);
+    setIsInvalidBirthdate(age < 13);
+  }
+
   const todaysDate = new Date();
   const yearValues = Array.from(new Array(117), (x, i) => i + 1905).reverse();
   const yearOptions = yearValues.map(year=>{
@@ -13,6 +28,7 @@ function BirthdateInput (props){
 
   return (
     <div id="birthdate-box">
+      {props.isFirstNameInvalid && <ErrorBubble error="It looks like you entered the wrong info. Please be sure to use your real birthday."/>}
       <select 
         onChange={props.updateDate('month')} 
         defaultValue={`${todaysDate.getMonth()}`}

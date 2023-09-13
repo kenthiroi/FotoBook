@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+import ErrorBubble from "./errorBubble";
 
 function EmailInput(props){
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [email, setEmail] = useState("");
+  const [emailVerification, setEmailVerification] = useState("");
+
+  const handleEmailInput = (e) => {
+    props.updateEmail(e);
+    validateEmail(e);
+  }
 
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/;
     setIsValidEmail(emailPattern.test(email));
-  }
-
-  const handleEmailInput = (e) => {
-    props.updateEmail(e);
-    validateEmail(props.email);
   }
 
   return (
@@ -20,12 +23,14 @@ function EmailInput(props){
         placeholder="Email" 
         onChange={handleEmailInput}
       />
+      {!isValidEmail && <ErrorBubble error="You'll use this to log in."/>}
       {isValidEmail &&
         <input
           type="text"
           placeholder="Re-enter Email"
-          onChange={props.updateVerifyEmail}
+          onChange={setEmailVerification}
         />}
+      {emailVerification !== email && isValidEmail ? <ErrorBubble error="Email does not match"/> : <></>}
     </div>
   )
 }
