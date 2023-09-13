@@ -4,7 +4,7 @@ import ErrorBubble from "./errorBubble";
 function BirthdateInput (props){
   const [isInvalidBirthdate, setIsInvalidBirthdate] = useState(false);
 
-  const verifyAge = () => {
+  const verifyAge = (e) => {
     const currentDate = new Date();
     const userBirthDate = props.birthdate;
 
@@ -28,10 +28,11 @@ function BirthdateInput (props){
 
   return (
     <div id="birthdate-box">
-      {props.isFirstNameInvalid && <ErrorBubble error="It looks like you entered the wrong info. Please be sure to use your real birthday."/>}
+      {isInvalidBirthdate && <ErrorBubble error="It looks like you entered the wrong info. Please be sure to use your real birthday."/>}
       <select 
         onChange={props.updateDate('month')} 
         defaultValue={`${todaysDate.getMonth()}`}
+        onBlur={verifyAge}
       >
         <option value="0" key="0">Jan</option>
         <option value="1" key="1">Feb</option>
@@ -49,12 +50,14 @@ function BirthdateInput (props){
       <select 
         onChange={props.updateDate('day')} 
         defaultValue={`${todaysDate.getDate()}`}
+        onBlur={verifyAge}
       >
         {dayOptions}
       </select>
       <select 
         onChange={props.updateDate('year')} 
         defaultValue={`${todaysDate.getYear()}`}
+        onBlur={verifyAge}
       >
         {yearOptions}
       </select>

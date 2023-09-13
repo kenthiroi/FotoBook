@@ -121,8 +121,9 @@ class SignUpModal extends React.Component{
             />
           </div> */}
           <div className="select-label">Birthday</div>
-          <BirthdateInput 
+          <BirthdateInput
             updateDate={this.updateDate}
+            birthdate={this.state.birthdate}
           />
           {/* <div id="birthdate-box">
             <select 
@@ -177,6 +178,7 @@ class SignUpModal extends React.Component{
           { this.state.gender === "Custom" && 
             <div id="pronoun-section">
               <select onChange={this.updateState("custom_gender")}>
+                <option value="" disabled selected>Select your pronoun</option>
                 <option value="She">She: "Wish her a happy birthday!"</option>
                 <option value="He">He: "Wish him a happy birthday!"</option>
                 <option value="They">They: "Wish them a happy birthday!"</option>
