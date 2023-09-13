@@ -7,7 +7,6 @@ function NameInput (props){
   const [validLastName, setValidLastName] = useState(true);
 
   const checkFirstName = (e) => {
-    console.log(e.target.value);
     setValidFirstName(alphabetCheck(e.target.value));
   }
 

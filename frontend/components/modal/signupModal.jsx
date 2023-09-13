@@ -6,20 +6,37 @@ import BirthdateInput from "./signupModal/birthdateInput";
 import ErrorBubble from "./signupModal/errorBubble";
 
 class SignUpModal extends React.Component{
+  
   constructor(props){
     super(props)
+
     this.state = {
       first_name: "",
+      first_name_error: false,
       last_name: "",
+      last_name_error: false,
       email: "",
+      email_error: false,
+      email_verification: "",
+      email_verification_error: false,
       password: "",
+      password_error: false,
       birthdate: new Date(),
+      birthdate_error: false,
       gender: "",
+      gender_error: false,
       custom_gender: "",
+      pronouns: "",
     }
 
     this.updateState = this.updateState.bind(this);
     this.updateDate = this.updateDate.bind(this);
+    this.firstNameCheck = this.firstNameCheck.bind(this);
+    this.lastNameCheck = this.lastNameCheck.bind(this);
+    this.alphabetCheck = this.alphabetCheck.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
+    this.verifyAge = this.verifyAge.bind(this);
+    this.passwordCheck = this.passwordCheck.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -46,6 +63,62 @@ class SignUpModal extends React.Component{
     }
   }
 
+  firstNameCheck(){
+    let firstNameError = !this.alphabetCheck(this.state.first_name)
+    this.setState({first_name_error: firstNameError});
+    return firstNameError;
+  }
+
+  lastNameCheck(){
+    let lastNameError = !this.alphabetCheck(this.state.first_name)
+    this.setState({last_name_error: lastNameError});
+    return lastNameError;
+  }
+  
+  alphabetCheck(name){
+    //Checks  to see if there are only letters in the string
+    const alphabetPattern = /^[A-Za-z]+$/;
+    return alphabetPattern.test(name);
+  }
+
+  validateEmail(){
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/;
+    let emailError = !emailPattern.test(this.state.email);
+    this.setState({email_error: emailError});
+    return emailError;
+  }
+
+  compareEmails(){
+    let emailMatches = (emailVerification === email);
+    this.setState({email_verification_error: emailMatches});
+    return emailMatches;
+  }
+
+  verifyAge(){
+    const currentDate = new Date();
+    const userBirthDate = this.state.birthdate;
+
+    const ageInMilliseconds = currentDate - userBirthDate;
+  
+    const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+  
+    const ageCheck = Math.floor(ageInYears) <= 13; 
+    this.setState({birthdate_error: ageCheck});
+    return ageCheck;
+  }
+
+  passwordCheck(){
+    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
+    let passwordCheck = (!passwordPattern.test(this.state.password) || this.state.password.length < 6)
+    this.setState({password_error: passwordCheck});
+  }
+
+  genderCheck(){
+    let genderCheck = this.state.gender === "" || (this.state.gender === "Custom" && this.state.pronouns === "");
+    this.setState({gender_error: genderCheck});
+    return genderCheck;
+  }
+
   handleClick(e){
     e.preventDefault();
     // Check if birthdate and email is valid
@@ -57,6 +130,25 @@ class SignUpModal extends React.Component{
     // this.verifyAge();
     // this.setState({gender_error: this.state.gender !== ""});
 
+    // Final check
+    let firstNameCheck = this.firstNameCheck();
+    let lastNameCheck = this.lastNameCheck();
+    let emailCheck = this.validateEmail();
+    let ageCheck = this.verifyAge();
+    let passwordCheck = this.passwordCheck();
+    let genderCheck = this.genderCheck();
+
+    let errorArr = [
+      firstNameCheck,
+      lastNameCheck,
+      emailCheck,
+      ageCheck,
+      passwordCheck,
+      genderCheck
+    ]
+
+    console.log(errorArr);
+
     if(errorArr.every(e => e === false)){
       const user = Object.assign({}, this.state);
       this.props.signup(user);
@@ -65,15 +157,15 @@ class SignUpModal extends React.Component{
   }
 
   render(){
-    // const todaysDate = new Date();
-    // const yearValues = Array.from(new Array(117), (x, i) => i + 1905).reverse();
-    // const yearOptions = yearValues.map(year=>{
-    //   return <option value={year} key={year}>{year}</option>
-    // }); 
-    // const dayValues = Array.from(new Array(31), (x, i) => i + 1);
-    // const dayOptions = dayValues.map(day=>{
-    //     return <option value={day} key={day}>{day}</option>
-    // });
+    const todaysDate = new Date();
+    const yearValues = Array.from(new Array(117), (x, i) => i + 1905).reverse();
+    const yearOptions = yearValues.map(year=>{
+      return <option value={year} key={year}>{year}</option>
+    }); 
+    const dayValues = Array.from(new Array(31), (x, i) => i + 1);
+    const dayOptions = dayValues.map(day=>{
+        return <option value={day} key={day}>{day}</option>
+    });
 
     return <div className="modal-child">
       <div className="signup-modal">
@@ -83,52 +175,70 @@ class SignUpModal extends React.Component{
           <div>It's quick and easy.</div>
         </div>
         <form className="form-bottom">
-          <NameInput 
+          {/* <NameInput 
             updateFirstName={this.updateState("first_name")} 
             updateLastName={this.updateState("last_name")} 
-          />
-          {/* <div id="name-box">
+          /> */}
+          <div id="name-box">
             <input 
               type="text" 
-              placeholder="First name" 
+              placeholder="First name"
               onChange={this.updateState("first_name")}
+              onBlur={this.firstNameCheck}
             />
+            {this.state.first_name_error && <ErrorBubble error="What's your name?"/>}
             <input 
               type="text" 
               placeholder="Last name" 
               onChange={this.updateState("last_name")}
-            /> 
-          </div> */}
-          <EmailInput 
+              onBlur={this.lastNameCheck}
+            />
+            {this.state.last_name_error && <ErrorBubble error="What's your name?"/>}
+          </div>
+          {/* <EmailInput 
             updateEmail={this.updateState("email")} 
             updateVerifyEmail={this.updateState("verify_email")}
-          />
-          {/* <div id="email-box">
+          /> */}
+          <div id="email-box">
             <input 
               type="text" 
               placeholder="Email" 
               onChange={this.updateState("email")}
+              onBlur={this.validateEmail}
             />
-          </div> */}
-          <PasswordInput 
+            {this.state.email_error && <ErrorBubble error="You'll use this to log in."/>}
+            {!this.state.email_error && this.state.email.substring(0, this.state.email.indexOf("@")).length > 0 ?
+              <input
+                type="text"
+                placeholder="Re-enter Email"
+                onChange={this.updateState("email_verification")}
+                onBlur={this.compareEmails}
+                /> : <></>}
+            {!this.state.email_verification_error && !this.state.email_error && this.state.email_verification.length !== 0? <ErrorBubble error="Email does not match"/> : <></>}
+          </div>
+          {/* <PasswordInput 
             updatePassword={this.updateState("password")}
-          />
-          {/* <div id="password-box">
+          /> */}
+          <div id="password-box">
             <input 
               type="password"
-              placeholder="New password"
+              placeholder="New password" 
               onChange={this.updateState("password")}
+              onBlur={this.passwordCheck}
             />
-          </div> */}
+            {this.state.password_error && <ErrorBubble error="Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &)."/>}
+          </div>
           <div className="select-label">Birthday</div>
-          <BirthdateInput
+          {/* <BirthdateInput
             updateDate={this.updateDate}
             birthdate={this.state.birthdate}
-          />
-          {/* <div id="birthdate-box">
+          /> */}
+          <div id="birthdate-box">
+            {this.state.birthdate_error && <ErrorBubble error="It looks like you entered the wrong info. Please be sure to use your real birthday."/>}
             <select 
               onChange={this.updateDate('month')} 
               defaultValue={`${todaysDate.getMonth()}`}
+              onBlur={this.verifyAge}
             >
               <option value="0" key="0">Jan</option>
               <option value="1" key="1">Feb</option>
@@ -146,16 +256,18 @@ class SignUpModal extends React.Component{
             <select 
               onChange={this.updateDate('day')} 
               defaultValue={`${todaysDate.getDate()}`}
+              onBlur={this.verifyAge}
             >
               {dayOptions}
             </select>
             <select 
               onChange={this.updateDate('year')} 
               defaultValue={`${todaysDate.getYear()}`}
+              onBlur={this.verifyAge}
             >
               {yearOptions}
             </select>
-          </div> */}
+          </div>
           <div className="select-label">Gender</div>
           <div id="gender-box">
             <div>
@@ -175,7 +287,7 @@ class SignUpModal extends React.Component{
             </div>
           </div>
           {this.state.gender_error && <ErrorBubble error={"Please choose a gender."}/>}
-          { this.state.gender === "Custom" && 
+          {this.state.gender === "Custom" && 
             <div id="pronoun-section">
               <select onChange={this.updateState("custom_gender")}>
                 <option value="" disabled selected>Select your pronoun</option>
@@ -186,7 +298,8 @@ class SignUpModal extends React.Component{
               <div>Your pronoun is visible to everyone.</div>
               <input 
                 id="gender-input" 
-                type="text" 
+                type="text"
+                onChange={this.updateState("custom_gender")}
                 placeholder="Gender (Optional)"/>
             </div>
           }
