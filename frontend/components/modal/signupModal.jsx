@@ -1,4 +1,8 @@
 import React from "react";
+import NameInput from "./signupModal/nameInput";
+import EmailInput from "./signupModal/emailInput";
+import PasswordInput from "./signupModal/passwordInput";
+import BirthdateInput from "./signupModal/birthdateInput";
 
 class SignUpModal extends React.Component{
   constructor(props){
@@ -7,9 +11,11 @@ class SignUpModal extends React.Component{
       first_name: "",
       last_name: "",
       email: "",
+      verify_email: "",
       password: "",
       birthdate: new Date(),
       gender: "",
+      custom_gender: "",
     }
     this.handleClick = this.handleClick.bind(this);
     this.updateState = this.updateState.bind(this);
@@ -18,7 +24,7 @@ class SignUpModal extends React.Component{
 
   updateState(type){
     return (e) => {
-      this.setState({ [type]: e.target.value })
+      this.setState({ [type]: e.target.value });
     }
   }
 
@@ -26,40 +32,74 @@ class SignUpModal extends React.Component{
     switch(type){
       case "month":
         return (e) => {
-          this.state.birthdate.setMonth(e.target.value)
+          this.state.birthdate.setMonth(e.target.value);
         }
       case "day":
         return (e) => {
-          this.state.birthdate.setDate(e.target.value)
+          this.state.birthdate.setDate(e.target.value);
         }
       case "year":
         return (e) => {
-          this.state.birthdate.setYear(e.target.value)
+          this.state.birthdate.setYear(e.target.value);
         }
     }
   }
 
+  verifyAge(){
+    const currentDate = new Date();
+    const userBirthDate = this.state.birthdate;
+    
+    // Calculate the difference in milliseconds
+    const ageInMilliseconds = currentDate - userBirthDate;
+  
+    // Convert milliseconds to years
+    const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+  
+    // Round down to the nearest whole number
+    const age = Math.floor(ageInYears);
+  
+    return age >= 6;
+  }
+
   handleClick(e){
     e.preventDefault();
-
     // Check if birthdate and email is valid
     // Check if all of the form is filled
+    // Check name if it has numbers or signs
+
+    const isFirstNameValid = this.alphabetCheck(this.state.first_name);
+    const isLastNameValid = this.alphabetCheck(this.state.last_name);
+    const validateEmailMatches = this.state.email === this.state.verify_email;
+    const isPasswordValid = this.passwordCheck(this.state.password);
+    const isBirthdateValid = this.verifyAge();
+    
+
     const user = Object.assign({}, this.state);
     this.props.signup(user);
     this.props.closeModal();
   }
 
-  render(){
+  alphabetCheck(string){
+    //Checks  to see if there are only letters in the string
+    const alphabetPattern = /^[A-Za-z]+$/;
+    return alphabetPattern.test(string);
+  }
 
-    const todaysDate = new Date();
-    const yearValues = Array.from(new Array(117), (x, i) => i + 1905).reverse();
-    const yearOptions = yearValues.map(year=>{
-      return <option value={year} key={year}>{year}</option>
-    }); 
-    const dayValues = Array.from(new Array(31), (x, i) => i + 1);
-    const dayOptions = dayValues.map(day=>{
-        return <option value={day} key={day}>{day}</option>
-    });
+  passwordCheck(string){
+    const passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
+    return passwordPattern.test(string) && string.length >= 6;
+  }
+
+  render(){
+    // const todaysDate = new Date();
+    // const yearValues = Array.from(new Array(117), (x, i) => i + 1905).reverse();
+    // const yearOptions = yearValues.map(year=>{
+    //   return <option value={year} key={year}>{year}</option>
+    // }); 
+    // const dayValues = Array.from(new Array(31), (x, i) => i + 1);
+    // const dayOptions = dayValues.map(day=>{
+    //     return <option value={day} key={day}>{day}</option>
+    // });
 
     const errorArrayMsgs =
       !!this.props.errors ? this.props.errors.login.map((error) => {
@@ -75,7 +115,9 @@ class SignUpModal extends React.Component{
           <div>It's quick and easy.</div>
         </div>
         <form className="form-bottom">
-          <div id="name-box">
+          {console.log(this.state.birthdate)}
+          <NameInput updateFirstName={this.updateState("first_name")} updateLastName={this.updateState("last_name")}/>
+          {/* <div id="name-box">
             <input 
               type="text" 
               placeholder="First name" 
@@ -86,29 +128,30 @@ class SignUpModal extends React.Component{
               placeholder="Last name" 
               onChange={this.updateState("last_name")}
             /> 
-          </div>
-          <div id="email-box">
+          </div> */}
+          <EmailInput email={this.state.email} updateEmail={this.updateState("email")} updateVerifyEmail={this.updateState("verify_email")}/>
+          {/* <div id="email-box">
             <input 
               type="text" 
               placeholder="Email" 
               onChange={this.updateState("email")}
             />
-          </div>
-          <div id="password-box">
+          </div> */}
+          <PasswordInput updatePassword={this.updateState("password")}/>
+          {/* <div id="password-box">
             <input 
               type="password"
               placeholder="New password"
               onChange={this.updateState("password")}
             />
-          </div>
+          </div> */}
           <div className="select-label">Birthday</div>
-          <div id="birthdate-box">
+          <BirthdateInput updateDate={this.updateDate}/>
+          {/* <div id="birthdate-box">
             <select 
               onChange={this.updateDate('month')} 
               defaultValue={`${todaysDate.getMonth()}`}
             >
-            {/* <select onChange={this.updateDate('month')} value={`10`}> */}
-
               <option value="0" key="0">Jan</option>
               <option value="1" key="1">Feb</option>
               <option value="2" key="2">Mar</option>
@@ -134,7 +177,7 @@ class SignUpModal extends React.Component{
             >
               {yearOptions}
             </select>
-          </div>
+          </div> */}
           <div className="select-label">Gender</div>
           <div id="gender-box">
             <div>
@@ -155,7 +198,7 @@ class SignUpModal extends React.Component{
           </div>
           { this.state.gender === "Custom" && 
             <div id="pronoun-section">
-              <select name="" id="">
+              <select>
                 <option value="She">She: "Wish her a happy birthday!"</option>
                 <option value="He">He: "Wish him a happy birthday!"</option>
                 <option value="They">They: "Wish them a happy birthday!"</option>
