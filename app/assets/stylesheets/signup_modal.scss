@@ -42,9 +42,32 @@
   padding: 5px;
 }
 
+.input-error{
+  border-color: #af2d2d!important;
+}
+
 .select-label, #pronoun-section {
   padding-bottom: 0px !important;
   color: #606770;
+}
+
+.error-icon {
+  position: absolute;
+  color:#af2d2d;
+  font-size: 18px;
+  top: 0px;
+}
+
+.error-bubble {
+  background-color: #be4b49;
+  color: #fff;
+  padding: 13px;
+  font-size: 12px;
+  position: relative;
+}
+
+#name-box>div, #email-box>div, #password-box, #birthdate-box, #gender-box{
+  position: relative;
 }
 
 #birthdate-box, #gender-box, #name-box {
