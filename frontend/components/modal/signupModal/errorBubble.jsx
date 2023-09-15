@@ -7,7 +7,7 @@ function ErrorBubble (props){
   return (
     <div className='error-icon' onMouseOver={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
       <BsFillExclamationCircleFill/>
-      {hovering && <div className='error-bubble'>{props.error}</div>}
+      {props.showError && <div className='error-bubble'>{props.error}</div>}
     </div>
   )
 }

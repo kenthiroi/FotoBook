@@ -185,25 +185,23 @@ class SignUpModal extends React.Component{
             updateLastName={this.updateState("last_name")} 
           /> */}
           <div id="name-box">
-            <div>
+            <div className={this.state.first_name_error ? 'input-error' : ''}>  
               <input 
                 type="text"
-                className={this.state.first_name_error ? 'input-error' : ''}
                 placeholder="First name"
                 onChange={this.updateState("first_name")}
                 onBlur={this.firstNameCheck}
               />
-              {this.state.first_name_error && <ErrorBubble error="What's your name?"/>}
+              {this.state.first_name_error && <ErrorBubble error="What's your name?" showError={this.state.first_name_error}/>}
             </div>
-            <div>
+            <div className={this.state.last_name_error ? 'input-error' : ''}>
               <input 
                 type="text"
-                className={this.state.last_name_error ? 'input-error' : ''}
                 placeholder="Last name" 
                 onChange={this.updateState("last_name")}
                 onBlur={this.lastNameCheck}
               />
-              {this.state.last_name_error && <ErrorBubble error="What's your name?"/>}
+              {this.state.last_name_error && <ErrorBubble error="What's your name?" showError={this.state.last_name_error}/>}
             </div>
           </div>
           {/* <EmailInput 
@@ -211,53 +209,49 @@ class SignUpModal extends React.Component{
             updateVerifyEmail={this.updateState("verify_email")}
           /> */}
           <div id="email-box">
-            <div>
+            <div className={this.state.email_error ? 'input-error' : ''}>
               <input 
                 type="text" 
                 placeholder="Email"
-                className={this.state.email_error ? 'input-error' : ''}
                 onChange={this.updateState("email")}
                 onBlur={this.validateEmail}
               />
-              {this.state.email_error && <ErrorBubble error="You'll use this to log in."/>}
+              {this.state.email_error && <ErrorBubble error="You'll use this to log in." showError={this.state.email_error}/>}
             </div>
-            <div>
+            <div className={this.state.email_verification_error ? 'input-error' : ''}>
             {!this.state.email_error && this.state.email.substring(0, this.state.email.indexOf("@")).length > 0 ?
                 <input
                   type="text"
                   placeholder="Re-enter Email"
-                  className={this.state.email_verification_error ? 'input-error' : ''}
                   onChange={this.updateState("email_verification")}
                   onBlur={this.compareEmails}
                   /> 
                   : <></>}
             {!this.state.email_verification_error && !this.state.email_error && this.state.email_verification.length !== 0
-              ? <ErrorBubble error="Email does not match"/> : <></>}
+              ? <ErrorBubble error="Email does not match" showError={this.state.email_verification_error}/> : <></>}
             </div>
           </div>
           {/* <PasswordInput 
             updatePassword={this.updateState("password")}
           /> */}
-          <div id="password-box">
+          <div id="password-box" className={this.state.password_error ? 'input-error' : ''}>
             <input 
               type="password"
               placeholder="New password"
-              className={this.state.password_error ? 'input-error' : ''}
               onChange={this.updateState("password")}
               onBlur={this.passwordCheck}
             />
-            {this.state.password_error && <ErrorBubble error="Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &)."/>}
+            {this.state.password_error && <ErrorBubble error="Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &)." showError={this.state.password_error}/>}
           </div>
           <div className="select-label">Birthday</div>
           {/* <BirthdateInput
             updateDate={this.updateDate}
             birthdate={this.state.birthdate}
           /> */}
-          <div id="birthdate-box">
-            {this.state.birthdate_error && <ErrorBubble error="It looks like you entered the wrong info. Please be sure to use your real birthday."/>}
+          <div id="birthdate-box" className={this.state.birthdate_error ? 'input-error' : ''}>
+            {this.state.birthdate_error && <ErrorBubble error="It looks like you entered the wrong info. Please be sure to use your real birthday." showError={this.state.birthdate_error}/>}
             <select 
               onChange={this.updateDate('month')} 
-              className={this.state.birthdate_error ? 'input-error' : ''}
               defaultValue={`${todaysDate.getMonth()}`}
               onBlur={this.verifyAge}
             >
@@ -293,12 +287,11 @@ class SignUpModal extends React.Component{
           </div>
           <div className="select-label">Gender</div>
           <div id="gender-box">
-            <div>
+            <div className={this.state.gender_error ? 'input-error' : ''}>
               <label>Female
                 <input 
                   type="radio"
                   value="Female"
-                  className={this.state.gender_error ? 'input-error' : ''}
                   checked={this.state.gender === "Female"}
                   onChange={this.updateState("gender")}
                 />
@@ -309,7 +302,6 @@ class SignUpModal extends React.Component{
                 <input 
                   type="radio"
                   value="Male"
-                  className={this.state.gender_error ? 'input-error' : ''}
                   checked={this.state.gender === "Male"}
                   onChange={this.updateState("gender")}
                 />
@@ -320,13 +312,12 @@ class SignUpModal extends React.Component{
                 <input 
                   type="radio"
                   value="Custom"
-                  className={this.state.gender_error ? 'input-error' : ''}
                   checked={this.state.gender === "Custom"}
                   onChange={this.updateState("gender")}
                 />
               </label>
             </div>
-            {this.state.gender_error && <ErrorBubble error={"Please choose a gender."}/>}
+            {this.state.gender_error && <ErrorBubble error={"Please choose a gender."} showError={this.state.gender_error}/>}
           </div>
           {this.state.gender === "Custom" && 
             <div id="pronoun-section">
