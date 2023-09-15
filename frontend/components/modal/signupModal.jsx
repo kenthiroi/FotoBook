@@ -1,9 +1,5 @@
 import React from "react";
-import NameInput from "./signupModal/nameInput";
-import EmailInput from "./signupModal/emailInput";
-import PasswordInput from "./signupModal/passwordInput";
-import BirthdateInput from "./signupModal/birthdateInput";
-import ErrorBubble from "./signupModal/errorBubble";
+import { BsFillExclamationCircleFill } from "react-icons/bs";
 
 class SignUpModal extends React.Component{
   
@@ -13,18 +9,24 @@ class SignUpModal extends React.Component{
     this.state = {
       first_name: "",
       first_name_error: false,
+      first_name_infocus: false,
       last_name: "",
       last_name_error: false,
+      last_name_infocus: false,
       email: "",
       email_error: false,
+      email_infocus: false,
       email_verification: "",
       email_verification_error: false,
       password: "",
       password_error: false,
+      password_infocus: false,
       birthdate: new Date(),
       birthdate_error: false,
+      birthdate_infocus: false,
       gender: "",
       gender_error: false,
+      gender_infocus: false,
       custom_gender: "",
       pronouns: "",
     }
@@ -39,11 +41,26 @@ class SignUpModal extends React.Component{
     this.verifyAge = this.verifyAge.bind(this);
     this.passwordCheck = this.passwordCheck.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.inputOnfocus = this.inputOnfocus.bind(this);
+    this.inputOnblur = this.inputOnblur.bind(this);
   }
 
   clearError(type){
     let errName = type + "_error";
-    this.setState({ [errName]: false});
+    if (this.state[errName]){
+      this.setState({ [errName]: false});
+    }
+  }
+
+  inputOnfocus(type){
+    // debugger
+    let inputName = type + "_infocus";
+    this.setState({ [inputName]: true});
+  }
+
+  inputOnblur(type){
+    let inputName = type + "_infocus";
+    this.setState({ [inputName]: false});
   }
 
   updateState(type){
@@ -73,12 +90,14 @@ class SignUpModal extends React.Component{
   firstNameCheck(){
     let firstNameError = !this.alphabetCheck(this.state.first_name)
     this.setState({first_name_error: firstNameError});
+    this.inputOnblur("first_name");
     return firstNameError;
   }
 
   lastNameCheck(){
     let lastNameError = !this.alphabetCheck(this.state.last_name)
     this.setState({last_name_error: lastNameError});
+    this.inputOnblur("last_name");
     return lastNameError;
   }
   
@@ -92,6 +111,7 @@ class SignUpModal extends React.Component{
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/;
     let emailError = !emailPattern.test(this.state.email);
     this.setState({email_error: emailError});
+    this.inputOnblur("email");
     return emailError;
   }
 
@@ -111,6 +131,7 @@ class SignUpModal extends React.Component{
   
     const ageCheck = Math.floor(ageInYears) <= 13; 
     this.setState({birthdate_error: ageCheck});
+    this.inputOnblur("birthdate");
     return ageCheck;
   }
 
@@ -118,11 +139,13 @@ class SignUpModal extends React.Component{
     const passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
     let passwordCheck = (!passwordPattern.test(this.state.password) || this.state.password.length < 6)
     this.setState({password_error: passwordCheck});
+    this.inputOnblur("password");
   }
 
   genderCheck(){
     let genderCheck = this.state.gender === "" || (this.state.gender === "Custom" && this.state.pronouns === "");
     this.setState({gender_error: genderCheck});
+    this.inputOnblur("gender");
     return genderCheck;
   }
 
@@ -172,6 +195,10 @@ class SignUpModal extends React.Component{
         return <option value={day} key={day}>{day}</option>
     });
 
+    const errorIcon = <div className='error-icon'>
+        <BsFillExclamationCircleFill/>
+      </div>
+
     return <div className="modal-child">
       <div className="signup-modal">
         <span id="close-btn" onClick={this.props.closeModal}>&#x2715;</span>
@@ -190,18 +217,22 @@ class SignUpModal extends React.Component{
                 type="text"
                 placeholder="First name"
                 onChange={this.updateState("first_name")}
+                onFocus={() => this.inputOnfocus("first_name")}
                 onBlur={this.firstNameCheck}
               />
-              {this.state.first_name_error && <ErrorBubble error="What's your name?" showError={this.state.first_name_error}/>}
+              {this.state.first_name_error && errorIcon}
+              {this.state.first_name_infocus && this.state.first_name_error ? <div className="error-bubble">What's your name?</div> : <></>}
             </div>
             <div className={this.state.last_name_error ? 'input-error' : ''}>
               <input 
                 type="text"
                 placeholder="Last name" 
                 onChange={this.updateState("last_name")}
+                onFocus={() => this.inputOnfocus("last_name")}
                 onBlur={this.lastNameCheck}
               />
-              {this.state.last_name_error && <ErrorBubble error="What's your name?" showError={this.state.last_name_error}/>}
+              {this.state.last_name_error && errorIcon}
+              {this.state.last_name_infocus && this.state.last_name_error ? <div className="error-bubble">What's your name?</div> : <></>}
             </div>
           </div>
           {/* <EmailInput 
@@ -214,9 +245,11 @@ class SignUpModal extends React.Component{
                 type="text" 
                 placeholder="Email"
                 onChange={this.updateState("email")}
+                onFocus={() => this.inputOnfocus("email")}
                 onBlur={this.validateEmail}
               />
-              {this.state.email_error && <ErrorBubble error="You'll use this to log in." showError={this.state.email_error}/>}
+              {this.state.email_error && errorIcon}
+              {this.state.email_infocus && this.state.email_error ? <div className="error-bubble">You'll use this to log in.</div> : <></>}
             </div>
             <div className={this.state.email_verification_error ? 'input-error' : ''}>
             {!this.state.email_error && this.state.email.substring(0, this.state.email.indexOf("@")).length > 0 ?
@@ -224,11 +257,12 @@ class SignUpModal extends React.Component{
                   type="text"
                   placeholder="Re-enter Email"
                   onChange={this.updateState("email_verification")}
+                  onFocus={() => this.inputOnfocus("email")}
                   onBlur={this.compareEmails}
                   /> 
                   : <></>}
             {!this.state.email_verification_error && !this.state.email_error && this.state.email_verification.length !== 0
-              ? <ErrorBubble error="Email does not match" showError={this.state.email_verification_error}/> : <></>}
+              ? errorIcon : <></>}
             </div>
           </div>
           {/* <PasswordInput 
@@ -239,9 +273,12 @@ class SignUpModal extends React.Component{
               type="password"
               placeholder="New password"
               onChange={this.updateState("password")}
+              onFocus={() => this.inputOnfocus("password")}
               onBlur={this.passwordCheck}
             />
-            {this.state.password_error && <ErrorBubble error="Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &)." showError={this.state.password_error}/>}
+            {/* {this.state.password_error && errorIcon("Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &).", this.state.password_error)} */}
+            {this.state.password_error && errorIcon}
+            {this.state.password_infocus && this.state.password_error ? <div className="error-bubble">Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &).</div> : <></>}
           </div>
           <div className="select-label">Birthday</div>
           {/* <BirthdateInput
@@ -249,10 +286,14 @@ class SignUpModal extends React.Component{
             birthdate={this.state.birthdate}
           /> */}
           <div id="birthdate-box" className={this.state.birthdate_error ? 'input-error' : ''}>
-            {this.state.birthdate_error && <ErrorBubble error="It looks like you entered the wrong info. Please be sure to use your real birthday." showError={this.state.birthdate_error}/>}
+            {/* {this.state.birthdate_error && errorIcon("It looks like you entered the wrong info. Please be sure to use your real birthday.", this.state.birthdate_error)} */}
+            {this.state.birthdate_error && errorIcon}
+            {this.state.birthdate_infocus && this.state.birthdate_error ? <div className="error-bubble">It looks like you entered the wrong info. Please be sure to use your real birthday.</div> : <></>}
             <select 
               onChange={this.updateDate('month')} 
+              className={this.state.birthdate_error ? 'input-error' : ''}
               defaultValue={`${todaysDate.getMonth()}`}
+              onFocus={() => this.inputOnfocus("birthdate")}
               onBlur={this.verifyAge}
             >
               <option value="0" key="0">Jan</option>
@@ -272,6 +313,7 @@ class SignUpModal extends React.Component{
               onChange={this.updateDate('day')} 
               className={this.state.birthdate_error ? 'input-error' : ''}
               defaultValue={`${todaysDate.getDate()}`}
+              onFocus={() => this.inputOnfocus("birthdate")}
               onBlur={this.verifyAge}
             >
               {dayOptions}
@@ -280,6 +322,7 @@ class SignUpModal extends React.Component{
               onChange={this.updateDate('year')} 
               className={this.state.birthdate_error ? 'input-error' : ''}
               defaultValue={`${todaysDate.getYear()}`}
+              onFocus={() => this.inputOnfocus("birthdate")}
               onBlur={this.verifyAge}
             >
               {yearOptions}
@@ -317,11 +360,11 @@ class SignUpModal extends React.Component{
                 />
               </label>
             </div>
-            {this.state.gender_error && <ErrorBubble error={"Please choose a gender."} showError={this.state.gender_error}/>}
+            {this.state.gender_error && errorIcon}
           </div>
           {this.state.gender === "Custom" && 
             <div id="pronoun-section">
-              <select onChange={this.updateState("custom_gender")} className={this.state.gender_error ? 'input-error' : ''}>
+              <select onChange={this.updateState("custom_gender")} className={this.state.gender_error ? 'input-error' : ''} onFocus={() => this.inputOnfocus("gender")}>
                 <option value="" disabled selected>Select your pronoun</option>
                 <option value="She">She: "Wish her a happy birthday!"</option>
                 <option value="He">He: "Wish him a happy birthday!"</option>

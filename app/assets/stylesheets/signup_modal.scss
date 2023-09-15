@@ -66,10 +66,11 @@
 .error-bubble {
   background-color: #be4b49;
   color: #fff;
-  padding: 13px;
-  font-size: 12px;
   display: block;
+  font-size: 12px;
+  padding: 13px;
   position: absolute;
+  z-index: 2;
 }
 
 #name-box>div, #email-box>div, #password-box, #birthdate-box, #gender-box{
