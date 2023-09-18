@@ -14,7 +14,7 @@ class Api::PostsController < ApplicationController
     if @post
       render :show
     else
-      render json: {errors: "Unable to find post."}, status: 404
+      render json: ["Unable to find post."], status: 404
     end
   end
 

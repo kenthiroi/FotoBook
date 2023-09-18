@@ -1,4 +1,4 @@
-import { RECEIVE_USER_ERRORS, CLEAR_ERRORS } from "../../actions/user_actions";
+import { RECEIVE_USER_ERRORS, CLEAR_USER_ERRORS } from "../../actions/user_actions";
 
 
 export const userErrorsReducer = (state=[], action) => {
@@ -7,7 +7,7 @@ export const userErrorsReducer = (state=[], action) => {
     switch(action.type){
         case RECEIVE_USER_ERRORS:
             return action.errors;
-        case CLEAR_ERRORS:
+        case CLEAR_USER_ERRORS:
             return [];
         default:
             return state;

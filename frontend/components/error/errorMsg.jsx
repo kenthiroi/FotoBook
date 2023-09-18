@@ -10,7 +10,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
   return {
-    clearUserErrors: () => dispatch(clearUserErrors)
+    clearUserErrors: () => dispatch(clearUserErrors())
   }
 }
 
@@ -18,16 +18,16 @@ function ErrorMsg(props){
 
   console.log(props.userErrors);
   
-  if(!!props.userErrors){
+  if(props.userErrors.length !== 0){
     setTimeout(props.clearUserErrors, 5000);
     return(
       <div id='global-error-bubble'>
-          <div>{props.userErrors.error}</div>
+          <div>{props.userErrors}</div>
       </div>
     )
   } else {
     return(
-      <div id='global-error-bubble'></div>
+      <></>
     )
   }
 
