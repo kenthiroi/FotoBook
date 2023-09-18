@@ -282,88 +282,91 @@ class SignUpModal extends React.Component{
               {this.state.password_infocus && this.state.password_error ? <div className="error-bubble">Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &).</div> : <></>}
             </div>
           </div>
-          <div className="select-label">Birthday</div>
-          {/* <BirthdateInput
-            updateDate={this.updateDate}
-            birthdate={this.state.birthdate}
-          /> */}
-          <div id="birthdate-box" className={this.state.birthdate_error ? 'input-error' : ''}>
-            {/* {this.state.birthdate_error && errorIcon("It looks like you entered the wrong info. Please be sure to use your real birthday.", this.state.birthdate_error)} */}
+          <div id="birthdate-box">
+            <div className="select-label">Birthday</div>
             {this.state.birthdate_error && errorIcon}
             {this.state.birthdate_infocus && this.state.birthdate_error ? <div className="error-bubble">It looks like you entered the wrong info. Please be sure to use your real birthday.</div> : <></>}
-            <select 
-              onChange={this.updateDate('month')} 
-              className={this.state.birthdate_error ? 'input-error' : ''}
-              defaultValue={`${todaysDate.getMonth()}`}
-              onFocus={() => this.inputOnfocus("birthdate")}
-              onBlur={this.verifyAge}
-            >
-              <option value="0" key="0">Jan</option>
-              <option value="1" key="1">Feb</option>
-              <option value="2" key="2">Mar</option>
-              <option value="3" key="3">Apr</option>
-              <option value="4" key="4">May</option>
-              <option value="5" key="5">Jun</option>
-              <option value="6" key="6">Jul</option>
-              <option value="7" key="7">Aug</option>
-              <option value="8" key="8">Sep</option>
-              <option value="9" key="9">Oct</option>
-              <option value="10" key="10">Nov</option>
-              <option value="11" key="11">Dec</option>
-            </select>
-            <select 
-              onChange={this.updateDate('day')} 
-              className={this.state.birthdate_error ? 'input-error' : ''}
-              defaultValue={`${todaysDate.getDate()}`}
-              onFocus={() => this.inputOnfocus("birthdate")}
-              onBlur={this.verifyAge}
-            >
-              {dayOptions}
-            </select>
-            <select 
-              onChange={this.updateDate('year')} 
-              className={this.state.birthdate_error ? 'input-error' : ''}
-              defaultValue={`${todaysDate.getYear()}`}
-              onFocus={() => this.inputOnfocus("birthdate")}
-              onBlur={this.verifyAge}
-            >
-              {yearOptions}
-            </select>
+            {/* <BirthdateInput
+              updateDate={this.updateDate}
+              birthdate={this.state.birthdate}
+            /> */}
+            <div id="birthdate-selector" className={this.state.birthdate_error ? 'input-error' : ''}>
+              {/* {this.state.birthdate_error && errorIcon("It looks like you entered the wrong info. Please be sure to use your real birthday.", this.state.birthdate_error)} */}
+              <select 
+                onChange={this.updateDate('month')} 
+                className={this.state.birthdate_error ? 'input-error' : ''}
+                defaultValue={`${todaysDate.getMonth()}`}
+                onFocus={() => this.inputOnfocus("birthdate")}
+                onBlur={this.verifyAge}
+              >
+                <option value="0" key="0">Jan</option>
+                <option value="1" key="1">Feb</option>
+                <option value="2" key="2">Mar</option>
+                <option value="3" key="3">Apr</option>
+                <option value="4" key="4">May</option>
+                <option value="5" key="5">Jun</option>
+                <option value="6" key="6">Jul</option>
+                <option value="7" key="7">Aug</option>
+                <option value="8" key="8">Sep</option>
+                <option value="9" key="9">Oct</option>
+                <option value="10" key="10">Nov</option>
+                <option value="11" key="11">Dec</option>
+              </select>
+              <select 
+                onChange={this.updateDate('day')} 
+                className={this.state.birthdate_error ? 'input-error' : ''}
+                defaultValue={`${todaysDate.getDate()}`}
+                onFocus={() => this.inputOnfocus("birthdate")}
+                onBlur={this.verifyAge}
+              >
+                {dayOptions}
+              </select>
+              <select 
+                onChange={this.updateDate('year')} 
+                className={this.state.birthdate_error ? 'input-error' : ''}
+                defaultValue={`${todaysDate.getYear()}`}
+                onFocus={() => this.inputOnfocus("birthdate")}
+                onBlur={this.verifyAge}
+              >
+                {yearOptions}
+              </select>
+            </div>
           </div>
-          <div className="select-label">Gender</div>
           <div id="gender-box">
-            <div className={this.state.gender_error ? 'input-error' : ''}>
-              <label>Female
-                <input 
-                  type="radio"
-                  value="Female"
-                  checked={this.state.gender === "Female"}
-                  onChange={this.updateState("gender")}
-                />
-              </label>
-            </div>
-            <div> 
-              <label>Male
-                <input 
-                  type="radio"
-                  value="Male"
-                  checked={this.state.gender === "Male"}
-                  onChange={this.updateState("gender")}
-                />
-              </label>
-            </div>
-            <div>
-              <label>Custom
-                <input 
-                  type="radio"
-                  value="Custom"
-                  checked={this.state.gender === "Custom"}
-                  onChange={this.updateState("gender")}
-                />
-              </label>
-            </div>
+            <div className="select-label">Gender</div>
             {this.state.gender_error && errorIcon}
-          </div>
+            <div id="gender-selector" className={this.state.gender_error ? 'input-error' : ''}>
+              <div>
+                <label>Female
+                  <input 
+                    type="radio"
+                    value="Female"
+                    checked={this.state.gender === "Female"}
+                    onChange={this.updateState("gender")}
+                    />
+                </label>
+              </div>
+              <div>
+                <label>Male
+                  <input 
+                    type="radio"
+                    value="Male"
+                    checked={this.state.gender === "Male"}
+                    onChange={this.updateState("gender")}
+                    />
+                </label>
+              </div>
+              <div>
+                <label>Custom
+                  <input 
+                    type="radio"
+                    value="Custom"
+                    checked={this.state.gender === "Custom"}
+                    onChange={this.updateState("gender")}
+                    />
+                </label>
+              </div>
+            </div>
           {this.state.gender === "Custom" && 
             <div id="pronoun-section">
               <select onChange={this.updateState("custom_gender")} className={this.state.gender_error ? 'input-error' : ''} onFocus={() => this.inputOnfocus("gender")}>
@@ -381,6 +384,7 @@ class SignUpModal extends React.Component{
                 placeholder="Gender (Optional)"/>
             </div>
           }
+          </div>
           <input id="submit-btn" type="submit" onClick={this.handleClick} value="Sign Up"/>
         </form>
       </div>
