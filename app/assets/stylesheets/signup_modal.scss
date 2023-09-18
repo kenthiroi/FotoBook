@@ -65,6 +65,7 @@
 
 .error-bubble {
   background-color: #be4b49;
+  border-radius: 6px;
   color: #fff;
   display: block;
   font-size: 12px;
@@ -73,7 +74,17 @@
   z-index: 2;
 }
 
-#name-box>div, #email-box>div, #password-box, #birthdate-box, #gender-box{
+#name-box .error-bubble{
+  top: 0px;
+  left: -140px;
+}
+
+#email-box .error-bubble, #password-box .error-bubble, #gender-box .error-bubble{
+  bottom: 50px;
+  left: 0px;
+}
+
+#name-box>div, #email-box>div, #password-box>div, #birthdate-box, #gender-box{
   position: relative;
 }
 

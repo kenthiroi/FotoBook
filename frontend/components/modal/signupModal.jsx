@@ -268,17 +268,19 @@ class SignUpModal extends React.Component{
           {/* <PasswordInput 
             updatePassword={this.updateState("password")}
           /> */}
-          <div id="password-box" className={this.state.password_error ? 'input-error' : ''}>
-            <input 
-              type="password"
-              placeholder="New password"
-              onChange={this.updateState("password")}
-              onFocus={() => this.inputOnfocus("password")}
-              onBlur={this.passwordCheck}
-            />
-            {/* {this.state.password_error && errorIcon("Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &).", this.state.password_error)} */}
-            {this.state.password_error && errorIcon}
-            {this.state.password_infocus && this.state.password_error ? <div className="error-bubble">Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &).</div> : <></>}
+          <div id="password-box">
+            <div className={this.state.password_error ? 'input-error' : ''}>
+              <input 
+                type="password"
+                placeholder="New password"
+                onChange={this.updateState("password")}
+                onFocus={() => this.inputOnfocus("password")}
+                onBlur={this.passwordCheck}
+              />
+              {/* {this.state.password_error && errorIcon("Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &).", this.state.password_error)} */}
+              {this.state.password_error && errorIcon}
+              {this.state.password_infocus && this.state.password_error ? <div className="error-bubble">Enter a combination of at least six numbers, letters, and punctuation marks (like ! and &).</div> : <></>}
+            </div>
           </div>
           <div className="select-label">Birthday</div>
           {/* <BirthdateInput
