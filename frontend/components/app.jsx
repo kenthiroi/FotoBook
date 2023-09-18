@@ -17,6 +17,7 @@ import UserProfile from './user/profile';
 import SideNav from './header/sideNav';
 import ComponentRoutesContainer from './routes/componentRoutesContainer';
 import ErrorMsg from './error/errorMsg';
+import ScrollToTop from './scrollToTop';
 
 
 const App = (props) => (
@@ -25,10 +26,11 @@ const App = (props) => (
     <Switch>
       <AuthRoute exact path="/" component={LoginPageContainer}/>
       <Fragment>
-        <ErrorMsg/>
+        <ScrollToTop />
         <header>
           <HeaderNav/>
           <SideNav/>
+          <ErrorMsg/>
         </header>
         {/* News Feed Component */}
         <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 
