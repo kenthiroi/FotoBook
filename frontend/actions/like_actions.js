@@ -1,5 +1,5 @@
 import * as LikeAPIUtil from '../util/likes_api_util'
-import { receiveErrors } from './session_actions'
+import { receiveUserErrors } from './user_actions'
 
 
 export const RECEIVE_LIKE = "RECEIVE_LIKE"
@@ -19,7 +19,7 @@ export const createLike = like => dispatch => (
   LikeAPIUtil.createLike(like).then(like => (
     dispatch(receiveLike(like))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -27,7 +27,7 @@ export const getLike = likeId => dispatch => (
   LikeAPIUtil.getLike(likeId).then(like => (
     dispatch(receiveLike(like))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -35,6 +35,6 @@ export const deleteLike = likeId => dispatch => (
   LikeAPIUtil.deleteLike(likeId).then((like) => (
     dispatch(removeLike(like))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )

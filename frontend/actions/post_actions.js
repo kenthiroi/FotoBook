@@ -1,5 +1,5 @@
 import * as PostAPIUtil from '../util/posts_api_util'
-import { receiveErrors } from './session_actions'
+import { receiveUserErrors } from './user_actions'
 
 export const RECEIVE_POSTS = "RECEIVE_POSTS"
 export const RECEIVE_POST = "RECEIVE_POST"
@@ -24,7 +24,7 @@ export const createPost = post => dispatch => (
   PostAPIUtil.createPost(post).then(post => (
     dispatch(receivePost(post))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -32,7 +32,7 @@ export const getPost = postId => dispatch => (
   PostAPIUtil.getPost(postId).then(post => (
     dispatch(receivePost(post))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -40,7 +40,7 @@ export const getAllPosts = () => dispatch => (
   PostAPIUtil.getPostIndex().then(posts => (
     dispatch(receiveAllPosts(posts))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -48,7 +48,7 @@ export const getAllPostsByUserId = userId => dispatch => (
   PostAPIUtil.getUsersPosts(userId).then(posts => (
     dispatch(receiveAllPosts(posts))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -56,7 +56,7 @@ export const editPost = post => dispatch => (
   PostAPIUtil.editPost(post).then(post => (
     dispatch(receivePost(post))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -64,6 +64,6 @@ export const deletePost = postId => dispatch => (
   PostAPIUtil.deletePost(postId).then(() => (
     dispatch(removePost(postId))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )

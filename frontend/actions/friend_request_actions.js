@@ -1,5 +1,5 @@
 import * as FriendRequestAPIUtil from '../util/friend_requests_api_util'
-import { receiveErrors } from './session_actions'
+import { receiveUserErrors } from './user_actions'
 
 export const RECEIVE_FRIEND_REQUESTS = "RECEIVE_FRIEND_REQUESTS"
 export const RECEIVE_FRIEND_REQUEST = "RECEIVE_FRIEND_REQUEST"
@@ -24,7 +24,7 @@ export const getFriendRequests = userId => dispatch => (
   FriendRequestAPIUtil.getFriendRequests(userId).then(friendRequests =>
     dispatch(receiveAllFriendRequests(friendRequests))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   )
 )
 
@@ -32,7 +32,7 @@ export const createFriendRequest = friendRequest => dispatch => (
   FriendRequestAPIUtil.createFriendRequest(friendRequest).then(friendRequest => (
     dispatch(receiveFriendRequest(friendRequest))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
 
@@ -40,6 +40,6 @@ export const deleteFriendRequest = friendRequestId => dispatch => (
   FriendRequestAPIUtil.deleteFriendRequest(friendRequestId).then(friendRequest => (
     dispatch(removeFriendRequest(friendRequest))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveUserErrors(err.responseJSON))
   ))
 )
