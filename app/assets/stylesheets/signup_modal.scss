@@ -58,23 +58,23 @@
 .error-icon {
   position: absolute;
   color:#af2d2d;
+  font-size: 18px;
 }
 
 #name-box .error-icon, #email-box .error-icon, #password-box .error-icon{
-  font-size: 18px;
   top: 10px;
   right: 10px;
 }
 
 #birthdate-box .error-icon, #gender-box .error-icon{
-  font-size: 15px;
-  top: 5px;
-  right: 10px;
+  top: 0px;
+  right: 14.5px;
 }
 
 .error-bubble {
   background-color: #be4b49;
   border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
   color: #fff;
   display: block;
   font-size: 12px;
@@ -89,6 +89,11 @@
 }
 
 #email-box .error-bubble, #password-box .error-bubble, #gender-box .error-bubble{
+  bottom: 50px;
+  left: 0px;
+}
+
+#birthdate-box .error-bubble{
   bottom: 50px;
   left: 0px;
 }

@@ -368,8 +368,8 @@ class SignUpModal extends React.Component{
               </div>
             </div>
           {this.state.gender === "Custom" && 
-            <div id="pronoun-section">
-              <select onChange={this.updateState("custom_gender")} className={this.state.gender_error ? 'input-error' : ''} onFocus={() => this.inputOnfocus("gender")}>
+            <div id="pronoun-section" className={this.state.gender_error ? 'input-error' : ''}>
+              <select onChange={this.updateState("custom_gender")} onFocus={() => this.inputOnfocus("gender")}>
                 <option value="" disabled selected>Select your pronoun</option>
                 <option value="She">She: "Wish her a happy birthday!"</option>
                 <option value="He">He: "Wish him a happy birthday!"</option>
