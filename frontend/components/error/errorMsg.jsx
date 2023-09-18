@@ -15,14 +15,14 @@ const mDTP = (dispatch) => {
 }
 
 function ErrorMsg(props){
+
+  console.log(props.userErrors);
   
   if(!!props.userErrors){
     setTimeout(props.clearUserErrors, 5000);
     return(
       <div id='global-error-bubble'>
-        {props.userErrors.map((error) => (
-          <div>{error}</div>
-        ))}
+          <div>{props.userErrors.error}</div>
       </div>
     )
   } else {
