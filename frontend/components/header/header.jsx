@@ -20,6 +20,11 @@ const mapStateToProps = (state, ownProps) => {
   let user = state.entities.user[state.session.id];
   let defaultImg = 'https://i.imgur.com/7x6fTDK.png';
   let userImg;
+
+  // console.log(state.entities.post);
+  // let profilePicture = state.entities.post[user.profile_picture];
+
+  // console.log(profilePicture);
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
     if (typeof user.photoUrl === 'undefined'){
@@ -63,6 +68,13 @@ class HeaderNav extends React.Component {
   componentDidMount(){
     if (!this.props.userImg){
       this.props.fetchUser(this.props.sessionId);
+    }
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.userImg !== this.props.userImg){
+      console.log(this.props.userImg);
+      this.forceUpdate();
     }
   }
 

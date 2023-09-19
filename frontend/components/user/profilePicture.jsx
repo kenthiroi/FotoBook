@@ -71,13 +71,13 @@ class UserProfilePicture extends React.Component{
   }
 
   openViewModal(){
-    this.closeDropdown();
     this.props.openViewModal({id: this.props.postId});
+    this.closeDropdown();
   }
 
   openEditPicModal(){
-    this.closeDropdown();
     this.props.openEditPicModal(this.props.userId);
+    this.closeDropdown();
   }
 
   render(){
@@ -103,16 +103,15 @@ class UserProfilePicture extends React.Component{
     
     if (this.props.userImg !== defaultImgUrl) {
       editDropdown = (<div className="propic-edit-container">
-                        <div onClick={this.openViewModal}><MdPhotoLibrary/> View Profile Picture</div>
-                        <div onClick={this.openEditPicModal}><BsCamera/> Update Profile Picture</div>
-                        <div onClick={this.unlinkProfilePhoto}><BsTrash/> Remove Profile Picture</div>
+                        <div onMouseDown={this.openViewModal}><MdPhotoLibrary/> View Profile Picture</div>
+                        <div onMouseDown={this.openEditPicModal}><BsCamera/> Update Profile Picture</div>
+                        <div onMouseDown={this.unlinkProfilePhoto}><BsTrash/> Remove Profile Picture</div>
                       </div>)
     } else {
       editDropdown = (<div className="propic-edit-container">
-                        <div onClick={this.openEditPicModal}><BsCamera/> Update Profile Picture</div>
+                        <div onMouseDown={this.openEditPicModal}><BsCamera/> Update Profile Picture</div>
                       </div>)
     }
-
     return (
       <div className='profile-picture-container'>
       {/* <div className='profile-picture-container' onMouseOver={this.handleHoverIn} onMouseOut={this.handleHoverOut}> */}
@@ -121,7 +120,7 @@ class UserProfilePicture extends React.Component{
           editDropdown : <></>}
         <div id='profile-picture'>
           {profilePicture}
-          <button id='profile-picture-button' onClick={!!this.state.displayDropdown ? onBlurEvent : onClickEvent} onBlur={onBlurEvent}>
+          <button id='profile-picture-button' onClick={onClickEvent} onBlur={onBlurEvent}>
           </button>
         </div>
       </div>
