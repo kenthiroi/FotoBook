@@ -58,7 +58,9 @@ class UserProfileWall extends React.Component{
             <div onClick={this.props.openModal}>Whats on your mind?</div>
           </div>
         : <></>}
-        <div id="user-posts-header">Posts</div>
+        <div id="user-posts-header">
+          <h2>Posts</h2>
+        </div>
         {this.state.posts.length === 0 ? 
           <div id="empty-posts-section">No Posts Available</div>
             :
