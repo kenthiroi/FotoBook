@@ -18,6 +18,7 @@ class SignUpModal extends React.Component{
       email_infocus: false,
       email_verification: "",
       email_verification_error: false,
+      email_verification_infocus: false,
       password: "",
       password_error: false,
       password_infocus: false,
@@ -38,6 +39,7 @@ class SignUpModal extends React.Component{
     this.lastNameCheck = this.lastNameCheck.bind(this);
     this.alphabetCheck = this.alphabetCheck.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
+    this.compareEmails = this.compareEmails.bind(this);
     this.verifyAge = this.verifyAge.bind(this);
     this.passwordCheck = this.passwordCheck.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -109,16 +111,17 @@ class SignUpModal extends React.Component{
 
   validateEmail(){
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/;
-    let emailError = !emailPattern.test(this.state.email);
-    this.setState({email_error: emailError});
+    let isEmailError = !emailPattern.test(this.state.email);
+    this.setState({email_error: isEmailError});
     this.inputOnblur("email");
-    return emailError;
+    return isEmailError;
   }
 
   compareEmails(){
-    let emailMatches = (emailVerification === email);
-    this.setState({email_verification_error: emailMatches});
-    return emailMatches;
+    let isMatchingEmails = (emailVerification === email);
+    this.setState({email_verification_error: isMatchingEmails});
+    this.inputOnblur("email_verification");
+    return isMatchingEmails;
   }
 
   verifyAge(){
@@ -251,8 +254,8 @@ class SignUpModal extends React.Component{
               {this.state.email_error && errorIcon}
               {this.state.email_infocus && this.state.email_error ? <div className="error-bubble">You'll use this to log in.</div> : <></>}
             </div>
-            <div className={this.state.email_verification_error ? 'input-error' : ''}>
             {!this.state.email_error && this.state.email.substring(0, this.state.email.indexOf("@")).length > 0 ?
+              <div id="email-verification" className={this.state.email_verification_error ? 'input-error' : ''}>
                 <input
                   type="text"
                   placeholder="Re-enter Email"
@@ -260,10 +263,10 @@ class SignUpModal extends React.Component{
                   onFocus={() => this.inputOnfocus("email")}
                   onBlur={this.compareEmails}
                   /> 
-                  : <></>}
-            {!this.state.email_verification_error && !this.state.email_error && this.state.email_verification.length !== 0
+                </div>
+                : <></>}
+            {!this.state.email_verification_error && this.state.email_verification.length !== 0
               ? errorIcon : <></>}
-            </div>
           </div>
           {/* <PasswordInput 
             updatePassword={this.updateState("password")}

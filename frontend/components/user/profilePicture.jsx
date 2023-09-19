@@ -120,7 +120,7 @@ class UserProfilePicture extends React.Component{
           editDropdown : <></>}
         <div id='profile-picture'>
           {profilePicture}
-          <button id='profile-picture-button' onClick={onClickEvent} onBlur={onBlurEvent}>
+          <button id='profile-picture-button' onMouseDown={onClickEvent} onBlur={onBlurEvent}>
           </button>
         </div>
       </div>
