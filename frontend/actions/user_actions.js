@@ -5,6 +5,7 @@ export const RECEIVE_NEW_USER = "RECEIVE_NEW_USER";
 export const RECEIVE_USER_INFO = "RECEIVE_USER_INFO"
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 export const RECEIVE_USER_SEARCH_RESULTS = 'RECEIVE_USER_SEARCH_RESULTS';
+export const CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 
 export const receiveNewUser = user => {
   return {
@@ -31,6 +32,10 @@ export const receiveUserErrors = errors => ({
   type: RECEIVE_USER_ERRORS,
   errors
 });
+
+export const clearUserErrors = () => ({
+  type: CLEAR_USER_ERRORS,
+})
 
 export const signup = user => dispatch => (
   APIUtil.signup(user).then(user => (

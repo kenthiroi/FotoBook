@@ -7,10 +7,7 @@ import SearchResultBox from './userBox';
 function UserSearchBar(props) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const [focused, setFocused] = React.useState(false);
 
-  const onFocus = () => setFocused(true)
-  const onBlur = () => setFocused(false)
 
   const handleSearch = async (event) => {
     const { value } = event.target;
@@ -32,15 +29,15 @@ function UserSearchBar(props) {
   };
 
   let searchResults;
-  if (results.length !== 0 && focused) {
+  if (results.length !== 0 && props.focused) {
     //Add another condition to check if input element is in focus
     searchResults = 
     <div id='header-search-results'>
       {results.map((user) => (
-        <SearchResultBox key={user.id} user={user}/>
+        <SearchResultBox key={user.id} user={user} onBlurFunc={props.onBlurFunc}/>
       ))}
     </div>
-  } else if (focused) {
+  } else if (props.focused) {
     searchResults = <div id='header-search-results'>
       <div id='empty-search-results'>No results</div>
     </div>
@@ -49,21 +46,19 @@ function UserSearchBar(props) {
   }
 
   return (
-    <div>
-      <div id="header-search-bar">
-        <AiOutlineSearch/>
-        <input placeholder="Search Fotobook" type="text" value={query} onFocus={onFocus} onBlur={onBlur} onChange={handleSearch}/>
-      </div>
+    <div id="header-search-bar">
+      <AiOutlineSearch/>
+      <input placeholder="Search Fotobook" type="text" value={query} onChange={handleSearch}/>
       {searchResults}
     </div>
   );
 }
 
-const mSTP = (state, ownProps) => {
-  return {
+// const mSTP = (state, ownProps) => {
+//   return {
 
-  }
-}
+//   }
+// }
 
 const mDTP = (dispatch) => {
   return {
@@ -71,4 +66,4 @@ const mDTP = (dispatch) => {
   }
 }
 
-export default connect(mSTP, mDTP)(UserSearchBar);
+export default connect(null, mDTP)(UserSearchBar);

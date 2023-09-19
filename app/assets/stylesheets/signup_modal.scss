@@ -42,11 +42,67 @@
   padding: 5px;
 }
 
-.select-label {
-  padding-bottom: 0px !important;
+.input-error input, .input-error select, #gender-selector.input-error>div{
+  border-color: #af2d2d!important;
 }
 
-#birthdate-box, #gender-box, #name-box {
+.input-error input:focus, .input-error select:focus{
+  border-color: #dddfe2!important;
+}
+
+.select-label, #pronoun-section {
+  padding-bottom: 0px !important;
+  color: #606770;
+}
+
+.error-icon {
+  position: absolute;
+  color:#af2d2d;
+  font-size: 18px;
+}
+
+#name-box .error-icon, #email-box .error-icon, #password-box .error-icon{
+  top: 10px;
+  right: 10px;
+}
+
+#birthdate-box .error-icon, #gender-box .error-icon{
+  top: 0px;
+  right: 14.5px;
+}
+
+.error-bubble {
+  background-color: #be4b49;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+  color: #fff;
+  display: block;
+  font-size: 12px;
+  padding: 13px;
+  position: absolute;
+  z-index: 2;
+}
+
+#name-box .error-bubble{
+  top: 0px;
+  left: -140px;
+}
+
+#email-box .error-bubble, #password-box .error-bubble, #gender-box .error-bubble{
+  bottom: 50px;
+  left: 0px;
+}
+
+#birthdate-box .error-bubble{
+  bottom: 50px;
+  left: 0px;
+}
+
+#name-box>div, #email-box>div, #password-box>div, #birthdate-selector, #birthdate-box, #gender-box, #gender-selector{
+  position: relative;
+}
+
+#birthdate-box>div, #gender-selector, #name-box {
   display: flex;
   justify-content: space-between;
 }
@@ -64,12 +120,16 @@
   width: 100%;
 }
 
-#gender-box {
+#email-verification{
+  padding-top: 10px;
+}
+
+#gender-box label{
   font-size: 15px;
 }
 
-#gender-box div {
-  width: 113px;
+#gender-selector div {
+  width: 128px;
   padding: 5px;
   border-radius: 4px;
   border: 1px solid #dddfe2;
@@ -86,7 +146,7 @@
 }
 
 #name-box input {
-  width: 170px;
+  width: 196px;
 }
 
 #submit-btn {
@@ -106,4 +166,10 @@
 #submit-btn:hover {
   background-color: #3f992d;
   transition: 0.2s;
+}
+
+#pronoun-section, #pronoun-section select{
+  display: grid;
+  margin: 5px 1px;
+  width: 100%;
 }

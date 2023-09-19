@@ -1,21 +1,14 @@
 import React, { Fragment } from 'react';
-import { Provider } from 'react-redux';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import {
-  Route,
-  Routes,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter
-} from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import LoginPageContainer from './login/loginPageContainer';
 import Modal from './modal/modal';
 import NewsfeedContainer from './newsfeed/newsfeedContainer';
 import HeaderNav from './header/header'
 import UserProfile from './user/profile';
 import SideNav from './header/sideNav';
-import ComponentRoutesContainer from './routes/componentRoutesContainer';
+import ErrorMsg from './error/errorMsg';
+import ScrollToTop from './scrollToTop';
 
 
 const App = (props) => (
@@ -24,9 +17,11 @@ const App = (props) => (
     <Switch>
       <AuthRoute exact path="/" component={LoginPageContainer}/>
       <Fragment>
+        <ScrollToTop />
         <header>
           <HeaderNav/>
           <SideNav/>
+          <ErrorMsg/>
         </header>
         {/* News Feed Component */}
         <ProtectedRoute exact path='/newsfeed' component={NewsfeedContainer}/> 

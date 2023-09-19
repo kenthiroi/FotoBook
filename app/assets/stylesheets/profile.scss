@@ -206,31 +206,6 @@
   z-index: 0;
 }
 
-.propic-edit-container{
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  box-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
-  left: -80px;
-  bottom: -130px;
-  padding: 6px;
-  position: absolute;
-  width: 328px;
-  z-index: 3;
-}
-
-.propic-edit-container div{
-  border-radius: 8px;
-  font-size: 16px;
-  padding: 8px;
-  cursor: pointer;
-  width: 100%;
-}
-
-.propic-edit-container div:hover{
-  background-color: #dfdfdf;
-  transition: 300ms;
-}
-
 .profile-tabs{
   border-top: 1px #c4c4c4 solid;
   color: #525252;
@@ -282,6 +257,31 @@
   z-index: 3;
 }
 
+.propic-edit-container{
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 0.3px 0.3px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+  left: 15px;
+  top: 170px;
+  padding: 6px;
+  position: absolute;
+  width: 328px;
+  z-index: 3;
+}
+
+.propic-edit-container div{
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 8px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.propic-edit-container div:hover{
+  background-color: #dfdfdf;
+  transition: 300ms;
+}
+
 .user-posts{
   max-width: 680px;
   width: 100%;
@@ -313,6 +313,15 @@
   height: 100%;
   opacity: 0;
   width: 100%;
+}
+
+#user-posts-header{
+  background-color: #FFF;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px #c4c4c4;
+  margin: 10px auto;
+  max-width: 680px;
+  padding: 10px;
 }
 
 .friend-request-button{

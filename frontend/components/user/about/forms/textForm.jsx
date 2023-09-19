@@ -10,66 +10,55 @@ const mDTP = dispatch => ({
   updateUserAbout: (user) => dispatch(updateUser(user)),
 })
 
-class AboutTextForm extends React.Component {
-  constructor(props){
-    super(props);
+function AboutTextForm (props) {
+  const [body, setBody] = useState("");
 
-    this.state = {
-      body: "",
-    }
-
-    this.updateState = this.updateState.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  const updateState = (e) => {
+    setBody(e.target.value);
   }
 
-  updateState(e){
-    this.setState({ body: e.target.value });
-  }
-
-  handleSubmit(e){
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('user[id]', this.props.userId);
-    formData.append(`user[${this.props.formType}]`, this.state.body);
+    formData.append('user[id]', props.userId);
+    formData.append(`user[${props.formType}]`, body);
 
-    this.props.updateUserAbout(formData).then(() => {
-      this.props.closeForm();
+    props.updateUserAbout(formData).then(() => {
+      props.closeForm();
     });
   }
+    
+  let inputLabel;
 
-  render(){
-    let inputLabel;
-
-    switch (this.props.formType){
-      case 'work':
-        inputLabel = 'Company and position';
-        break;
-      case 'hometown':
-        inputLabel = 'Hometown';
-        break;
-      case 'school':
-        inputLabel = 'School name';
-    }
-
-    return <div className="about-form">
-        <form>
-          <label className={this.state.body.length === 0 ? "input-label" : "input-label input-filled"}>{inputLabel}</label>
-          <input onChange={this.updateState}/>
-          <div className="about-options">
-            <button className="about-cancel" onClick={this.props.closeForm}>
-              Cancel
-            </button>
-            <button 
-              className={this.state.body.length === 0 ? "disabled-button about-save" : "about-save"} 
-              onClick={this.handleSubmit}
-              disabled={this.state.body.length === 0 ? true : false}
-              >
-              Save
-            </button>
-          </div>
-        </form>
-      </div>
+  switch (props.formType){
+    case 'work':
+      inputLabel = 'Company and position';
+      break;
+    case 'hometown':
+      inputLabel = 'Hometown';
+      break;
+    case 'school':
+      inputLabel = 'School name';
   }
+
+  return <div className="about-form">
+      <form>
+        <label className={body.length === 0 ? "input-label" : "input-label input-filled"}>{inputLabel}</label>
+        <input onChange={updateState}/>
+        <div className="about-options">
+          <button className="about-cancel" onClick={props.closeForm}>
+            Cancel
+          </button>
+          <button 
+            className={body.length === 0 ? "disabled-button about-save" : "about-save"} 
+            onClick={handleSubmit}
+            disabled={body.length === 0 ? true : false}
+            >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
 }
 
 

@@ -8,7 +8,7 @@ import CreatePostDropdown from "./createPostDropdown";
 import SettingsDropdown from "./settingsDropdown";
 import ProfileButton from "./profileButton";
 import NotificationDropdown from "./notificationDropdown";
-import UserSearchBar from "../search/userSearchBar";
+import UserSearchContainer from "../search/userSearchContainer";
 import { getPost } from '../../actions/post_actions';
 import { fetchUser } from "../../actions/user_actions";
 import { AiFillHome, AiOutlineHome } from "react-icons/ai";
@@ -20,6 +20,11 @@ const mapStateToProps = (state, ownProps) => {
   let user = state.entities.user[state.session.id];
   let defaultImg = 'https://i.imgur.com/7x6fTDK.png';
   let userImg;
+
+  // console.log(state.entities.post);
+  // let profilePicture = state.entities.post[user.profile_picture];
+
+  // console.log(profilePicture);
   try {
     // userImg = state.entities.posts[state.entities.user[state.session.id].profile_picture];
     if (typeof user.photoUrl === 'undefined'){
@@ -66,6 +71,13 @@ class HeaderNav extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.userImg !== this.props.userImg){
+      console.log(this.props.userImg);
+      this.forceUpdate();
+    }
+  }
+
   handleOpenDropdown(type){
     return (e) => {
       this.setState({
@@ -100,7 +112,7 @@ class HeaderNav extends React.Component {
         </div>
       </div>
       <div id="header-center">
-        <UserSearchBar/>
+        <UserSearchContainer/>
       </div>
       <div id="header-right">
         <NotificationDropdown/>

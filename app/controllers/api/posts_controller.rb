@@ -10,8 +10,12 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    render :show
+    @post = Post.find_by(id: params[:id])
+    if @post
+      render :show
+    else
+      render json: ["Unable to find post."], status: 404
+    end
   end
 
   def create
